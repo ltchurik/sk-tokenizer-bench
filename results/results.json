@@ -1,0 +1,971 @@
+{
+  "GPT-4o / 4.1 / 5 (o200k_base)": {
+    "id": "o200k_base",
+    "tokens": {
+      "sk": {
+        "news": 191,
+        "ALL": 1007,
+        "tech": 174,
+        "legal": 156,
+        "chat": 133,
+        "wiki": 156,
+        "diacritics": 101,
+        "prompt": 96
+      },
+      "en": {
+        "news": 121,
+        "ALL": 621,
+        "tech": 109,
+        "legal": 84,
+        "chat": 93,
+        "wiki": 96,
+        "diacritics": 58,
+        "prompt": 60
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.82,
+      "en": 5.05
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.43,
+        "diacritics": 1.74,
+        "legal": 1.86,
+        "news": 1.58,
+        "prompt": 1.6,
+        "tech": 1.6,
+        "wiki": 1.62,
+        "ALL": 1.62
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "GPT-4 / 3.5 (cl100k_base)": {
+    "id": "cl100k_base",
+    "tokens": {
+      "sk": {
+        "news": 249,
+        "ALL": 1281,
+        "tech": 216,
+        "legal": 201,
+        "chat": 165,
+        "wiki": 201,
+        "diacritics": 128,
+        "prompt": 121
+      },
+      "en": {
+        "news": 124,
+        "ALL": 625,
+        "tech": 108,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 95,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.21,
+      "en": 5.02
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.72,
+        "diacritics": 2.21,
+        "legal": 2.42,
+        "news": 2.01,
+        "prompt": 1.98,
+        "tech": 2.0,
+        "wiki": 2.12,
+        "ALL": 2.05
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Llama 3.x": {
+    "id": "unsloth/Llama-3.1-8B",
+    "tokens": {
+      "sk": {
+        "news": 217,
+        "ALL": 1124,
+        "tech": 195,
+        "legal": 170,
+        "chat": 146,
+        "wiki": 173,
+        "diacritics": 116,
+        "prompt": 107
+      },
+      "en": {
+        "news": 123,
+        "ALL": 623,
+        "tech": 108,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 94,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.52,
+      "en": 5.03
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.52,
+        "diacritics": 2.0,
+        "legal": 2.05,
+        "news": 1.76,
+        "prompt": 1.75,
+        "tech": 1.81,
+        "wiki": 1.84,
+        "ALL": 1.8
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Llama 2": {
+    "id": "NousResearch/Llama-2-7b-hf",
+    "tokens": {
+      "sk": {
+        "news": 243,
+        "ALL": 1224,
+        "tech": 217,
+        "legal": 189,
+        "chat": 161,
+        "wiki": 184,
+        "diacritics": 116,
+        "prompt": 114
+      },
+      "en": {
+        "news": 133,
+        "ALL": 679,
+        "tech": 116,
+        "legal": 90,
+        "chat": 104,
+        "wiki": 107,
+        "diacritics": 65,
+        "prompt": 64
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.32,
+      "en": 4.62
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.55,
+        "diacritics": 1.78,
+        "legal": 2.1,
+        "news": 1.83,
+        "prompt": 1.78,
+        "tech": 1.87,
+        "wiki": 1.72,
+        "ALL": 1.8
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Mistral / Mixtral (v3)": {
+    "id": "mistralai/Mistral-7B-Instruct-v0.3",
+    "tokens": {
+      "sk": {
+        "news": 254,
+        "ALL": 1274,
+        "tech": 221,
+        "legal": 198,
+        "chat": 166,
+        "wiki": 195,
+        "diacritics": 119,
+        "prompt": 121
+      },
+      "en": {
+        "news": 131,
+        "ALL": 665,
+        "tech": 116,
+        "legal": 89,
+        "chat": 99,
+        "wiki": 107,
+        "diacritics": 60,
+        "prompt": 63
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.23,
+      "en": 4.71
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.68,
+        "diacritics": 1.98,
+        "legal": 2.22,
+        "news": 1.94,
+        "prompt": 1.92,
+        "tech": 1.91,
+        "wiki": 1.82,
+        "ALL": 1.92
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Mistral Nemo / Large 2 (tekken)": {
+    "id": "mistralai/Mistral-Nemo-Instruct-2407",
+    "tokens": {
+      "sk": {
+        "news": 196,
+        "ALL": 1049,
+        "tech": 191,
+        "legal": 159,
+        "chat": 138,
+        "wiki": 157,
+        "diacritics": 104,
+        "prompt": 104
+      },
+      "en": {
+        "news": 123,
+        "ALL": 623,
+        "tech": 111,
+        "legal": 82,
+        "chat": 96,
+        "wiki": 91,
+        "diacritics": 59,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.7,
+      "en": 5.03
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.44,
+        "diacritics": 1.76,
+        "legal": 1.94,
+        "news": 1.59,
+        "prompt": 1.7,
+        "tech": 1.72,
+        "wiki": 1.73,
+        "ALL": 1.68
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Qwen 2.5 / 3": {
+    "id": "Qwen/Qwen2.5-7B",
+    "tokens": {
+      "sk": {
+        "news": 244,
+        "ALL": 1254,
+        "tech": 216,
+        "legal": 198,
+        "chat": 163,
+        "wiki": 196,
+        "diacritics": 119,
+        "prompt": 118
+      },
+      "en": {
+        "news": 124,
+        "ALL": 627,
+        "tech": 110,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 95,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.26,
+      "en": 5.0
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.7,
+        "diacritics": 2.05,
+        "legal": 2.39,
+        "news": 1.97,
+        "prompt": 1.93,
+        "tech": 1.96,
+        "wiki": 2.06,
+        "ALL": 2.0
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Gemma 2 / 3": {
+    "id": "unsloth/gemma-3-4b-it",
+    "tokens": {
+      "sk": {
+        "news": 184,
+        "ALL": 972,
+        "tech": 173,
+        "legal": 142,
+        "chat": 129,
+        "wiki": 150,
+        "diacritics": 99,
+        "prompt": 95
+      },
+      "en": {
+        "news": 118,
+        "ALL": 610,
+        "tech": 110,
+        "legal": 82,
+        "chat": 98,
+        "wiki": 89,
+        "diacritics": 52,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.92,
+      "en": 5.14
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.32,
+        "diacritics": 1.9,
+        "legal": 1.73,
+        "news": 1.56,
+        "prompt": 1.56,
+        "tech": 1.57,
+        "wiki": 1.69,
+        "ALL": 1.59
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "DeepSeek V3 / R1": {
+    "id": "deepseek-ai/DeepSeek-V3",
+    "tokens": {
+      "sk": {
+        "news": 233,
+        "ALL": 1161,
+        "tech": 200,
+        "legal": 176,
+        "chat": 154,
+        "wiki": 174,
+        "diacritics": 115,
+        "prompt": 109
+      },
+      "en": {
+        "news": 126,
+        "ALL": 623,
+        "tech": 109,
+        "legal": 82,
+        "chat": 96,
+        "wiki": 92,
+        "diacritics": 58,
+        "prompt": 60
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.44,
+      "en": 5.03
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.6,
+        "diacritics": 1.98,
+        "legal": 2.15,
+        "news": 1.85,
+        "prompt": 1.82,
+        "tech": 1.83,
+        "wiki": 1.89,
+        "ALL": 1.86
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Phi-4": {
+    "id": "microsoft/phi-4",
+    "tokens": {
+      "sk": {
+        "news": 249,
+        "ALL": 1281,
+        "tech": 216,
+        "legal": 201,
+        "chat": 165,
+        "wiki": 201,
+        "diacritics": 128,
+        "prompt": 121
+      },
+      "en": {
+        "news": 124,
+        "ALL": 625,
+        "tech": 108,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 95,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.21,
+      "en": 5.02
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.72,
+        "diacritics": 2.21,
+        "legal": 2.42,
+        "news": 2.01,
+        "prompt": 1.98,
+        "tech": 2.0,
+        "wiki": 2.12,
+        "ALL": 2.05
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "gpt-oss (o200k_harmony)": {
+    "id": "openai/gpt-oss-20b",
+    "tokens": {
+      "sk": {
+        "news": 191,
+        "ALL": 1007,
+        "tech": 174,
+        "legal": 156,
+        "chat": 133,
+        "wiki": 156,
+        "diacritics": 101,
+        "prompt": 96
+      },
+      "en": {
+        "news": 121,
+        "ALL": 621,
+        "tech": 109,
+        "legal": 84,
+        "chat": 93,
+        "wiki": 96,
+        "diacritics": 58,
+        "prompt": 60
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.82,
+      "en": 5.05
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.43,
+        "diacritics": 1.74,
+        "legal": 1.86,
+        "news": 1.58,
+        "prompt": 1.6,
+        "tech": 1.6,
+        "wiki": 1.62,
+        "ALL": 1.62
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Claude 2 (legacy, Xenova mirror)": {
+    "id": "Xenova/claude-tokenizer",
+    "tokens": {
+      "sk": {
+        "news": 270,
+        "ALL": 1388,
+        "tech": 249,
+        "legal": 217,
+        "chat": 181,
+        "wiki": 208,
+        "diacritics": 134,
+        "prompt": 129
+      },
+      "en": {
+        "news": 127,
+        "ALL": 633,
+        "tech": 109,
+        "legal": 84,
+        "chat": 96,
+        "wiki": 96,
+        "diacritics": 60,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.04,
+      "en": 4.95
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.89,
+        "diacritics": 2.23,
+        "legal": 2.58,
+        "news": 2.13,
+        "prompt": 2.11,
+        "tech": 2.28,
+        "wiki": 2.17,
+        "ALL": 2.19
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "Command R": {
+    "id": "Xenova/c4ai-command-r-v01-tokenizer",
+    "tokens": {
+      "sk": {
+        "news": 192,
+        "ALL": 1015,
+        "tech": 180,
+        "legal": 150,
+        "chat": 136,
+        "wiki": 149,
+        "diacritics": 109,
+        "prompt": 99
+      },
+      "en": {
+        "news": 116,
+        "ALL": 606,
+        "tech": 110,
+        "legal": 82,
+        "chat": 94,
+        "wiki": 87,
+        "diacritics": 57,
+        "prompt": 60
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.8,
+      "en": 5.17
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.45,
+        "diacritics": 1.91,
+        "legal": 1.83,
+        "news": 1.66,
+        "prompt": 1.65,
+        "tech": 1.64,
+        "wiki": 1.71,
+        "ALL": 1.67
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "EuroLLM": {
+    "id": "utter-project/EuroLLM-1.7B",
+    "tokens": {
+      "sk": {
+        "news": 168,
+        "ALL": 880,
+        "tech": 161,
+        "legal": 130,
+        "chat": 123,
+        "wiki": 124,
+        "diacritics": 90,
+        "prompt": 84
+      },
+      "en": {
+        "news": 122,
+        "ALL": 642,
+        "tech": 119,
+        "legal": 84,
+        "chat": 100,
+        "wiki": 92,
+        "diacritics": 60,
+        "prompt": 65
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.22,
+      "en": 4.88
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.23,
+        "diacritics": 1.5,
+        "legal": 1.55,
+        "news": 1.38,
+        "prompt": 1.29,
+        "tech": 1.35,
+        "wiki": 1.35,
+        "ALL": 1.37
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "mT5": {
+    "id": "Xenova/mt5-base",
+    "tokens": {
+      "sk": {
+        "news": 195,
+        "ALL": 974,
+        "tech": 167,
+        "legal": 146,
+        "chat": 126,
+        "wiki": 147,
+        "diacritics": 97,
+        "prompt": 96
+      },
+      "en": {
+        "news": 146,
+        "ALL": 746,
+        "tech": 140,
+        "legal": 104,
+        "chat": 107,
+        "wiki": 110,
+        "diacritics": 63,
+        "prompt": 76
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.91,
+      "en": 4.2
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.18,
+        "diacritics": 1.54,
+        "legal": 1.4,
+        "news": 1.34,
+        "prompt": 1.26,
+        "tech": 1.19,
+        "wiki": 1.34,
+        "ALL": 1.31
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "SmolLM3": {
+    "id": "HuggingFaceTB/SmolLM3-3B",
+    "tokens": {
+      "sk": {
+        "news": 217,
+        "ALL": 1124,
+        "tech": 195,
+        "legal": 170,
+        "chat": 146,
+        "wiki": 173,
+        "diacritics": 116,
+        "prompt": 107
+      },
+      "en": {
+        "news": 123,
+        "ALL": 623,
+        "tech": 108,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 94,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.52,
+      "en": 5.03
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.52,
+        "diacritics": 2.0,
+        "legal": 2.05,
+        "news": 1.76,
+        "prompt": 1.75,
+        "tech": 1.81,
+        "wiki": 1.84,
+        "ALL": 1.8
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "OLMo 2": {
+    "id": "allenai/OLMo-2-1124-7B",
+    "tokens": {
+      "sk": {
+        "news": 249,
+        "ALL": 1281,
+        "tech": 216,
+        "legal": 201,
+        "chat": 165,
+        "wiki": 201,
+        "diacritics": 128,
+        "prompt": 121
+      },
+      "en": {
+        "news": 124,
+        "ALL": 625,
+        "tech": 108,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 95,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.21,
+      "en": 5.02
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.72,
+        "diacritics": 2.21,
+        "legal": 2.42,
+        "news": 2.01,
+        "prompt": 1.98,
+        "tech": 2.0,
+        "wiki": 2.12,
+        "ALL": 2.05
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "BLOOM": {
+    "id": "bigscience/bloom",
+    "tokens": {
+      "sk": {
+        "news": 234,
+        "ALL": 1201,
+        "tech": 212,
+        "legal": 190,
+        "chat": 151,
+        "wiki": 181,
+        "diacritics": 118,
+        "prompt": 115
+      },
+      "en": {
+        "news": 125,
+        "ALL": 634,
+        "tech": 110,
+        "legal": 85,
+        "chat": 93,
+        "wiki": 97,
+        "diacritics": 63,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.36,
+      "en": 4.94
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.62,
+        "diacritics": 1.87,
+        "legal": 2.24,
+        "news": 1.87,
+        "prompt": 1.89,
+        "tech": 1.93,
+        "wiki": 1.87,
+        "ALL": 1.89
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  },
+  "CSTinyLlama (Czech, BUT-FIT)": {
+    "id": "BUT-FIT/CSTinyLlama-1.2B",
+    "tokens": {
+      "sk": {
+        "news": 176,
+        "ALL": 912,
+        "tech": 163,
+        "legal": 136,
+        "chat": 110,
+        "wiki": 141,
+        "diacritics": 98,
+        "prompt": 88
+      },
+      "en": {
+        "news": 206,
+        "ALL": 1014,
+        "tech": 184,
+        "legal": 141,
+        "chat": 139,
+        "wiki": 155,
+        "diacritics": 88,
+        "prompt": 101
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.11,
+      "en": 3.09
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 0.79,
+        "diacritics": 1.11,
+        "legal": 0.96,
+        "news": 0.85,
+        "prompt": 0.87,
+        "tech": 0.89,
+        "wiki": 0.91,
+        "ALL": 0.9
+      },
+      "en": {
+        "chat": 1.0,
+        "diacritics": 1.0,
+        "legal": 1.0,
+        "news": 1.0,
+        "prompt": 1.0,
+        "tech": 1.0,
+        "wiki": 1.0,
+        "ALL": 1.0
+      }
+    }
+  }
+}
