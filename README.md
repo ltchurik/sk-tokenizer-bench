@@ -2,6 +2,9 @@
 
 **How much more do you pay to talk to an LLM in Slovak?**
 
+[![bench](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml/badge.svg)](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24092040.svg)](https://doi.org/10.5281/zenodo.24092040)
+
 Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across the tokenizers of all major models, on a parallel Slovak/English corpus.
 
 Short answer: **Slovak costs 1.6× to 2.2× more tokens than English**, depending on the model. The same applies to context-window capacity: a 128k window holds ~40 % less Slovak text.
@@ -69,6 +72,10 @@ Add one line to `TOKENIZERS` in `bench.py` — either a `tiktoken` encoding name
 - Counts use `add_special_tokens=False`; no BOS/EOS, no chat template.
 - Ratio = total Slovak tokens / total English tokens over the whole corpus (not an average of per-sentence ratios).
 - `chars/token` is Unicode code points per token, so a diacritic counts as one character.
+
+## Citing
+
+See [CITATION.cff](CITATION.cff) (GitHub's "Cite this repository" button renders it). The DOI [10.5281/zenodo.24092040](https://doi.org/10.5281/zenodo.24092040) covers all versions.
 
 ## License
 
