@@ -122,3 +122,16 @@ TIKTOKEN_PATTERNS = {
         ]
     ),
 }
+
+# Repo the web calculator loads in the browser (tokenizers.js needs tokenizer.json +
+# tokenizer_config.json). Defaults to the registry repo for kind "hf"; tiktoken encodings
+# use Xenova's byte-identical tokenizer.json exports (parity-tested in CI).
+BROWSER_REPO = {
+    "GPT-4o / 4.1 / 5 (o200k_base)": "Xenova/gpt-4o",
+    "GPT-4 / 3.5 (cl100k_base)": "Xenova/gpt-4",
+}
+
+
+def browser_repo(name):
+    kind, ident = TOKENIZERS[name]
+    return BROWSER_REPO.get(name) or (ident if kind == "hf" else None)
