@@ -20,15 +20,16 @@ sys.path.insert(0, str(ROOT))
 from skbench.registry import LINEAGES, RELEASED  # noqa: E402
 
 SURF, INK, INK2, MUTED, GRID, OTHER = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#e4e3df", "#b9b8b2"
-# Reference categorical slots 1-4, fixed order (validated adjacent-pair palette).
-COLORS = {"OpenAI": "#2a78d6", "Meta": "#eb6834", "Mistral": "#1baf7a", "Google": "#eda100"}
+# Reference categorical slots 1-5, fixed order (validated adjacent-pair palette).
+COLORS = {"OpenAI": "#2a78d6", "Meta": "#eb6834", "Mistral": "#1baf7a", "Google": "#eda100", "Qwen": "#e87ba4"}
 SHORT = {
     "GPT-4 / 3.5 (cl100k_base)": "GPT-4", "GPT-4o / 4.1 / 5 (o200k_base)": "GPT-4o / 5",
     "Llama 2": "Llama 2", "Llama 3.x": "Llama 3", "Llama 4": "Llama 4",
     "Mistral / Mixtral (v3)": "Mistral v3", "Mistral Nemo / Small 3 / Large 2 (tekken)": "tekken",
     "Gemma 1 / 2": "Gemma 1/2", "Gemma 3": "Gemma 3",
+    "Mistral Large 4": "Mistral Large 4", "Qwen 2.5 / 3": "Qwen 2.5/3", "Qwen 3.8": "Qwen 3.8",
     "EuroLLM": "EuroLLM", "BLOOM": "BLOOM", "Falcon 3": "Falcon 3",
-    "Qwen 2.5 / 3": "Qwen", "Teuken (OpenGPT-X)": "Teuken",
+    "Teuken (OpenGPT-X)": "Teuken",
 }
 # direct-label placement in points: (dx, dy, horizontal alignment), checked by eye on the render
 OFFSET = {
@@ -36,7 +37,8 @@ OFFSET = {
     "Llama 2": (10, -12, "left"), "Llama 3.x": (-10, 4, "right"), "Llama 4": (10, -6, "left"),
     "Mistral / Mixtral (v3)": (-10, 4, "right"), "Mistral Nemo / Small 3 / Large 2 (tekken)": (4, -30, "left"),
     "Gemma 1 / 2": (-10, -6, "right"), "Gemma 3": (10, 6, "left"),
-    "EuroLLM": (8, 0, "left"), "BLOOM": (8, 0, "left"), "Falcon 3": (8, 0, "left"), "Qwen 2.5 / 3": (8, 0, "left"),
+    "Mistral Large 4": (-10, 12, "right"), "Qwen 2.5 / 3": (10, 0, "left"), "Qwen 3.8": (-10, -10, "right"),
+    "EuroLLM": (8, 0, "left"), "BLOOM": (8, 0, "left"), "Falcon 3": (8, 0, "left"),
     "Teuken (OpenGPT-X)": (8, 0, "left"),
 }
 
@@ -82,7 +84,7 @@ def main():
     ax.annotate("English = 1×", (date(2022, 8, 1), 1.0), xytext=(0, 6), textcoords="offset points",
                 fontsize=10, color=INK2)
     ax.set_ylim(0.9, 2.45)
-    ax.set_xlim(date(2022, 5, 1), date(2026, 2, 1))
+    ax.set_xlim(date(2022, 5, 1), date(2027, 3, 1))
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"{v:.1f}×"))
     ax.xaxis.set_major_locator(mdates.YearLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
@@ -96,7 +98,7 @@ def main():
     fig.text(0.08, 0.93, "Slovak token tax by tokenizer release date", fontsize=18, weight="bold", color=INK)
     fig.text(0.08, 0.875, "FLORES-200 devtest, sk/en token ratio, tokenizers released since mid-2022. "
              "Lines connect successive tokenizers of one vendor; lower is cheaper.", fontsize=11, color=INK2)
-    leg = ax.legend(loc="upper right", frameon=False, fontsize=11, labelcolor=INK2, ncol=5,
+    leg = ax.legend(loc="upper right", frameon=False, fontsize=11, labelcolor=INK2, ncol=6,
                     bbox_to_anchor=(1.0, 1.1), handletextpad=0.3, columnspacing=1.2)
     for h in leg.legend_handles:
         h.set_sizes([60])

@@ -28,7 +28,7 @@ fig = plt.figure(figsize=(W / 100, H / 100), dpi=100, facecolor=SURF)
 fig.text(L / W, 1 - 92 / H, "sk-tokenizer-bench", fontsize=21, color=BLUE, weight="bold", va="top")
 fig.text(L / W, 1 - 146 / H, "How much more\ndoes Slovak cost\nin LLM tokens?", fontsize=33, color=INK, weight="bold", va="top", linespacing=1.18)
 fig.text(L / W, 1 - 330 / H, "Same text, Slovak vs English:\n1.6× – 2.3× more tokens\non mainstream models.", fontsize=18, color=INK2, va="top", linespacing=1.45)
-fig.text(L / W, 72 / H, "33 tokenizers · FLORES-200 · 10 languages\ngithub.com/ltchurik/sk-tokenizer-bench", fontsize=13, color=MUTED, va="bottom", linespacing=1.6)
+fig.text(L / W, 72 / H, "41 tokenizers · FLORES-200 · 10 languages\ngithub.com/ltchurik/sk-tokenizer-bench", fontsize=13, color=MUTED, va="bottom", linespacing=1.6)
 ax = fig.add_axes([770 / W, 120 / H, 420 / W, 410 / H], facecolor=SURF)
 n, bh = len(data), 0.52
 for i, (lab, v) in enumerate(data):
