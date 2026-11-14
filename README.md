@@ -233,7 +233,7 @@ pytest                           # sanity tests
 
 ### Web calculator
 
-The [online calculator](https://ltchurik.github.io/sk-tokenizer-bench/) lives in [`site/`](site/): plain HTML + JS, no build step beyond `python site/build.py`, which writes `_site/` with a `data.json` derived from `results/flores/` and `prices.json`. Tokenizers are fetched from the Hugging Face Hub in the browser and run with [tokenizers.js](https://github.com/huggingface/tokenizers.js). `python site/tests/parity.py` (after `npm ci --prefix site`) checks that tokenizers.js counts every FLORES sentence exactly like the Python benchmark; CI runs it on every push, and the `pages` workflow deploys the site.
+The [online calculator](https://ltchurik.github.io/sk-tokenizer-bench/) lives in [`site/`](site/): plain HTML + JS, no build step beyond `python site/build.py`, which writes `_site/` with a `data.json` derived from `results/flores/` and `prices.json`. Tokenizers are fetched from the Hugging Face Hub in the browser and run with [tokenizers.js](https://github.com/huggingface/tokenizers.js). Besides Slovak it accepts the other FLORES languages (estimates use each language's measured ratio), prices the model's answer as well as the input (answer length selectable), and can copy a share link that carries the text in the URL fragment, which is never sent to a server. `python site/tests/parity.py` (after `npm ci --prefix site`) checks that tokenizers.js counts every FLORES sentence exactly like the Python benchmark; CI runs it on every push, and the `pages` workflow deploys the site.
 
 ```bash
 python site/build.py && python -m http.server -d _site   # preview at http://localhost:8000
@@ -254,6 +254,10 @@ python bench.py --readme
 Every count is cached in `cache/api_counts.json` (model + SHA-1 of the sentence). Commit that file and the API rows reproduce without a key, and CI never re-queries. Each request wraps the sentence in one user message, so a fixed per-request overhead (measured as `count(".") − 1`) is subtracted. Without a key and without cached counts these rows are skipped.
 
 ## Adding a tokenizer
+
+New tokenizers are found automatically: the monthly [`tokenizer-watch`](.github/workflows/watch.yml) workflow runs [`tools/watch_tokenizers.py`](tools/watch_tokenizers.py), which checks recent Hugging Face repos of ~25 model vendors, skips fine-tunes and re-uploads whose tokenizer is already covered (identical `tokenizer.json`, or identical counts on a 200-sentence FLORES probe), measures anything new and opens an issue labelled `new-tokenizer` with the sk/en ratio and a ready-to-paste registry line. Run it locally with `python tools/watch_tokenizers.py --days 90`.
+
+To add one by hand:
 
 Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a `tiktoken` encoding name, a Hugging Face repo with `tokenizer.json`, or one of the other kinds documented there (vocab+merges, SentencePiece, tiktoken file, API model id). Identical tokenizers are detected automatically and listed under the table.
 
