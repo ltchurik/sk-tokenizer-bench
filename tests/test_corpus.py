@@ -35,3 +35,11 @@ def test_genres_shape():
     assert langs == ["sk", "sk_nd", "en"]
     assert Counter(r["domain"] for r in rows) == {"social": 494, "law": 300, "literary": 206, "news": 149, "speech": 111}
     assert not any("CANARY" in r["en"] for r in rows)
+
+
+def test_no_third_party_corpus_in_repo():
+    """Third-party corpora are downloaded at run time and never committed."""
+    from skbench.core import ROOT
+
+    assert sorted(p.name for p in (ROOT / "corpus").glob("*.jsonl")) == ["parallel.jsonl"]
+    assert "cache/corpora/" in (ROOT / ".gitignore").read_text()

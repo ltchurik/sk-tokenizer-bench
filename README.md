@@ -327,7 +327,6 @@ pip install -r requirements.txt
 python bench.py                  # all tokenizers, both corpora, writes results/
 python bench.py --only gemma     # one tokenizer
 python bench.py --corpus custom  # only the hand-written corpus
-python tools/make_genres_corpus.py  # rebuild corpus/genres.jsonl from WMT24++ and EUR-Lex
 python bench.py --readme         # also regenerate the tables in this README
 pytest                           # sanity tests
 ```
@@ -364,7 +363,7 @@ Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a 
 
 ## Adding a language or a price
 
-- **Language:** FLORES-200 covers 200 languages. Add the language to `corpus/flores200_devtest.jsonl` (the conversion is a few lines; see the history of that file) and it shows up in every table automatically. The custom corpus has sk/en only; extra keys there work the same way.
+- **Language:** FLORES-200 covers 200 languages. Add its code to `FLORES_LANGS` in [`skbench/corpora.py`](skbench/corpora.py), update `FLORES_OUT_SHA256` to the new converted file, and it shows up in every table automatically. The custom corpus has sk/en only; extra keys there work the same way.
 - **Prices:** edit [`prices.json`](prices.json). Each entry names the tokenizer row it maps to and the official pricing page it came from.
 
 ## Methodology
@@ -385,4 +384,4 @@ See [CITATION.cff](CITATION.cff) (GitHub's "Cite this repository" button renders
 
 ## License
 
-Code and the hand-written corpus: MIT. `corpus/flores200_devtest.jsonl` is derived from FLORES-200 and is licensed **CC BY-SA 4.0**. `corpus/genres.jsonl` combines WMT24++ (Apache 2.0) and EUR-Lex texts (© European Union, reuse authorised). See [corpus/README.md](corpus/README.md).
+Code and the hand-written corpus: MIT. The repo does not redistribute any third-party corpus: FLORES-200 (CC BY-SA 4.0), WMT24++ (Apache 2.0) and the EU legislation (© European Union, reuse authorised) are downloaded from their publishers when the benchmark runs, and only token counts are published. See [corpus/README.md](corpus/README.md).

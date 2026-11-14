@@ -6,11 +6,13 @@ from pathlib import Path
 
 import numpy as np
 
+from skbench import corpora
+
 ROOT = Path(__file__).resolve().parent.parent
 CORPORA = {
-    "flores": ROOT / "corpus" / "flores200_devtest.jsonl",
+    "flores": corpora.FLORES,  # third-party corpora are downloaded on first use, see skbench/corpora.py
     "custom": ROOT / "corpus" / "parallel.jsonl",
-    "genres": ROOT / "corpus" / "genres.jsonl",
+    "genres": corpora.GENRES,
 }
 META_KEYS = {"id", "domain"}
 BASE = "en"
@@ -24,6 +26,7 @@ def strip_diacritics(text):
 
 
 def load_corpus(path):
+    corpora.ensure(path)
     rows = [json.loads(line) for line in open(path, encoding="utf-8") if line.strip()]
     langs = [k for k in rows[0] if k not in META_KEYS]
     for r in rows:
