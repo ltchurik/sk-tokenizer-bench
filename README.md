@@ -1,9 +1,13 @@
 # sk-tokenizer-bench
 
-**How much more do you pay to talk to an LLM in Slovak?**
+**How much more do you pay to talk to an LLM in Slovak?** A reproducible benchmark of the Slovak token tax: token counts, characters per token and API cost of Slovak vs English (and Czech, Polish, Hungarian, German) across 30+ LLM tokenizers.
 
 [![bench](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml/badge.svg)](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24092040.svg)](https://doi.org/10.5281/zenodo.24092040)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
+
+🇸🇰 [Zhrnutie po slovensky](#po-slovensky) · [Results](#results) · [FAQ](#faq) · [Run it yourself](#run-it-yourself) · [Citing](#citing)
 
 Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences plus a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian and German.
 
@@ -122,6 +126,34 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effe
 <!-- results:end -->
 
 Full tables, including tokens per language and per-domain ratios: [FLORES-200](results/flores/RESULTS.md) · [domain corpus](results/custom/RESULTS.md) · [cost](results/COST.md). Per-sentence counts: `results/*/counts.json.gz`.
+
+## FAQ
+
+**Why does Slovak use more tokens than English?**
+Tokenizers (BPE, SentencePiece) learn their vocabulary from training data that is mostly English. Common English words become single tokens, while Slovak words, with their diacritics and many inflected forms (*mesto, mesta, mestu, mestom, mestách…*), get split into several pieces. More pieces means more tokens per sentence.
+
+**Which LLM tokenizer is cheapest for Slovak?**
+Among mainstream API and open-weight models: Llama 4 (1.56×), Gemma 2/3 (1.62×), Mistral `tekken` (1.67×) and OpenAI `o200k` used by GPT-4o / GPT-4.1 / GPT-5 (1.68×). Multilingual models such as mT5 and EuroLLM do better still (~1.3×). Older vocabularies such as GPT-4's `cl100k` (2.13×) or Qwen (2.07×) are the most expensive.
+
+**Does this affect price only?**
+No. The same factor shrinks the effective context window (a 128k window fits 40–56 % less Slovak text), increases latency (more output tokens to generate) and eats into rate limits.
+
+**How do I count tokens for my own Slovak text?**
+For OpenAI models use `tiktoken` with `o200k_base`; for open-weight models load the model's `tokenizer.json` with Hugging Face `tokenizers`; for closed models use the vendor's token-counting endpoint. `skbench/backends.py` contains a minimal example of each.
+
+**Is Czech, Polish or Hungarian any better?**
+See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech is usually a little cheaper than Slovak, Hungarian is usually the most expensive and German the cheapest of the five.
+
+## Po slovensky
+
+**Koľko tokenov navyše stojí slovenčina v jazykových modeloch (LLM)?** Platené API (OpenAI, Google, Mistral a ďalšie) účtujú za tokeny, no tokenizéry sa učia hlavne na angličtine. Rovnaký text po slovensky sa preto rozdelí na **1,6× až 2,3× viac tokenov** než po anglicky, takže za vstup aj výstup zaplatíte o 60 – 130 % viac a do kontextového okna sa zmestí o 40 – 56 % menej textu.
+
+- **Najlepšie z bežných modelov:** Llama 4 (1,56×), Gemma (1,62×), Mistral (1,67×), GPT-4o / GPT-5 (1,68×).
+- **Najhoršie:** GPT-4 / GPT-3.5 (2,13×), Qwen (2,07×), Falcon 3 (2,27×).
+- **Slovenčina je drahšia ako čeština** v 20 z 23 tokenizérov, aj keď sú si jazyky veľmi blízke.
+- **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
+
+Meranie prebieha na 1012 vetách z korpusu FLORES-200 a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
 
 ## Run it yourself
 
