@@ -16,7 +16,7 @@
 
 🇸🇰 [Zhrnutie po slovensky](#po-slovensky) · [Kalkulačka online](https://ltchurik.github.io/sk-tokenizer-bench/) · [Results](#results) · [FAQ](#faq) · [Run it yourself](#run-it-yourself) · [Citing](#citing)
 
-Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences plus a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian, Slovenian, Croatian, Romanian, Ukrainian and German.
+Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences, 1260 segments of real text by genre (social media, speech, fiction, news, EU law) and a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian, Slovenian, Croatian, Romanian, Ukrainian and German.
 
 Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens than English** (GPT-4o / GPT-5: 1.68×, Gemma 3: 1.62×, Llama 4: 1.56×). You pay that factor on input *and* output, and a 128k context window holds 40–56 % less Slovak text.
 
@@ -30,7 +30,8 @@ Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens tha
 - **Multilingual-by-design tokenizers are far better**: mT5 1.29×, EuroLLM 1.35×. Teuken, trained on all 24 EU languages, is great for Czech (1.06×) but not Slovak (1.41×), which suggests Slovak was under-represented in its training data.
 - **The gap comes from training data, not from the language.** SlovakBERT (trained on Slovak) needs *fewer* tokens for Slovak than for English (0.77×), and the Czech CSTinyLlama does too (0.92×).
 - **Many models reuse someone else's tokenizer.** Apertus and Nemotron Nano 2 use Mistral's `tekken` (same counts on every sentence but one Ukrainian one), Bielik uses Mistral v3, Phi-4-mini and gpt-oss use `o200k`, and Phi-4 and OLMo 2 use `cl100k`, so they inherit those tokenizers' penalties exactly.
-- **Results hold across corpora.** The hand-written domain corpus lands within ±0.08× of FLORES for every tokenizer. Legal and diacritics-heavy text is the worst case (up to 2.4×) and casual chat the best; see [results/custom/RESULTS.md](results/custom/RESULTS.md).
+- **Results hold across corpora.** On 1260 segments of real text by genre the overall ratio stays within ±0.07× of FLORES for every tokenizer and the ranking barely moves (Spearman 0.98); the hand-written domain corpus lands within ±0.08×.
+- **The text type moves the bill more than most tokenizer choices.** News and EU law cost the most (+0.1 to +0.3× above a tokenizer's average), speech transcripts and fiction the least (−0.1 to −0.3×): on GPT-4o, an EU regulation costs 1.74× and a transcribed video 1.50×. Social-media posts sit at or slightly below the average. See [By genre](#by-genre).
 - **The Slovak surcharge differs by vendor, not just the list price.** Of the 19 priced models with a measured tokenizer, Qwen 3.8, Mistral and OpenAI add 64–74 % for Slovak, while DeepSeek V4, GLM-5.3, MiniMax M3 and Kimi K3 add 90–101 %. That can cancel a lower list price: `deepseek-v4-pro` is cheaper than `mistral-large-4-0` per English token ($0.66 vs $0.70 input), but the same Slovak text costs slightly more on it ($1.26 vs $1.22 effective). The cheapest options for Slovak input are `qwen3.8-flash`, `mistral-small-4-0-26-03` and `gpt-4o-mini` (about $0.25 per 1M English-token equivalent); see [In dollars](#in-dollars).
 - **Closed tokenizers** (current Claude, Gemini) are counted through the vendors' token-counting APIs when a key is available; see [API tokenizers](#api-tokenizers-claude-gemini).
 
@@ -89,6 +90,54 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 
 *Byte-for-byte identical counts on this corpus: GPT-4o / 4.1 / 5 (o200k_base) = gpt-oss (o200k_harmony) = Phi-4-mini; GPT-4 / 3.5 (cl100k_base) = Phi-4 = OLMo 2; Llama 3.x = SmolLM3; Nemotron Nano 2 = Apertus (Swiss AI); CSTinyLlama (Czech, BUT-FIT) = CSMPT (Czech, BUT-FIT); Mistral / Mixtral (v3) = Bielik (Polish, SpeakLeash).*
 
+
+### By genre
+
+Real text by genre: social-media posts, speech transcripts, literary prose and news from WMT24++ (human-translated and post-edited), and paragraphs of three EU acts in their official versions (EUR-Lex). FLORES-200 in the first column for comparison; see [corpus/README.md](corpus/README.md).
+
+| Tokenizer | FLORES | social media | speech | literary | news | EU law | all genres |
+|---|---|---|---|---|---|---|---|
+| SlovakBERT (Slovak, Gerulata) | 0.77× | 0.88× | 0.79× | 0.85× | 0.81× | 0.65× | 0.77× |
+| CSTinyLlama (Czech, BUT-FIT) | 0.92× | 0.97× | 0.87× | 0.89× | 0.99× | 0.90× | 0.92× |
+| CSMPT (Czech, BUT-FIT) | 0.92× | 0.97× | 0.87× | 0.89× | 0.99× | 0.90× | 0.92× |
+| mT5 | 1.29× | 1.30× | 1.19× | 1.20× | 1.39× | 1.33× | 1.29× |
+| EuroLLM | 1.35× | 1.33× | 1.21× | 1.28× | 1.45× | 1.39× | 1.34× |
+| Teuken (OpenGPT-X) | 1.41× | 1.37× | 1.25× | 1.28× | 1.51× | 1.50× | 1.40× |
+| Llama 4 | 1.56× | 1.55× | 1.43× | 1.45× | 1.70× | 1.57× | 1.54× |
+| Gemma 1 / 2 | 1.59× | 1.50× | 1.36× | 1.45× | 1.72× | 1.64× | 1.55× |
+| Gemma 3 | 1.62× | 1.53× | 1.39× | 1.47× | 1.74× | 1.65× | 1.57× |
+| Qwen 3.8 | 1.64× | 1.58× | 1.44× | 1.51× | 1.78× | 1.69× | 1.61× |
+| Mistral Nemo / Small 3–4 / Large 2 (tekken) | 1.67× | 1.62× | 1.50× | 1.53× | 1.80× | 1.76× | 1.66× |
+| Nemotron Nano 2 | 1.67× | 1.62× | 1.50× | 1.53× | 1.80× | 1.76× | 1.66× |
+| Apertus (Swiss AI) | 1.67× | 1.62× | 1.50× | 1.53× | 1.80× | 1.76× | 1.66× |
+| GPT-4o / 4.1 / 5 (o200k_base) | 1.68× | 1.63× | 1.50× | 1.52× | 1.83× | 1.74× | 1.66× |
+| gpt-oss (o200k_harmony) | 1.68× | 1.63× | 1.50× | 1.52× | 1.83× | 1.74× | 1.66× |
+| Phi-4-mini | 1.68× | 1.63× | 1.50× | 1.52× | 1.83× | 1.74× | 1.66× |
+| Command R | 1.69× | 1.63× | 1.50× | 1.52× | 1.81× | 1.75× | 1.66× |
+| Cohere North | 1.69× | 1.64× | 1.50× | 1.53× | 1.82× | 1.73× | 1.66× |
+| Mistral Large 4 | 1.74× | 1.68× | 1.54× | 1.56× | 1.90× | 1.85× | 1.73× |
+| ERNIE 5.5 | 1.75× | 1.66× | 1.53× | 1.55× | 1.90× | 1.83× | 1.71× |
+| Llama 2 | 1.81× | 1.74× | 1.62× | 1.61× | 1.93× | 1.95× | 1.80× |
+| Granite 3.3 | 1.84× | 1.85× | 1.70× | 1.68× | 2.01× | 2.10× | 1.91× |
+| LFM3 (Liquid AI) | 1.84× | 1.74× | 1.61× | 1.61× | 2.01× | 1.99× | 1.82× |
+| Llama 3.x | 1.84× | 1.74× | 1.60× | 1.63× | 1.99× | 1.94× | 1.80× |
+| SmolLM3 | 1.84× | 1.74× | 1.60× | 1.63× | 1.99× | 1.94× | 1.80× |
+| DeepSeek V3 / R1 / V4 | 1.91× | 1.80× | 1.66× | 1.67× | 2.08× | 2.05× | 1.88× |
+| GLM-5.3 | 1.93× | 1.81× | 1.68× | 1.70× | 2.12× | 2.07× | 1.90× |
+| GLM-4.5 / 4.6 / 4.7 | 1.95× | 1.82× | 1.69× | 1.72× | 2.13× | 2.10× | 1.92× |
+| Mistral / Mixtral (v3) | 1.95× | 1.86× | 1.72× | 1.73× | 2.12× | 2.12× | 1.94× |
+| Bielik (Polish, SpeakLeash) | 1.95× | 1.86× | 1.72× | 1.73× | 2.12× | 2.12× | 1.94× |
+| Hunyuan 4 (Tencent) | 1.95× | 1.83× | 1.71× | 1.68× | 2.13× | 2.11× | 1.92× |
+| BLOOM | 2.00× | 1.91× | 1.79× | 1.73× | 2.22× | 2.20× | 2.00× |
+| MiniMax M2 / M3 | 2.01× | 1.92× | 1.79× | 1.77× | 2.22× | 2.18× | 2.01× |
+| Kimi K2 / K3 | 2.01× | 1.93× | 1.80× | 1.76× | 2.21× | 2.19× | 2.01× |
+| Qwen 2.5 / 3 | 2.07× | 1.94× | 1.81× | 1.81× | 2.29× | 2.25× | 2.06× |
+| Granite 4.2 | 2.12× | 1.97× | 1.84× | 1.83× | 2.34× | 2.31× | 2.10× |
+| GPT-4 / 3.5 (cl100k_base) | 2.13× | 1.99× | 1.85× | 1.86× | 2.36× | 2.33× | 2.11× |
+| Phi-4 | 2.13× | 1.99× | 1.85× | 1.86× | 2.36× | 2.33× | 2.11× |
+| OLMo 2 | 2.13× | 1.99× | 1.85× | 1.86× | 2.36× | 2.33× | 2.11× |
+| Claude 2 (legacy, Xenova mirror) | 2.25× | 2.10× | 1.97× | 1.93× | 2.49× | 2.46× | 2.23× |
+| Falcon 3 | 2.27× | 2.06× | 1.92× | 1.94× | 2.50× | 2.46× | 2.22× |
 
 ### Slovak and its neighbours
 
@@ -231,7 +280,7 @@ Notes:
 
 Successive tokenizers from the same vendor mostly get cheaper for Slovak, but not always (Llama 3, Gemma 3, Mistral Large 4). Regenerate with `python docs/make_timeline.py`.
 
-Full tables, including tokens per language and per-domain ratios: [FLORES-200](results/flores/RESULTS.md) · [domain corpus](results/custom/RESULTS.md) · [cost](results/COST.md). Per-sentence counts: `results/*/counts.json.gz`.
+Full tables, including tokens per language and per-domain ratios: [FLORES-200](results/flores/RESULTS.md) · [genres](results/genres/RESULTS.md) · [domain corpus](results/custom/RESULTS.md) · [cost](results/COST.md). Per-sentence counts: `results/*/counts.json.gz`.
 
 ## FAQ
 
@@ -262,11 +311,12 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian an
 - **Slovenčina je drahšia ako čeština** v 30 z 33 tokenizérov a drahšia ako slovinčina a chorvátčina v 28 z 33, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
 - **Písanie bez diakritiky takmer nepomáha.** Na GPT-4o / GPT-5 ušetrí asi 5 % tokenov (1,68× → 1,59×), na Llama 4 asi 1 %. Väčšinu príplatku spôsobuje skloňovanie a slovná zásoba, nie mäkčene a dĺžne.
 - **Príplatok za slovenčinu závisí od výrobcu.** Pri Qwen 3.8, Mistrale a OpenAI zaplatíte za slovenský text o 64 – 74 % viac, pri DeepSeek V4, GLM-5.3, MiniMax M3 a Kimi K3 o 90 – 101 % viac. Lacnejší cenník to môže zmazať: `deepseek-v4-pro` je na papieri lacnejší ako `mistral-large-4-0`, no rovnaký slovenský text na ňom stojí o niečo viac.
+- **Typ textu rozhoduje viac než výber tokenizéra:** správy a európske právo sú najdrahšie, prepisy reči a beletria najlacnejšie. Na GPT-4o stojí nariadenie EÚ 1,74× a prepis videa 1,50× viac tokenov ako po anglicky.
 - **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
 
 **Vyskúšajte si to na vlastnom texte:** [kalkulačka tokenov online](https://ltchurik.github.io/sk-tokenizer-bench/) spočíta tokeny a cenu priamo v prehliadači.
 
-Meranie prebieha na 1012 vetách z korpusu FLORES-200 a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
+Meranie prebieha na 1012 vetách z korpusu FLORES-200, na 1260 úsekoch skutočných textov (sociálne siete, prepisy reči, beletria, správy, právo EÚ) a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
 
 ## Run it yourself
 
@@ -277,6 +327,7 @@ pip install -r requirements.txt
 python bench.py                  # all tokenizers, both corpora, writes results/
 python bench.py --only gemma     # one tokenizer
 python bench.py --corpus custom  # only the hand-written corpus
+python tools/make_genres_corpus.py  # rebuild corpus/genres.jsonl from WMT24++ and EUR-Lex
 python bench.py --readme         # also regenerate the tables in this README
 pytest                           # sanity tests
 ```
@@ -319,6 +370,7 @@ Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a 
 ## Methodology
 
 - **FLORES-200 devtest** (NLLB Team, 2022): 1012 sentences from Wikinews, Wikivoyage and Wikibooks, professionally translated from English into every language, so all columns carry the same content.
+- **Genre corpus:** 1260 segments. Social-media posts (494), speech transcripts (111), literary prose (206) and news (149) from WMT24++ (Deutsch et al., 2025; English originals with professional Slovak translations, post-edited), and 300 paragraphs of the GDPR, the AI Act and the Consumer Rights Directive in their official Slovak and English versions from EUR-Lex.
 - **Domain corpus:** 32 natural sk/en pairs written by hand (not machine-translated) across news, tech, legal, chat, wiki, diacritics-heavy text and system prompts, kept for its domain spread.
 - Counts use `add_special_tokens=False`: no BOS/EOS, no chat template.
 - Ratio = total tokens in a language / total English tokens over the whole corpus (a ratio of sums, not a mean of per-sentence ratios).
@@ -333,4 +385,4 @@ See [CITATION.cff](CITATION.cff) (GitHub's "Cite this repository" button renders
 
 ## License
 
-Code and the hand-written corpus: MIT. `corpus/flores200_devtest.jsonl` is derived from FLORES-200 and is licensed **CC BY-SA 4.0** (see [corpus/README.md](corpus/README.md)).
+Code and the hand-written corpus: MIT. `corpus/flores200_devtest.jsonl` is derived from FLORES-200 and is licensed **CC BY-SA 4.0**. `corpus/genres.jsonl` combines WMT24++ (Apache 2.0) and EUR-Lex texts (© European Union, reuse authorised). See [corpus/README.md](corpus/README.md).

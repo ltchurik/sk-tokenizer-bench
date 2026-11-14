@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CORPORA = {
     "flores": ROOT / "corpus" / "flores200_devtest.jsonl",
     "custom": ROOT / "corpus" / "parallel.jsonl",
+    "genres": ROOT / "corpus" / "genres.jsonl",
 }
 META_KEYS = {"id", "domain"}
 BASE = "en"

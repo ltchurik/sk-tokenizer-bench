@@ -26,3 +26,12 @@ def test_strip_diacritics():
     from skbench.core import strip_diacritics
 
     assert strip_diacritics("Ľúbostná pieseň: ďateľ, kôň, päť, vŕba") == "Lubostna piesen: datel, kon, pat, vrba"
+
+
+def test_genres_shape():
+    from collections import Counter
+
+    rows, langs = load_corpus(CORPORA["genres"])
+    assert langs == ["sk", "sk_nd", "en"]
+    assert Counter(r["domain"] for r in rows) == {"social": 494, "law": 300, "literary": 206, "news": 149, "speech": 111}
+    assert not any("CANARY" in r["en"] for r in rows)

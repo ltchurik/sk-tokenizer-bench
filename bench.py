@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """sk-tokenizer-bench — how many tokens does Slovak cost vs English across LLM tokenizers.
 
-    python bench.py                      # all tokenizers, both corpora
+    python bench.py                      # all tokenizers, all corpora
     python bench.py --only gemma         # substring filter on tokenizer name
     python bench.py --corpus custom      # only the hand-written domain corpus
     python bench.py --no-api             # skip Claude / Gemini (API) rows entirely
@@ -15,7 +15,8 @@ import sys
 from skbench import backends, core, report
 from skbench.registry import API_KINDS, TOKENIZERS
 
-CORPUS_TITLES = {"flores": "FLORES-200 devtest", "custom": "hand-written domain corpus"}
+CORPUS_TITLES = {"flores": "FLORES-200 devtest", "custom": "hand-written domain corpus",
+                 "genres": "genre corpus (WMT24++ and EUR-Lex)"}
 
 
 def run_corpus(name, path, selected, n_boot, api_cache):
@@ -38,7 +39,7 @@ def run_corpus(name, path, selected, n_boot, api_cache):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--corpus", default="flores,custom", help="comma-separated: flores, custom (default both)")
+    ap.add_argument("--corpus", default="flores,custom,genres", help="comma-separated: flores, custom, genres (default all)")
     ap.add_argument("--only", help="substring filter on tokenizer name")
     ap.add_argument("--no-api", action="store_true", help="skip API-counted tokenizers (Claude, Gemini)")
     ap.add_argument("--bootstrap", type=int, default=2000, help="bootstrap resamples for the CI (0 = off)")
@@ -78,10 +79,10 @@ def main():
             (out / "COST.md").write_text(cost, encoding="utf-8")
 
     if args.readme:
-        if not {"flores", "custom"} <= all_results.keys() or args.only:
-            sys.exit("--readme needs a full run over both corpora (no --only)")
+        if not set(core.CORPORA) <= all_results.keys() or args.only:
+            sys.exit("--readme needs a full run over all corpora (no --only)")
         report.update_readme(core.ROOT / "README.md",
-                             report.readme_block(all_results["flores"], all_results["custom"], prices))
+                             report.readme_block(all_results["flores"], all_results["custom"], all_results["genres"], prices))
         print("README.md updated", file=sys.stderr)
 
 

@@ -100,7 +100,11 @@ def cost_markdown(prices, results, corpus_label):
     return "\n".join(md) + "\n"
 
 
-def readme_block(flores, custom, prices):
+GENRES = ["social", "speech", "literary", "news", "law"]
+GENRE_NAMES = {"social": "social media", "speech": "speech", "literary": "literary", "news": "news", "law": "EU law"}
+
+
+def readme_block(flores, custom, genres, prices):
     langs = [lg for lg in REGION if lg in next(iter(flores.values()))[R]]
     md = ["### Slovak vs English\n",
           "FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootstrap CI, "
@@ -113,6 +117,15 @@ def readme_block(flores, custom, prices):
                      f'{r["chars_per_token"]["sk"]:.2f}', f'{r["chars_per_token"]["en"]:.2f}'])
     md.append(_table(["Tokenizer", "sk/en", "95 % CI", "sk/en (domain corpus)", "chars/token sk", "chars/token en"], rows))
     md.append(_identical_note(flores))
+    md += ["\n### By genre\n",
+           "Real text by genre: social-media posts, speech transcripts, literary prose and news from WMT24++ "
+           "(human-translated and post-edited), and paragraphs of three EU acts in their official versions (EUR-Lex). "
+           "FLORES-200 in the first column for comparison; see [corpus/README.md](corpus/README.md).\n"]
+    rows = []
+    for n, r in _by(flores, "sk"):
+        g = genres.get(n)
+        rows.append([n, _x(r[R]["sk"]["ALL"])] + ([_x(g[R]["sk"][d]) for d in GENRES] + [_x(g[R]["sk"]["ALL"])] if g else ["–"] * (len(GENRES) + 1)))
+    md.append(_table(["Tokenizer", "FLORES"] + [GENRE_NAMES[d] for d in GENRES] + ["all genres"], rows))
     md += ["\n### Slovak and its neighbours\n",
            "Tokens per sentence relative to English on FLORES-200, same content in every column. "
            "Sorted by Slovak.\n"]

@@ -1,0 +1,2626 @@
+{
+  "GPT-4o / 4.1 / 5 (o200k_base)": {
+    "kind": "tiktoken",
+    "id": "o200k_base",
+    "tokens": {
+      "sk": {
+        "news": 17985,
+        "ALL": 100151,
+        "social": 16964,
+        "speech": 14869,
+        "literary": 15572,
+        "law": 34761
+      },
+      "sk_nd": {
+        "news": 17173,
+        "ALL": 95514,
+        "social": 16045,
+        "speech": 14081,
+        "literary": 14691,
+        "law": 33524
+      },
+      "en": {
+        "news": 9831,
+        "ALL": 60334,
+        "social": 10421,
+        "speech": 9902,
+        "literary": 10218,
+        "law": 19962
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.931,
+      "sk_nd": 3.073,
+      "en": 4.87
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.741,
+        "literary": 1.524,
+        "news": 1.829,
+        "social": 1.628,
+        "speech": 1.502,
+        "ALL": 1.66
+      },
+      "sk_nd": {
+        "law": 1.679,
+        "literary": 1.438,
+        "news": 1.747,
+        "social": 1.54,
+        "speech": 1.422,
+        "ALL": 1.583
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.642,
+        1.676
+      ],
+      "sk_nd": [
+        1.566,
+        1.599
+      ]
+    },
+    "same_as": null
+  },
+  "GPT-4 / 3.5 (cl100k_base)": {
+    "kind": "tiktoken",
+    "id": "cl100k_base",
+    "tokens": {
+      "sk": {
+        "news": 23377,
+        "ALL": 129343,
+        "social": 21249,
+        "speech": 18903,
+        "literary": 19142,
+        "law": 46672
+      },
+      "sk_nd": {
+        "news": 19920,
+        "ALL": 110084,
+        "social": 18177,
+        "speech": 16147,
+        "literary": 16506,
+        "law": 39334
+      },
+      "en": {
+        "news": 9907,
+        "ALL": 61183,
+        "social": 10689,
+        "speech": 10225,
+        "literary": 10290,
+        "law": 20072
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.269,
+      "sk_nd": 2.666,
+      "en": 4.802
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.325,
+        "literary": 1.86,
+        "news": 2.36,
+        "social": 1.988,
+        "speech": 1.849,
+        "ALL": 2.114
+      },
+      "sk_nd": {
+        "law": 1.96,
+        "literary": 1.604,
+        "news": 2.011,
+        "social": 1.701,
+        "speech": 1.579,
+        "ALL": 1.799
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.086,
+        2.141
+      ],
+      "sk_nd": [
+        1.777,
+        1.821
+      ]
+    },
+    "same_as": null
+  },
+  "gpt-oss (o200k_harmony)": {
+    "kind": "hf",
+    "id": "openai/gpt-oss-20b",
+    "tokens": {
+      "sk": {
+        "news": 17985,
+        "ALL": 100151,
+        "social": 16964,
+        "speech": 14869,
+        "literary": 15572,
+        "law": 34761
+      },
+      "sk_nd": {
+        "news": 17173,
+        "ALL": 95514,
+        "social": 16045,
+        "speech": 14081,
+        "literary": 14691,
+        "law": 33524
+      },
+      "en": {
+        "news": 9831,
+        "ALL": 60334,
+        "social": 10421,
+        "speech": 9902,
+        "literary": 10218,
+        "law": 19962
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.931,
+      "sk_nd": 3.073,
+      "en": 4.87
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.741,
+        "literary": 1.524,
+        "news": 1.829,
+        "social": 1.628,
+        "speech": 1.502,
+        "ALL": 1.66
+      },
+      "sk_nd": {
+        "law": 1.679,
+        "literary": 1.438,
+        "news": 1.747,
+        "social": 1.54,
+        "speech": 1.422,
+        "ALL": 1.583
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.642,
+        1.676
+      ],
+      "sk_nd": [
+        1.566,
+        1.599
+      ]
+    },
+    "same_as": "GPT-4o / 4.1 / 5 (o200k_base)"
+  },
+  "Llama 2": {
+    "kind": "hf",
+    "id": "NousResearch/Llama-2-7b-hf",
+    "tokens": {
+      "sk": {
+        "news": 22714,
+        "ALL": 126039,
+        "social": 21165,
+        "speech": 18617,
+        "literary": 18794,
+        "law": 44749
+      },
+      "sk_nd": {
+        "news": 20649,
+        "ALL": 114354,
+        "social": 19159,
+        "speech": 16784,
+        "literary": 17198,
+        "law": 40564
+      },
+      "en": {
+        "news": 11792,
+        "ALL": 70087,
+        "social": 12202,
+        "speech": 11516,
+        "literary": 11636,
+        "law": 22941
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.329,
+      "sk_nd": 2.567,
+      "en": 4.192
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.951,
+        "literary": 1.615,
+        "news": 1.926,
+        "social": 1.735,
+        "speech": 1.617,
+        "ALL": 1.798
+      },
+      "sk_nd": {
+        "law": 1.768,
+        "literary": 1.478,
+        "news": 1.751,
+        "social": 1.57,
+        "speech": 1.457,
+        "ALL": 1.632
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.777,
+        1.819
+      ],
+      "sk_nd": [
+        1.613,
+        1.649
+      ]
+    },
+    "same_as": null
+  },
+  "Llama 3.x": {
+    "kind": "hf",
+    "id": "unsloth/Llama-3.1-8B",
+    "tokens": {
+      "sk": {
+        "news": 19703,
+        "ALL": 110329,
+        "social": 18568,
+        "speech": 16375,
+        "literary": 16738,
+        "law": 38945
+      },
+      "sk_nd": {
+        "news": 18444,
+        "ALL": 102813,
+        "social": 17138,
+        "speech": 15133,
+        "literary": 15525,
+        "law": 36573
+      },
+      "en": {
+        "news": 9905,
+        "ALL": 61171,
+        "social": 10684,
+        "speech": 10224,
+        "literary": 10286,
+        "law": 20072
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.66,
+      "sk_nd": 2.855,
+      "en": 4.803
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.94,
+        "literary": 1.627,
+        "news": 1.989,
+        "social": 1.738,
+        "speech": 1.602,
+        "ALL": 1.804
+      },
+      "sk_nd": {
+        "law": 1.822,
+        "literary": 1.509,
+        "news": 1.862,
+        "social": 1.604,
+        "speech": 1.48,
+        "ALL": 1.681
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.782,
+        1.824
+      ],
+      "sk_nd": [
+        1.661,
+        1.7
+      ]
+    },
+    "same_as": null
+  },
+  "Llama 4": {
+    "kind": "hf",
+    "id": "unsloth/Llama-4-Scout-17B-16E-Instruct",
+    "tokens": {
+      "sk": {
+        "news": 16817,
+        "ALL": 93882,
+        "social": 16289,
+        "speech": 14230,
+        "literary": 15055,
+        "law": 31491
+      },
+      "sk_nd": {
+        "news": 16826,
+        "ALL": 93619,
+        "social": 15812,
+        "speech": 13925,
+        "literary": 14538,
+        "law": 32518
+      },
+      "en": {
+        "news": 9920,
+        "ALL": 60808,
+        "social": 10505,
+        "speech": 9972,
+        "literary": 10389,
+        "law": 20022
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.126,
+      "sk_nd": 3.135,
+      "en": 4.832
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.573,
+        "literary": 1.449,
+        "news": 1.695,
+        "social": 1.551,
+        "speech": 1.427,
+        "ALL": 1.544
+      },
+      "sk_nd": {
+        "law": 1.624,
+        "literary": 1.399,
+        "news": 1.696,
+        "social": 1.505,
+        "speech": 1.396,
+        "ALL": 1.54
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.529,
+        1.558
+      ],
+      "sk_nd": [
+        1.523,
+        1.555
+      ]
+    },
+    "same_as": null
+  },
+  "Mistral / Mixtral (v3)": {
+    "kind": "hf",
+    "id": "mistralai/Mistral-7B-Instruct-v0.3",
+    "tokens": {
+      "sk": {
+        "news": 23662,
+        "ALL": 130500,
+        "social": 21762,
+        "speech": 19193,
+        "literary": 19372,
+        "law": 46511
+      },
+      "sk_nd": {
+        "news": 21305,
+        "ALL": 117256,
+        "social": 19562,
+        "speech": 17188,
+        "literary": 17569,
+        "law": 41632
+      },
+      "en": {
+        "news": 11190,
+        "ALL": 67150,
+        "social": 11728,
+        "speech": 11174,
+        "literary": 11169,
+        "law": 21889
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.249,
+      "sk_nd": 2.503,
+      "en": 4.375
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.125,
+        "literary": 1.734,
+        "news": 2.115,
+        "social": 1.856,
+        "speech": 1.718,
+        "ALL": 1.943
+      },
+      "sk_nd": {
+        "law": 1.902,
+        "literary": 1.573,
+        "news": 1.904,
+        "social": 1.668,
+        "speech": 1.538,
+        "ALL": 1.746
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.919,
+        1.967
+      ],
+      "sk_nd": [
+        1.725,
+        1.767
+      ]
+    },
+    "same_as": null
+  },
+  "Mistral Nemo / Small 3–4 / Large 2 (tekken)": {
+    "kind": "hf",
+    "id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+    "tokens": {
+      "sk": {
+        "news": 18686,
+        "ALL": 104745,
+        "social": 17989,
+        "speech": 15654,
+        "literary": 16158,
+        "law": 36258
+      },
+      "sk_nd": {
+        "news": 17912,
+        "ALL": 99577,
+        "social": 16919,
+        "speech": 14723,
+        "literary": 15305,
+        "law": 34718
+      },
+      "en": {
+        "news": 10356,
+        "ALL": 62935,
+        "social": 11067,
+        "speech": 10410,
+        "literary": 10565,
+        "law": 20537
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.802,
+      "sk_nd": 2.948,
+      "en": 4.668
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.765,
+        "literary": 1.529,
+        "news": 1.804,
+        "social": 1.625,
+        "speech": 1.504,
+        "ALL": 1.664
+      },
+      "sk_nd": {
+        "law": 1.691,
+        "literary": 1.449,
+        "news": 1.73,
+        "social": 1.529,
+        "speech": 1.414,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.647,
+        1.681
+      ],
+      "sk_nd": [
+        1.565,
+        1.599
+      ]
+    },
+    "same_as": null
+  },
+  "Mistral Large 4": {
+    "kind": "hf",
+    "id": "mistralai/Mistral-Large-4-1T-A52B",
+    "tokens": {
+      "sk": {
+        "news": 19385,
+        "ALL": 107689,
+        "social": 18258,
+        "speech": 16104,
+        "literary": 16651,
+        "law": 37291
+      },
+      "sk_nd": {
+        "news": 18171,
+        "ALL": 100655,
+        "social": 16908,
+        "speech": 14924,
+        "literary": 15474,
+        "law": 35178
+      },
+      "en": {
+        "news": 10206,
+        "ALL": 62402,
+        "social": 10903,
+        "speech": 10430,
+        "literary": 10688,
+        "law": 20175
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.726,
+      "sk_nd": 2.916,
+      "en": 4.708
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.848,
+        "literary": 1.558,
+        "news": 1.899,
+        "social": 1.675,
+        "speech": 1.544,
+        "ALL": 1.726
+      },
+      "sk_nd": {
+        "law": 1.744,
+        "literary": 1.448,
+        "news": 1.78,
+        "social": 1.551,
+        "speech": 1.431,
+        "ALL": 1.613
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.706,
+        1.744
+      ],
+      "sk_nd": [
+        1.594,
+        1.631
+      ]
+    },
+    "same_as": null
+  },
+  "Gemma 1 / 2": {
+    "kind": "hf",
+    "id": "unsloth/gemma-2-9b",
+    "tokens": {
+      "sk": {
+        "news": 17316,
+        "ALL": 95822,
+        "social": 16296,
+        "speech": 14200,
+        "literary": 14876,
+        "law": 33134
+      },
+      "sk_nd": {
+        "news": 16987,
+        "ALL": 93532,
+        "social": 15730,
+        "speech": 13785,
+        "literary": 14268,
+        "law": 32762
+      },
+      "en": {
+        "news": 10061,
+        "ALL": 61912,
+        "social": 10859,
+        "speech": 10447,
+        "literary": 10283,
+        "law": 20262
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.063,
+      "sk_nd": 3.138,
+      "en": 4.746
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.635,
+        "literary": 1.447,
+        "news": 1.721,
+        "social": 1.501,
+        "speech": 1.359,
+        "ALL": 1.548
+      },
+      "sk_nd": {
+        "law": 1.617,
+        "literary": 1.388,
+        "news": 1.688,
+        "social": 1.449,
+        "speech": 1.32,
+        "ALL": 1.511
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.53,
+        1.565
+      ],
+      "sk_nd": [
+        1.492,
+        1.527
+      ]
+    },
+    "same_as": null
+  },
+  "Gemma 3": {
+    "kind": "hf",
+    "id": "unsloth/gemma-3-4b-it",
+    "tokens": {
+      "sk": {
+        "news": 17575,
+        "ALL": 97451,
+        "social": 16702,
+        "speech": 14550,
+        "literary": 15240,
+        "law": 33384
+      },
+      "sk_nd": {
+        "news": 17028,
+        "ALL": 94159,
+        "social": 15935,
+        "speech": 13919,
+        "literary": 14570,
+        "law": 32707
+      },
+      "en": {
+        "news": 10089,
+        "ALL": 62085,
+        "social": 10902,
+        "speech": 10473,
+        "literary": 10360,
+        "law": 20261
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.012,
+      "sk_nd": 3.117,
+      "en": 4.732
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.648,
+        "literary": 1.471,
+        "news": 1.742,
+        "social": 1.532,
+        "speech": 1.389,
+        "ALL": 1.57
+      },
+      "sk_nd": {
+        "law": 1.614,
+        "literary": 1.406,
+        "news": 1.688,
+        "social": 1.462,
+        "speech": 1.329,
+        "ALL": 1.517
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.552,
+        1.586
+      ],
+      "sk_nd": [
+        1.499,
+        1.533
+      ]
+    },
+    "same_as": null
+  },
+  "mT5": {
+    "kind": "hf",
+    "id": "Xenova/mt5-base",
+    "tokens": {
+      "sk": {
+        "news": 17380,
+        "ALL": 97855,
+        "social": 16779,
+        "speech": 14859,
+        "literary": 15389,
+        "law": 33448
+      },
+      "sk_nd": {
+        "news": 16634,
+        "ALL": 93324,
+        "social": 15789,
+        "speech": 14011,
+        "literary": 14520,
+        "law": 32370
+      },
+      "en": {
+        "news": 12507,
+        "ALL": 75844,
+        "social": 12877,
+        "speech": 12449,
+        "literary": 12818,
+        "law": 25193
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.0,
+      "sk_nd": 3.145,
+      "en": 3.874
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.328,
+        "literary": 1.201,
+        "news": 1.39,
+        "social": 1.303,
+        "speech": 1.194,
+        "ALL": 1.29
+      },
+      "sk_nd": {
+        "law": 1.285,
+        "literary": 1.133,
+        "news": 1.33,
+        "social": 1.226,
+        "speech": 1.125,
+        "ALL": 1.23
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.279,
+        1.301
+      ],
+      "sk_nd": [
+        1.219,
+        1.242
+      ]
+    },
+    "same_as": null
+  },
+  "Qwen 2.5 / 3": {
+    "kind": "hf",
+    "id": "Qwen/Qwen3-8B",
+    "tokens": {
+      "sk": {
+        "news": 23256,
+        "ALL": 127475,
+        "social": 20991,
+        "speech": 18659,
+        "literary": 18746,
+        "law": 45823
+      },
+      "sk_nd": {
+        "news": 20089,
+        "ALL": 110630,
+        "social": 18299,
+        "speech": 16203,
+        "literary": 16520,
+        "law": 39519
+      },
+      "en": {
+        "news": 10146,
+        "ALL": 61968,
+        "social": 10824,
+        "speech": 10303,
+        "literary": 10328,
+        "law": 20367
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.303,
+      "sk_nd": 2.653,
+      "en": 4.741
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.25,
+        "literary": 1.815,
+        "news": 2.292,
+        "social": 1.939,
+        "speech": 1.811,
+        "ALL": 2.057
+      },
+      "sk_nd": {
+        "law": 1.94,
+        "literary": 1.6,
+        "news": 1.98,
+        "social": 1.691,
+        "speech": 1.573,
+        "ALL": 1.785
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.03,
+        2.084
+      ],
+      "sk_nd": [
+        1.763,
+        1.807
+      ]
+    },
+    "same_as": null
+  },
+  "Qwen 3.8": {
+    "kind": "hf",
+    "id": "Qwen/Qwen3.8-27B",
+    "tokens": {
+      "sk": {
+        "news": 18029,
+        "ALL": 99944,
+        "social": 17043,
+        "speech": 14809,
+        "literary": 15605,
+        "law": 34458
+      },
+      "sk_nd": {
+        "news": 17566,
+        "ALL": 97300,
+        "social": 16365,
+        "speech": 14275,
+        "literary": 14931,
+        "law": 34163
+      },
+      "en": {
+        "news": 10114,
+        "ALL": 61898,
+        "social": 10815,
+        "speech": 10287,
+        "literary": 10318,
+        "law": 20364
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.937,
+      "sk_nd": 3.017,
+      "en": 4.747
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.692,
+        "literary": 1.512,
+        "news": 1.783,
+        "social": 1.576,
+        "speech": 1.44,
+        "ALL": 1.615
+      },
+      "sk_nd": {
+        "law": 1.678,
+        "literary": 1.447,
+        "news": 1.737,
+        "social": 1.513,
+        "speech": 1.388,
+        "ALL": 1.572
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.597,
+        1.631
+      ],
+      "sk_nd": [
+        1.554,
+        1.588
+      ]
+    },
+    "same_as": null
+  },
+  "DeepSeek V3 / R1 / V4": {
+    "kind": "hf",
+    "id": "deepseek-ai/DeepSeek-V3.1",
+    "tokens": {
+      "sk": {
+        "news": 20667,
+        "ALL": 115450,
+        "social": 19413,
+        "speech": 17003,
+        "literary": 17447,
+        "law": 40920
+      },
+      "sk_nd": {
+        "news": 18872,
+        "ALL": 105234,
+        "social": 17573,
+        "speech": 15481,
+        "literary": 15931,
+        "law": 37377
+      },
+      "en": {
+        "news": 9932,
+        "ALL": 61412,
+        "social": 10812,
+        "speech": 10226,
+        "literary": 10481,
+        "law": 19961
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.542,
+      "sk_nd": 2.789,
+      "en": 4.784
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.05,
+        "literary": 1.665,
+        "news": 2.081,
+        "social": 1.796,
+        "speech": 1.663,
+        "ALL": 1.88
+      },
+      "sk_nd": {
+        "law": 1.873,
+        "literary": 1.52,
+        "news": 1.9,
+        "social": 1.625,
+        "speech": 1.514,
+        "ALL": 1.714
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.857,
+        1.902
+      ],
+      "sk_nd": [
+        1.692,
+        1.734
+      ]
+    },
+    "same_as": null
+  },
+  "GLM-4.5 / 4.6 / 4.7": {
+    "kind": "hf",
+    "id": "zai-org/GLM-4.6",
+    "tokens": {
+      "sk": {
+        "news": 21168,
+        "ALL": 117767,
+        "social": 19482,
+        "speech": 17270,
+        "literary": 17701,
+        "law": 42146
+      },
+      "sk_nd": {
+        "news": 19010,
+        "ALL": 105557,
+        "social": 17449,
+        "speech": 15520,
+        "literary": 15951,
+        "law": 37627
+      },
+      "en": {
+        "news": 9914,
+        "ALL": 61219,
+        "social": 10691,
+        "speech": 10230,
+        "literary": 10298,
+        "law": 20086
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.492,
+      "sk_nd": 2.781,
+      "en": 4.799
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.098,
+        "literary": 1.719,
+        "news": 2.135,
+        "social": 1.822,
+        "speech": 1.688,
+        "ALL": 1.924
+      },
+      "sk_nd": {
+        "law": 1.873,
+        "literary": 1.549,
+        "news": 1.917,
+        "social": 1.632,
+        "speech": 1.517,
+        "ALL": 1.724
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.899,
+        1.947
+      ],
+      "sk_nd": [
+        1.704,
+        1.744
+      ]
+    },
+    "same_as": null
+  },
+  "GLM-5.3": {
+    "kind": "hf",
+    "id": "zai-org/GLM-5.3",
+    "tokens": {
+      "sk": {
+        "news": 21014,
+        "ALL": 116468,
+        "social": 19322,
+        "speech": 17143,
+        "literary": 17488,
+        "law": 41501
+      },
+      "sk_nd": {
+        "news": 19010,
+        "ALL": 105557,
+        "social": 17449,
+        "speech": 15520,
+        "literary": 15951,
+        "law": 37627
+      },
+      "en": {
+        "news": 9914,
+        "ALL": 61219,
+        "social": 10691,
+        "speech": 10230,
+        "literary": 10298,
+        "law": 20086
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.52,
+      "sk_nd": 2.781,
+      "en": 4.799
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.066,
+        "literary": 1.698,
+        "news": 2.12,
+        "social": 1.807,
+        "speech": 1.676,
+        "ALL": 1.902
+      },
+      "sk_nd": {
+        "law": 1.873,
+        "literary": 1.549,
+        "news": 1.917,
+        "social": 1.632,
+        "speech": 1.517,
+        "ALL": 1.724
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.879,
+        1.925
+      ],
+      "sk_nd": [
+        1.704,
+        1.744
+      ]
+    },
+    "same_as": null
+  },
+  "Kimi K2 / K3": {
+    "kind": "tiktoken-hf",
+    "id": "moonshotai/Kimi-K2-Instruct::kimi",
+    "tokens": {
+      "sk": {
+        "news": 22002,
+        "ALL": 122232,
+        "social": 20316,
+        "speech": 17991,
+        "literary": 18295,
+        "law": 43628
+      },
+      "sk_nd": {
+        "news": 19747,
+        "ALL": 109577,
+        "social": 18185,
+        "speech": 16101,
+        "literary": 16474,
+        "law": 39070
+      },
+      "en": {
+        "news": 9946,
+        "ALL": 60780,
+        "social": 10506,
+        "speech": 9974,
+        "literary": 10393,
+        "law": 19961
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.401,
+      "sk_nd": 2.679,
+      "en": 4.834
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.186,
+        "literary": 1.76,
+        "news": 2.212,
+        "social": 1.934,
+        "speech": 1.804,
+        "ALL": 2.011
+      },
+      "sk_nd": {
+        "law": 1.957,
+        "literary": 1.585,
+        "news": 1.985,
+        "social": 1.731,
+        "speech": 1.614,
+        "ALL": 1.803
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.986,
+        2.036
+      ],
+      "sk_nd": [
+        1.781,
+        1.824
+      ]
+    },
+    "same_as": null
+  },
+  "MiniMax M2 / M3": {
+    "kind": "hf",
+    "id": "MiniMaxAI/MiniMax-M2",
+    "tokens": {
+      "sk": {
+        "news": 21529,
+        "ALL": 120217,
+        "social": 19894,
+        "speech": 17648,
+        "literary": 17931,
+        "law": 43215
+      },
+      "sk_nd": {
+        "news": 18936,
+        "ALL": 105524,
+        "social": 17499,
+        "speech": 15488,
+        "literary": 15905,
+        "law": 37696
+      },
+      "en": {
+        "news": 9711,
+        "ALL": 59848,
+        "social": 10356,
+        "speech": 9852,
+        "literary": 10120,
+        "law": 19809
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.442,
+      "sk_nd": 2.782,
+      "en": 4.909
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.182,
+        "literary": 1.772,
+        "news": 2.217,
+        "social": 1.921,
+        "speech": 1.791,
+        "ALL": 2.009
+      },
+      "sk_nd": {
+        "law": 1.903,
+        "literary": 1.572,
+        "news": 1.95,
+        "social": 1.69,
+        "speech": 1.572,
+        "ALL": 1.763
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.984,
+        2.032
+      ],
+      "sk_nd": [
+        1.742,
+        1.783
+      ]
+    },
+    "same_as": null
+  },
+  "ERNIE 5.5": {
+    "kind": "hf",
+    "id": "baidu/ERNIE-5.5-Flash-Base",
+    "tokens": {
+      "sk": {
+        "news": 18825,
+        "ALL": 104838,
+        "social": 17779,
+        "speech": 15594,
+        "literary": 16231,
+        "law": 36409
+      },
+      "sk_nd": {
+        "news": 17690,
+        "ALL": 98200,
+        "social": 16446,
+        "speech": 14505,
+        "literary": 15065,
+        "law": 34494
+      },
+      "en": {
+        "news": 9890,
+        "ALL": 61182,
+        "social": 10707,
+        "speech": 10199,
+        "literary": 10479,
+        "law": 19907
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.8,
+      "sk_nd": 2.989,
+      "en": 4.802
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.829,
+        "literary": 1.549,
+        "news": 1.903,
+        "social": 1.661,
+        "speech": 1.529,
+        "ALL": 1.714
+      },
+      "sk_nd": {
+        "law": 1.733,
+        "literary": 1.438,
+        "news": 1.789,
+        "social": 1.536,
+        "speech": 1.422,
+        "ALL": 1.605
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.694,
+        1.732
+      ],
+      "sk_nd": [
+        1.586,
+        1.623
+      ]
+    },
+    "same_as": null
+  },
+  "Hunyuan 4 (Tencent)": {
+    "kind": "hf",
+    "id": "tencent/Hy4-preview",
+    "tokens": {
+      "sk": {
+        "news": 21381,
+        "ALL": 118816,
+        "social": 19843,
+        "speech": 17573,
+        "literary": 17865,
+        "law": 42154
+      },
+      "sk_nd": {
+        "news": 19282,
+        "ALL": 106919,
+        "social": 17884,
+        "speech": 15810,
+        "literary": 16203,
+        "law": 37740
+      },
+      "en": {
+        "news": 10043,
+        "ALL": 61865,
+        "social": 10861,
+        "speech": 10296,
+        "literary": 10659,
+        "law": 20006
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.47,
+      "sk_nd": 2.745,
+      "en": 4.749
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.107,
+        "literary": 1.676,
+        "news": 2.129,
+        "social": 1.827,
+        "speech": 1.707,
+        "ALL": 1.921
+      },
+      "sk_nd": {
+        "law": 1.886,
+        "literary": 1.52,
+        "news": 1.92,
+        "social": 1.647,
+        "speech": 1.536,
+        "ALL": 1.728
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.896,
+        1.944
+      ],
+      "sk_nd": [
+        1.707,
+        1.749
+      ]
+    },
+    "same_as": null
+  },
+  "Phi-4": {
+    "kind": "hf",
+    "id": "microsoft/phi-4",
+    "tokens": {
+      "sk": {
+        "news": 23377,
+        "ALL": 129343,
+        "social": 21249,
+        "speech": 18903,
+        "literary": 19142,
+        "law": 46672
+      },
+      "sk_nd": {
+        "news": 19920,
+        "ALL": 110084,
+        "social": 18177,
+        "speech": 16147,
+        "literary": 16506,
+        "law": 39334
+      },
+      "en": {
+        "news": 9907,
+        "ALL": 61183,
+        "social": 10689,
+        "speech": 10225,
+        "literary": 10290,
+        "law": 20072
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.269,
+      "sk_nd": 2.666,
+      "en": 4.802
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.325,
+        "literary": 1.86,
+        "news": 2.36,
+        "social": 1.988,
+        "speech": 1.849,
+        "ALL": 2.114
+      },
+      "sk_nd": {
+        "law": 1.96,
+        "literary": 1.604,
+        "news": 2.011,
+        "social": 1.701,
+        "speech": 1.579,
+        "ALL": 1.799
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.086,
+        2.141
+      ],
+      "sk_nd": [
+        1.777,
+        1.821
+      ]
+    },
+    "same_as": "GPT-4 / 3.5 (cl100k_base)"
+  },
+  "Phi-4-mini": {
+    "kind": "hf",
+    "id": "microsoft/Phi-4-mini-instruct",
+    "tokens": {
+      "sk": {
+        "news": 17985,
+        "ALL": 100151,
+        "social": 16964,
+        "speech": 14869,
+        "literary": 15572,
+        "law": 34761
+      },
+      "sk_nd": {
+        "news": 17173,
+        "ALL": 95514,
+        "social": 16045,
+        "speech": 14081,
+        "literary": 14691,
+        "law": 33524
+      },
+      "en": {
+        "news": 9831,
+        "ALL": 60334,
+        "social": 10421,
+        "speech": 9902,
+        "literary": 10218,
+        "law": 19962
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.931,
+      "sk_nd": 3.073,
+      "en": 4.87
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.741,
+        "literary": 1.524,
+        "news": 1.829,
+        "social": 1.628,
+        "speech": 1.502,
+        "ALL": 1.66
+      },
+      "sk_nd": {
+        "law": 1.679,
+        "literary": 1.438,
+        "news": 1.747,
+        "social": 1.54,
+        "speech": 1.422,
+        "ALL": 1.583
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.642,
+        1.676
+      ],
+      "sk_nd": [
+        1.566,
+        1.599
+      ]
+    },
+    "same_as": "GPT-4o / 4.1 / 5 (o200k_base)"
+  },
+  "Command R": {
+    "kind": "hf",
+    "id": "Xenova/c4ai-command-r-v01-tokenizer",
+    "tokens": {
+      "sk": {
+        "news": 18151,
+        "ALL": 102376,
+        "social": 17584,
+        "speech": 15364,
+        "literary": 15778,
+        "law": 35499
+      },
+      "sk_nd": {
+        "news": 17064,
+        "ALL": 95475,
+        "social": 16166,
+        "speech": 14146,
+        "literary": 14610,
+        "law": 33489
+      },
+      "en": {
+        "news": 10022,
+        "ALL": 61778,
+        "social": 10817,
+        "speech": 10224,
+        "literary": 10404,
+        "law": 20311
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.867,
+      "sk_nd": 3.074,
+      "en": 4.756
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.748,
+        "literary": 1.517,
+        "news": 1.811,
+        "social": 1.626,
+        "speech": 1.503,
+        "ALL": 1.657
+      },
+      "sk_nd": {
+        "law": 1.649,
+        "literary": 1.404,
+        "news": 1.703,
+        "social": 1.494,
+        "speech": 1.384,
+        "ALL": 1.545
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.639,
+        1.674
+      ],
+      "sk_nd": [
+        1.528,
+        1.561
+      ]
+    },
+    "same_as": null
+  },
+  "Cohere North": {
+    "kind": "hf",
+    "id": "CohereLabs/North-Micro-Vision-Instruct",
+    "tokens": {
+      "sk": {
+        "news": 17489,
+        "ALL": 98542,
+        "social": 16792,
+        "speech": 14671,
+        "literary": 15435,
+        "law": 34155
+      },
+      "sk_nd": {
+        "news": 16774,
+        "ALL": 93747,
+        "social": 15737,
+        "speech": 13811,
+        "literary": 14432,
+        "law": 32993
+      },
+      "en": {
+        "news": 9591,
+        "ALL": 59416,
+        "social": 10234,
+        "speech": 9774,
+        "literary": 10071,
+        "law": 19746
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.979,
+      "sk_nd": 3.131,
+      "en": 4.945
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.73,
+        "literary": 1.533,
+        "news": 1.823,
+        "social": 1.641,
+        "speech": 1.501,
+        "ALL": 1.659
+      },
+      "sk_nd": {
+        "law": 1.671,
+        "literary": 1.433,
+        "news": 1.749,
+        "social": 1.538,
+        "speech": 1.413,
+        "ALL": 1.578
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.641,
+        1.676
+      ],
+      "sk_nd": [
+        1.561,
+        1.594
+      ]
+    },
+    "same_as": null
+  },
+  "Nemotron Nano 2": {
+    "kind": "hf",
+    "id": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "tokens": {
+      "sk": {
+        "news": 18686,
+        "ALL": 104745,
+        "social": 17989,
+        "speech": 15654,
+        "literary": 16158,
+        "law": 36258
+      },
+      "sk_nd": {
+        "news": 17912,
+        "ALL": 99577,
+        "social": 16919,
+        "speech": 14723,
+        "literary": 15305,
+        "law": 34718
+      },
+      "en": {
+        "news": 10356,
+        "ALL": 62935,
+        "social": 11067,
+        "speech": 10410,
+        "literary": 10565,
+        "law": 20537
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.802,
+      "sk_nd": 2.948,
+      "en": 4.668
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.765,
+        "literary": 1.529,
+        "news": 1.804,
+        "social": 1.625,
+        "speech": 1.504,
+        "ALL": 1.664
+      },
+      "sk_nd": {
+        "law": 1.691,
+        "literary": 1.449,
+        "news": 1.73,
+        "social": 1.529,
+        "speech": 1.414,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.647,
+        1.681
+      ],
+      "sk_nd": [
+        1.565,
+        1.599
+      ]
+    },
+    "same_as": "Mistral Nemo / Small 3–4 / Large 2 (tekken)"
+  },
+  "Granite 3.3": {
+    "kind": "hf",
+    "id": "ibm-granite/granite-3.3-8b-instruct",
+    "tokens": {
+      "sk": {
+        "news": 24494,
+        "ALL": 134192,
+        "social": 22113,
+        "speech": 19782,
+        "literary": 20199,
+        "law": 47604
+      },
+      "sk_nd": {
+        "news": 21875,
+        "ALL": 119174,
+        "social": 19635,
+        "speech": 17610,
+        "literary": 18080,
+        "law": 41974
+      },
+      "en": {
+        "news": 12175,
+        "ALL": 70410,
+        "social": 11973,
+        "speech": 11608,
+        "literary": 11995,
+        "law": 22659
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.187,
+      "sk_nd": 2.463,
+      "en": 4.173
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.101,
+        "literary": 1.684,
+        "news": 2.012,
+        "social": 1.847,
+        "speech": 1.704,
+        "ALL": 1.906
+      },
+      "sk_nd": {
+        "law": 1.852,
+        "literary": 1.507,
+        "news": 1.797,
+        "social": 1.64,
+        "speech": 1.517,
+        "ALL": 1.693
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.883,
+        1.928
+      ],
+      "sk_nd": [
+        1.673,
+        1.711
+      ]
+    },
+    "same_as": null
+  },
+  "Granite 4.2": {
+    "kind": "hf",
+    "id": "ibm-granite/granite-4.2-8b",
+    "tokens": {
+      "sk": {
+        "news": 23389,
+        "ALL": 129444,
+        "social": 21301,
+        "speech": 18924,
+        "literary": 19147,
+        "law": 46683
+      },
+      "sk_nd": {
+        "news": 19931,
+        "ALL": 110182,
+        "social": 18233,
+        "speech": 16167,
+        "literary": 16510,
+        "law": 39341
+      },
+      "en": {
+        "news": 9996,
+        "ALL": 61754,
+        "social": 10814,
+        "speech": 10268,
+        "literary": 10453,
+        "law": 20223
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.268,
+      "sk_nd": 2.664,
+      "en": 4.758
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.308,
+        "literary": 1.832,
+        "news": 2.34,
+        "social": 1.97,
+        "speech": 1.843,
+        "ALL": 2.096
+      },
+      "sk_nd": {
+        "law": 1.945,
+        "literary": 1.579,
+        "news": 1.994,
+        "social": 1.686,
+        "speech": 1.575,
+        "ALL": 1.784
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.069,
+        2.123
+      ],
+      "sk_nd": [
+        1.762,
+        1.805
+      ]
+    },
+    "same_as": null
+  },
+  "LFM3 (Liquid AI)": {
+    "kind": "hf",
+    "id": "LiquidAI/LFM3-1.7B",
+    "tokens": {
+      "sk": {
+        "news": 20539,
+        "ALL": 113897,
+        "social": 19039,
+        "speech": 16757,
+        "literary": 17266,
+        "law": 40296
+      },
+      "sk_nd": {
+        "news": 18761,
+        "ALL": 104648,
+        "social": 17484,
+        "speech": 15372,
+        "literary": 15931,
+        "law": 37100
+      },
+      "en": {
+        "news": 10196,
+        "ALL": 62533,
+        "social": 10970,
+        "speech": 10399,
+        "literary": 10722,
+        "law": 20246
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.577,
+      "sk_nd": 2.805,
+      "en": 4.698
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.99,
+        "literary": 1.61,
+        "news": 2.014,
+        "social": 1.736,
+        "speech": 1.611,
+        "ALL": 1.821
+      },
+      "sk_nd": {
+        "law": 1.832,
+        "literary": 1.486,
+        "news": 1.84,
+        "social": 1.594,
+        "speech": 1.478,
+        "ALL": 1.673
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.798,
+        1.843
+      ],
+      "sk_nd": [
+        1.653,
+        1.693
+      ]
+    },
+    "same_as": null
+  },
+  "Falcon 3": {
+    "kind": "hf",
+    "id": "tiiuae/Falcon3-7B-Instruct",
+    "tokens": {
+      "sk": {
+        "news": 25340,
+        "ALL": 138197,
+        "social": 22705,
+        "speech": 20144,
+        "literary": 20061,
+        "law": 49947
+      },
+      "sk_nd": {
+        "news": 20631,
+        "ALL": 113022,
+        "social": 18697,
+        "speech": 16390,
+        "literary": 16677,
+        "law": 40627
+      },
+      "en": {
+        "news": 10155,
+        "ALL": 62369,
+        "social": 11025,
+        "speech": 10482,
+        "literary": 10364,
+        "law": 20343
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.124,
+      "sk_nd": 2.597,
+      "en": 4.711
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.455,
+        "literary": 1.936,
+        "news": 2.495,
+        "social": 2.059,
+        "speech": 1.922,
+        "ALL": 2.216
+      },
+      "sk_nd": {
+        "law": 1.997,
+        "literary": 1.609,
+        "news": 2.032,
+        "social": 1.696,
+        "speech": 1.564,
+        "ALL": 1.812
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.183,
+        2.247
+      ],
+      "sk_nd": [
+        1.788,
+        1.836
+      ]
+    },
+    "same_as": null
+  },
+  "SmolLM3": {
+    "kind": "hf",
+    "id": "HuggingFaceTB/SmolLM3-3B",
+    "tokens": {
+      "sk": {
+        "news": 19703,
+        "ALL": 110329,
+        "social": 18568,
+        "speech": 16375,
+        "literary": 16738,
+        "law": 38945
+      },
+      "sk_nd": {
+        "news": 18444,
+        "ALL": 102813,
+        "social": 17138,
+        "speech": 15133,
+        "literary": 15525,
+        "law": 36573
+      },
+      "en": {
+        "news": 9905,
+        "ALL": 61171,
+        "social": 10684,
+        "speech": 10224,
+        "literary": 10286,
+        "law": 20072
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.66,
+      "sk_nd": 2.855,
+      "en": 4.803
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.94,
+        "literary": 1.627,
+        "news": 1.989,
+        "social": 1.738,
+        "speech": 1.602,
+        "ALL": 1.804
+      },
+      "sk_nd": {
+        "law": 1.822,
+        "literary": 1.509,
+        "news": 1.862,
+        "social": 1.604,
+        "speech": 1.48,
+        "ALL": 1.681
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.782,
+        1.824
+      ],
+      "sk_nd": [
+        1.661,
+        1.7
+      ]
+    },
+    "same_as": "Llama 3.x"
+  },
+  "OLMo 2": {
+    "kind": "hf",
+    "id": "allenai/OLMo-2-1124-7B",
+    "tokens": {
+      "sk": {
+        "news": 23377,
+        "ALL": 129343,
+        "social": 21249,
+        "speech": 18903,
+        "literary": 19142,
+        "law": 46672
+      },
+      "sk_nd": {
+        "news": 19920,
+        "ALL": 110084,
+        "social": 18177,
+        "speech": 16147,
+        "literary": 16506,
+        "law": 39334
+      },
+      "en": {
+        "news": 9907,
+        "ALL": 61183,
+        "social": 10689,
+        "speech": 10225,
+        "literary": 10290,
+        "law": 20072
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.269,
+      "sk_nd": 2.666,
+      "en": 4.802
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.325,
+        "literary": 1.86,
+        "news": 2.36,
+        "social": 1.988,
+        "speech": 1.849,
+        "ALL": 2.114
+      },
+      "sk_nd": {
+        "law": 1.96,
+        "literary": 1.604,
+        "news": 2.011,
+        "social": 1.701,
+        "speech": 1.579,
+        "ALL": 1.799
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.086,
+        2.141
+      ],
+      "sk_nd": [
+        1.777,
+        1.821
+      ]
+    },
+    "same_as": "GPT-4 / 3.5 (cl100k_base)"
+  },
+  "BLOOM": {
+    "kind": "hf",
+    "id": "bigscience/bloom",
+    "tokens": {
+      "sk": {
+        "news": 22323,
+        "ALL": 123280,
+        "social": 20405,
+        "speech": 18141,
+        "literary": 18494,
+        "law": 43917
+      },
+      "sk_nd": {
+        "news": 19574,
+        "ALL": 108303,
+        "social": 17819,
+        "speech": 15834,
+        "literary": 16398,
+        "law": 38678
+      },
+      "en": {
+        "news": 10075,
+        "ALL": 61604,
+        "social": 10697,
+        "speech": 10140,
+        "literary": 10712,
+        "law": 19980
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.381,
+      "sk_nd": 2.71,
+      "en": 4.769
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.198,
+        "literary": 1.726,
+        "news": 2.216,
+        "social": 1.908,
+        "speech": 1.789,
+        "ALL": 2.001
+      },
+      "sk_nd": {
+        "law": 1.936,
+        "literary": 1.531,
+        "news": 1.943,
+        "social": 1.666,
+        "speech": 1.562,
+        "ALL": 1.758
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.977,
+        2.026
+      ],
+      "sk_nd": [
+        1.737,
+        1.779
+      ]
+    },
+    "same_as": null
+  },
+  "Claude 2 (legacy, Xenova mirror)": {
+    "kind": "hf",
+    "id": "Xenova/claude-tokenizer",
+    "tokens": {
+      "sk": {
+        "news": 25067,
+        "ALL": 138486,
+        "social": 22962,
+        "speech": 20406,
+        "literary": 20585,
+        "law": 49466
+      },
+      "sk_nd": {
+        "news": 21125,
+        "ALL": 116396,
+        "social": 19255,
+        "speech": 17067,
+        "literary": 17497,
+        "law": 41452
+      },
+      "en": {
+        "news": 10062,
+        "ALL": 62149,
+        "social": 10950,
+        "speech": 10357,
+        "literary": 10685,
+        "law": 20095
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.119,
+      "sk_nd": 2.522,
+      "en": 4.727
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.462,
+        "literary": 1.927,
+        "news": 2.491,
+        "social": 2.097,
+        "speech": 1.97,
+        "ALL": 2.228
+      },
+      "sk_nd": {
+        "law": 2.063,
+        "literary": 1.638,
+        "news": 2.099,
+        "social": 1.758,
+        "speech": 1.648,
+        "ALL": 1.873
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.199,
+        2.258
+      ],
+      "sk_nd": [
+        1.849,
+        1.896
+      ]
+    },
+    "same_as": null
+  },
+  "EuroLLM": {
+    "kind": "hf",
+    "id": "utter-project/EuroLLM-1.7B",
+    "tokens": {
+      "sk": {
+        "news": 15763,
+        "ALL": 88720,
+        "social": 15551,
+        "speech": 13332,
+        "literary": 14278,
+        "law": 29796
+      },
+      "sk_nd": {
+        "news": 16229,
+        "ALL": 90861,
+        "social": 15533,
+        "speech": 13466,
+        "literary": 14209,
+        "law": 31424
+      },
+      "en": {
+        "news": 10889,
+        "ALL": 66209,
+        "social": 11703,
+        "speech": 11035,
+        "literary": 11170,
+        "law": 21412
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.308,
+      "sk_nd": 3.23,
+      "en": 4.438
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.392,
+        "literary": 1.278,
+        "news": 1.448,
+        "social": 1.329,
+        "speech": 1.208,
+        "ALL": 1.34
+      },
+      "sk_nd": {
+        "law": 1.468,
+        "literary": 1.272,
+        "news": 1.49,
+        "social": 1.327,
+        "speech": 1.22,
+        "ALL": 1.372
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.328,
+        1.352
+      ],
+      "sk_nd": [
+        1.358,
+        1.386
+      ]
+    },
+    "same_as": null
+  },
+  "Apertus (Swiss AI)": {
+    "kind": "hf",
+    "id": "swiss-ai/Apertus-8B-2509",
+    "tokens": {
+      "sk": {
+        "news": 18686,
+        "ALL": 104745,
+        "social": 17989,
+        "speech": 15654,
+        "literary": 16158,
+        "law": 36258
+      },
+      "sk_nd": {
+        "news": 17912,
+        "ALL": 99577,
+        "social": 16919,
+        "speech": 14723,
+        "literary": 15305,
+        "law": 34718
+      },
+      "en": {
+        "news": 10356,
+        "ALL": 62935,
+        "social": 11067,
+        "speech": 10410,
+        "literary": 10565,
+        "law": 20537
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.802,
+      "sk_nd": 2.948,
+      "en": 4.668
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.765,
+        "literary": 1.529,
+        "news": 1.804,
+        "social": 1.625,
+        "speech": 1.504,
+        "ALL": 1.664
+      },
+      "sk_nd": {
+        "law": 1.691,
+        "literary": 1.449,
+        "news": 1.73,
+        "social": 1.529,
+        "speech": 1.414,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.647,
+        1.681
+      ],
+      "sk_nd": [
+        1.565,
+        1.599
+      ]
+    },
+    "same_as": "Mistral Nemo / Small 3–4 / Large 2 (tekken)"
+  },
+  "Teuken (OpenGPT-X)": {
+    "kind": "spm",
+    "id": "openGPT-X/Teuken-7B-instruct-research-v0.4",
+    "tokens": {
+      "sk": {
+        "news": 16525,
+        "ALL": 92898,
+        "social": 15973,
+        "speech": 13830,
+        "literary": 14512,
+        "law": 32058
+      },
+      "sk_nd": {
+        "news": 15697,
+        "ALL": 87909,
+        "social": 14998,
+        "speech": 13043,
+        "literary": 13588,
+        "law": 30583
+      },
+      "en": {
+        "news": 10966,
+        "ALL": 66364,
+        "social": 11637,
+        "speech": 11100,
+        "literary": 11307,
+        "law": 21354
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.16,
+      "sk_nd": 3.339,
+      "en": 4.427
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.501,
+        "literary": 1.283,
+        "news": 1.507,
+        "social": 1.373,
+        "speech": 1.246,
+        "ALL": 1.4
+      },
+      "sk_nd": {
+        "law": 1.432,
+        "literary": 1.202,
+        "news": 1.431,
+        "social": 1.289,
+        "speech": 1.175,
+        "ALL": 1.325
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.385,
+        1.415
+      ],
+      "sk_nd": [
+        1.31,
+        1.338
+      ]
+    },
+    "same_as": null
+  },
+  "SlovakBERT (Slovak, Gerulata)": {
+    "kind": "hf-bpe",
+    "id": "gerulata/slovakbert",
+    "tokens": {
+      "sk": {
+        "news": 11389,
+        "ALL": 65140,
+        "social": 12261,
+        "speech": 10216,
+        "literary": 11845,
+        "law": 19429
+      },
+      "sk_nd": {
+        "news": 13222,
+        "ALL": 74507,
+        "social": 13204,
+        "speech": 11233,
+        "literary": 12605,
+        "law": 24243
+      },
+      "en": {
+        "news": 14068,
+        "ALL": 84605,
+        "social": 13980,
+        "speech": 12905,
+        "literary": 13904,
+        "law": 29748
+      }
+    },
+    "chars_per_token": {
+      "sk": 4.506,
+      "sk_nd": 3.939,
+      "en": 3.473
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 0.653,
+        "literary": 0.852,
+        "news": 0.81,
+        "social": 0.877,
+        "speech": 0.792,
+        "ALL": 0.77
+      },
+      "sk_nd": {
+        "law": 0.815,
+        "literary": 0.907,
+        "news": 0.94,
+        "social": 0.944,
+        "speech": 0.87,
+        "ALL": 0.881
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        0.761,
+        0.779
+      ],
+      "sk_nd": [
+        0.873,
+        0.888
+      ]
+    },
+    "same_as": null
+  },
+  "CSTinyLlama (Czech, BUT-FIT)": {
+    "kind": "hf",
+    "id": "BUT-FIT/CSTinyLlama-1.2B",
+    "tokens": {
+      "sk": {
+        "news": 16032,
+        "ALL": 89712,
+        "social": 15633,
+        "speech": 13441,
+        "literary": 14223,
+        "law": 30383
+      },
+      "sk_nd": {
+        "news": 16390,
+        "ALL": 91633,
+        "social": 15704,
+        "speech": 13759,
+        "literary": 14167,
+        "law": 31613
+      },
+      "en": {
+        "news": 16188,
+        "ALL": 97353,
+        "social": 16118,
+        "speech": 15397,
+        "literary": 15994,
+        "law": 33656
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.272,
+      "sk_nd": 3.203,
+      "en": 3.018
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 0.903,
+        "literary": 0.889,
+        "news": 0.99,
+        "social": 0.97,
+        "speech": 0.873,
+        "ALL": 0.922
+      },
+      "sk_nd": {
+        "law": 0.939,
+        "literary": 0.886,
+        "news": 1.012,
+        "social": 0.974,
+        "speech": 0.894,
+        "ALL": 0.941
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        0.914,
+        0.929
+      ],
+      "sk_nd": [
+        0.934,
+        0.949
+      ]
+    },
+    "same_as": null
+  },
+  "CSMPT (Czech, BUT-FIT)": {
+    "kind": "hf",
+    "id": "BUT-FIT/csmpt7b",
+    "tokens": {
+      "sk": {
+        "news": 16032,
+        "ALL": 89712,
+        "social": 15633,
+        "speech": 13441,
+        "literary": 14223,
+        "law": 30383
+      },
+      "sk_nd": {
+        "news": 16390,
+        "ALL": 91633,
+        "social": 15704,
+        "speech": 13759,
+        "literary": 14167,
+        "law": 31613
+      },
+      "en": {
+        "news": 16188,
+        "ALL": 97353,
+        "social": 16118,
+        "speech": 15397,
+        "literary": 15994,
+        "law": 33656
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.272,
+      "sk_nd": 3.203,
+      "en": 3.018
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 0.903,
+        "literary": 0.889,
+        "news": 0.99,
+        "social": 0.97,
+        "speech": 0.873,
+        "ALL": 0.922
+      },
+      "sk_nd": {
+        "law": 0.939,
+        "literary": 0.886,
+        "news": 1.012,
+        "social": 0.974,
+        "speech": 0.894,
+        "ALL": 0.941
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        0.914,
+        0.929
+      ],
+      "sk_nd": [
+        0.934,
+        0.949
+      ]
+    },
+    "same_as": "CSTinyLlama (Czech, BUT-FIT)"
+  },
+  "Bielik (Polish, SpeakLeash)": {
+    "kind": "hf",
+    "id": "speakleash/Bielik-11B-v2.3-Instruct",
+    "tokens": {
+      "sk": {
+        "news": 23662,
+        "ALL": 130500,
+        "social": 21762,
+        "speech": 19193,
+        "literary": 19372,
+        "law": 46511
+      },
+      "sk_nd": {
+        "news": 21305,
+        "ALL": 117256,
+        "social": 19562,
+        "speech": 17188,
+        "literary": 17569,
+        "law": 41632
+      },
+      "en": {
+        "news": 11190,
+        "ALL": 67150,
+        "social": 11728,
+        "speech": 11174,
+        "literary": 11169,
+        "law": 21889
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.249,
+      "sk_nd": 2.503,
+      "en": 4.375
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 2.125,
+        "literary": 1.734,
+        "news": 2.115,
+        "social": 1.856,
+        "speech": 1.718,
+        "ALL": 1.943
+      },
+      "sk_nd": {
+        "law": 1.902,
+        "literary": 1.573,
+        "news": 1.904,
+        "social": 1.668,
+        "speech": 1.538,
+        "ALL": 1.746
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.919,
+        1.967
+      ],
+      "sk_nd": [
+        1.725,
+        1.767
+      ]
+    },
+    "same_as": "Mistral / Mixtral (v3)"
+  }
+}
