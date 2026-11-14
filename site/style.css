@@ -111,6 +111,7 @@ table.grid { width: 100%; border-collapse: collapse; font-size: 15px; font-varia
 .bar-label { font-size: 14px; }
 
 .select select { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; max-width: 100%; }
+.select.inline { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
 .viz { white-space: pre-wrap; word-break: break-word; font-size: 16px; line-height: 1.9; background: var(--surface-2); border-radius: 8px; padding: 10px 12px; min-height: 60px; }
 .viz span { border-radius: 3px; padding: 1px 0; }
 .viz .k0 { background: var(--t1); } .viz .k1 { background: var(--t2); } .viz .k2 { background: var(--t3); }

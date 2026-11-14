@@ -42,12 +42,17 @@
   </section>
 
   <section class="card input" aria-labelledby="in-label">
-    <label id="in-label" for="sk" class="label" data-i18n="skLabel">Slovenský text</label>
+    <div class="row-between">
+      <label id="in-label" for="sk" class="label" data-i18n="skLabel">Váš text</label>
+      <label class="select inline"><span data-i18n="langLabel">Jazyk textu</span>
+        <select id="text-lang"><option value="sk">slovenčina</option></select></label>
+    </div>
     <textarea id="sk" rows="7" spellcheck="false"></textarea>
     <div class="meta">
       <span id="stats"></span>
       <button type="button" class="link" id="sample" data-i18n="sample">Vložiť ukážku</button>
       <button type="button" class="link" id="clear" data-i18n="clear">Vymazať</button>
+      <button type="button" class="link" id="share" data-i18n="share">Kopírovať odkaz na tento text</button>
     </div>
     <details id="en-box">
       <summary data-i18n="enSummary">Mám aj anglickú verziu (presné porovnanie)</summary>
@@ -63,7 +68,11 @@
   </section>
 
   <section class="card" aria-labelledby="cost-h">
-    <h2 id="cost-h" data-i18n="costH">Cena za 1 000 takýchto textov</h2>
+    <div class="row-between">
+      <h2 id="cost-h" data-i18n="costH">Cena za 1 000 takýchto textov</h2>
+      <label class="select inline"><span data-i18n="answerLabel">Odpoveď modelu</span>
+        <select id="answer"><option value="1">rovnako dlhá ako text</option></select></label>
+    </div>
     <p class="muted small" id="cost-note"></p>
     <div class="table-scroll"><table class="grid" id="cost"></table></div>
   </section>
