@@ -70,9 +70,9 @@ def build_data():
             "repo": repo,
             "size_mb": size_mb(repo) if repo else None,
             "released": RELEASED.get(name),
-            "ratio": {"sk": R["sk"]["ALL"], "sk_nd": R["sk_nd"]["ALL"]},
+            "ratio": {lg: v["ALL"] for lg, v in R.items()},
             "ci": r["ci95_vs_en"]["sk"],
-            "cpt": {"sk": C["sk"], "sk_nd": C["sk_nd"], "en": C["en"]},
+            "cpt": C,
         })
     rows.sort(key=lambda x: x["ratio"]["sk"])
     names = {x["name"] for x in rows} | {a for x in rows for a in x["also"]}

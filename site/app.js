@@ -15,7 +15,13 @@ const T = {
     h1: "Koľko tokenov stojí slovenčina?",
     lead: "Jazykové modely účtujú za tokeny a tokenizéry sa učili hlavne na angličtine. Vložte slovenský text a uvidíte, koľko tokenov a peňazí stojí v jednotlivých modeloch a o koľko viac to je oproti rovnakému textu po anglicky.",
     privacy: "Všetko sa počíta vo vašom prehliadači. Text nikam neodchádza.",
-    skLabel: "Slovenský text", sample: "Vložiť ukážku", clear: "Vymazať",
+    skLabel: "Váš text", langLabel: "Jazyk textu", sample: "Vložiť ukážku", clear: "Vymazať",
+    langs: { sk: "slovenčina", cs: "čeština", pl: "poľština", hu: "maďarčina", sl: "slovinčina", hr: "chorvátčina", ro: "rumunčina", uk: "ukrajinčina", de: "nemčina" },
+    inLang: { sk: "Po slovensky", cs: "Po česky", pl: "Po poľsky", hu: "Po maďarsky", sl: "Po slovinsky", hr: "Po chorvátsky", ro: "Po rumunsky", uk: "Po ukrajinsky", de: "Po nemecky" },
+    share: "Kopírovať odkaz na tento text", shared: "Odkaz skopírovaný ✓", sharedBar: "Odkaz je v adresnom riadku ✓",
+    answerLabel: "Odpoveď modelu",
+    answers: { 0: "bez odpovede (len vstup)", 0.5: "polovičná dĺžka textu", 1: "rovnako dlhá ako text", 2: "dvakrát dlhšia" },
+    sublineSrc: (src) => `Porovnanie s angličtinou: ${src}.`,
     enSummary: "Mám aj anglickú verziu (presné porovnanie)", enLabel: "Ten istý text po anglicky",
     enHint: "Bez anglickej verzie sa porovnanie odhaduje podľa pomeru nameraného na 1012 vetách korpusu FLORES-200.",
     costH: "Cena za 1 000 takýchto textov", resH: "Tokeny podľa tokenizéra", vizH: "Ako tokenizér delí text", vizPick: "Tokenizér",
@@ -28,7 +34,7 @@ const T = {
     headlineLess: (m, n, e, p) => `Na <b>${m}</b> má tento text <b>${n}</b> tokenov, po anglicky ${e}, teda o <b>${p}</b> menej.`,
     subline: (nd, p, src) => `Bez diakritiky by mal ${nd} tokenov (${p}). Porovnanie s angličtinou: ${src}.`,
     exactEn: "presne podľa vašej anglickej verzie", floresEn: "odhad podľa korpusu FLORES-200",
-    costNote: (d) => `Vstupné tokeny podľa cenníkov k ${d}. Výstup (odpoveď modelu) je po slovensky dlhší v rovnakom pomere.`,
+    costNote: (d) => `Ceny podľa cenníkov k ${d}: vstup plus odpoveď modelu v rovnakom jazyku. Odpoveď stojí viac tokenov v rovnakom pomere ako vstup a výstupné tokeny sú drahšie.`,
     thTok: "Tokenizér", thTokens: "Tokeny", thNd: "Bez diakritiky", thRatio: "Oproti angličtine", thStatus: "",
     thModel: "Model", thSk: "Po slovensky", thEn: "Po anglicky", thExtra: "Navyše",
     groups: { mainstream: "Bežné modely", multilingual: "Viacjazyčné modely", regional: "Regionálne (SK / CZ / PL)", api: "Cez API (namerané v benchmarku)" },
@@ -42,7 +48,13 @@ const T = {
     h1: "How many tokens does Slovak cost?",
     lead: "Language models bill per token, and tokenizers were trained mostly on English. Paste Slovak text to see how many tokens and how much money it costs in each model, and how much more that is than the same text in English.",
     privacy: "Everything runs in your browser. Your text never leaves it.",
-    skLabel: "Slovak text", sample: "Insert sample", clear: "Clear",
+    skLabel: "Your text", langLabel: "Text language", sample: "Insert sample", clear: "Clear",
+    langs: { sk: "Slovak", cs: "Czech", pl: "Polish", hu: "Hungarian", sl: "Slovenian", hr: "Croatian", ro: "Romanian", uk: "Ukrainian", de: "German" },
+    inLang: { sk: "In Slovak", cs: "In Czech", pl: "In Polish", hu: "In Hungarian", sl: "In Slovenian", hr: "In Croatian", ro: "In Romanian", uk: "In Ukrainian", de: "In German" },
+    share: "Copy a link to this text", shared: "Link copied ✓", sharedBar: "The link is in the address bar ✓",
+    answerLabel: "Model's answer",
+    answers: { 0: "none (input only)", 0.5: "half as long as the text", 1: "as long as the text", 2: "twice as long" },
+    sublineSrc: (src) => `English comparison: ${src}.`,
     enSummary: "I also have the English version (exact comparison)", enLabel: "The same text in English",
     enHint: "Without an English version the comparison is estimated from the ratio measured on 1012 FLORES-200 sentences.",
     costH: "Cost per 1,000 texts like this", resH: "Tokens by tokenizer", vizH: "How the tokenizer splits your text", vizPick: "Tokenizer",
@@ -55,7 +67,7 @@ const T = {
     headlineLess: (m, n, e, p) => `On <b>${m}</b> this text is <b>${n}</b> tokens and ${e} in English, so <b>${p}</b> less.`,
     subline: (nd, p, src) => `Without diacritics it would be ${nd} tokens (${p}). English comparison: ${src}.`,
     exactEn: "exact, from your English version", floresEn: "estimated from FLORES-200",
-    costNote: (d) => `Input tokens at list prices as of ${d}. Output (the model's answer) is longer in Slovak by the same factor.`,
+    costNote: (d) => `List prices as of ${d}: input plus the model's answer in the same language. The answer needs more tokens by the same factor as the input, and output tokens cost more.`,
     thTok: "Tokenizer", thTokens: "Tokens", thNd: "No diacritics", thRatio: "vs English", thStatus: "",
     thModel: "Model", thSk: "In Slovak", thEn: "In English", thExtra: "Extra",
     groups: { mainstream: "Mainstream models", multilingual: "Multilingual models", regional: "Regional (SK / CZ / PL)", api: "API only (measured in the benchmark)" },
@@ -81,6 +93,8 @@ const stripDiacritics = (s) => s.normalize("NFD").replace(/\p{M}/gu, "").normali
 const shortName = (n) => n.replace(/ \((?:o200k_base|cl100k_base|legacy, Xenova mirror|tekken)\)/, "");
 
 let DATA = null;
+let textLang = "sk";
+let answerFactor = 1;
 const tokCache = new Map(); // name -> {state: "loading"|"ready"|"error", tok, promise}
 
 // ---------------------------------------------------------------------------------------
@@ -112,18 +126,22 @@ const ready = (row) => tokCache.get(row.name)?.state === "ready";
 const count = (row, text) => tokCache.get(row.name).tok.encode(text, { add_special_tokens: false }).ids.length;
 
 function measure(row, sk, en) {
-  const nd = stripDiacritics(sk);
+  const L = textLang;
   const exact = ready(row);
-  const skTok = exact ? count(row, sk) : chars(sk) / row.cpt.sk;
-  const ndTok = exact ? count(row, nd) : chars(nd) / row.cpt.sk_nd;
+  const skTok = exact ? count(row, sk) : chars(sk) / row.cpt[L];
+  let ndTok = null;
+  if (L === "sk") {
+    const nd = stripDiacritics(sk);
+    ndTok = exact ? count(row, nd) : chars(nd) / row.cpt.sk_nd;
+  }
   let enTok, enExact = false;
   if (en.trim()) {
     enTok = exact ? count(row, en) : chars(en) / row.cpt.en;
     enExact = exact;
   } else {
-    enTok = skTok / row.ratio.sk;
+    enTok = skTok / row.ratio[L];
   }
-  return { exact, skTok, ndTok, enTok, enExact, ratio: enTok > 0 ? skTok / enTok : row.ratio.sk };
+  return { exact, skTok, ndTok, enTok, enExact, ratio: enTok > 0 ? skTok / enTok : row.ratio[L] };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -135,9 +153,14 @@ function renderHeadline(sk, en) {
   const preEn = m.enExact ? "" : "≈ ";
   const fn = m.ratio >= 1 ? t("headline") : t("headlineLess");
   $("headline").innerHTML = fn("GPT-4o / GPT-5", pre + fmtInt(m.skTok), preEn + fmtInt(m.enTok), fmtPct(m.ratio));
+  const src = m.enExact ? t("exactEn") : t("floresEn");
+  if (m.ndTok === null) { $("subline").textContent = t("sublineSrc")(src); return; }
   const saved = m.ndTok / m.skTok;
-  $("subline").textContent = t("subline")(pre + fmtInt(m.ndTok), (saved <= 1 ? "−" : "+") + fmtPct(saved), m.enExact ? t("exactEn") : t("floresEn"));
+  $("subline").textContent = t("subline")(pre + fmtInt(m.ndTok), (saved <= 1 ? "−" : "+") + fmtPct(saved), src);
 }
+
+// USD for 1,000 texts: input tokens plus an answer of answerFactor x the input length.
+const cost = (p, tokens) => (tokens * p.input + tokens * answerFactor * p.output) / 1e6 * 1000;
 
 function renderCost(sk, en) {
   $("cost-note").textContent = t("costNote")(DATA.prices_as_of);
@@ -145,11 +168,11 @@ function renderCost(sk, en) {
   const rows = DATA.prices.map((p) => {
     const row = DATA.tokenizers.find((r) => r.name === p.tokenizer);
     return { p, row, m: measure(row, sk, en) };
-  }).sort((a, b) => a.p.input * a.m.skTok - b.p.input * b.m.skTok);
+  }).sort((a, b) => cost(a.p, a.m.skTok) - cost(b.p, b.m.skTok));
   if (!sk.trim() || !rows.length) { tbl.innerHTML = `<tr><td class="muted">${!rows.length ? t("noPrice") : t("empty")}</td></tr>`; return; }
-  const head = `<thead><tr><th>${t("thModel")}</th><th class="num">${t("thSk")}</th><th class="num">${t("thEn")}</th><th class="num">${t("thExtra")}</th></tr></thead>`;
+  const head = `<thead><tr><th>${t("thModel")}</th><th class="num">${t("inLang")[textLang]}</th><th class="num">${t("thEn")}</th><th class="num">${t("thExtra")}</th></tr></thead>`;
   const body = rows.map(({ p, m }) => {
-    const sk$ = (m.skTok * p.input / 1e6) * 1000, en$ = (m.enTok * p.input / 1e6) * 1000;
+    const sk$ = cost(p, m.skTok), en$ = cost(p, m.enTok);
     const est = m.exact ? "" : "≈ ";
     return `<tr><td><span class="name">${p.model}</span> <span class="also">${p.vendor}</span></td>
       <td class="num">${est}${fmtUsd(sk$)}</td><td class="num">${m.enExact ? "" : "≈ "}${fmtUsd(en$)}</td>
@@ -160,11 +183,13 @@ function renderCost(sk, en) {
 
 function renderResults(sk, en) {
   const maxR = 2.6;
-  const head = `<thead><tr><th>${t("thTok")}</th><th class="num">${t("thTokens")}</th><th class="num hide-sm">${t("thNd")}</th>
+  const nd = textLang === "sk";
+  const cols = nd ? 5 : 4;
+  const head = `<thead><tr><th>${t("thTok")}</th><th class="num">${t("thTokens")}</th>${nd ? `<th class="num hide-sm">${t("thNd")}</th>` : ""}
     <th class="ratio-cell">${t("thRatio")}</th><th class="num">${t("thStatus")}</th></tr></thead>`;
   let body = "", lastGroup = null;
   for (const row of DATA.tokenizers) {
-    if (row.group !== lastGroup) { body += `<tr class="group"><td colspan="5">${t("groups")[row.group]}</td></tr>`; lastGroup = row.group; }
+    if (row.group !== lastGroup) { body += `<tr class="group"><td colspan="${cols}">${t("groups")[row.group]}</td></tr>`; lastGroup = row.group; }
     const m = measure(row, sk, en);
     const est = m.exact ? "" : `<span class="est">≈ </span>`;
     const also = row.also.length ? `<span class="also">= ${row.also.map(shortName).join(", ")}</span>` : "";
@@ -179,7 +204,7 @@ function renderResults(sk, en) {
     const w = Math.min(m.ratio, maxR) / maxR * 100, one = 1 / maxR * 100;
     body += `<tr><td><span class="name">${shortName(row.name)}</span>${also}</td>
       <td class="num">${sk.trim() ? est + fmtInt(m.skTok) : "–"}</td>
-      <td class="num hide-sm">${sk.trim() ? est + fmtInt(m.ndTok) : "–"}</td>
+      ${nd ? `<td class="num hide-sm">${sk.trim() ? est + fmtInt(m.ndTok) : "–"}</td>` : ""}
       <td class="ratio-cell"><span class="bar-label">${fmtX(m.ratio)}</span>
         <div class="bar" role="img" aria-label="${fmtX(m.ratio)}"><i style="width:${w}%"></i><s style="left:${one}%"></s></div></td>
       <td class="num">${status}</td></tr>`;
@@ -245,6 +270,8 @@ function render() {
     const sk = $("sk").value, en = $("en").value;
     $("stats").textContent = t("stats")(chars(sk), words(sk));
     document.querySelectorAll(".viz-meta").forEach((n) => n.remove());
+    $("viz").lang = textLang;
+    $("sk").lang = textLang;
     renderHeadline(sk, en);
     renderCost(sk, en);
     renderResults(sk, en);
@@ -262,7 +289,47 @@ function applyLang() {
     else if (!n.dataset.orig) n.dataset.orig = n.innerHTML; // keep the static Slovak prose for SEO
   });
   document.querySelectorAll("[data-set-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.setLang === lang)));
+  fillSelect($("text-lang"), Object.entries(t("langs")), textLang);
+  fillSelect($("answer"), Object.entries(t("answers")).sort((a, b) => a[0] - b[0]), String(answerFactor));
   render();
+}
+
+function fillSelect(sel, entries, value) {
+  sel.textContent = "";
+  for (const [v, label] of entries) sel.add(new Option(label, v));
+  sel.value = value;
+}
+
+// ---------------------------------------------------------------------------------------
+// Share links: the state is deflated and base64url-encoded into the URL fragment, which
+// browsers never send to the server.
+const b64url = (bytes) => btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join("")).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const unb64url = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+async function pipe(bytes, stream) {
+  return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(stream)).arrayBuffer());
+}
+async function encodeState() {
+  const json = JSON.stringify({ l: textLang, a: answerFactor, t: $("sk").value, e: $("en").value });
+  return b64url(await pipe(new TextEncoder().encode(json), new CompressionStream("deflate-raw")));
+}
+async function decodeState(hash) {
+  const json = new TextDecoder().decode(await pipe(unb64url(hash), new DecompressionStream("deflate-raw")));
+  return JSON.parse(json);
+}
+async function share() {
+  const url = `${location.origin}${location.pathname}#s=${await encodeState()}`;
+  history.replaceState(null, "", url);
+  const btn = $("share");
+  try {
+    await navigator.clipboard.writeText(url);
+    btn.textContent = t("shared");
+  } catch {
+    btn.textContent = t("sharedBar");
+  }
+  setTimeout(() => (btn.textContent = t("share")), 2500);
+}
+function clearShareHash() {
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
 }
 
 async function main() {
@@ -283,10 +350,28 @@ async function main() {
   pick.value = DEFAULT_EXACT;
 
   $("sk").value = SAMPLE_SK;
+  if (location.hash.startsWith("#s=")) {
+    try {
+      const st = await decodeState(location.hash.slice(3));
+      if (st.l && st.l in T.sk.langs) textLang = st.l;
+      if ([0, 0.5, 1, 2].includes(st.a)) answerFactor = st.a;
+      $("sk").value = st.t || "";
+      $("en").value = st.e || "";
+      if (st.e) $("en-box").open = true;
+    } catch (e) {
+      console.warn("could not read the shared link", e);
+    }
+  }
   let timer;
-  for (const id of ["sk", "en"]) $(id).addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(render, 150); });
-  $("sample").onclick = () => { $("sk").value = SAMPLE_SK; $("en").value = SAMPLE_EN; $("en-box").open = true; render(); };
-  $("clear").onclick = () => { $("sk").value = ""; $("en").value = ""; render(); $("sk").focus(); };
+  for (const id of ["sk", "en"]) $(id).addEventListener("input", () => { clearShareHash(); clearTimeout(timer); timer = setTimeout(render, 150); });
+  $("sample").onclick = () => {
+    textLang = "sk"; $("text-lang").value = "sk";
+    $("sk").value = SAMPLE_SK; $("en").value = SAMPLE_EN; $("en-box").open = true; clearShareHash(); render();
+  };
+  $("clear").onclick = () => { $("sk").value = ""; $("en").value = ""; clearShareHash(); render(); $("sk").focus(); };
+  $("text-lang").onchange = (e) => { textLang = e.target.value; clearShareHash(); render(); };
+  $("answer").onchange = (e) => { answerFactor = Number(e.target.value); clearShareHash(); render(); };
+  $("share").onclick = share;
   pick.onchange = render;
   $("results").addEventListener("click", (e) => {
     const b = e.target.closest("[data-load]");
