@@ -2,6 +2,7 @@
 
 **How much more do you pay to talk to an LLM in Slovak?** A reproducible benchmark of the Slovak token tax: token counts, characters per token and API cost of Slovak vs English (and eight more Central and Eastern European languages) across 30+ LLM tokenizers.
 
+[![Try it online](https://img.shields.io/badge/try_it-online_calculator-2a78d6.svg)](https://ltchurik.github.io/sk-tokenizer-bench/)
 [![bench](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml/badge.svg)](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24092040.svg)](https://doi.org/10.5281/zenodo.24092040)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -11,7 +12,9 @@
   <img src="docs/social-preview.png" width="100%" alt="Bar chart: Slovak needs 2.13× the tokens of English on GPT-4, 2.07× on Qwen 2.5/3, 1.91× on DeepSeek V3, 1.84× on Llama 3, 1.68× on GPT-4o/GPT-5, 1.67× on Mistral, 1.62× on Gemma 3, 1.56× on Llama 4 and 1.35× on EuroLLM (FLORES-200).">
 </p>
 
-🇸🇰 [Zhrnutie po slovensky](#po-slovensky) · [Results](#results) · [FAQ](#faq) · [Run it yourself](#run-it-yourself) · [Citing](#citing)
+**[▶ Online calculator: paste your Slovak text and see its token count and cost](https://ltchurik.github.io/sk-tokenizer-bench/)**
+
+🇸🇰 [Zhrnutie po slovensky](#po-slovensky) · [Kalkulačka online](https://ltchurik.github.io/sk-tokenizer-bench/) · [Results](#results) · [FAQ](#faq) · [Run it yourself](#run-it-yourself) · [Citing](#citing)
 
 Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences plus a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian, Slovenian, Croatian, Romanian, Ukrainian and German.
 
@@ -193,7 +196,7 @@ Among mainstream API and open-weight models: Llama 4 (1.56×), Gemma (1.59–1.6
 No. The same factor shrinks the effective context window (a 128k window fits 40–56 % less Slovak text), increases latency (more output tokens to generate) and eats into rate limits.
 
 **How do I count tokens for my own Slovak text?**
-For OpenAI models use `tiktoken` with `o200k_base`; for open-weight models load the model's `tokenizer.json` with Hugging Face `tokenizers`; for closed models use the vendor's token-counting endpoint. `skbench/backends.py` contains a minimal example of each.
+Paste it into the [online calculator](https://ltchurik.github.io/sk-tokenizer-bench/): it counts exactly in your browser with the same tokenizers as this benchmark (CI checks that the browser and Python counts match on every FLORES sentence), shows the cost and how the text is split. In code: for OpenAI models use `tiktoken` with `o200k_base`; for open-weight models load the model's `tokenizer.json` with Hugging Face `tokenizers`; for closed models use the vendor's token-counting endpoint. `skbench/backends.py` contains a minimal example of each.
 
 **Will writing Slovak without diacritics save tokens?**
 A little, and less on newer models: on GPT-4o / GPT-5 about 5 % fewer tokens (1.68× → 1.59×), on Llama 4 about 1 %. See [Slovak without diacritics](#slovak-without-diacritics). It usually isn't worth the loss in readability.
@@ -211,6 +214,8 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian an
 - **Písanie bez diakritiky takmer nepomáha.** Na GPT-4o / GPT-5 ušetrí asi 5 % tokenov (1,68× → 1,59×), na Llama 4 asi 1 %. Väčšinu príplatku spôsobuje skloňovanie a slovná zásoba, nie mäkčene a dĺžne.
 - **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
 
+**Vyskúšajte si to na vlastnom texte:** [kalkulačka tokenov online](https://ltchurik.github.io/sk-tokenizer-bench/) spočíta tokeny a cenu priamo v prehliadači.
+
 Meranie prebieha na 1012 vetách z korpusu FLORES-200 a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
 
 ## Run it yourself
@@ -224,6 +229,14 @@ python bench.py --only gemma     # one tokenizer
 python bench.py --corpus custom  # only the hand-written corpus
 python bench.py --readme         # also regenerate the tables in this README
 pytest                           # sanity tests
+```
+
+### Web calculator
+
+The [online calculator](https://ltchurik.github.io/sk-tokenizer-bench/) lives in [`site/`](site/): plain HTML + JS, no build step beyond `python site/build.py`, which writes `_site/` with a `data.json` derived from `results/flores/` and `prices.json`. Tokenizers are fetched from the Hugging Face Hub in the browser and run with [tokenizers.js](https://github.com/huggingface/tokenizers.js). `python site/tests/parity.py` (after `npm ci --prefix site`) checks that tokenizers.js counts every FLORES sentence exactly like the Python benchmark; CI runs it on every push, and the `pages` workflow deploys the site.
+
+```bash
+python site/build.py && python -m http.server -d _site   # preview at http://localhost:8000
 ```
 
 Tokenizers are downloaded from the Hugging Face Hub on first run; nothing is run locally except the tokenizer itself. Gated repos (Meta, Google, Cohere originals) are substituted with ungated mirrors that ship identical tokenizer files. A full run takes under a minute on a laptop.
