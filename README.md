@@ -7,6 +7,10 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
 
+<p align="center">
+  <img src="docs/social-preview.png" width="100%" alt="Bar chart: Slovak needs 2.13× the tokens of English on GPT-4, 2.07× on Qwen 2.5/3, 1.91× on DeepSeek V3, 1.84× on Llama 3, 1.68× on GPT-4o/GPT-5, 1.67× on Mistral, 1.62× on Gemma 3, 1.56× on Llama 4 and 1.35× on EuroLLM (FLORES-200).">
+</p>
+
 🇸🇰 [Zhrnutie po slovensky](#po-slovensky) · [Results](#results) · [FAQ](#faq) · [Run it yourself](#run-it-yourself) · [Citing](#citing)
 
 Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences plus a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian and German.
