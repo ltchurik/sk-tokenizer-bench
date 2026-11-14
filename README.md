@@ -1,6 +1,6 @@
 # sk-tokenizer-bench
 
-**How much more do you pay to talk to an LLM in Slovak?** A reproducible benchmark of the Slovak token tax: token counts, characters per token and API cost of Slovak vs English (and Czech, Polish, Hungarian, German) across 30+ LLM tokenizers.
+**How much more do you pay to talk to an LLM in Slovak?** A reproducible benchmark of the Slovak token tax: token counts, characters per token and API cost of Slovak vs English (and eight more Central and Eastern European languages) across 30+ LLM tokenizers.
 
 [![bench](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml/badge.svg)](https://github.com/ltchurik/sk-tokenizer-bench/actions/workflows/bench.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24092040.svg)](https://doi.org/10.5281/zenodo.24092040)
@@ -13,17 +13,19 @@
 
 🇸🇰 [Zhrnutie po slovensky](#po-slovensky) · [Results](#results) · [FAQ](#faq) · [Run it yourself](#run-it-yourself) · [Citing](#citing)
 
-Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences plus a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian and German.
+Every LLM API bills per token, but tokenizers are trained mostly on English. The same sentence in Slovak — with its diacritics (ľščťžýáíéďňôú), seven cases and rich inflection — gets split into far more tokens. This repo measures exactly how much, across 30+ tokenizers of current models, on 1012 professionally translated FLORES-200 sentences plus a hand-written 7-domain corpus, and compares Slovak with Czech, Polish, Hungarian, Slovenian, Croatian, Romanian, Ukrainian and German.
 
-Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens than English** (GPT-4o / GPT-5: 1.68×, Gemma: 1.62×, Llama 4: 1.56×). You pay that factor on input *and* output, and a 128k context window holds 40–56 % less Slovak text.
+Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens than English** (GPT-4o / GPT-5: 1.68×, Gemma 3: 1.62×, Llama 4: 1.56×). You pay that factor on input *and* output, and a 128k context window holds 40–56 % less Slovak text.
 
 ## Takeaways
 
 - **Newer, bigger vocabularies help.** OpenAI's move from `cl100k` (GPT-4) to `o200k` (GPT-4o and later) cut the Slovak penalty from 2.13× to 1.68×; Meta went from 1.84× (Llama 3) to 1.56× (Llama 4), the best mainstream tokenizer measured; Mistral's `tekken` (1.67×) replaced v3 (1.95×).
-- **Slovak is pricier than its neighbours.** It costs more than Czech in 20 of 23 distinct tokenizers, even though the languages are close; Hungarian is usually the most expensive of the five, German the cheapest.
+- **Slovak is pricier than its neighbours.** It costs more than Czech in 22 of 25 distinct tokenizers, and more than Slovenian and Croatian in 21 of 25, even though these languages are close. Among the eight Latin-script languages it ranks in the three most expensive for 19 of 25 tokenizers; only Hungarian is regularly worse. Ukrainian, in Cyrillic, is the most expensive language for 14 of 25 tokenizers (2.96× on GPT-4, 4.58× on Falcon 3), and German is usually the cheapest.
+- **Writing without diacritics barely helps on modern models.** Stripping *ľščťž…* removes only 3–13 % of the penalty on Llama 4, Gemma 3, `tekken` and `o200k` (GPT-4o: 1.68× → 1.59×, about 5 % fewer tokens), and the text gets harder to read for both people and models. On older or less multilingual tokenizers diacritics are 17–34 % of the penalty. The rest is morphology and vocabulary. EuroLLM even gets *worse* without diacritics (1.35× → 1.39×), because its vocabulary learned correctly spelled Slovak.
+- **Newer is not always better for Slovak.** Gemma 3's tokenizer is slightly *worse* for Slovak than the one in Gemma 1 / 2 (1.62× vs 1.59×).
 - **Multilingual-by-design tokenizers are far better**: mT5 1.29×, EuroLLM 1.35×. Teuken, trained on all 24 EU languages, is great for Czech (1.06×) but not Slovak (1.41×), which suggests Slovak was under-represented in its training data.
 - **The gap comes from training data, not from the language.** SlovakBERT (trained on Slovak) needs *fewer* tokens for Slovak than for English (0.77×), and the Czech CSTinyLlama does too (0.92×).
-- **Many models reuse someone else's tokenizer.** Apertus and Nemotron Nano 2 use Mistral's `tekken`, Bielik uses Mistral v3, Phi-4-mini and gpt-oss use `o200k`, and Phi-4 and OLMo 2 use `cl100k`, so they inherit those tokenizers' penalties exactly.
+- **Many models reuse someone else's tokenizer.** Apertus and Nemotron Nano 2 use Mistral's `tekken` (same counts on every sentence but one Ukrainian one), Bielik uses Mistral v3, Phi-4-mini and gpt-oss use `o200k`, and Phi-4 and OLMo 2 use `cl100k`, so they inherit those tokenizers' penalties exactly.
 - **Results hold across corpora.** The hand-written domain corpus lands within ±0.08× of FLORES for every tokenizer. Legal and diacritics-heavy text is the worst case (up to 2.4×) and casual chat the best; see [results/custom/RESULTS.md](results/custom/RESULTS.md).
 - **Closed tokenizers** (current Claude, Gemini) are counted through the vendors' token-counting APIs when a key is available; see [API tokenizers](#api-tokenizers-claude-gemini).
 
@@ -45,7 +47,8 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | EuroLLM | **1.35×** | 1.34–1.36 | 1.37× | 3.38 | 4.57 |
 | Teuken (OpenGPT-X) | **1.41×** | 1.40–1.43 | 1.37× | 3.17 | 4.48 |
 | Llama 4 | **1.56×** | 1.55–1.58 | 1.54× | 3.11 | 4.88 |
-| Gemma 2 / 3 | **1.62×** | 1.60–1.63 | 1.59× | 3.00 | 4.87 |
+| Gemma 1 / 2 | **1.59×** | 1.57–1.60 | 1.54× | 3.07 | 4.88 |
+| Gemma 3 | **1.62×** | 1.60–1.63 | 1.59× | 3.00 | 4.87 |
 | Mistral Nemo / Small 3 / Large 2 (tekken) | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
 | Nemotron Nano 2 | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
 | Apertus (Swiss AI) | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
@@ -71,47 +74,88 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | Claude 2 (legacy, Xenova mirror) | **2.25×** | 2.23–2.28 | 2.19× | 2.13 | 4.80 |
 | Falcon 3 | **2.27×** | 2.24–2.30 | 2.20× | 2.13 | 4.84 |
 
-*Byte-for-byte identical counts on this corpus: GPT-4o / 4.1 / 5 (o200k_base) = gpt-oss (o200k_harmony) = Phi-4-mini; GPT-4 / 3.5 (cl100k_base) = Phi-4 = OLMo 2; Mistral Nemo / Small 3 / Large 2 (tekken) = Nemotron Nano 2 = Apertus (Swiss AI); Llama 3.x = SmolLM3; CSTinyLlama (Czech, BUT-FIT) = CSMPT (Czech, BUT-FIT); Mistral / Mixtral (v3) = Bielik (Polish, SpeakLeash).*
+*Byte-for-byte identical counts on this corpus: GPT-4o / 4.1 / 5 (o200k_base) = gpt-oss (o200k_harmony) = Phi-4-mini; GPT-4 / 3.5 (cl100k_base) = Phi-4 = OLMo 2; Llama 3.x = SmolLM3; Nemotron Nano 2 = Apertus (Swiss AI); CSTinyLlama (Czech, BUT-FIT) = CSMPT (Czech, BUT-FIT); Mistral / Mixtral (v3) = Bielik (Polish, SpeakLeash).*
 
 
 ### Slovak and its neighbours
 
 Tokens per sentence relative to English on FLORES-200, same content in every column. Sorted by Slovak.
 
-| Tokenizer | Slovak | Czech | Polish | Hungarian | German |
-|---|---|---|---|---|---|
-| SlovakBERT (Slovak, Gerulata) | 0.77× | 0.94× | 1.58× | 1.63× | 1.32× |
-| CSTinyLlama (Czech, BUT-FIT) | 0.92× | 0.62× | 1.40× | 1.49× | 1.23× |
-| CSMPT (Czech, BUT-FIT) | 0.92× | 0.62× | 1.40× | 1.49× | 1.23× |
-| mT5 | 1.29× | 1.27× | 1.30× | 1.26× | 1.19× |
-| EuroLLM | 1.35× | 1.34× | 1.22× | 1.44× | 1.22× |
-| Teuken (OpenGPT-X) | 1.41× | 1.06× | 1.10× | 1.11× | 1.14× |
-| Llama 4 | 1.56× | 1.47× | 1.40× | 1.56× | 1.30× |
-| Gemma 2 / 3 | 1.62× | 1.52× | 1.51× | 1.68× | 1.33× |
-| Mistral Nemo / Small 3 / Large 2 (tekken) | 1.67× | 1.55× | 1.57× | 1.61× | 1.30× |
-| Nemotron Nano 2 | 1.67× | 1.55× | 1.57× | 1.61× | 1.30× |
-| Apertus (Swiss AI) | 1.67× | 1.55× | 1.57× | 1.61× | 1.30× |
-| GPT-4o / 4.1 / 5 (o200k_base) | 1.68× | 1.60× | 1.64× | 1.79× | 1.31× |
-| gpt-oss (o200k_harmony) | 1.68× | 1.60× | 1.64× | 1.79× | 1.31× |
-| Phi-4-mini | 1.68× | 1.60× | 1.64× | 1.79× | 1.31× |
-| Command R | 1.69× | 1.28× | 1.34× | 2.09× | 1.32× |
-| Llama 2 | 1.81× | 1.69× | 1.70× | 1.79× | 1.41× |
-| Granite 3.3 | 1.84× | 1.76× | 1.84× | 1.91× | 1.61× |
-| Llama 3.x | 1.84× | 1.50× | 1.89× | 2.12× | 1.58× |
-| SmolLM3 | 1.84× | 1.50× | 1.89× | 2.12× | 1.58× |
-| DeepSeek V3 / V3.1 / R1 | 1.91× | 1.70× | 1.68× | 1.99× | 1.51× |
-| GLM-4.5 / 4.6 | 1.95× | 1.75× | 1.69× | 1.89× | 1.45× |
-| Mistral / Mixtral (v3) | 1.95× | 1.86× | 1.90× | 2.00× | 1.58× |
-| Bielik (Polish, SpeakLeash) | 1.95× | 1.86× | 1.90× | 2.00× | 1.58× |
-| BLOOM | 2.00× | 2.02× | 2.13× | 2.07× | 1.68× |
-| MiniMax-M2 | 2.01× | 1.90× | 1.90× | 1.97× | 1.49× |
-| Kimi K2 | 2.01× | 1.99× | 2.11× | 2.15× | 1.73× |
-| Qwen 2.5 / 3 | 2.07× | 2.06× | 1.76× | 2.12× | 1.56× |
-| GPT-4 / 3.5 (cl100k_base) | 2.13× | 2.10× | 1.91× | 2.15× | 1.59× |
-| Phi-4 | 2.13× | 2.10× | 1.91× | 2.15× | 1.59× |
-| OLMo 2 | 2.13× | 2.10× | 1.91× | 2.15× | 1.59× |
-| Claude 2 (legacy, Xenova mirror) | 2.25× | 2.23× | 2.32× | 2.38× | 1.72× |
-| Falcon 3 | 2.27× | 2.28× | 2.37× | 2.35× | 1.84× |
+| Tokenizer | Slovak | Czech | Polish | Hungarian | Slovenian | Croatian | Romanian | Ukrainian | German |
+|---|---|---|---|---|---|---|---|---|---|
+| SlovakBERT (Slovak, Gerulata) | 0.77× | 0.94× | 1.58× | 1.63× | 1.22× | 1.25× | 1.76× | 3.31× | 1.32× |
+| CSTinyLlama (Czech, BUT-FIT) | 0.92× | 0.62× | 1.40× | 1.49× | 1.07× | 1.09× | 1.60× | 4.72× | 1.23× |
+| CSMPT (Czech, BUT-FIT) | 0.92× | 0.62× | 1.40× | 1.49× | 1.07× | 1.09× | 1.60× | 4.72× | 1.23× |
+| mT5 | 1.29× | 1.27× | 1.30× | 1.26× | 1.20× | 1.29× | 1.36× | 1.32× | 1.19× |
+| EuroLLM | 1.35× | 1.34× | 1.22× | 1.44× | 1.31× | 1.28× | 1.44× | 1.44× | 1.22× |
+| Teuken (OpenGPT-X) | 1.41× | 1.06× | 1.10× | 1.11× | 1.07× | 1.06× | 1.19× | 2.20× | 1.14× |
+| Llama 4 | 1.56× | 1.47× | 1.40× | 1.56× | 1.57× | 1.53× | 1.47× | 1.54× | 1.30× |
+| Gemma 1 / 2 | 1.59× | 1.50× | 1.46× | 1.67× | 1.58× | 1.59× | 1.55× | 1.65× | 1.26× |
+| Gemma 3 | 1.62× | 1.52× | 1.51× | 1.68× | 1.57× | 1.46× | 1.57× | 1.61× | 1.33× |
+| Mistral Nemo / Small 3 / Large 2 (tekken) | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
+| Nemotron Nano 2 | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
+| Apertus (Swiss AI) | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
+| GPT-4o / 4.1 / 5 (o200k_base) | 1.68× | 1.60× | 1.64× | 1.79× | 1.51× | 1.47× | 1.63× | 1.75× | 1.31× |
+| gpt-oss (o200k_harmony) | 1.68× | 1.60× | 1.64× | 1.79× | 1.51× | 1.47× | 1.63× | 1.75× | 1.31× |
+| Phi-4-mini | 1.68× | 1.60× | 1.64× | 1.79× | 1.51× | 1.47× | 1.63× | 1.75× | 1.31× |
+| Command R | 1.69× | 1.28× | 1.34× | 2.09× | 1.70× | 1.70× | 1.38× | 1.39× | 1.32× |
+| Llama 2 | 1.81× | 1.69× | 1.70× | 1.79× | 1.66× | 1.65× | 1.70× | 1.71× | 1.41× |
+| Granite 3.3 | 1.84× | 1.76× | 1.84× | 1.91× | 1.68× | 1.67× | 1.98× | 2.48× | 1.61× |
+| Llama 3.x | 1.84× | 1.50× | 1.89× | 2.12× | 1.80× | 1.76× | 1.87× | 1.64× | 1.58× |
+| SmolLM3 | 1.84× | 1.50× | 1.89× | 2.12× | 1.80× | 1.76× | 1.87× | 1.64× | 1.58× |
+| DeepSeek V3 / V3.1 / R1 | 1.91× | 1.70× | 1.68× | 1.99× | 1.81× | 1.78× | 1.86× | 2.16× | 1.51× |
+| GLM-4.5 / 4.6 | 1.95× | 1.75× | 1.69× | 1.89× | 1.83× | 1.78× | 1.73× | 1.83× | 1.45× |
+| Mistral / Mixtral (v3) | 1.95× | 1.86× | 1.90× | 2.00× | 1.78× | 1.77× | 1.81× | 1.94× | 1.58× |
+| Bielik (Polish, SpeakLeash) | 1.95× | 1.86× | 1.90× | 2.00× | 1.78× | 1.77× | 1.81× | 1.94× | 1.58× |
+| BLOOM | 2.00× | 2.02× | 2.13× | 2.07× | 1.80× | 1.78× | 1.91× | 2.73× | 1.68× |
+| MiniMax-M2 | 2.01× | 1.90× | 1.90× | 1.97× | 1.83× | 1.79× | 1.81× | 1.99× | 1.49× |
+| Kimi K2 | 2.01× | 1.99× | 2.11× | 2.15× | 1.83× | 1.80× | 1.90× | 2.16× | 1.73× |
+| Qwen 2.5 / 3 | 2.07× | 2.06× | 1.76× | 2.12× | 1.87× | 1.82× | 1.86× | 2.50× | 1.56× |
+| GPT-4 / 3.5 (cl100k_base) | 2.13× | 2.10× | 1.91× | 2.15× | 1.89× | 1.83× | 1.88× | 2.96× | 1.59× |
+| Phi-4 | 2.13× | 2.10× | 1.91× | 2.15× | 1.89× | 1.83× | 1.88× | 2.96× | 1.59× |
+| OLMo 2 | 2.13× | 2.10× | 1.91× | 2.15× | 1.89× | 1.83× | 1.88× | 2.96× | 1.59× |
+| Claude 2 (legacy, Xenova mirror) | 2.25× | 2.23× | 2.32× | 2.38× | 1.95× | 1.95× | 2.08× | 3.02× | 1.72× |
+| Falcon 3 | 2.27× | 2.28× | 2.37× | 2.35× | 1.96× | 1.93× | 2.03× | 4.58× | 1.84× |
+
+### Slovak without diacritics
+
+The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Share" = how much of the Slovak penalty (sk/en − 1) disappears; the rest is morphology and vocabulary.
+
+| Tokenizer | sk/en | without diacritics | share of penalty |
+|---|---|---|---|
+| SlovakBERT (Slovak, Gerulata) | 0.77× | 0.88× | – |
+| CSTinyLlama (Czech, BUT-FIT) | 0.92× | 0.94× | – |
+| CSMPT (Czech, BUT-FIT) | 0.92× | 0.94× | – |
+| mT5 | 1.29× | 1.23× | 23 % |
+| EuroLLM | 1.35× | 1.39× | -12 % |
+| Teuken (OpenGPT-X) | 1.41× | 1.33× | 20 % |
+| Llama 4 | 1.56× | 1.55× | 3 % |
+| Gemma 1 / 2 | 1.59× | 1.55× | 7 % |
+| Gemma 3 | 1.62× | 1.56× | 10 % |
+| Mistral Nemo / Small 3 / Large 2 (tekken) | 1.67× | 1.59× | 12 % |
+| Nemotron Nano 2 | 1.67× | 1.59× | 12 % |
+| Apertus (Swiss AI) | 1.67× | 1.59× | 12 % |
+| GPT-4o / 4.1 / 5 (o200k_base) | 1.68× | 1.59× | 13 % |
+| gpt-oss (o200k_harmony) | 1.68× | 1.59× | 13 % |
+| Phi-4-mini | 1.68× | 1.59× | 13 % |
+| Command R | 1.69× | 1.57× | 18 % |
+| Llama 2 | 1.81× | 1.64× | 22 % |
+| Granite 3.3 | 1.84× | 1.64× | 24 % |
+| Llama 3.x | 1.84× | 1.70× | 17 % |
+| SmolLM3 | 1.84× | 1.70× | 17 % |
+| DeepSeek V3 / V3.1 / R1 | 1.91× | 1.73× | 19 % |
+| GLM-4.5 / 4.6 | 1.95× | 1.74× | 22 % |
+| Mistral / Mixtral (v3) | 1.95× | 1.75× | 21 % |
+| Bielik (Polish, SpeakLeash) | 1.95× | 1.75× | 21 % |
+| BLOOM | 2.00× | 1.75× | 24 % |
+| MiniMax-M2 | 2.01× | 1.77× | 24 % |
+| Kimi K2 | 2.01× | 1.80× | 21 % |
+| Qwen 2.5 / 3 | 2.07× | 1.80× | 26 % |
+| GPT-4 / 3.5 (cl100k_base) | 2.13× | 1.81× | 28 % |
+| Phi-4 | 2.13× | 1.81× | 28 % |
+| OLMo 2 | 2.13× | 1.81× | 28 % |
+| Claude 2 (legacy, Xenova mirror) | 2.25× | 1.89× | 29 % |
+| Falcon 3 | 2.27× | 1.84× | 34 % |
 
 ### In dollars
 
@@ -129,6 +173,12 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effe
 
 <!-- results:end -->
 
+### How tokenizers evolved
+
+![Line chart of the Slovak/English token ratio by tokenizer release date. OpenAI fell from 2.13× (GPT-4, 2023) to 1.68× (GPT-4o, 2024); Meta went from 1.81× (Llama 2) to 1.84× (Llama 3) to 1.56× (Llama 4); Mistral from 1.95× (v3) to 1.67× (tekken); Google from 1.59× (Gemma 1/2) to 1.62× (Gemma 3).](docs/tokenizer-timeline.png)
+
+Successive tokenizers from the same vendor mostly get cheaper for Slovak, but not always (Llama 3, Gemma 3). Regenerate with `python docs/make_timeline.py`.
+
 Full tables, including tokens per language and per-domain ratios: [FLORES-200](results/flores/RESULTS.md) · [domain corpus](results/custom/RESULTS.md) · [cost](results/COST.md). Per-sentence counts: `results/*/counts.json.gz`.
 
 ## FAQ
@@ -137,7 +187,7 @@ Full tables, including tokens per language and per-domain ratios: [FLORES-200](r
 Tokenizers (BPE, SentencePiece) learn their vocabulary from training data that is mostly English. Common English words become single tokens, while Slovak words, with their diacritics and many inflected forms (*mesto, mesta, mestu, mestom, mestách…*), get split into several pieces. More pieces means more tokens per sentence.
 
 **Which LLM tokenizer is cheapest for Slovak?**
-Among mainstream API and open-weight models: Llama 4 (1.56×), Gemma 2/3 (1.62×), Mistral `tekken` (1.67×) and OpenAI `o200k` used by GPT-4o / GPT-4.1 / GPT-5 (1.68×). Multilingual models such as mT5 and EuroLLM do better still (~1.3×). Older vocabularies such as GPT-4's `cl100k` (2.13×) or Qwen (2.07×) are the most expensive.
+Among mainstream API and open-weight models: Llama 4 (1.56×), Gemma (1.59–1.62×), Mistral `tekken` (1.67×) and OpenAI `o200k` used by GPT-4o / GPT-4.1 / GPT-5 (1.68×). Multilingual models such as mT5 and EuroLLM do better still (~1.3×). Older vocabularies such as GPT-4's `cl100k` (2.13×) or Qwen (2.07×) are the most expensive.
 
 **Does this affect price only?**
 No. The same factor shrinks the effective context window (a 128k window fits 40–56 % less Slovak text), increases latency (more output tokens to generate) and eats into rate limits.
@@ -145,8 +195,11 @@ No. The same factor shrinks the effective context window (a 128k window fits 40�
 **How do I count tokens for my own Slovak text?**
 For OpenAI models use `tiktoken` with `o200k_base`; for open-weight models load the model's `tokenizer.json` with Hugging Face `tokenizers`; for closed models use the vendor's token-counting endpoint. `skbench/backends.py` contains a minimal example of each.
 
-**Is Czech, Polish or Hungarian any better?**
-See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech is usually a little cheaper than Slovak, Hungarian is usually the most expensive and German the cheapest of the five.
+**Will writing Slovak without diacritics save tokens?**
+A little, and less on newer models: on GPT-4o / GPT-5 about 5 % fewer tokens (1.68× → 1.59×), on Llama 4 about 1 %. See [Slovak without diacritics](#slovak-without-diacritics). It usually isn't worth the loss in readability.
+
+**Is Czech, Polish, Hungarian or Ukrainian any better?**
+See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian and Croatian are usually a little cheaper than Slovak, Hungarian is usually more expensive, Ukrainian (Cyrillic) is the most expensive and German the cheapest.
 
 ## Po slovensky
 
@@ -154,7 +207,8 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech is usually a 
 
 - **Najlepšie z bežných modelov:** Llama 4 (1,56×), Gemma (1,62×), Mistral (1,67×), GPT-4o / GPT-5 (1,68×).
 - **Najhoršie:** GPT-4 / GPT-3.5 (2,13×), Qwen (2,07×), Falcon 3 (2,27×).
-- **Slovenčina je drahšia ako čeština** v 20 z 23 tokenizérov, aj keď sú si jazyky veľmi blízke.
+- **Slovenčina je drahšia ako čeština** v 22 z 25 tokenizérov a drahšia ako slovinčina a chorvátčina v 21 z 25, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
+- **Písanie bez diakritiky takmer nepomáha.** Na GPT-4o / GPT-5 ušetrí asi 5 % tokenov (1,68× → 1,59×), na Llama 4 asi 1 %. Väčšinu príplatku spôsobuje skloňovanie a slovná zásoba, nie mäkčene a dĺžne.
 - **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
 
 Meranie prebieha na 1012 vetách z korpusu FLORES-200 a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
@@ -202,6 +256,7 @@ Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a 
 - Counts use `add_special_tokens=False`: no BOS/EOS, no chat template.
 - Ratio = total tokens in a language / total English tokens over the whole corpus (a ratio of sums, not a mean of per-sentence ratios).
 - 95 % CI = percentile bootstrap over sentences, 2000 resamples, fixed seed.
+- "Without diacritics" = the same Slovak sentences after Unicode NFD decomposition with combining marks removed (*ľ → l, ô → o, ä → a*); nothing else changes.
 - `chars/token` counts Unicode code points, so a letter with a diacritic counts as one character.
 - Cost = list price × ratio, i.e. what the same content costs in Slovak per 1M tokens' worth of English.
 
