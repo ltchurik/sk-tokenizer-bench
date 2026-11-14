@@ -25,22 +25,30 @@ TOKENIZERS = {
     # --- Mistral ------------------------------------------------------------------------
     "Mistral / Mixtral (v3)": ("hf", "mistralai/Mistral-7B-Instruct-v0.3"),
     "Mistral Nemo / Small 3 / Large 2 (tekken)": ("hf", "mistralai/Mistral-Small-3.1-24B-Instruct-2503"),
+    "Mistral Large 4": ("hf", "mistralai/Mistral-Large-4-1T-A52B"),
     # --- Google -------------------------------------------------------------------------
     "Gemma 1 / 2": ("hf", "unsloth/gemma-2-9b"),
     "Gemma 3": ("hf", "unsloth/gemma-3-4b-it"),
     "mT5": ("hf", "Xenova/mt5-base"),
     # --- Chinese labs -------------------------------------------------------------------
     "Qwen 2.5 / 3": ("hf", "Qwen/Qwen3-8B"),
+    "Qwen 3.8": ("hf", "Qwen/Qwen3.8-27B"),
     "DeepSeek V3 / V3.1 / R1": ("hf", "deepseek-ai/DeepSeek-V3.1"),
     "GLM-4.5 / 4.6": ("hf", "zai-org/GLM-4.6"),
+    "GLM-5.3": ("hf", "zai-org/GLM-5.3"),
     "Kimi K2": ("tiktoken-hf", "moonshotai/Kimi-K2-Instruct::kimi"),
     "MiniMax-M2": ("hf", "MiniMaxAI/MiniMax-M2"),
+    "ERNIE 5.5": ("hf", "baidu/ERNIE-5.5-Flash-Base"),
+    "Hunyuan 4 (Tencent)": ("hf", "tencent/Hy4-preview"),
     # --- Other US / global --------------------------------------------------------------
     "Phi-4": ("hf", "microsoft/phi-4"),
     "Phi-4-mini": ("hf", "microsoft/Phi-4-mini-instruct"),
     "Command R": ("hf", "Xenova/c4ai-command-r-v01-tokenizer"),
+    "Cohere North": ("hf", "CohereLabs/North-Micro-Vision-Instruct"),
     "Nemotron Nano 2": ("hf", "nvidia/NVIDIA-Nemotron-Nano-9B-v2"),
     "Granite 3.3": ("hf", "ibm-granite/granite-3.3-8b-instruct"),
+    "Granite 4.2": ("hf", "ibm-granite/granite-4.2-8b"),
+    "LFM3 (Liquid AI)": ("hf", "LiquidAI/LFM3-1.7B"),
     "Falcon 3": ("hf", "tiiuae/Falcon3-7B-Instruct"),
     "SmolLM3": ("hf", "HuggingFaceTB/SmolLM3-3B"),
     "OLMo 2": ("hf", "allenai/OLMo-2-1124-7B"),
@@ -98,12 +106,21 @@ RELEASED = {
     "EuroLLM": "2024-09",
     "Apertus (Swiss AI)": "2025-09",
     "Teuken (OpenGPT-X)": "2024-11",
+    "Qwen 3.8": "2026-08",
+    "Mistral Large 4": "2026-09",
+    "GLM-5.3": "2026-08",
+    "ERNIE 5.5": "2026-10",
+    "Hunyuan 4 (Tencent)": "2026-08",
+    "Cohere North": "2026-08",
+    "Granite 4.2": "2026-08",
+    "LFM3 (Liquid AI)": "2026-10",
 }
 LINEAGES = {
     "OpenAI": ["GPT-4 / 3.5 (cl100k_base)", "GPT-4o / 4.1 / 5 (o200k_base)"],
     "Meta": ["Llama 2", "Llama 3.x", "Llama 4"],
-    "Mistral": ["Mistral / Mixtral (v3)", "Mistral Nemo / Small 3 / Large 2 (tekken)"],
+    "Mistral": ["Mistral / Mixtral (v3)", "Mistral Nemo / Small 3 / Large 2 (tekken)", "Mistral Large 4"],
     "Google": ["Gemma 1 / 2", "Gemma 3"],
+    "Qwen": ["Qwen 2.5 / 3", "Qwen 3.8"],
 }
 
 # Pre-tokenization patterns for tiktoken-format vocabularies shipped on the HF Hub.
