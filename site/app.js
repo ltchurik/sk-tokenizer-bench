@@ -170,12 +170,12 @@ function renderCost(sk, en) {
     return { p, row, m: measure(row, sk, en) };
   }).sort((a, b) => cost(a.p, a.m.skTok) - cost(b.p, b.m.skTok));
   if (!sk.trim() || !rows.length) { tbl.innerHTML = `<tr><td class="muted">${!rows.length ? t("noPrice") : t("empty")}</td></tr>`; return; }
-  const head = `<thead><tr><th>${t("thModel")}</th><th class="num">${t("inLang")[textLang]}</th><th class="num">${t("thEn")}</th><th class="num">${t("thExtra")}</th></tr></thead>`;
+  const head = `<thead><tr><th>${t("thModel")}</th><th class="num">${t("inLang")[textLang]}</th><th class="num hide-sm">${t("thEn")}</th><th class="num">${t("thExtra")}</th></tr></thead>`;
   const body = rows.map(({ p, m }) => {
     const sk$ = cost(p, m.skTok), en$ = cost(p, m.enTok);
     const est = m.exact ? "" : "≈ ";
     return `<tr><td><span class="name">${p.model}</span> <span class="also">${p.vendor}</span></td>
-      <td class="num">${est}${fmtUsd(sk$)}</td><td class="num">${m.enExact ? "" : "≈ "}${fmtUsd(en$)}</td>
+      <td class="num">${est}${fmtUsd(sk$)}</td><td class="num hide-sm">${m.enExact ? "" : "≈ "}${fmtUsd(en$)}</td>
       <td class="num">+${fmtUsd(Math.max(0, sk$ - en$))}</td></tr>`;
   }).join("");
   tbl.innerHTML = head + `<tbody>${body}</tbody>`;

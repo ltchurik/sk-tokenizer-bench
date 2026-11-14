@@ -31,6 +31,7 @@ Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens tha
 - **The gap comes from training data, not from the language.** SlovakBERT (trained on Slovak) needs *fewer* tokens for Slovak than for English (0.77×), and the Czech CSTinyLlama does too (0.92×).
 - **Many models reuse someone else's tokenizer.** Apertus and Nemotron Nano 2 use Mistral's `tekken` (same counts on every sentence but one Ukrainian one), Bielik uses Mistral v3, Phi-4-mini and gpt-oss use `o200k`, and Phi-4 and OLMo 2 use `cl100k`, so they inherit those tokenizers' penalties exactly.
 - **Results hold across corpora.** The hand-written domain corpus lands within ±0.08× of FLORES for every tokenizer. Legal and diacritics-heavy text is the worst case (up to 2.4×) and casual chat the best; see [results/custom/RESULTS.md](results/custom/RESULTS.md).
+- **The Slovak surcharge differs by vendor, not just the list price.** Of the 19 priced models with a measured tokenizer, Qwen 3.8, Mistral and OpenAI add 64–74 % for Slovak, while DeepSeek V4, GLM-5.3, MiniMax M3 and Kimi K3 add 90–101 %. That can cancel a lower list price: `deepseek-v4-pro` is cheaper than `mistral-large-4-0` per English token ($0.66 vs $0.70 input), but the same Slovak text costs slightly more on it ($1.26 vs $1.22 effective). The cheapest options for Slovak input are `qwen3.8-flash`, `mistral-small-4-0-26-03` and `gpt-4o-mini` (about $0.25 per 1M English-token equivalent); see [In dollars](#in-dollars).
 - **Closed tokenizers** (current Claude, Gemini) are counted through the vendors' token-counting APIs when a key is available; see [API tokenizers](#api-tokenizers-claude-gemini).
 
 ## Results
@@ -54,7 +55,7 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | Gemma 1 / 2 | **1.59×** | 1.57–1.60 | 1.54× | 3.07 | 4.88 |
 | Gemma 3 | **1.62×** | 1.60–1.63 | 1.59× | 3.00 | 4.87 |
 | Qwen 3.8 | **1.64×** | 1.62–1.66 | 1.62× | 2.92 | 4.79 |
-| Mistral Nemo / Small 3 / Large 2 (tekken) | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
+| Mistral Nemo / Small 3–4 / Large 2 (tekken) | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
 | Nemotron Nano 2 | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
 | Apertus (Swiss AI) | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
 | GPT-4o / 4.1 / 5 (o200k_base) | **1.68×** | 1.66–1.69 | 1.62× | 2.92 | 4.91 |
@@ -69,15 +70,15 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | LFM3 (Liquid AI) | **1.84×** | 1.82–1.86 | 1.79× | 2.60 | 4.79 |
 | Llama 3.x | **1.84×** | 1.82–1.86 | 1.80× | 2.63 | 4.86 |
 | SmolLM3 | **1.84×** | 1.82–1.86 | 1.80× | 2.63 | 4.86 |
-| DeepSeek V3 / V3.1 / R1 | **1.91×** | 1.89–1.93 | 1.86× | 2.56 | 4.88 |
+| DeepSeek V3 / R1 / V4 | **1.91×** | 1.89–1.93 | 1.86× | 2.56 | 4.88 |
 | GLM-5.3 | **1.93×** | 1.91–1.95 | 1.86× | 2.51 | 4.85 |
-| GLM-4.5 / 4.6 | **1.95×** | 1.93–1.97 | 1.88× | 2.49 | 4.85 |
+| GLM-4.5 / 4.6 / 4.7 | **1.95×** | 1.93–1.97 | 1.88× | 2.49 | 4.85 |
 | Mistral / Mixtral (v3) | **1.95×** | 1.93–1.97 | 1.92× | 2.25 | 4.40 |
 | Bielik (Polish, SpeakLeash) | **1.95×** | 1.93–1.97 | 1.92× | 2.25 | 4.40 |
 | Hunyuan 4 (Tencent) | **1.95×** | 1.93–1.97 | 1.89× | 2.47 | 4.83 |
 | BLOOM | **2.00×** | 1.98–2.02 | 1.89× | 2.40 | 4.81 |
-| MiniMax-M2 | **2.01×** | 1.99–2.03 | 1.94× | 2.47 | 4.97 |
-| Kimi K2 | **2.01×** | 1.99–2.03 | 1.96× | 2.42 | 4.86 |
+| MiniMax M2 / M3 | **2.01×** | 1.99–2.03 | 1.94× | 2.47 | 4.97 |
+| Kimi K2 / K3 | **2.01×** | 1.99–2.03 | 1.96× | 2.42 | 4.86 |
 | Qwen 2.5 / 3 | **2.07×** | 2.05–2.10 | 2.00× | 2.30 | 4.78 |
 | Granite 4.2 | **2.12×** | 2.10–2.15 | 2.05× | 2.27 | 4.83 |
 | GPT-4 / 3.5 (cl100k_base) | **2.13×** | 2.10–2.15 | 2.05× | 2.27 | 4.86 |
@@ -105,7 +106,7 @@ Tokens per sentence relative to English on FLORES-200, same content in every col
 | Gemma 1 / 2 | 1.59× | 1.50× | 1.46× | 1.67× | 1.58× | 1.59× | 1.55× | 1.65× | 1.26× |
 | Gemma 3 | 1.62× | 1.52× | 1.51× | 1.68× | 1.57× | 1.46× | 1.57× | 1.61× | 1.33× |
 | Qwen 3.8 | 1.64× | 1.54× | 1.51× | 1.66× | 1.61× | 1.54× | 1.58× | 1.74× | 1.31× |
-| Mistral Nemo / Small 3 / Large 2 (tekken) | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
+| Mistral Nemo / Small 3–4 / Large 2 (tekken) | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
 | Nemotron Nano 2 | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
 | Apertus (Swiss AI) | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
 | GPT-4o / 4.1 / 5 (o200k_base) | 1.68× | 1.60× | 1.64× | 1.79× | 1.51× | 1.47× | 1.63× | 1.75× | 1.31× |
@@ -120,15 +121,15 @@ Tokens per sentence relative to English on FLORES-200, same content in every col
 | LFM3 (Liquid AI) | 1.84× | 1.73× | 1.64× | 1.86× | 1.70× | 1.66× | 1.58× | 1.78× | 1.36× |
 | Llama 3.x | 1.84× | 1.50× | 1.89× | 2.12× | 1.80× | 1.76× | 1.87× | 1.64× | 1.58× |
 | SmolLM3 | 1.84× | 1.50× | 1.89× | 2.12× | 1.80× | 1.76× | 1.87× | 1.64× | 1.58× |
-| DeepSeek V3 / V3.1 / R1 | 1.91× | 1.70× | 1.68× | 1.99× | 1.81× | 1.78× | 1.86× | 2.16× | 1.51× |
+| DeepSeek V3 / R1 / V4 | 1.91× | 1.70× | 1.68× | 1.99× | 1.81× | 1.78× | 1.86× | 2.16× | 1.51× |
 | GLM-5.3 | 1.93× | 1.75× | 1.69× | 1.89× | 1.83× | 1.78× | 1.73× | 1.83× | 1.45× |
-| GLM-4.5 / 4.6 | 1.95× | 1.75× | 1.69× | 1.89× | 1.83× | 1.78× | 1.73× | 1.83× | 1.45× |
+| GLM-4.5 / 4.6 / 4.7 | 1.95× | 1.75× | 1.69× | 1.89× | 1.83× | 1.78× | 1.73× | 1.83× | 1.45× |
 | Mistral / Mixtral (v3) | 1.95× | 1.86× | 1.90× | 2.00× | 1.78× | 1.77× | 1.81× | 1.94× | 1.58× |
 | Bielik (Polish, SpeakLeash) | 1.95× | 1.86× | 1.90× | 2.00× | 1.78× | 1.77× | 1.81× | 1.94× | 1.58× |
 | Hunyuan 4 (Tencent) | 1.95× | 1.79× | 1.83× | 2.10× | 1.83× | 1.81× | 1.87× | 1.94× | 1.52× |
 | BLOOM | 2.00× | 2.02× | 2.13× | 2.07× | 1.80× | 1.78× | 1.91× | 2.73× | 1.68× |
-| MiniMax-M2 | 2.01× | 1.90× | 1.90× | 1.97× | 1.83× | 1.79× | 1.81× | 1.99× | 1.49× |
-| Kimi K2 | 2.01× | 1.99× | 2.11× | 2.15× | 1.83× | 1.80× | 1.90× | 2.16× | 1.73× |
+| MiniMax M2 / M3 | 2.01× | 1.90× | 1.90× | 1.97× | 1.83× | 1.79× | 1.81× | 1.99× | 1.49× |
+| Kimi K2 / K3 | 2.01× | 1.99× | 2.11× | 2.15× | 1.83× | 1.80× | 1.90× | 2.16× | 1.73× |
 | Qwen 2.5 / 3 | 2.07× | 2.06× | 1.76× | 2.12× | 1.87× | 1.82× | 1.86× | 2.50× | 1.56× |
 | Granite 4.2 | 2.12× | 2.09× | 1.91× | 2.14× | 1.88× | 1.82× | 1.88× | 2.95× | 1.58× |
 | GPT-4 / 3.5 (cl100k_base) | 2.13× | 2.10× | 1.91× | 2.15× | 1.89× | 1.83× | 1.88× | 2.96× | 1.59× |
@@ -153,7 +154,7 @@ The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Sh
 | Gemma 1 / 2 | 1.59× | 1.55× | 7 % |
 | Gemma 3 | 1.62× | 1.56× | 10 % |
 | Qwen 3.8 | 1.64× | 1.58× | 8 % |
-| Mistral Nemo / Small 3 / Large 2 (tekken) | 1.67× | 1.59× | 12 % |
+| Mistral Nemo / Small 3–4 / Large 2 (tekken) | 1.67× | 1.59× | 12 % |
 | Nemotron Nano 2 | 1.67× | 1.59× | 12 % |
 | Apertus (Swiss AI) | 1.67× | 1.59× | 12 % |
 | GPT-4o / 4.1 / 5 (o200k_base) | 1.68× | 1.59× | 13 % |
@@ -168,15 +169,15 @@ The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Sh
 | LFM3 (Liquid AI) | 1.84× | 1.69× | 18 % |
 | Llama 3.x | 1.84× | 1.70× | 17 % |
 | SmolLM3 | 1.84× | 1.70× | 17 % |
-| DeepSeek V3 / V3.1 / R1 | 1.91× | 1.73× | 19 % |
+| DeepSeek V3 / R1 / V4 | 1.91× | 1.73× | 19 % |
 | GLM-5.3 | 1.93× | 1.74× | 21 % |
-| GLM-4.5 / 4.6 | 1.95× | 1.74× | 22 % |
+| GLM-4.5 / 4.6 / 4.7 | 1.95× | 1.74× | 22 % |
 | Mistral / Mixtral (v3) | 1.95× | 1.75× | 21 % |
 | Bielik (Polish, SpeakLeash) | 1.95× | 1.75× | 21 % |
 | Hunyuan 4 (Tencent) | 1.95× | 1.75× | 21 % |
 | BLOOM | 2.00× | 1.75× | 24 % |
-| MiniMax-M2 | 2.01× | 1.77× | 24 % |
-| Kimi K2 | 2.01× | 1.80× | 21 % |
+| MiniMax M2 / M3 | 2.01× | 1.77× | 24 % |
+| Kimi K2 / K3 | 2.01× | 1.80× | 21 % |
 | Qwen 2.5 / 3 | 2.07× | 1.80× | 26 % |
 | Granite 4.2 | 2.12× | 1.80× | 28 % |
 | GPT-4 / 3.5 (cl100k_base) | 2.13× | 1.81× | 28 % |
@@ -191,11 +192,34 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effe
 
 | Vendor | Model | $ in / 1M | $ out / 1M | sk/en | effective $ in | effective $ out | Slovak surcharge |
 |---|---|---|---|---|---|---|---|
+| Alibaba | `qwen3.8-flash` | 0.15 | 0.47 | 1.64× | 0.25 | 0.77 | +64 % |
+| Mistral | `mistral-small-4-0-26-03` | 0.15 | 0.60 | 1.67× | 0.25 | 1.00 | +67 % |
 | OpenAI | `gpt-4o-mini` | 0.15 | 0.60 | 1.68× | 0.25 | 1.01 | +68 % |
+| DeepSeek | `deepseek-flash` | 0.15 | 0.60 | 1.91× | 0.29 | 1.14 | +90 % |
+| Z.ai | `glm-5.3-flash` | 0.15 | 0.50 | 1.93× | 0.29 | 0.96 | +93 % |
+| MiniMax | `MiniMax-M3.1-Flash` | 0.15 | 0.60 | 2.01× | 0.30 | 1.20 | +101 % |
 | OpenAI | `gpt-5-mini` | 0.25 | 2.00 | 1.68× | 0.42 | 3.35 | +68 % |
+| MiniMax | `MiniMax-M3` | 0.30 | 1.20 | 2.01× | 0.60 | 2.41 | +101 % |
+| Alibaba | `qwen3.8-27b` | 0.50 | 3.00 | 1.64× | 0.82 | 4.92 | +64 % |
+| Z.ai | `glm-4.7` | 0.60 | 2.20 | 1.95× | 1.17 | 4.28 | +95 % |
+| Mistral | `mistral-large-4-0` | 0.70 | 2.10 | 1.74× | 1.22 | 3.65 | +74 % |
+| DeepSeek | `deepseek-v4-pro` | 0.66 | 1.98 | 1.91× | 1.26 | 3.77 | +90 % |
 | OpenAI | `gpt-5` | 1.25 | 10.00 | 1.68× | 2.10 | 16.77 | +68 % |
+| Z.ai | `glm-5.3` | 1.40 | 4.40 | 1.93× | 2.70 | 8.49 | +93 % |
+| Alibaba | `qwen3.8-max` | 2.00 | 6.00 | 1.64× | 3.28 | 9.83 | +64 % |
 | OpenAI | `gpt-4.1` | 2.00 | 8.00 | 1.68× | 3.35 | 13.42 | +68 % |
+| Moonshot AI | `kimi-k3.1-pro` | 2.00 | 10.00 | 2.01× | 4.02 | 20.10 | +101 % |
 | OpenAI | `gpt-4o` | 2.50 | 10.00 | 1.68× | 4.19 | 16.77 | +68 % |
+| Moonshot AI | `kimi-k3` | 3.00 | 15.00 | 2.01× | 6.03 | 30.15 | +101 % |
+
+Notes:
+
+- `qwen3.8-flash`: international (Singapore) rate
+- `deepseek-flash`: DeepSeek-V4.1-Flash; off-peak price; $0.30 / $1.20 during peak hours (01–04 and 06–10 UTC on weekdays)
+- `MiniMax-M3`: standard tier, up to 512k input tokens (marked as a permanent 50 % discount)
+- `qwen3.8-27b`: international (Singapore) rate
+- `deepseek-v4-pro`: off-peak price; $1.32 / $3.96 during peak hours (01–04 and 06–10 UTC on weekdays)
+- `qwen3.8-max`: international (Singapore) rate; closed model, assumes the tokenizer shared by all open Qwen 3.8 models
 
 *Not measured in this run (API key not set and counts not cached): Claude Haiku 5.5 (API), Claude Opus 5.5 (API), Claude Sonnet 4.6 (API), Claude Sonnet 5.5 (API), Gemini 3.8 Flash (API), Gemini 4 Argon (API).*
 
@@ -237,6 +261,7 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian an
 - **Najhoršie:** GPT-4 / GPT-3.5 (2,13×), Granite 4.2 (2,12×), Qwen 2.5 / 3 (2,07×), Falcon 3 (2,27×).
 - **Slovenčina je drahšia ako čeština** v 30 z 33 tokenizérov a drahšia ako slovinčina a chorvátčina v 28 z 33, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
 - **Písanie bez diakritiky takmer nepomáha.** Na GPT-4o / GPT-5 ušetrí asi 5 % tokenov (1,68× → 1,59×), na Llama 4 asi 1 %. Väčšinu príplatku spôsobuje skloňovanie a slovná zásoba, nie mäkčene a dĺžne.
+- **Príplatok za slovenčinu závisí od výrobcu.** Pri Qwen 3.8, Mistrale a OpenAI zaplatíte za slovenský text o 64 – 74 % viac, pri DeepSeek V4, GLM-5.3, MiniMax M3 a Kimi K3 o 90 – 101 % viac. Lacnejší cenník to môže zmazať: `deepseek-v4-pro` je na papieri lacnejší ako `mistral-large-4-0`, no rovnaký slovenský text na ňom stojí o niečo viac.
 - **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
 
 **Vyskúšajte si to na vlastnom texte:** [kalkulačka tokenov online](https://ltchurik.github.io/sk-tokenizer-bench/) spočíta tokeny a cenu priamo v prehliadači.
