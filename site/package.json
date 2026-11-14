@@ -1,0 +1,9 @@
+{
+  "name": "sk-tokenizer-bench-site",
+  "private": true,
+  "description": "Test-only dependency: the web calculator imports the same version from the jsDelivr CDN.",
+  "type": "module",
+  "devDependencies": {
+    "@huggingface/tokenizers": "0.2.0"
+  }
+}

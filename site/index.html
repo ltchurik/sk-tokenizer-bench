@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koľko tokenov stojí slovenčina? Kalkulačka tokenov pre GPT, Llama, Gemma, Mistral</title>
+<meta name="description" content="Vložte slovenský text a zistite, koľko tokenov a peňazí stojí v GPT-4o / GPT-5, Llama, Gemma, Mistral, Qwen či DeepSeek v porovnaní s angličtinou. Počíta sa priamo v prehliadači, text nikam neodchádza.">
+<link rel="canonical" href="https://ltchurik.github.io/sk-tokenizer-bench/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Koľko tokenov stojí slovenčina?">
+<meta property="og:description" content="Tokenová kalkulačka pre slovenčinu: počet tokenov, cena a porovnanie s angličtinou pre 30+ jazykových modelov.">
+<meta property="og:url" content="https://ltchurik.github.io/sk-tokenizer-bench/">
+<meta property="og:image" content="https://ltchurik.github.io/sk-tokenizer-bench/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a78d6'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3Esk%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"sk-tokenizer-bench: kalkulačka tokenov pre slovenčinu",
+ "url":"https://ltchurik.github.io/sk-tokenizer-bench/","applicationCategory":"DeveloperApplication","operatingSystem":"Any",
+ "inLanguage":["sk","en"],"isAccessibleForFree":true,
+ "author":{"@type":"Person","name":"Ľubomír Tchurik","url":"https://lubomirtchurik.sk"},
+ "codeRepository":"https://github.com/ltchurik/sk-tokenizer-bench",
+ "description":"Counts Slovak tokens in the browser for 30+ LLM tokenizers and compares them with English."}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a>
+    <div class="lang" role="group" aria-label="Jazyk / Language">
+      <button type="button" data-set-lang="sk" aria-pressed="true">SK</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 data-i18n="h1">Koľko tokenov stojí slovenčina?</h1>
+    <p class="lead" data-i18n="lead">Jazykové modely účtujú za tokeny a tokenizéry sa učili hlavne na angličtine. Vložte slovenský text a uvidíte, koľko tokenov a peňazí stojí v jednotlivých modeloch a o koľko viac to je oproti rovnakému textu po anglicky.</p>
+    <p class="privacy" data-i18n="privacy">Všetko sa počíta vo vašom prehliadači. Text nikam neodchádza.</p>
+  </section>
+
+  <section class="card input" aria-labelledby="in-label">
+    <label id="in-label" for="sk" class="label" data-i18n="skLabel">Slovenský text</label>
+    <textarea id="sk" rows="7" spellcheck="false"></textarea>
+    <div class="meta">
+      <span id="stats"></span>
+      <button type="button" class="link" id="sample" data-i18n="sample">Vložiť ukážku</button>
+      <button type="button" class="link" id="clear" data-i18n="clear">Vymazať</button>
+    </div>
+    <details id="en-box">
+      <summary data-i18n="enSummary">Mám aj anglickú verziu (presné porovnanie)</summary>
+      <label for="en" class="label sub" data-i18n="enLabel">Ten istý text po anglicky</label>
+      <textarea id="en" rows="5" spellcheck="false"></textarea>
+      <p class="hint" data-i18n="enHint">Bez anglickej verzie sa porovnanie odhaduje podľa pomeru nameraného na 1012 vetách korpusu FLORES-200.</p>
+    </details>
+  </section>
+
+  <section class="headline card" aria-live="polite">
+    <p id="headline" class="big"></p>
+    <p id="subline" class="muted"></p>
+  </section>
+
+  <section class="card" aria-labelledby="cost-h">
+    <h2 id="cost-h" data-i18n="costH">Cena za 1 000 takýchto textov</h2>
+    <p class="muted small" id="cost-note"></p>
+    <div class="table-scroll"><table class="grid" id="cost"></table></div>
+  </section>
+
+  <section class="card" aria-labelledby="res-h">
+    <div class="row-between">
+      <h2 id="res-h" data-i18n="resH">Tokeny podľa tokenizéra</h2>
+      <button type="button" class="btn" id="load-all"></button>
+    </div>
+    <p class="muted small" data-i18n-html="resNote">Čísla s <b>≈</b> sú odhad z nameraného počtu znakov na token. Kliknutím na <b>Spočítať presne</b> sa tokenizér stiahne z Hugging Face (raz, potom ho má prehliadač uložený) a text sa spočíta presne, rovnako ako v benchmarku.</p>
+    <div class="table-scroll"><table class="grid" id="results"></table></div>
+  </section>
+
+  <section class="card" aria-labelledby="viz-h">
+    <div class="row-between">
+      <h2 id="viz-h" data-i18n="vizH">Ako tokenizér delí text</h2>
+      <label class="select"><span class="sr" data-i18n="vizPick">Tokenizér</span><select id="viz-pick"></select></label>
+    </div>
+    <p class="muted small" data-i18n="vizNote">Každý farebný úsek je jeden token. Prerušovaný rámik znamená, že jeden znak (napr. ľ alebo ô) sa rozdelil do viacerých tokenov.</p>
+    <div id="viz" class="viz" lang="sk"></div>
+  </section>
+
+  <section class="card prose" aria-labelledby="why-h">
+    <h2 id="why-h" data-i18n="whyH">Prečo slovenčina stojí viac?</h2>
+    <div data-i18n-html="why">
+      <p>Tokenizér rozdeľuje text na kúsky (tokeny) podľa slovníka, ktorý sa naučil z trénovacích dát. Tie sú prevažne anglické, takže bežné anglické slová sú jeden token, kým slovenské slová s diakritikou a mnohými tvarmi (<i>mesto, mesta, mestu, mestom, mestách</i>) sa rozpadnú na viac kúskov. Za každý token sa platí a každý zaberá miesto v kontextovom okne.</p>
+      <ul>
+        <li><b>Bežné modely:</b> slovenčina potrebuje 1,6× až 2,3× viac tokenov ako angličtina (GPT-4o / GPT-5 1,68×, Llama 4 1,56×, GPT-4 2,13×).</li>
+        <li><b>Diakritika nie je hlavný problém:</b> text bez mäkčeňov a dĺžňov ušetrí na moderných modeloch len 1 – 5 % tokenov.</li>
+        <li><b>Je to vecou trénovacích dát:</b> SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický.</li>
+      </ul>
+      <p>Celé meranie, metodika a výsledky pre 10 jazykov: <a href="https://github.com/ltchurik/sk-tokenizer-bench">github.com/ltchurik/sk-tokenizer-bench</a>.</p>
+    </div>
+    <figure>
+      <img src="tokenizer-timeline.png" width="1200" height="600" loading="lazy" alt="Graf: pomer slovenských a anglických tokenov podľa dátumu vydania tokenizéra. OpenAI klesol z 2,13× (GPT-4) na 1,68× (GPT-4o), Meta z 1,84× (Llama 3) na 1,56× (Llama 4).">
+    </figure>
+  </section>
+
+  <footer class="foot">
+    <p data-i18n-html="foot">Dáta: <a href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a> · korpus FLORES-200 (CC BY-SA 4.0) · ceny podľa oficiálnych cenníkov · tokenizéry z Hugging Face cez <a href="https://github.com/huggingface/tokenizers.js">tokenizers.js</a> · <a href="https://doi.org/10.5281/zenodo.24092040">DOI 10.5281/zenodo.24092040</a> · MIT</p>
+  </footer>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

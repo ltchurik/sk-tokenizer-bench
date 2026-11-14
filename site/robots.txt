@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ltchurik.github.io/sk-tokenizer-bench/sitemap.xml
