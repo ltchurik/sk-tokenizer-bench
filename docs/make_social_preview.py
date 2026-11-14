@@ -19,7 +19,7 @@ r = json.load(open(ROOT / "results" / "flores" / "results.json", encoding="utf-8
 pick = [("GPT-4 / 3.5", "GPT-4 / 3.5 (cl100k_base)"), ("Qwen 2.5 / 3", "Qwen 2.5 / 3"),
         ("DeepSeek V3", "DeepSeek V3 / V3.1 / R1"), ("Llama 3", "Llama 3.x"),
         ("GPT-4o / GPT-5", "GPT-4o / 4.1 / 5 (o200k_base)"), ("Mistral", "Mistral Nemo / Small 3 / Large 2 (tekken)"),
-        ("Gemma 3", "Gemma 2 / 3"), ("Llama 4", "Llama 4"), ("EuroLLM", "EuroLLM")]
+        ("Gemma 3", "Gemma 3"), ("Llama 4", "Llama 4"), ("EuroLLM", "EuroLLM")]
 data = [(lab, r[k]["ratio_vs_en"]["sk"]["ALL"]) for lab, k in pick]
 SURF, INK, INK2, MUTED, BLUE = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#2a78d6"
 plt.rcParams["font.family"] = "DejaVu Sans"
@@ -28,7 +28,7 @@ fig = plt.figure(figsize=(W / 100, H / 100), dpi=100, facecolor=SURF)
 fig.text(L / W, 1 - 92 / H, "sk-tokenizer-bench", fontsize=21, color=BLUE, weight="bold", va="top")
 fig.text(L / W, 1 - 146 / H, "How much more\ndoes Slovak cost\nin LLM tokens?", fontsize=33, color=INK, weight="bold", va="top", linespacing=1.18)
 fig.text(L / W, 1 - 330 / H, "Same text, Slovak vs English:\n1.6× – 2.3× more tokens\non mainstream models.", fontsize=18, color=INK2, va="top", linespacing=1.45)
-fig.text(L / W, 72 / H, "32 tokenizers · FLORES-200 · sk · cs · pl · hu · de\ngithub.com/ltchurik/sk-tokenizer-bench", fontsize=13, color=MUTED, va="bottom", linespacing=1.6)
+fig.text(L / W, 72 / H, "33 tokenizers · FLORES-200 · 10 languages\ngithub.com/ltchurik/sk-tokenizer-bench", fontsize=13, color=MUTED, va="bottom", linespacing=1.6)
 ax = fig.add_axes([770 / W, 120 / H, 420 / W, 410 / H], facecolor=SURF)
 n, bh = len(data), 0.52
 for i, (lab, v) in enumerate(data):
