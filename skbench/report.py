@@ -1,12 +1,16 @@
 """Markdown rendering: per-corpus RESULTS.md, COST.md and the README results block."""
 import re
 
-from .core import BASE
+from .core import BASE, NO_DIACRITICS
 
 R = f"ratio_vs_{BASE}"
 CI = f"ci95_vs_{BASE}"
 README_START, README_END = "<!-- results:start -->", "<!-- results:end -->"
-LANG_NAMES = {"sk": "Slovak", "cs": "Czech", "pl": "Polish", "hu": "Hungarian", "de": "German", "en": "English"}
+LANG_NAMES = {
+    "sk": "Slovak", NO_DIACRITICS: "Slovak w/o diacritics", "cs": "Czech", "pl": "Polish", "hu": "Hungarian",
+    "sl": "Slovenian", "hr": "Croatian", "ro": "Romanian", "uk": "Ukrainian", "de": "German", "en": "English",
+}
+REGION = ["sk", "cs", "pl", "hu", "sl", "hr", "ro", "uk", "de"]
 
 
 def _table(hdr, rows):
@@ -39,24 +43,29 @@ def _identical_note(results):
 
 def corpus_markdown(title, results, n_rows, langs):
     other = [lg for lg in langs if lg != BASE]
-    domains = sorted(k for k in next(iter(results.values()))[R][other[0]] if k != "ALL")
+    domains = sorted(k for k in next(iter(results.values()))[R]["sk"] if k != "ALL")
+    order = _by(results, "sk")
     md = [f"# Results — {title}\n", f"{n_rows} parallel sentences, baseline = `{BASE}`. "
-          "95 % CI = percentile bootstrap over sentences (2000 resamples).\n", "## Overall\n"]
-    hdr = ["Tokenizer"] + [f"{lg} tokens" for lg in langs]
-    hdr += [h for lg in other for h in (f"{lg}/{BASE}", "95 % CI")]
-    hdr += [f"chars/token ({lg})" for lg in langs]
-    rows = []
-    for name, r in _by(results, other[0]):
-        row = [name] + [r["tokens"][lg]["ALL"] for lg in langs]
-        row += [c for lg in other for c in (_x(r[R][lg]["ALL"]), _ci(r[CI][lg]))]
-        row += [f'{r["chars_per_token"][lg]:.2f}' for lg in langs]
-        rows.append(row)
-    md += [_table(hdr, rows), _identical_note(results)]
-    for lg in other:
+          f"`{NO_DIACRITICS}` = the Slovak column with diacritics stripped. "
+          "95 % CI = percentile bootstrap over sentences (2000 resamples).\n",
+          f"## Tokens relative to {BASE}\n"]
+    md.append(_table(["Tokenizer", f"sk/{BASE}", "95 % CI"] + [f"{lg}/{BASE}" for lg in other if lg != "sk"],
+                     [[n, _x(r[R]["sk"]["ALL"]), _ci(r[CI]["sk"])] + [_x(r[R][lg]["ALL"]) for lg in other if lg != "sk"]
+                      for n, r in order]))
+    md.append(_identical_note(results))
+    md += ["\n## Total tokens\n", _table(["Tokenizer"] + langs, [[n] + [r["tokens"][lg]["ALL"] for lg in langs] for n, r in order])]
+    md += ["\n## Characters per token\n",
+           _table(["Tokenizer"] + langs, [[n] + [f'{r["chars_per_token"][lg]:.2f}' for lg in langs] for n, r in order])]
+    for lg in [x for x in ("sk", NO_DIACRITICS) if x in other]:
         md.append(f"\n## {lg}/{BASE} ratio by domain\n")
-        md.append(_table(["Tokenizer"] + domains,
-                         [[n] + [_x(r[R][lg][d]) for d in domains] for n, r in _by(results, lg)]))
+        md.append(_table(["Tokenizer"] + domains, [[n] + [_x(r[R][lg][d]) for d in domains] for n, r in _by(results, lg)]))
     return "\n".join(md) + "\n"
+
+
+def diacritics_share(r):
+    """Fraction of the Slovak penalty (sk/en - 1) that disappears when diacritics are stripped."""
+    sk, nd = r[R]["sk"]["ALL"], r[R][NO_DIACRITICS]["ALL"]
+    return None if sk <= 1.05 else (sk - nd) / (sk - 1)
 
 
 def cost_rows(prices, results):
@@ -92,7 +101,7 @@ def cost_markdown(prices, results, corpus_label):
 
 
 def readme_block(flores, custom, prices):
-    langs = [lg for lg in ["sk", "cs", "pl", "hu", "de"] if lg in next(iter(flores.values()))[R]]
+    langs = [lg for lg in REGION if lg in next(iter(flores.values()))[R]]
     md = ["### Slovak vs English\n",
           "FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootstrap CI, "
           "and the hand-written 7-domain corpus for comparison.\n"]
@@ -109,6 +118,14 @@ def readme_block(flores, custom, prices):
            "Sorted by Slovak.\n"]
     md.append(_table(["Tokenizer"] + [LANG_NAMES[lg] for lg in langs],
                      [[n] + [_x(r[R][lg]["ALL"]) for lg in langs] for n, r in _by(flores, "sk")]))
+    md += ["\n### Slovak without diacritics\n",
+           "The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "
+           "\"Share\" = how much of the Slovak penalty (sk/en − 1) disappears; the rest is morphology and vocabulary.\n"]
+    rows = []
+    for n, r in _by(flores, "sk"):
+        share = diacritics_share(r)
+        rows.append([n, _x(r[R]["sk"]["ALL"]), _x(r[R][NO_DIACRITICS]["ALL"]), "–" if share is None else f"{share * 100:.0f} %"])
+    md.append(_table(["Tokenizer", "sk/en", "without diacritics", "share of penalty"], rows))
     md += ["\n### In dollars\n", cost_markdown(prices, flores, "FLORES-200").split("\n", 2)[2]]
     return "\n".join(md)
 

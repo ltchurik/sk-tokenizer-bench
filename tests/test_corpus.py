@@ -18,4 +18,11 @@ def test_corpus_well_formed(name):
 def test_flores_shape():
     rows, langs = load_corpus(CORPORA["flores"])
     assert len(rows) == 1012
-    assert langs == ["sk", "cs", "pl", "hu", "de", "en"]
+    assert langs == ["sk", "sk_nd", "cs", "pl", "hu", "sl", "hr", "ro", "uk", "de", "en"]
+    assert not any('""' in r["hr"] for r in rows), "CSV quote escaping leaked into the Croatian column"
+
+
+def test_strip_diacritics():
+    from skbench.core import strip_diacritics
+
+    assert strip_diacritics("Ľúbostná pieseň: ďateľ, kôň, päť, vŕba") == "Lubostna piesen: datel, kon, pat, vrba"

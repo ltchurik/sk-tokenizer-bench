@@ -1,5 +1,6 @@
 """Corpus loading, measurement and statistics."""
 import json
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
@@ -12,6 +13,13 @@ CORPORA = {
 }
 META_KEYS = {"id", "domain"}
 BASE = "en"
+NO_DIACRITICS = "sk_nd"  # derived column: Slovak with diacritics stripped (how much of the penalty is diacritics?)
+
+
+def strip_diacritics(text):
+    """ľščťžýáíéďňôúäŕĺ -> lsctzyaiednouarl; everything else untouched."""
+    decomposed = unicodedata.normalize("NFD", text)
+    return unicodedata.normalize("NFC", "".join(c for c in decomposed if not unicodedata.combining(c)))
 
 
 def load_corpus(path):
@@ -25,6 +33,10 @@ def load_corpus(path):
         raise ValueError(f"{path}: baseline language {BASE!r} not in corpus")
     # baseline last, others in file order
     langs = [lg for lg in langs if lg != BASE] + [BASE]
+    if "sk" in langs:
+        for r in rows:
+            r[NO_DIACRITICS] = strip_diacritics(r["sk"])
+        langs.insert(langs.index("sk") + 1, NO_DIACRITICS)
     return rows, langs
 
 

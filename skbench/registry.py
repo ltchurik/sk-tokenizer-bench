@@ -26,7 +26,8 @@ TOKENIZERS = {
     "Mistral / Mixtral (v3)": ("hf", "mistralai/Mistral-7B-Instruct-v0.3"),
     "Mistral Nemo / Small 3 / Large 2 (tekken)": ("hf", "mistralai/Mistral-Small-3.1-24B-Instruct-2503"),
     # --- Google -------------------------------------------------------------------------
-    "Gemma 2 / 3": ("hf", "unsloth/gemma-3-4b-it"),
+    "Gemma 1 / 2": ("hf", "unsloth/gemma-2-9b"),
+    "Gemma 3": ("hf", "unsloth/gemma-3-4b-it"),
     "mT5": ("hf", "Xenova/mt5-base"),
     # --- Chinese labs -------------------------------------------------------------------
     "Qwen 2.5 / 3": ("hf", "Qwen/Qwen3-8B"),
@@ -64,6 +65,46 @@ TOKENIZERS = {
 }
 
 API_KINDS = {"anthropic", "gemini"}
+
+# Month the earliest model named in each row was released (used for the timeline chart).
+# Lineages draw a line through successive tokenizers of the same vendor.
+RELEASED = {
+    "GPT-4 / 3.5 (cl100k_base)": "2023-03",
+    "GPT-4o / 4.1 / 5 (o200k_base)": "2024-05",
+    "gpt-oss (o200k_harmony)": "2025-08",
+    "Llama 2": "2023-07",
+    "Llama 3.x": "2024-04",
+    "Llama 4": "2025-04",
+    "Mistral / Mixtral (v3)": "2024-04",
+    "Mistral Nemo / Small 3 / Large 2 (tekken)": "2024-07",
+    "Gemma 1 / 2": "2024-02",
+    "Gemma 3": "2025-03",
+    "mT5": "2020-10",
+    "Qwen 2.5 / 3": "2024-09",
+    "DeepSeek V3 / V3.1 / R1": "2024-12",
+    "GLM-4.5 / 4.6": "2025-07",
+    "Kimi K2": "2025-07",
+    "MiniMax-M2": "2025-10",
+    "Phi-4": "2024-12",
+    "Phi-4-mini": "2025-02",
+    "Command R": "2024-03",
+    "Nemotron Nano 2": "2025-08",
+    "Granite 3.3": "2025-04",
+    "Falcon 3": "2024-12",
+    "SmolLM3": "2025-07",
+    "OLMo 2": "2024-11",
+    "BLOOM": "2022-07",
+    "Claude 2 (legacy, Xenova mirror)": "2023-07",
+    "EuroLLM": "2024-09",
+    "Apertus (Swiss AI)": "2025-09",
+    "Teuken (OpenGPT-X)": "2024-11",
+}
+LINEAGES = {
+    "OpenAI": ["GPT-4 / 3.5 (cl100k_base)", "GPT-4o / 4.1 / 5 (o200k_base)"],
+    "Meta": ["Llama 2", "Llama 3.x", "Llama 4"],
+    "Mistral": ["Mistral / Mixtral (v3)", "Mistral Nemo / Small 3 / Large 2 (tekken)"],
+    "Google": ["Gemma 1 / 2", "Gemma 3"],
+}
 
 # Pre-tokenization patterns for tiktoken-format vocabularies shipped on the HF Hub.
 # Copied verbatim from the model repo's tokenization_*.py.
