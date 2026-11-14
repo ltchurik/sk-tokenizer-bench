@@ -1,0 +1,22 @@
+name: tokenizer-watch
+on:
+  schedule: [{ cron: "0 7 2 * *" }]  # monthly, the day after the benchmark run
+  workflow_dispatch:
+    inputs:
+      days: { description: "Look back this many days", default: "40" }
+permissions:
+  contents: read
+  issues: write
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - name: Look for new tokenizers and open issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}  # optional: lets the watch read gated repos
+        run: python tools/watch_tokenizers.py --days "${{ inputs.days || 40 }}" --open-issues
