@@ -591,6 +591,80 @@
     },
     "same_as": null
   },
+  "Mistral Large 4": {
+    "kind": "hf",
+    "id": "mistralai/Mistral-Large-4-1T-A52B",
+    "tokens": {
+      "sk": {
+        "news": 211,
+        "ALL": 1070,
+        "tech": 185,
+        "legal": 161,
+        "chat": 141,
+        "wiki": 163,
+        "diacritics": 107,
+        "prompt": 102
+      },
+      "sk_nd": {
+        "news": 189,
+        "ALL": 977,
+        "tech": 176,
+        "legal": 149,
+        "chat": 122,
+        "wiki": 155,
+        "diacritics": 91,
+        "prompt": 95
+      },
+      "en": {
+        "news": 123,
+        "ALL": 627,
+        "tech": 109,
+        "legal": 84,
+        "chat": 96,
+        "wiki": 94,
+        "diacritics": 60,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.651,
+      "sk_nd": 2.904,
+      "en": 5.0
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.469,
+        "diacritics": 1.783,
+        "legal": 1.917,
+        "news": 1.715,
+        "prompt": 1.672,
+        "tech": 1.697,
+        "wiki": 1.734,
+        "ALL": 1.707
+      },
+      "sk_nd": {
+        "chat": 1.271,
+        "diacritics": 1.517,
+        "legal": 1.774,
+        "news": 1.537,
+        "prompt": 1.557,
+        "tech": 1.615,
+        "wiki": 1.649,
+        "ALL": 1.558
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.624,
+        1.79
+      ],
+      "sk_nd": [
+        1.483,
+        1.639
+      ]
+    },
+    "same_as": null
+  },
   "Gemma 1 / 2": {
     "kind": "hf",
     "id": "unsloth/gemma-2-9b",
@@ -887,6 +961,80 @@
     },
     "same_as": null
   },
+  "Qwen 3.8": {
+    "kind": "hf",
+    "id": "Qwen/Qwen3.8-27B",
+    "tokens": {
+      "sk": {
+        "news": 194,
+        "ALL": 1009,
+        "tech": 181,
+        "legal": 148,
+        "chat": 135,
+        "wiki": 155,
+        "diacritics": 102,
+        "prompt": 94
+      },
+      "sk_nd": {
+        "news": 182,
+        "ALL": 937,
+        "tech": 170,
+        "legal": 140,
+        "chat": 118,
+        "wiki": 147,
+        "diacritics": 90,
+        "prompt": 90
+      },
+      "en": {
+        "news": 122,
+        "ALL": 623,
+        "tech": 110,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 93,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.812,
+      "sk_nd": 3.028,
+      "en": 5.032
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.406,
+        "diacritics": 1.759,
+        "legal": 1.783,
+        "news": 1.59,
+        "prompt": 1.541,
+        "tech": 1.645,
+        "wiki": 1.667,
+        "ALL": 1.62
+      },
+      "sk_nd": {
+        "chat": 1.229,
+        "diacritics": 1.552,
+        "legal": 1.687,
+        "news": 1.492,
+        "prompt": 1.475,
+        "tech": 1.545,
+        "wiki": 1.581,
+        "ALL": 1.504
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.54,
+        1.701
+      ],
+      "sk_nd": [
+        1.428,
+        1.58
+      ]
+    },
+    "same_as": null
+  },
   "DeepSeek V3 / V3.1 / R1": {
     "kind": "hf",
     "id": "deepseek-ai/DeepSeek-V3.1",
@@ -1027,6 +1175,80 @@
       "sk": [
         1.776,
         1.979
+      ],
+      "sk_nd": [
+        1.551,
+        1.745
+      ]
+    },
+    "same_as": null
+  },
+  "GLM-5.3": {
+    "kind": "hf",
+    "id": "zai-org/GLM-5.3",
+    "tokens": {
+      "sk": {
+        "news": 224,
+        "ALL": 1160,
+        "tech": 198,
+        "legal": 178,
+        "chat": 152,
+        "wiki": 183,
+        "diacritics": 115,
+        "prompt": 110
+      },
+      "sk_nd": {
+        "news": 201,
+        "ALL": 1025,
+        "tech": 185,
+        "legal": 157,
+        "chat": 128,
+        "wiki": 165,
+        "diacritics": 93,
+        "prompt": 96
+      },
+      "en": {
+        "news": 124,
+        "ALL": 624,
+        "tech": 109,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 93,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.446,
+      "sk_nd": 2.768,
+      "en": 5.024
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.583,
+        "diacritics": 1.983,
+        "legal": 2.145,
+        "news": 1.806,
+        "prompt": 1.803,
+        "tech": 1.817,
+        "wiki": 1.968,
+        "ALL": 1.859
+      },
+      "sk_nd": {
+        "chat": 1.333,
+        "diacritics": 1.603,
+        "legal": 1.892,
+        "news": 1.621,
+        "prompt": 1.574,
+        "tech": 1.697,
+        "wiki": 1.774,
+        "ALL": 1.643
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.76,
+        1.961
       ],
       "sk_nd": [
         1.551,
@@ -1179,6 +1401,154 @@
       "sk_nd": [
         1.589,
         1.755
+      ]
+    },
+    "same_as": null
+  },
+  "ERNIE 5.5": {
+    "kind": "hf",
+    "id": "baidu/ERNIE-5.5-Flash-Base",
+    "tokens": {
+      "sk": {
+        "news": 205,
+        "ALL": 1062,
+        "tech": 179,
+        "legal": 162,
+        "chat": 143,
+        "wiki": 162,
+        "diacritics": 109,
+        "prompt": 102
+      },
+      "sk_nd": {
+        "news": 189,
+        "ALL": 956,
+        "tech": 169,
+        "legal": 143,
+        "chat": 122,
+        "wiki": 149,
+        "diacritics": 91,
+        "prompt": 93
+      },
+      "en": {
+        "news": 121,
+        "ALL": 617,
+        "tech": 109,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 91,
+        "diacritics": 57,
+        "prompt": 60
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.671,
+      "sk_nd": 2.968,
+      "en": 5.081
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.49,
+        "diacritics": 1.912,
+        "legal": 1.952,
+        "news": 1.694,
+        "prompt": 1.7,
+        "tech": 1.642,
+        "wiki": 1.78,
+        "ALL": 1.721
+      },
+      "sk_nd": {
+        "chat": 1.271,
+        "diacritics": 1.596,
+        "legal": 1.723,
+        "news": 1.562,
+        "prompt": 1.55,
+        "tech": 1.55,
+        "wiki": 1.637,
+        "ALL": 1.549
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.63,
+        1.815
+      ],
+      "sk_nd": [
+        1.469,
+        1.634
+      ]
+    },
+    "same_as": null
+  },
+  "Hunyuan 4 (Tencent)": {
+    "kind": "hf",
+    "id": "tencent/Hy4-preview",
+    "tokens": {
+      "sk": {
+        "news": 236,
+        "ALL": 1188,
+        "tech": 202,
+        "legal": 182,
+        "chat": 157,
+        "wiki": 182,
+        "diacritics": 115,
+        "prompt": 114
+      },
+      "sk_nd": {
+        "news": 208,
+        "ALL": 1046,
+        "tech": 185,
+        "legal": 160,
+        "chat": 135,
+        "wiki": 167,
+        "diacritics": 92,
+        "prompt": 99
+      },
+      "en": {
+        "news": 126,
+        "ALL": 630,
+        "tech": 109,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 96,
+        "diacritics": 59,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.388,
+      "sk_nd": 2.712,
+      "en": 4.976
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.635,
+        "diacritics": 1.949,
+        "legal": 2.193,
+        "news": 1.873,
+        "prompt": 1.869,
+        "tech": 1.853,
+        "wiki": 1.896,
+        "ALL": 1.886
+      },
+      "sk_nd": {
+        "chat": 1.406,
+        "diacritics": 1.559,
+        "legal": 1.928,
+        "news": 1.651,
+        "prompt": 1.623,
+        "tech": 1.697,
+        "wiki": 1.74,
+        "ALL": 1.66
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.792,
+        1.979
+      ],
+      "sk_nd": [
+        1.579,
+        1.745
       ]
     },
     "same_as": null
@@ -1405,6 +1775,80 @@
     },
     "same_as": null
   },
+  "Cohere North": {
+    "kind": "hf",
+    "id": "CohereLabs/North-Micro-Vision-Instruct",
+    "tokens": {
+      "sk": {
+        "news": 193,
+        "ALL": 996,
+        "tech": 175,
+        "legal": 150,
+        "chat": 126,
+        "wiki": 152,
+        "diacritics": 105,
+        "prompt": 95
+      },
+      "sk_nd": {
+        "news": 180,
+        "ALL": 916,
+        "tech": 163,
+        "legal": 137,
+        "chat": 114,
+        "wiki": 142,
+        "diacritics": 90,
+        "prompt": 90
+      },
+      "en": {
+        "news": 117,
+        "ALL": 601,
+        "tech": 108,
+        "legal": 82,
+        "chat": 92,
+        "wiki": 89,
+        "diacritics": 54,
+        "prompt": 59
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.848,
+      "sk_nd": 3.097,
+      "en": 5.216
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.37,
+        "diacritics": 1.944,
+        "legal": 1.829,
+        "news": 1.65,
+        "prompt": 1.61,
+        "tech": 1.62,
+        "wiki": 1.708,
+        "ALL": 1.657
+      },
+      "sk_nd": {
+        "chat": 1.239,
+        "diacritics": 1.667,
+        "legal": 1.671,
+        "news": 1.538,
+        "prompt": 1.525,
+        "tech": 1.509,
+        "wiki": 1.596,
+        "ALL": 1.524
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.564,
+        1.749
+      ],
+      "sk_nd": [
+        1.446,
+        1.6
+      ]
+    },
+    "same_as": null
+  },
   "Nemotron Nano 2": {
     "kind": "hf",
     "id": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
@@ -1549,6 +1993,154 @@
       "sk_nd": [
         1.508,
         1.689
+      ]
+    },
+    "same_as": null
+  },
+  "Granite 4.2": {
+    "kind": "hf",
+    "id": "ibm-granite/granite-4.2-8b",
+    "tokens": {
+      "sk": {
+        "news": 249,
+        "ALL": 1282,
+        "tech": 216,
+        "legal": 201,
+        "chat": 165,
+        "wiki": 201,
+        "diacritics": 128,
+        "prompt": 122
+      },
+      "sk_nd": {
+        "news": 214,
+        "ALL": 1065,
+        "tech": 188,
+        "legal": 164,
+        "chat": 136,
+        "wiki": 170,
+        "diacritics": 94,
+        "prompt": 99
+      },
+      "en": {
+        "news": 124,
+        "ALL": 625,
+        "tech": 108,
+        "legal": 83,
+        "chat": 96,
+        "wiki": 95,
+        "diacritics": 58,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.213,
+      "sk_nd": 2.664,
+      "en": 5.016
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.719,
+        "diacritics": 2.207,
+        "legal": 2.422,
+        "news": 2.008,
+        "prompt": 2.0,
+        "tech": 2.0,
+        "wiki": 2.116,
+        "ALL": 2.051
+      },
+      "sk_nd": {
+        "chat": 1.417,
+        "diacritics": 1.621,
+        "legal": 1.976,
+        "news": 1.726,
+        "prompt": 1.623,
+        "tech": 1.741,
+        "wiki": 1.789,
+        "ALL": 1.704
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.933,
+        2.171
+      ],
+      "sk_nd": [
+        1.615,
+        1.802
+      ]
+    },
+    "same_as": null
+  },
+  "LFM3 (Liquid AI)": {
+    "kind": "hf",
+    "id": "LiquidAI/LFM3-1.7B",
+    "tokens": {
+      "sk": {
+        "news": 222,
+        "ALL": 1136,
+        "tech": 203,
+        "legal": 171,
+        "chat": 149,
+        "wiki": 172,
+        "diacritics": 110,
+        "prompt": 109
+      },
+      "sk_nd": {
+        "news": 201,
+        "ALL": 1021,
+        "tech": 186,
+        "legal": 156,
+        "chat": 129,
+        "wiki": 160,
+        "diacritics": 90,
+        "prompt": 99
+      },
+      "en": {
+        "news": 126,
+        "ALL": 636,
+        "tech": 111,
+        "legal": 84,
+        "chat": 97,
+        "wiki": 97,
+        "diacritics": 59,
+        "prompt": 62
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.497,
+      "sk_nd": 2.779,
+      "en": 4.929
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.536,
+        "diacritics": 1.864,
+        "legal": 2.036,
+        "news": 1.762,
+        "prompt": 1.758,
+        "tech": 1.829,
+        "wiki": 1.773,
+        "ALL": 1.786
+      },
+      "sk_nd": {
+        "chat": 1.33,
+        "diacritics": 1.525,
+        "legal": 1.857,
+        "news": 1.595,
+        "prompt": 1.597,
+        "tech": 1.676,
+        "wiki": 1.649,
+        "ALL": 1.605
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.698,
+        1.876
+      ],
+      "sk_nd": [
+        1.528,
+        1.685
       ]
     },
     "same_as": null
