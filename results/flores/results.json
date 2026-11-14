@@ -1329,7 +1329,7 @@
     },
     "same_as": null
   },
-  "Mistral Nemo / Small 3 / Large 2 (tekken)": {
+  "Mistral Nemo / Small 3–4 / Large 2 (tekken)": {
     "kind": "hf",
     "id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
     "tokens": {
@@ -2659,7 +2659,7 @@
     },
     "same_as": null
   },
-  "DeepSeek V3 / V3.1 / R1": {
+  "DeepSeek V3 / R1 / V4": {
     "kind": "hf",
     "id": "deepseek-ai/DeepSeek-V3.1",
     "tokens": {
@@ -2849,7 +2849,7 @@
     },
     "same_as": null
   },
-  "GLM-4.5 / 4.6": {
+  "GLM-4.5 / 4.6 / 4.7": {
     "kind": "hf",
     "id": "zai-org/GLM-4.6",
     "tokens": {
@@ -3229,7 +3229,7 @@
     },
     "same_as": null
   },
-  "Kimi K2": {
+  "Kimi K2 / K3": {
     "kind": "tiktoken-hf",
     "id": "moonshotai/Kimi-K2-Instruct::kimi",
     "tokens": {
@@ -3419,7 +3419,7 @@
     },
     "same_as": null
   },
-  "MiniMax-M2": {
+  "MiniMax M2 / M3": {
     "kind": "hf",
     "id": "MiniMaxAI/MiniMax-M2",
     "tokens": {

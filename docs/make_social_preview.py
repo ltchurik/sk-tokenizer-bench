@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 r = json.load(open(ROOT / "results" / "flores" / "results.json", encoding="utf-8"))
 pick = [("GPT-4 / 3.5", "GPT-4 / 3.5 (cl100k_base)"), ("Qwen 2.5 / 3", "Qwen 2.5 / 3"),
-        ("DeepSeek V3", "DeepSeek V3 / V3.1 / R1"), ("Llama 3", "Llama 3.x"),
-        ("GPT-4o / GPT-5", "GPT-4o / 4.1 / 5 (o200k_base)"), ("Mistral", "Mistral Nemo / Small 3 / Large 2 (tekken)"),
+        ("DeepSeek V3", "DeepSeek V3 / R1 / V4"), ("Llama 3", "Llama 3.x"),
+        ("GPT-4o / GPT-5", "GPT-4o / 4.1 / 5 (o200k_base)"), ("Mistral", "Mistral Nemo / Small 3–4 / Large 2 (tekken)"),
         ("Gemma 3", "Gemma 3"), ("Llama 4", "Llama 4"), ("EuroLLM", "EuroLLM")]
 data = [(lab, r[k]["ratio_vs_en"]["sk"]["ALL"]) for lab, k in pick]
 SURF, INK, INK2, MUTED, BLUE = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#2a78d6"

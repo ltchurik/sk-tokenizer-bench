@@ -25,7 +25,7 @@ COLORS = {"OpenAI": "#2a78d6", "Meta": "#eb6834", "Mistral": "#1baf7a", "Google"
 SHORT = {
     "GPT-4 / 3.5 (cl100k_base)": "GPT-4", "GPT-4o / 4.1 / 5 (o200k_base)": "GPT-4o / 5",
     "Llama 2": "Llama 2", "Llama 3.x": "Llama 3", "Llama 4": "Llama 4",
-    "Mistral / Mixtral (v3)": "Mistral v3", "Mistral Nemo / Small 3 / Large 2 (tekken)": "tekken",
+    "Mistral / Mixtral (v3)": "Mistral v3", "Mistral Nemo / Small 3–4 / Large 2 (tekken)": "tekken",
     "Gemma 1 / 2": "Gemma 1/2", "Gemma 3": "Gemma 3",
     "Mistral Large 4": "Mistral Large 4", "Qwen 2.5 / 3": "Qwen 2.5/3", "Qwen 3.8": "Qwen 3.8",
     "EuroLLM": "EuroLLM", "BLOOM": "BLOOM", "Falcon 3": "Falcon 3",
@@ -35,7 +35,7 @@ SHORT = {
 OFFSET = {
     "GPT-4 / 3.5 (cl100k_base)": (10, 0, "left"), "GPT-4o / 4.1 / 5 (o200k_base)": (-10, -2, "right"),
     "Llama 2": (10, -12, "left"), "Llama 3.x": (-10, 4, "right"), "Llama 4": (10, -6, "left"),
-    "Mistral / Mixtral (v3)": (-10, 4, "right"), "Mistral Nemo / Small 3 / Large 2 (tekken)": (4, -30, "left"),
+    "Mistral / Mixtral (v3)": (-10, 4, "right"), "Mistral Nemo / Small 3–4 / Large 2 (tekken)": (4, -30, "left"),
     "Gemma 1 / 2": (-10, -6, "right"), "Gemma 3": (10, 6, "left"),
     "Mistral Large 4": (-10, 12, "right"), "Qwen 2.5 / 3": (10, 0, "left"), "Qwen 3.8": (-10, -10, "right"),
     "EuroLLM": (8, 0, "left"), "BLOOM": (8, 0, "left"), "Falcon 3": (8, 0, "left"),
