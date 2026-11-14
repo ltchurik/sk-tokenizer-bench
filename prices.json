@@ -1,0 +1,17 @@
+{
+  "as_of": "2026-11-14",
+  "note": "Standard-tier list prices in USD per 1M tokens, short-context rates. Only models whose tokenizer is measured in this repo are listed. Prices change often - PRs welcome.",
+  "models": [
+    {"vendor": "OpenAI", "model": "gpt-5", "input": 1.25, "output": 10.00, "tokenizer": "GPT-4o / 4.1 / 5 (o200k_base)", "source": "https://developers.openai.com/api/docs/pricing"},
+    {"vendor": "OpenAI", "model": "gpt-5-mini", "input": 0.25, "output": 2.00, "tokenizer": "GPT-4o / 4.1 / 5 (o200k_base)", "source": "https://developers.openai.com/api/docs/pricing"},
+    {"vendor": "OpenAI", "model": "gpt-4.1", "input": 2.00, "output": 8.00, "tokenizer": "GPT-4o / 4.1 / 5 (o200k_base)", "source": "https://developers.openai.com/api/docs/pricing"},
+    {"vendor": "OpenAI", "model": "gpt-4o", "input": 2.50, "output": 10.00, "tokenizer": "GPT-4o / 4.1 / 5 (o200k_base)", "source": "https://developers.openai.com/api/docs/pricing"},
+    {"vendor": "OpenAI", "model": "gpt-4o-mini", "input": 0.15, "output": 0.60, "tokenizer": "GPT-4o / 4.1 / 5 (o200k_base)", "source": "https://developers.openai.com/api/docs/pricing"},
+    {"vendor": "Anthropic", "model": "claude-opus-5-5", "input": 4.00, "output": 20.00, "tokenizer": "Claude Opus 5.5 (API)", "source": "https://platform.claude.com/docs/en/about-claude/pricing"},
+    {"vendor": "Anthropic", "model": "claude-sonnet-5-5", "input": 2.00, "output": 10.00, "tokenizer": "Claude Sonnet 5.5 (API)", "source": "https://platform.claude.com/docs/en/about-claude/pricing"},
+    {"vendor": "Anthropic", "model": "claude-haiku-5-5", "input": 0.10, "output": 0.50, "tokenizer": "Claude Haiku 5.5 (API)", "source": "https://platform.claude.com/docs/en/about-claude/pricing"},
+    {"vendor": "Anthropic", "model": "claude-sonnet-4-6", "input": 3.00, "output": 15.00, "tokenizer": "Claude Sonnet 4.6 (API)", "source": "https://platform.claude.com/docs/en/about-claude/pricing"},
+    {"vendor": "Google", "model": "gemini-3.8-flash", "input": 0.75, "output": 3.75, "tokenizer": "Gemini 3.8 Flash (API)", "source": "https://aistudio.google.com/docs/pricing", "note": "rises to $1.50 / $7.50 on 2027-01-01"},
+    {"vendor": "Google", "model": "gemini-4-argon", "input": 4.00, "output": 20.00, "tokenizer": "Gemini 4 Argon (API)", "source": "https://aistudio.google.com/docs/pricing", "note": "list price from 2026-12-01; intro price $2 / $10 until then"}
+  ]
+}

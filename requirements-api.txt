@@ -1,0 +1,3 @@
+# Optional: closed tokenizers counted through vendor APIs (Claude, Gemini).
+anthropic>=0.70
+google-genai>=1.0

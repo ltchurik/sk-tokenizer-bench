@@ -10,8 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - run: pip install -r requirements.txt
-      - run: python bench.py
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt -r requirements-api.txt pytest
+      - run: pytest -q
+      - name: Run benchmark
+        env:
+          # Optional repo secrets; API rows fall back to cache/api_counts.json without them.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python bench.py --readme
+      - name: Fail if committed results are stale
+        if: github.event_name == 'pull_request'
+        continue-on-error: true  # upstream tokenizer updates should warn, not block
+        run: git diff --stat --exit-code -- README.md results/ ':!results/*/counts.json.gz'
       - uses: actions/upload-artifact@v4
-        with: { name: results, path: results/ }
+        with: { name: results, path: "results/\nREADME.md\ncache/" }
