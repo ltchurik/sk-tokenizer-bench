@@ -1,0 +1,3362 @@
+{
+  "GPT-4o / 4.1 / 5 (o200k_base)": {
+    "kind": "tiktoken",
+    "id": "o200k_base",
+    "tokens": {
+      "sk": {
+        "wikinews": 14930,
+        "ALL": 45067,
+        "wikibooks": 16040,
+        "wikivoyage": 14097
+      },
+      "cs": {
+        "wikinews": 14270,
+        "ALL": 42911,
+        "wikibooks": 15133,
+        "wikivoyage": 13508
+      },
+      "pl": {
+        "wikinews": 14986,
+        "ALL": 44030,
+        "wikibooks": 15425,
+        "wikivoyage": 13619
+      },
+      "hu": {
+        "wikinews": 16309,
+        "ALL": 48205,
+        "wikibooks": 17196,
+        "wikivoyage": 14700
+      },
+      "de": {
+        "wikinews": 11970,
+        "ALL": 35224,
+        "wikibooks": 12468,
+        "wikivoyage": 10786
+      },
+      "en": {
+        "wikinews": 9021,
+        "ALL": 26873,
+        "wikibooks": 9533,
+        "wikivoyage": 8319
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.923,
+      "cs": 2.966,
+      "pl": 3.168,
+      "hu": 2.876,
+      "de": 4.367,
+      "en": 4.911
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.683,
+        "wikinews": 1.655,
+        "wikivoyage": 1.695,
+        "ALL": 1.677
+      },
+      "cs": {
+        "wikibooks": 1.587,
+        "wikinews": 1.582,
+        "wikivoyage": 1.624,
+        "ALL": 1.597
+      },
+      "pl": {
+        "wikibooks": 1.618,
+        "wikinews": 1.661,
+        "wikivoyage": 1.637,
+        "ALL": 1.638
+      },
+      "hu": {
+        "wikibooks": 1.804,
+        "wikinews": 1.808,
+        "wikivoyage": 1.767,
+        "ALL": 1.794
+      },
+      "de": {
+        "wikibooks": 1.308,
+        "wikinews": 1.327,
+        "wikivoyage": 1.297,
+        "ALL": 1.311
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.661,
+        1.694
+      ],
+      "cs": [
+        1.581,
+        1.613
+      ],
+      "pl": [
+        1.621,
+        1.656
+      ],
+      "hu": [
+        1.774,
+        1.815
+      ],
+      "de": [
+        1.299,
+        1.322
+      ]
+    },
+    "same_as": null
+  },
+  "GPT-4 / 3.5 (cl100k_base)": {
+    "kind": "tiktoken",
+    "id": "cl100k_base",
+    "tokens": {
+      "sk": {
+        "wikinews": 18822,
+        "ALL": 57882,
+        "wikibooks": 20837,
+        "wikivoyage": 18223
+      },
+      "cs": {
+        "wikinews": 18676,
+        "ALL": 57116,
+        "wikibooks": 20328,
+        "wikivoyage": 18112
+      },
+      "pl": {
+        "wikinews": 17597,
+        "ALL": 52024,
+        "wikibooks": 18262,
+        "wikivoyage": 16165
+      },
+      "hu": {
+        "wikinews": 19653,
+        "ALL": 58408,
+        "wikibooks": 20894,
+        "wikivoyage": 17861
+      },
+      "de": {
+        "wikinews": 14544,
+        "ALL": 43103,
+        "wikibooks": 15292,
+        "wikivoyage": 13267
+      },
+      "en": {
+        "wikinews": 9132,
+        "ALL": 27182,
+        "wikibooks": 9590,
+        "wikivoyage": 8460
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.275,
+      "cs": 2.228,
+      "pl": 2.681,
+      "hu": 2.373,
+      "de": 3.568,
+      "en": 4.855
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.173,
+        "wikinews": 2.061,
+        "wikivoyage": 2.154,
+        "ALL": 2.129
+      },
+      "cs": {
+        "wikibooks": 2.12,
+        "wikinews": 2.045,
+        "wikivoyage": 2.141,
+        "ALL": 2.101
+      },
+      "pl": {
+        "wikibooks": 1.904,
+        "wikinews": 1.927,
+        "wikivoyage": 1.911,
+        "ALL": 1.914
+      },
+      "hu": {
+        "wikibooks": 2.179,
+        "wikinews": 2.152,
+        "wikivoyage": 2.111,
+        "ALL": 2.149
+      },
+      "de": {
+        "wikibooks": 1.595,
+        "wikinews": 1.593,
+        "wikivoyage": 1.568,
+        "ALL": 1.586
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.105,
+        2.155
+      ],
+      "cs": [
+        2.079,
+        2.125
+      ],
+      "pl": [
+        1.893,
+        1.936
+      ],
+      "hu": [
+        2.122,
+        2.175
+      ],
+      "de": [
+        1.57,
+        1.602
+      ]
+    },
+    "same_as": null
+  },
+  "gpt-oss (o200k_harmony)": {
+    "kind": "hf",
+    "id": "openai/gpt-oss-20b",
+    "tokens": {
+      "sk": {
+        "wikinews": 14930,
+        "ALL": 45067,
+        "wikibooks": 16040,
+        "wikivoyage": 14097
+      },
+      "cs": {
+        "wikinews": 14270,
+        "ALL": 42911,
+        "wikibooks": 15133,
+        "wikivoyage": 13508
+      },
+      "pl": {
+        "wikinews": 14986,
+        "ALL": 44030,
+        "wikibooks": 15425,
+        "wikivoyage": 13619
+      },
+      "hu": {
+        "wikinews": 16309,
+        "ALL": 48205,
+        "wikibooks": 17196,
+        "wikivoyage": 14700
+      },
+      "de": {
+        "wikinews": 11970,
+        "ALL": 35224,
+        "wikibooks": 12468,
+        "wikivoyage": 10786
+      },
+      "en": {
+        "wikinews": 9021,
+        "ALL": 26873,
+        "wikibooks": 9533,
+        "wikivoyage": 8319
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.923,
+      "cs": 2.966,
+      "pl": 3.168,
+      "hu": 2.876,
+      "de": 4.367,
+      "en": 4.911
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.683,
+        "wikinews": 1.655,
+        "wikivoyage": 1.695,
+        "ALL": 1.677
+      },
+      "cs": {
+        "wikibooks": 1.587,
+        "wikinews": 1.582,
+        "wikivoyage": 1.624,
+        "ALL": 1.597
+      },
+      "pl": {
+        "wikibooks": 1.618,
+        "wikinews": 1.661,
+        "wikivoyage": 1.637,
+        "ALL": 1.638
+      },
+      "hu": {
+        "wikibooks": 1.804,
+        "wikinews": 1.808,
+        "wikivoyage": 1.767,
+        "ALL": 1.794
+      },
+      "de": {
+        "wikibooks": 1.308,
+        "wikinews": 1.327,
+        "wikivoyage": 1.297,
+        "ALL": 1.311
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.661,
+        1.694
+      ],
+      "cs": [
+        1.581,
+        1.613
+      ],
+      "pl": [
+        1.621,
+        1.656
+      ],
+      "hu": [
+        1.774,
+        1.815
+      ],
+      "de": [
+        1.299,
+        1.322
+      ]
+    },
+    "same_as": "GPT-4o / 4.1 / 5 (o200k_base)"
+  },
+  "Llama 2": {
+    "kind": "hf",
+    "id": "NousResearch/Llama-2-7b-hf",
+    "tokens": {
+      "sk": {
+        "wikinews": 18625,
+        "ALL": 56415,
+        "wikibooks": 20119,
+        "wikivoyage": 17671
+      },
+      "cs": {
+        "wikinews": 17452,
+        "ALL": 52554,
+        "wikibooks": 18546,
+        "wikivoyage": 16556
+      },
+      "pl": {
+        "wikinews": 17854,
+        "ALL": 52779,
+        "wikibooks": 18514,
+        "wikivoyage": 16411
+      },
+      "hu": {
+        "wikinews": 18819,
+        "ALL": 55659,
+        "wikibooks": 19782,
+        "wikivoyage": 17058
+      },
+      "de": {
+        "wikinews": 14953,
+        "ALL": 43887,
+        "wikibooks": 15414,
+        "wikivoyage": 13520
+      },
+      "en": {
+        "wikinews": 10641,
+        "ALL": 31134,
+        "wikibooks": 10865,
+        "wikivoyage": 9628
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.335,
+      "cs": 2.421,
+      "pl": 2.643,
+      "hu": 2.491,
+      "de": 3.505,
+      "en": 4.239
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.852,
+        "wikinews": 1.75,
+        "wikivoyage": 1.835,
+        "ALL": 1.812
+      },
+      "cs": {
+        "wikibooks": 1.707,
+        "wikinews": 1.64,
+        "wikivoyage": 1.72,
+        "ALL": 1.688
+      },
+      "pl": {
+        "wikibooks": 1.704,
+        "wikinews": 1.678,
+        "wikivoyage": 1.705,
+        "ALL": 1.695
+      },
+      "hu": {
+        "wikibooks": 1.821,
+        "wikinews": 1.769,
+        "wikivoyage": 1.772,
+        "ALL": 1.788
+      },
+      "de": {
+        "wikibooks": 1.419,
+        "wikinews": 1.405,
+        "wikivoyage": 1.404,
+        "ALL": 1.41
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.793,
+        1.833
+      ],
+      "cs": [
+        1.671,
+        1.706
+      ],
+      "pl": [
+        1.676,
+        1.714
+      ],
+      "hu": [
+        1.767,
+        1.809
+      ],
+      "de": [
+        1.396,
+        1.424
+      ]
+    },
+    "same_as": null
+  },
+  "Llama 3.x": {
+    "kind": "hf",
+    "id": "unsloth/Llama-3.1-8B",
+    "tokens": {
+      "sk": {
+        "wikinews": 16380,
+        "ALL": 50069,
+        "wikibooks": 17897,
+        "wikivoyage": 15792
+      },
+      "cs": {
+        "wikinews": 13706,
+        "ALL": 40864,
+        "wikibooks": 14343,
+        "wikivoyage": 12815
+      },
+      "pl": {
+        "wikinews": 17367,
+        "ALL": 51371,
+        "wikibooks": 18025,
+        "wikivoyage": 15979
+      },
+      "hu": {
+        "wikinews": 19318,
+        "ALL": 57463,
+        "wikibooks": 20551,
+        "wikivoyage": 17594
+      },
+      "de": {
+        "wikinews": 14496,
+        "ALL": 42974,
+        "wikibooks": 15248,
+        "wikivoyage": 13230
+      },
+      "en": {
+        "wikinews": 9126,
+        "ALL": 27171,
+        "wikibooks": 9589,
+        "wikivoyage": 8456
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.631,
+      "cs": 3.114,
+      "pl": 2.715,
+      "hu": 2.412,
+      "de": 3.579,
+      "en": 4.857
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.866,
+        "wikinews": 1.795,
+        "wikivoyage": 1.868,
+        "ALL": 1.843
+      },
+      "cs": {
+        "wikibooks": 1.496,
+        "wikinews": 1.502,
+        "wikivoyage": 1.515,
+        "ALL": 1.504
+      },
+      "pl": {
+        "wikibooks": 1.88,
+        "wikinews": 1.903,
+        "wikivoyage": 1.89,
+        "ALL": 1.891
+      },
+      "hu": {
+        "wikibooks": 2.143,
+        "wikinews": 2.117,
+        "wikivoyage": 2.081,
+        "ALL": 2.115
+      },
+      "de": {
+        "wikibooks": 1.59,
+        "wikinews": 1.588,
+        "wikivoyage": 1.565,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.823,
+        1.863
+      ],
+      "cs": [
+        1.489,
+        1.52
+      ],
+      "pl": [
+        1.87,
+        1.912
+      ],
+      "hu": [
+        2.089,
+        2.14
+      ],
+      "de": [
+        1.566,
+        1.598
+      ]
+    },
+    "same_as": null
+  },
+  "Llama 4": {
+    "kind": "hf",
+    "id": "unsloth/Llama-4-Scout-17B-16E-Instruct",
+    "tokens": {
+      "sk": {
+        "wikinews": 14089,
+        "ALL": 42295,
+        "wikibooks": 14948,
+        "wikivoyage": 13258
+      },
+      "cs": {
+        "wikinews": 13335,
+        "ALL": 39698,
+        "wikibooks": 13889,
+        "wikivoyage": 12474
+      },
+      "pl": {
+        "wikinews": 12868,
+        "ALL": 37769,
+        "wikibooks": 13172,
+        "wikivoyage": 11729
+      },
+      "hu": {
+        "wikinews": 14342,
+        "ALL": 42335,
+        "wikibooks": 15067,
+        "wikivoyage": 12926
+      },
+      "de": {
+        "wikinews": 11888,
+        "ALL": 35060,
+        "wikibooks": 12333,
+        "wikivoyage": 10839
+      },
+      "en": {
+        "wikinews": 9082,
+        "ALL": 27048,
+        "wikibooks": 9595,
+        "wikivoyage": 8371
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.114,
+      "cs": 3.206,
+      "pl": 3.693,
+      "hu": 3.275,
+      "de": 4.387,
+      "en": 4.879
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.558,
+        "wikinews": 1.551,
+        "wikivoyage": 1.584,
+        "ALL": 1.564
+      },
+      "cs": {
+        "wikibooks": 1.448,
+        "wikinews": 1.468,
+        "wikivoyage": 1.49,
+        "ALL": 1.468
+      },
+      "pl": {
+        "wikibooks": 1.373,
+        "wikinews": 1.417,
+        "wikivoyage": 1.401,
+        "ALL": 1.396
+      },
+      "hu": {
+        "wikibooks": 1.57,
+        "wikinews": 1.579,
+        "wikivoyage": 1.544,
+        "ALL": 1.565
+      },
+      "de": {
+        "wikibooks": 1.285,
+        "wikinews": 1.309,
+        "wikivoyage": 1.295,
+        "ALL": 1.296
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.549,
+        1.579
+      ],
+      "cs": [
+        1.454,
+        1.482
+      ],
+      "pl": [
+        1.382,
+        1.412
+      ],
+      "hu": [
+        1.549,
+        1.581
+      ],
+      "de": [
+        1.285,
+        1.307
+      ]
+    },
+    "same_as": null
+  },
+  "Mistral / Mixtral (v3)": {
+    "kind": "hf",
+    "id": "mistralai/Mistral-7B-Instruct-v0.3",
+    "tokens": {
+      "sk": {
+        "wikinews": 19259,
+        "ALL": 58427,
+        "wikibooks": 20899,
+        "wikivoyage": 18269
+      },
+      "cs": {
+        "wikinews": 18492,
+        "ALL": 55898,
+        "wikibooks": 19800,
+        "wikivoyage": 17606
+      },
+      "pl": {
+        "wikinews": 19167,
+        "ALL": 56991,
+        "wikibooks": 20040,
+        "wikivoyage": 17784
+      },
+      "hu": {
+        "wikinews": 20245,
+        "ALL": 60149,
+        "wikibooks": 21498,
+        "wikivoyage": 18406
+      },
+      "de": {
+        "wikinews": 16019,
+        "ALL": 47442,
+        "wikibooks": 16766,
+        "wikivoyage": 14657
+      },
+      "en": {
+        "wikinews": 10224,
+        "ALL": 29997,
+        "wikibooks": 10479,
+        "wikivoyage": 9294
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.254,
+      "cs": 2.277,
+      "pl": 2.447,
+      "hu": 2.305,
+      "de": 3.242,
+      "en": 4.399
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.994,
+        "wikinews": 1.884,
+        "wikivoyage": 1.966,
+        "ALL": 1.948
+      },
+      "cs": {
+        "wikibooks": 1.889,
+        "wikinews": 1.809,
+        "wikivoyage": 1.894,
+        "ALL": 1.863
+      },
+      "pl": {
+        "wikibooks": 1.912,
+        "wikinews": 1.875,
+        "wikivoyage": 1.913,
+        "ALL": 1.9
+      },
+      "hu": {
+        "wikibooks": 2.052,
+        "wikinews": 1.98,
+        "wikivoyage": 1.98,
+        "ALL": 2.005
+      },
+      "de": {
+        "wikibooks": 1.6,
+        "wikinews": 1.567,
+        "wikivoyage": 1.577,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.926,
+        1.971
+      ],
+      "cs": [
+        1.843,
+        1.885
+      ],
+      "pl": [
+        1.878,
+        1.923
+      ],
+      "hu": [
+        1.98,
+        2.03
+      ],
+      "de": [
+        1.565,
+        1.599
+      ]
+    },
+    "same_as": null
+  },
+  "Mistral Nemo / Small 3 / Large 2 (tekken)": {
+    "kind": "hf",
+    "id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+    "tokens": {
+      "sk": {
+        "wikinews": 15391,
+        "ALL": 46466,
+        "wikibooks": 16493,
+        "wikivoyage": 14582
+      },
+      "cs": {
+        "wikinews": 14377,
+        "ALL": 43007,
+        "wikibooks": 15074,
+        "wikivoyage": 13556
+      },
+      "pl": {
+        "wikinews": 14836,
+        "ALL": 43840,
+        "wikibooks": 15340,
+        "wikivoyage": 13664
+      },
+      "hu": {
+        "wikinews": 15184,
+        "ALL": 44818,
+        "wikibooks": 15921,
+        "wikivoyage": 13713
+      },
+      "de": {
+        "wikinews": 12291,
+        "ALL": 36297,
+        "wikibooks": 12788,
+        "wikivoyage": 11218
+      },
+      "en": {
+        "wikinews": 9421,
+        "ALL": 27827,
+        "wikibooks": 9774,
+        "wikivoyage": 8632
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.835,
+      "cs": 2.959,
+      "pl": 3.182,
+      "hu": 3.093,
+      "de": 4.238,
+      "en": 4.742
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.687,
+        "wikinews": 1.634,
+        "wikivoyage": 1.689,
+        "ALL": 1.67
+      },
+      "cs": {
+        "wikibooks": 1.542,
+        "wikinews": 1.526,
+        "wikivoyage": 1.57,
+        "ALL": 1.546
+      },
+      "pl": {
+        "wikibooks": 1.569,
+        "wikinews": 1.575,
+        "wikivoyage": 1.583,
+        "ALL": 1.575
+      },
+      "hu": {
+        "wikibooks": 1.629,
+        "wikinews": 1.612,
+        "wikivoyage": 1.589,
+        "ALL": 1.611
+      },
+      "de": {
+        "wikibooks": 1.308,
+        "wikinews": 1.305,
+        "wikivoyage": 1.3,
+        "ALL": 1.304
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.653,
+        1.688
+      ],
+      "cs": [
+        1.53,
+        1.561
+      ],
+      "pl": [
+        1.559,
+        1.593
+      ],
+      "hu": [
+        1.593,
+        1.629
+      ],
+      "de": [
+        1.292,
+        1.316
+      ]
+    },
+    "same_as": null
+  },
+  "Gemma 2 / 3": {
+    "kind": "hf",
+    "id": "unsloth/gemma-3-4b-it",
+    "tokens": {
+      "sk": {
+        "wikinews": 14615,
+        "ALL": 43833,
+        "wikibooks": 15528,
+        "wikivoyage": 13690
+      },
+      "cs": {
+        "wikinews": 13857,
+        "ALL": 41359,
+        "wikibooks": 14541,
+        "wikivoyage": 12961
+      },
+      "pl": {
+        "wikinews": 13955,
+        "ALL": 40850,
+        "wikibooks": 14239,
+        "wikivoyage": 12656
+      },
+      "hu": {
+        "wikinews": 15517,
+        "ALL": 45533,
+        "wikibooks": 16168,
+        "wikivoyage": 13848
+      },
+      "de": {
+        "wikinews": 12287,
+        "ALL": 36020,
+        "wikibooks": 12708,
+        "wikivoyage": 11025
+      },
+      "en": {
+        "wikinews": 9199,
+        "ALL": 27114,
+        "wikibooks": 9562,
+        "wikivoyage": 8353
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.005,
+      "cs": 3.077,
+      "pl": 3.415,
+      "hu": 3.045,
+      "de": 4.27,
+      "en": 4.867
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.624,
+        "wikinews": 1.589,
+        "wikivoyage": 1.639,
+        "ALL": 1.617
+      },
+      "cs": {
+        "wikibooks": 1.521,
+        "wikinews": 1.506,
+        "wikivoyage": 1.552,
+        "ALL": 1.525
+      },
+      "pl": {
+        "wikibooks": 1.489,
+        "wikinews": 1.517,
+        "wikivoyage": 1.515,
+        "ALL": 1.507
+      },
+      "hu": {
+        "wikibooks": 1.691,
+        "wikinews": 1.687,
+        "wikivoyage": 1.658,
+        "ALL": 1.679
+      },
+      "de": {
+        "wikibooks": 1.329,
+        "wikinews": 1.336,
+        "wikivoyage": 1.32,
+        "ALL": 1.328
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.601,
+        1.634
+      ],
+      "cs": [
+        1.511,
+        1.541
+      ],
+      "pl": [
+        1.491,
+        1.523
+      ],
+      "hu": [
+        1.66,
+        1.699
+      ],
+      "de": [
+        1.316,
+        1.341
+      ]
+    },
+    "same_as": null
+  },
+  "mT5": {
+    "kind": "hf",
+    "id": "Xenova/mt5-base",
+    "tokens": {
+      "sk": {
+        "wikinews": 14436,
+        "ALL": 43689,
+        "wikibooks": 15538,
+        "wikivoyage": 13715
+      },
+      "cs": {
+        "wikinews": 14243,
+        "ALL": 42992,
+        "wikibooks": 15199,
+        "wikivoyage": 13550
+      },
+      "pl": {
+        "wikinews": 14849,
+        "ALL": 44053,
+        "wikibooks": 15490,
+        "wikivoyage": 13714
+      },
+      "hu": {
+        "wikinews": 14265,
+        "ALL": 42515,
+        "wikibooks": 15139,
+        "wikivoyage": 13111
+      },
+      "de": {
+        "wikinews": 13478,
+        "ALL": 40062,
+        "wikibooks": 14262,
+        "wikivoyage": 12322
+      },
+      "en": {
+        "wikinews": 11237,
+        "ALL": 33791,
+        "wikibooks": 12064,
+        "wikivoyage": 10490
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.015,
+      "cs": 2.96,
+      "pl": 3.166,
+      "hu": 3.261,
+      "de": 3.839,
+      "en": 3.905
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.288,
+        "wikinews": 1.285,
+        "wikivoyage": 1.307,
+        "ALL": 1.293
+      },
+      "cs": {
+        "wikibooks": 1.26,
+        "wikinews": 1.268,
+        "wikivoyage": 1.292,
+        "ALL": 1.272
+      },
+      "pl": {
+        "wikibooks": 1.284,
+        "wikinews": 1.321,
+        "wikivoyage": 1.307,
+        "ALL": 1.304
+      },
+      "hu": {
+        "wikibooks": 1.255,
+        "wikinews": 1.269,
+        "wikivoyage": 1.25,
+        "ALL": 1.258
+      },
+      "de": {
+        "wikibooks": 1.182,
+        "wikinews": 1.199,
+        "wikivoyage": 1.175,
+        "ALL": 1.186
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.281,
+        1.305
+      ],
+      "cs": [
+        1.261,
+        1.284
+      ],
+      "pl": [
+        1.291,
+        1.317
+      ],
+      "hu": [
+        1.246,
+        1.272
+      ],
+      "de": [
+        1.176,
+        1.195
+      ]
+    },
+    "same_as": null
+  },
+  "Qwen 2.5 / 3": {
+    "kind": "hf",
+    "id": "Qwen/Qwen3-8B",
+    "tokens": {
+      "sk": {
+        "wikinews": 18750,
+        "ALL": 57272,
+        "wikibooks": 20555,
+        "wikivoyage": 17967
+      },
+      "cs": {
+        "wikinews": 18736,
+        "ALL": 57048,
+        "wikibooks": 20263,
+        "wikivoyage": 18049
+      },
+      "pl": {
+        "wikinews": 16635,
+        "ALL": 48746,
+        "wikibooks": 17067,
+        "wikivoyage": 15044
+      },
+      "hu": {
+        "wikinews": 19741,
+        "ALL": 58579,
+        "wikibooks": 20942,
+        "wikivoyage": 17896
+      },
+      "de": {
+        "wikinews": 14595,
+        "ALL": 43058,
+        "wikibooks": 15230,
+        "wikivoyage": 13233
+      },
+      "en": {
+        "wikinews": 9342,
+        "ALL": 27621,
+        "wikibooks": 9707,
+        "wikivoyage": 8572
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.3,
+      "cs": 2.231,
+      "pl": 2.861,
+      "hu": 2.367,
+      "de": 3.572,
+      "en": 4.778
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.118,
+        "wikinews": 2.007,
+        "wikivoyage": 2.096,
+        "ALL": 2.073
+      },
+      "cs": {
+        "wikibooks": 2.087,
+        "wikinews": 2.006,
+        "wikivoyage": 2.106,
+        "ALL": 2.065
+      },
+      "pl": {
+        "wikibooks": 1.758,
+        "wikinews": 1.781,
+        "wikivoyage": 1.755,
+        "ALL": 1.765
+      },
+      "hu": {
+        "wikibooks": 2.157,
+        "wikinews": 2.113,
+        "wikivoyage": 2.088,
+        "ALL": 2.121
+      },
+      "de": {
+        "wikibooks": 1.569,
+        "wikinews": 1.562,
+        "wikivoyage": 1.544,
+        "ALL": 1.559
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.05,
+        2.1
+      ],
+      "cs": [
+        2.042,
+        2.09
+      ],
+      "pl": [
+        1.744,
+        1.786
+      ],
+      "hu": [
+        2.094,
+        2.148
+      ],
+      "de": [
+        1.544,
+        1.575
+      ]
+    },
+    "same_as": null
+  },
+  "DeepSeek V3 / V3.1 / R1": {
+    "kind": "hf",
+    "id": "deepseek-ai/DeepSeek-V3.1",
+    "tokens": {
+      "sk": {
+        "wikinews": 16990,
+        "ALL": 51511,
+        "wikibooks": 18369,
+        "wikivoyage": 16152
+      },
+      "cs": {
+        "wikinews": 15371,
+        "ALL": 45925,
+        "wikibooks": 16096,
+        "wikivoyage": 14458
+      },
+      "pl": {
+        "wikinews": 15572,
+        "ALL": 45542,
+        "wikibooks": 15834,
+        "wikivoyage": 14136
+      },
+      "hu": {
+        "wikinews": 18156,
+        "ALL": 53746,
+        "wikibooks": 19166,
+        "wikivoyage": 16424
+      },
+      "de": {
+        "wikinews": 13909,
+        "ALL": 40957,
+        "wikibooks": 14423,
+        "wikivoyage": 12625
+      },
+      "en": {
+        "wikinews": 9109,
+        "ALL": 27041,
+        "wikibooks": 9530,
+        "wikivoyage": 8402
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.557,
+      "cs": 2.771,
+      "pl": 3.063,
+      "hu": 2.579,
+      "de": 3.755,
+      "en": 4.88
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.927,
+        "wikinews": 1.865,
+        "wikivoyage": 1.922,
+        "ALL": 1.905
+      },
+      "cs": {
+        "wikibooks": 1.689,
+        "wikinews": 1.687,
+        "wikivoyage": 1.721,
+        "ALL": 1.698
+      },
+      "pl": {
+        "wikibooks": 1.661,
+        "wikinews": 1.71,
+        "wikivoyage": 1.682,
+        "ALL": 1.684
+      },
+      "hu": {
+        "wikibooks": 2.011,
+        "wikinews": 1.993,
+        "wikivoyage": 1.955,
+        "ALL": 1.988
+      },
+      "de": {
+        "wikibooks": 1.513,
+        "wikinews": 1.527,
+        "wikivoyage": 1.503,
+        "ALL": 1.515
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.885,
+        1.926
+      ],
+      "cs": [
+        1.682,
+        1.716
+      ],
+      "pl": [
+        1.667,
+        1.702
+      ],
+      "hu": [
+        1.964,
+        2.011
+      ],
+      "de": [
+        1.5,
+        1.529
+      ]
+    },
+    "same_as": null
+  },
+  "GLM-4.5 / 4.6": {
+    "kind": "hf",
+    "id": "zai-org/GLM-4.6",
+    "tokens": {
+      "sk": {
+        "wikinews": 17394,
+        "ALL": 52909,
+        "wikibooks": 18999,
+        "wikivoyage": 16516
+      },
+      "cs": {
+        "wikinews": 15848,
+        "ALL": 47560,
+        "wikibooks": 16796,
+        "wikivoyage": 14916
+      },
+      "pl": {
+        "wikinews": 15681,
+        "ALL": 45981,
+        "wikibooks": 16094,
+        "wikivoyage": 14206
+      },
+      "hu": {
+        "wikinews": 17323,
+        "ALL": 51286,
+        "wikibooks": 18291,
+        "wikivoyage": 15672
+      },
+      "de": {
+        "wikinews": 13357,
+        "ALL": 39410,
+        "wikibooks": 13976,
+        "wikivoyage": 12077
+      },
+      "en": {
+        "wikinews": 9136,
+        "ALL": 27185,
+        "wikibooks": 9596,
+        "wikivoyage": 8453
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.489,
+      "cs": 2.676,
+      "pl": 3.033,
+      "hu": 2.703,
+      "de": 3.903,
+      "en": 4.854
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.98,
+        "wikinews": 1.904,
+        "wikivoyage": 1.954,
+        "ALL": 1.946
+      },
+      "cs": {
+        "wikibooks": 1.75,
+        "wikinews": 1.735,
+        "wikivoyage": 1.765,
+        "ALL": 1.749
+      },
+      "pl": {
+        "wikibooks": 1.677,
+        "wikinews": 1.716,
+        "wikivoyage": 1.681,
+        "ALL": 1.691
+      },
+      "hu": {
+        "wikibooks": 1.906,
+        "wikinews": 1.896,
+        "wikivoyage": 1.854,
+        "ALL": 1.887
+      },
+      "de": {
+        "wikibooks": 1.456,
+        "wikinews": 1.462,
+        "wikivoyage": 1.429,
+        "ALL": 1.45
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.925,
+        1.969
+      ],
+      "cs": [
+        1.732,
+        1.768
+      ],
+      "pl": [
+        1.673,
+        1.71
+      ],
+      "hu": [
+        1.865,
+        1.908
+      ],
+      "de": [
+        1.435,
+        1.464
+      ]
+    },
+    "same_as": null
+  },
+  "Kimi K2": {
+    "kind": "tiktoken-hf",
+    "id": "moonshotai/Kimi-K2-Instruct::kimi",
+    "tokens": {
+      "sk": {
+        "wikinews": 17832,
+        "ALL": 54544,
+        "wikibooks": 19542,
+        "wikivoyage": 17170
+      },
+      "cs": {
+        "wikinews": 17715,
+        "ALL": 54068,
+        "wikibooks": 19207,
+        "wikivoyage": 17146
+      },
+      "pl": {
+        "wikinews": 19139,
+        "ALL": 57276,
+        "wikibooks": 20232,
+        "wikivoyage": 17905
+      },
+      "hu": {
+        "wikinews": 19583,
+        "ALL": 58396,
+        "wikibooks": 20914,
+        "wikivoyage": 17899
+      },
+      "de": {
+        "wikinews": 15737,
+        "ALL": 46831,
+        "wikibooks": 16604,
+        "wikivoyage": 14490
+      },
+      "en": {
+        "wikinews": 9137,
+        "ALL": 27137,
+        "wikibooks": 9594,
+        "wikivoyage": 8406
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.415,
+      "cs": 2.354,
+      "pl": 2.435,
+      "hu": 2.374,
+      "de": 3.284,
+      "en": 4.863
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.037,
+        "wikinews": 1.952,
+        "wikivoyage": 2.043,
+        "ALL": 2.01
+      },
+      "cs": {
+        "wikibooks": 2.002,
+        "wikinews": 1.939,
+        "wikivoyage": 2.04,
+        "ALL": 1.992
+      },
+      "pl": {
+        "wikibooks": 2.109,
+        "wikinews": 2.095,
+        "wikivoyage": 2.13,
+        "ALL": 2.111
+      },
+      "hu": {
+        "wikibooks": 2.18,
+        "wikinews": 2.143,
+        "wikivoyage": 2.129,
+        "ALL": 2.152
+      },
+      "de": {
+        "wikibooks": 1.731,
+        "wikinews": 1.722,
+        "wikivoyage": 1.724,
+        "ALL": 1.726
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.988,
+        2.034
+      ],
+      "cs": [
+        1.971,
+        2.014
+      ],
+      "pl": [
+        2.086,
+        2.136
+      ],
+      "hu": [
+        2.126,
+        2.178
+      ],
+      "de": [
+        1.708,
+        1.744
+      ]
+    },
+    "same_as": null
+  },
+  "MiniMax-M2": {
+    "kind": "hf",
+    "id": "MiniMaxAI/MiniMax-M2",
+    "tokens": {
+      "sk": {
+        "wikinews": 17385,
+        "ALL": 53355,
+        "wikibooks": 19201,
+        "wikivoyage": 16769
+      },
+      "cs": {
+        "wikinews": 16521,
+        "ALL": 50457,
+        "wikibooks": 17973,
+        "wikivoyage": 15963
+      },
+      "pl": {
+        "wikinews": 17009,
+        "ALL": 50590,
+        "wikibooks": 17837,
+        "wikivoyage": 15744
+      },
+      "hu": {
+        "wikinews": 17653,
+        "ALL": 52404,
+        "wikibooks": 18748,
+        "wikivoyage": 16003
+      },
+      "de": {
+        "wikinews": 13360,
+        "ALL": 39650,
+        "wikibooks": 14013,
+        "wikivoyage": 12277
+      },
+      "en": {
+        "wikinews": 8929,
+        "ALL": 26567,
+        "wikibooks": 9412,
+        "wikivoyage": 8226
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.469,
+      "cs": 2.522,
+      "pl": 2.757,
+      "hu": 2.645,
+      "de": 3.879,
+      "en": 4.967
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.04,
+        "wikinews": 1.947,
+        "wikivoyage": 2.039,
+        "ALL": 2.008
+      },
+      "cs": {
+        "wikibooks": 1.91,
+        "wikinews": 1.85,
+        "wikivoyage": 1.941,
+        "ALL": 1.899
+      },
+      "pl": {
+        "wikibooks": 1.895,
+        "wikinews": 1.905,
+        "wikivoyage": 1.914,
+        "ALL": 1.904
+      },
+      "hu": {
+        "wikibooks": 1.992,
+        "wikinews": 1.977,
+        "wikivoyage": 1.945,
+        "ALL": 1.973
+      },
+      "de": {
+        "wikibooks": 1.489,
+        "wikinews": 1.496,
+        "wikivoyage": 1.492,
+        "ALL": 1.492
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.987,
+        2.032
+      ],
+      "cs": [
+        1.879,
+        1.92
+      ],
+      "pl": [
+        1.883,
+        1.926
+      ],
+      "hu": [
+        1.949,
+        1.996
+      ],
+      "de": [
+        1.478,
+        1.507
+      ]
+    },
+    "same_as": null
+  },
+  "Phi-4": {
+    "kind": "hf",
+    "id": "microsoft/phi-4",
+    "tokens": {
+      "sk": {
+        "wikinews": 18822,
+        "ALL": 57882,
+        "wikibooks": 20837,
+        "wikivoyage": 18223
+      },
+      "cs": {
+        "wikinews": 18676,
+        "ALL": 57116,
+        "wikibooks": 20328,
+        "wikivoyage": 18112
+      },
+      "pl": {
+        "wikinews": 17597,
+        "ALL": 52024,
+        "wikibooks": 18262,
+        "wikivoyage": 16165
+      },
+      "hu": {
+        "wikinews": 19653,
+        "ALL": 58408,
+        "wikibooks": 20894,
+        "wikivoyage": 17861
+      },
+      "de": {
+        "wikinews": 14544,
+        "ALL": 43103,
+        "wikibooks": 15292,
+        "wikivoyage": 13267
+      },
+      "en": {
+        "wikinews": 9132,
+        "ALL": 27182,
+        "wikibooks": 9590,
+        "wikivoyage": 8460
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.275,
+      "cs": 2.228,
+      "pl": 2.681,
+      "hu": 2.373,
+      "de": 3.568,
+      "en": 4.855
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.173,
+        "wikinews": 2.061,
+        "wikivoyage": 2.154,
+        "ALL": 2.129
+      },
+      "cs": {
+        "wikibooks": 2.12,
+        "wikinews": 2.045,
+        "wikivoyage": 2.141,
+        "ALL": 2.101
+      },
+      "pl": {
+        "wikibooks": 1.904,
+        "wikinews": 1.927,
+        "wikivoyage": 1.911,
+        "ALL": 1.914
+      },
+      "hu": {
+        "wikibooks": 2.179,
+        "wikinews": 2.152,
+        "wikivoyage": 2.111,
+        "ALL": 2.149
+      },
+      "de": {
+        "wikibooks": 1.595,
+        "wikinews": 1.593,
+        "wikivoyage": 1.568,
+        "ALL": 1.586
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.105,
+        2.155
+      ],
+      "cs": [
+        2.079,
+        2.125
+      ],
+      "pl": [
+        1.893,
+        1.936
+      ],
+      "hu": [
+        2.122,
+        2.175
+      ],
+      "de": [
+        1.57,
+        1.602
+      ]
+    },
+    "same_as": "GPT-4 / 3.5 (cl100k_base)"
+  },
+  "Phi-4-mini": {
+    "kind": "hf",
+    "id": "microsoft/Phi-4-mini-instruct",
+    "tokens": {
+      "sk": {
+        "wikinews": 14930,
+        "ALL": 45067,
+        "wikibooks": 16040,
+        "wikivoyage": 14097
+      },
+      "cs": {
+        "wikinews": 14270,
+        "ALL": 42911,
+        "wikibooks": 15133,
+        "wikivoyage": 13508
+      },
+      "pl": {
+        "wikinews": 14986,
+        "ALL": 44030,
+        "wikibooks": 15425,
+        "wikivoyage": 13619
+      },
+      "hu": {
+        "wikinews": 16309,
+        "ALL": 48205,
+        "wikibooks": 17196,
+        "wikivoyage": 14700
+      },
+      "de": {
+        "wikinews": 11970,
+        "ALL": 35224,
+        "wikibooks": 12468,
+        "wikivoyage": 10786
+      },
+      "en": {
+        "wikinews": 9021,
+        "ALL": 26873,
+        "wikibooks": 9533,
+        "wikivoyage": 8319
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.923,
+      "cs": 2.966,
+      "pl": 3.168,
+      "hu": 2.876,
+      "de": 4.367,
+      "en": 4.911
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.683,
+        "wikinews": 1.655,
+        "wikivoyage": 1.695,
+        "ALL": 1.677
+      },
+      "cs": {
+        "wikibooks": 1.587,
+        "wikinews": 1.582,
+        "wikivoyage": 1.624,
+        "ALL": 1.597
+      },
+      "pl": {
+        "wikibooks": 1.618,
+        "wikinews": 1.661,
+        "wikivoyage": 1.637,
+        "ALL": 1.638
+      },
+      "hu": {
+        "wikibooks": 1.804,
+        "wikinews": 1.808,
+        "wikivoyage": 1.767,
+        "ALL": 1.794
+      },
+      "de": {
+        "wikibooks": 1.308,
+        "wikinews": 1.327,
+        "wikivoyage": 1.297,
+        "ALL": 1.311
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.661,
+        1.694
+      ],
+      "cs": [
+        1.581,
+        1.613
+      ],
+      "pl": [
+        1.621,
+        1.656
+      ],
+      "hu": [
+        1.774,
+        1.815
+      ],
+      "de": [
+        1.299,
+        1.322
+      ]
+    },
+    "same_as": "GPT-4o / 4.1 / 5 (o200k_base)"
+  },
+  "Command R": {
+    "kind": "hf",
+    "id": "Xenova/c4ai-command-r-v01-tokenizer",
+    "tokens": {
+      "sk": {
+        "wikinews": 14932,
+        "ALL": 45540,
+        "wikibooks": 16238,
+        "wikivoyage": 14370
+      },
+      "cs": {
+        "wikinews": 11616,
+        "ALL": 34620,
+        "wikibooks": 12097,
+        "wikivoyage": 10907
+      },
+      "pl": {
+        "wikinews": 12101,
+        "ALL": 36001,
+        "wikibooks": 12670,
+        "wikivoyage": 11230
+      },
+      "hu": {
+        "wikinews": 18879,
+        "ALL": 56225,
+        "wikibooks": 20187,
+        "wikivoyage": 17159
+      },
+      "de": {
+        "wikinews": 11951,
+        "ALL": 35572,
+        "wikibooks": 12591,
+        "wikivoyage": 11030
+      },
+      "en": {
+        "wikinews": 9084,
+        "ALL": 26955,
+        "wikibooks": 9558,
+        "wikivoyage": 8313
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.892,
+      "cs": 3.676,
+      "pl": 3.874,
+      "hu": 2.466,
+      "de": 4.324,
+      "en": 4.896
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.699,
+        "wikinews": 1.644,
+        "wikivoyage": 1.729,
+        "ALL": 1.689
+      },
+      "cs": {
+        "wikibooks": 1.266,
+        "wikinews": 1.279,
+        "wikivoyage": 1.312,
+        "ALL": 1.284
+      },
+      "pl": {
+        "wikibooks": 1.326,
+        "wikinews": 1.332,
+        "wikivoyage": 1.351,
+        "ALL": 1.336
+      },
+      "hu": {
+        "wikibooks": 2.112,
+        "wikinews": 2.078,
+        "wikivoyage": 2.064,
+        "ALL": 2.086
+      },
+      "de": {
+        "wikibooks": 1.317,
+        "wikinews": 1.316,
+        "wikivoyage": 1.327,
+        "ALL": 1.32
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.672,
+        1.709
+      ],
+      "cs": [
+        1.272,
+        1.297
+      ],
+      "pl": [
+        1.321,
+        1.35
+      ],
+      "hu": [
+        2.061,
+        2.112
+      ],
+      "de": [
+        1.307,
+        1.332
+      ]
+    },
+    "same_as": null
+  },
+  "Nemotron Nano 2": {
+    "kind": "hf",
+    "id": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "tokens": {
+      "sk": {
+        "wikinews": 15391,
+        "ALL": 46466,
+        "wikibooks": 16493,
+        "wikivoyage": 14582
+      },
+      "cs": {
+        "wikinews": 14377,
+        "ALL": 43007,
+        "wikibooks": 15074,
+        "wikivoyage": 13556
+      },
+      "pl": {
+        "wikinews": 14836,
+        "ALL": 43840,
+        "wikibooks": 15340,
+        "wikivoyage": 13664
+      },
+      "hu": {
+        "wikinews": 15184,
+        "ALL": 44818,
+        "wikibooks": 15921,
+        "wikivoyage": 13713
+      },
+      "de": {
+        "wikinews": 12291,
+        "ALL": 36297,
+        "wikibooks": 12788,
+        "wikivoyage": 11218
+      },
+      "en": {
+        "wikinews": 9421,
+        "ALL": 27827,
+        "wikibooks": 9774,
+        "wikivoyage": 8632
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.835,
+      "cs": 2.959,
+      "pl": 3.182,
+      "hu": 3.093,
+      "de": 4.238,
+      "en": 4.742
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.687,
+        "wikinews": 1.634,
+        "wikivoyage": 1.689,
+        "ALL": 1.67
+      },
+      "cs": {
+        "wikibooks": 1.542,
+        "wikinews": 1.526,
+        "wikivoyage": 1.57,
+        "ALL": 1.546
+      },
+      "pl": {
+        "wikibooks": 1.569,
+        "wikinews": 1.575,
+        "wikivoyage": 1.583,
+        "ALL": 1.575
+      },
+      "hu": {
+        "wikibooks": 1.629,
+        "wikinews": 1.612,
+        "wikivoyage": 1.589,
+        "ALL": 1.611
+      },
+      "de": {
+        "wikibooks": 1.308,
+        "wikinews": 1.305,
+        "wikivoyage": 1.3,
+        "ALL": 1.304
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.653,
+        1.688
+      ],
+      "cs": [
+        1.53,
+        1.561
+      ],
+      "pl": [
+        1.559,
+        1.593
+      ],
+      "hu": [
+        1.593,
+        1.629
+      ],
+      "de": [
+        1.292,
+        1.316
+      ]
+    },
+    "same_as": "Mistral Nemo / Small 3 / Large 2 (tekken)"
+  },
+  "Granite 3.3": {
+    "kind": "hf",
+    "id": "ibm-granite/granite-3.3-8b-instruct",
+    "tokens": {
+      "sk": {
+        "wikinews": 20028,
+        "ALL": 60518,
+        "wikibooks": 21556,
+        "wikivoyage": 18934
+      },
+      "cs": {
+        "wikinews": 19290,
+        "ALL": 57829,
+        "wikibooks": 20332,
+        "wikivoyage": 18207
+      },
+      "pl": {
+        "wikinews": 20498,
+        "ALL": 60415,
+        "wikibooks": 21128,
+        "wikivoyage": 18789
+      },
+      "hu": {
+        "wikinews": 21343,
+        "ALL": 62893,
+        "wikibooks": 22332,
+        "wikivoyage": 19218
+      },
+      "de": {
+        "wikinews": 17987,
+        "ALL": 52961,
+        "wikibooks": 18755,
+        "wikivoyage": 16219
+      },
+      "en": {
+        "wikinews": 11336,
+        "ALL": 32909,
+        "wikibooks": 11370,
+        "wikivoyage": 10203
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.176,
+      "cs": 2.201,
+      "pl": 2.309,
+      "hu": 2.204,
+      "de": 2.904,
+      "en": 4.01
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.896,
+        "wikinews": 1.767,
+        "wikivoyage": 1.856,
+        "ALL": 1.839
+      },
+      "cs": {
+        "wikibooks": 1.788,
+        "wikinews": 1.702,
+        "wikivoyage": 1.784,
+        "ALL": 1.757
+      },
+      "pl": {
+        "wikibooks": 1.858,
+        "wikinews": 1.808,
+        "wikivoyage": 1.842,
+        "ALL": 1.836
+      },
+      "hu": {
+        "wikibooks": 1.964,
+        "wikinews": 1.883,
+        "wikivoyage": 1.884,
+        "ALL": 1.911
+      },
+      "de": {
+        "wikibooks": 1.65,
+        "wikinews": 1.587,
+        "wikivoyage": 1.59,
+        "ALL": 1.609
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.818,
+        1.86
+      ],
+      "cs": [
+        1.739,
+        1.776
+      ],
+      "pl": [
+        1.815,
+        1.857
+      ],
+      "hu": [
+        1.888,
+        1.934
+      ],
+      "de": [
+        1.593,
+        1.626
+      ]
+    },
+    "same_as": null
+  },
+  "Falcon 3": {
+    "kind": "hf",
+    "id": "tiiuae/Falcon3-7B-Instruct",
+    "tokens": {
+      "sk": {
+        "wikinews": 20007,
+        "ALL": 61826,
+        "wikibooks": 22308,
+        "wikivoyage": 19511
+      },
+      "cs": {
+        "wikinews": 20203,
+        "ALL": 62205,
+        "wikibooks": 22204,
+        "wikivoyage": 19798
+      },
+      "pl": {
+        "wikinews": 21353,
+        "ALL": 64438,
+        "wikibooks": 22834,
+        "wikivoyage": 20251
+      },
+      "hu": {
+        "wikinews": 21452,
+        "ALL": 63878,
+        "wikibooks": 22913,
+        "wikivoyage": 19513
+      },
+      "de": {
+        "wikinews": 16854,
+        "ALL": 50163,
+        "wikibooks": 17841,
+        "wikivoyage": 15468
+      },
+      "en": {
+        "wikinews": 9215,
+        "ALL": 27236,
+        "wikibooks": 9614,
+        "wikivoyage": 8407
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.13,
+      "cs": 2.046,
+      "pl": 2.165,
+      "hu": 2.17,
+      "de": 3.066,
+      "en": 4.845
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.32,
+        "wikinews": 2.171,
+        "wikivoyage": 2.321,
+        "ALL": 2.27
+      },
+      "cs": {
+        "wikibooks": 2.31,
+        "wikinews": 2.192,
+        "wikivoyage": 2.355,
+        "ALL": 2.284
+      },
+      "pl": {
+        "wikibooks": 2.375,
+        "wikinews": 2.317,
+        "wikivoyage": 2.409,
+        "ALL": 2.366
+      },
+      "hu": {
+        "wikibooks": 2.383,
+        "wikinews": 2.328,
+        "wikivoyage": 2.321,
+        "ALL": 2.345
+      },
+      "de": {
+        "wikibooks": 1.856,
+        "wikinews": 1.829,
+        "wikivoyage": 1.84,
+        "ALL": 1.842
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.243,
+        2.299
+      ],
+      "cs": [
+        2.256,
+        2.314
+      ],
+      "pl": [
+        2.336,
+        2.397
+      ],
+      "hu": [
+        2.315,
+        2.376
+      ],
+      "de": [
+        1.821,
+        1.862
+      ]
+    },
+    "same_as": null
+  },
+  "SmolLM3": {
+    "kind": "hf",
+    "id": "HuggingFaceTB/SmolLM3-3B",
+    "tokens": {
+      "sk": {
+        "wikinews": 16380,
+        "ALL": 50069,
+        "wikibooks": 17897,
+        "wikivoyage": 15792
+      },
+      "cs": {
+        "wikinews": 13706,
+        "ALL": 40864,
+        "wikibooks": 14343,
+        "wikivoyage": 12815
+      },
+      "pl": {
+        "wikinews": 17367,
+        "ALL": 51371,
+        "wikibooks": 18025,
+        "wikivoyage": 15979
+      },
+      "hu": {
+        "wikinews": 19318,
+        "ALL": 57463,
+        "wikibooks": 20551,
+        "wikivoyage": 17594
+      },
+      "de": {
+        "wikinews": 14496,
+        "ALL": 42974,
+        "wikibooks": 15248,
+        "wikivoyage": 13230
+      },
+      "en": {
+        "wikinews": 9126,
+        "ALL": 27171,
+        "wikibooks": 9589,
+        "wikivoyage": 8456
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.631,
+      "cs": 3.114,
+      "pl": 2.715,
+      "hu": 2.412,
+      "de": 3.579,
+      "en": 4.857
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.866,
+        "wikinews": 1.795,
+        "wikivoyage": 1.868,
+        "ALL": 1.843
+      },
+      "cs": {
+        "wikibooks": 1.496,
+        "wikinews": 1.502,
+        "wikivoyage": 1.515,
+        "ALL": 1.504
+      },
+      "pl": {
+        "wikibooks": 1.88,
+        "wikinews": 1.903,
+        "wikivoyage": 1.89,
+        "ALL": 1.891
+      },
+      "hu": {
+        "wikibooks": 2.143,
+        "wikinews": 2.117,
+        "wikivoyage": 2.081,
+        "ALL": 2.115
+      },
+      "de": {
+        "wikibooks": 1.59,
+        "wikinews": 1.588,
+        "wikivoyage": 1.565,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.823,
+        1.863
+      ],
+      "cs": [
+        1.489,
+        1.52
+      ],
+      "pl": [
+        1.87,
+        1.912
+      ],
+      "hu": [
+        2.089,
+        2.14
+      ],
+      "de": [
+        1.566,
+        1.598
+      ]
+    },
+    "same_as": "Llama 3.x"
+  },
+  "OLMo 2": {
+    "kind": "hf",
+    "id": "allenai/OLMo-2-1124-7B",
+    "tokens": {
+      "sk": {
+        "wikinews": 18822,
+        "ALL": 57882,
+        "wikibooks": 20837,
+        "wikivoyage": 18223
+      },
+      "cs": {
+        "wikinews": 18676,
+        "ALL": 57116,
+        "wikibooks": 20328,
+        "wikivoyage": 18112
+      },
+      "pl": {
+        "wikinews": 17597,
+        "ALL": 52024,
+        "wikibooks": 18262,
+        "wikivoyage": 16165
+      },
+      "hu": {
+        "wikinews": 19653,
+        "ALL": 58408,
+        "wikibooks": 20894,
+        "wikivoyage": 17861
+      },
+      "de": {
+        "wikinews": 14544,
+        "ALL": 43103,
+        "wikibooks": 15292,
+        "wikivoyage": 13267
+      },
+      "en": {
+        "wikinews": 9132,
+        "ALL": 27182,
+        "wikibooks": 9590,
+        "wikivoyage": 8460
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.275,
+      "cs": 2.228,
+      "pl": 2.681,
+      "hu": 2.373,
+      "de": 3.568,
+      "en": 4.855
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.173,
+        "wikinews": 2.061,
+        "wikivoyage": 2.154,
+        "ALL": 2.129
+      },
+      "cs": {
+        "wikibooks": 2.12,
+        "wikinews": 2.045,
+        "wikivoyage": 2.141,
+        "ALL": 2.101
+      },
+      "pl": {
+        "wikibooks": 1.904,
+        "wikinews": 1.927,
+        "wikivoyage": 1.911,
+        "ALL": 1.914
+      },
+      "hu": {
+        "wikibooks": 2.179,
+        "wikinews": 2.152,
+        "wikivoyage": 2.111,
+        "ALL": 2.149
+      },
+      "de": {
+        "wikibooks": 1.595,
+        "wikinews": 1.593,
+        "wikivoyage": 1.568,
+        "ALL": 1.586
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.105,
+        2.155
+      ],
+      "cs": [
+        2.079,
+        2.125
+      ],
+      "pl": [
+        1.893,
+        1.936
+      ],
+      "hu": [
+        2.122,
+        2.175
+      ],
+      "de": [
+        1.57,
+        1.602
+      ]
+    },
+    "same_as": "GPT-4 / 3.5 (cl100k_base)"
+  },
+  "BLOOM": {
+    "kind": "hf",
+    "id": "bigscience/bloom",
+    "tokens": {
+      "sk": {
+        "wikinews": 17861,
+        "ALL": 54759,
+        "wikibooks": 19692,
+        "wikivoyage": 17206
+      },
+      "cs": {
+        "wikinews": 18034,
+        "ALL": 55327,
+        "wikibooks": 19747,
+        "wikivoyage": 17546
+      },
+      "pl": {
+        "wikinews": 19299,
+        "ALL": 58275,
+        "wikibooks": 20723,
+        "wikivoyage": 18253
+      },
+      "hu": {
+        "wikinews": 19006,
+        "ALL": 56635,
+        "wikibooks": 20317,
+        "wikivoyage": 17312
+      },
+      "de": {
+        "wikinews": 15386,
+        "ALL": 46141,
+        "wikibooks": 16493,
+        "wikivoyage": 14262
+      },
+      "en": {
+        "wikinews": 9138,
+        "ALL": 27416,
+        "wikibooks": 9731,
+        "wikivoyage": 8547
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.405,
+      "cs": 2.3,
+      "pl": 2.394,
+      "hu": 2.448,
+      "de": 3.333,
+      "en": 4.813
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.024,
+        "wikinews": 1.955,
+        "wikivoyage": 2.013,
+        "ALL": 1.997
+      },
+      "cs": {
+        "wikibooks": 2.029,
+        "wikinews": 1.974,
+        "wikivoyage": 2.053,
+        "ALL": 2.018
+      },
+      "pl": {
+        "wikibooks": 2.13,
+        "wikinews": 2.112,
+        "wikivoyage": 2.136,
+        "ALL": 2.126
+      },
+      "hu": {
+        "wikibooks": 2.088,
+        "wikinews": 2.08,
+        "wikivoyage": 2.026,
+        "ALL": 2.066
+      },
+      "de": {
+        "wikibooks": 1.695,
+        "wikinews": 1.684,
+        "wikivoyage": 1.669,
+        "ALL": 1.683
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.975,
+        2.02
+      ],
+      "cs": [
+        1.996,
+        2.041
+      ],
+      "pl": [
+        2.1,
+        2.151
+      ],
+      "hu": [
+        2.042,
+        2.09
+      ],
+      "de": [
+        1.667,
+        1.7
+      ]
+    },
+    "same_as": null
+  },
+  "Claude 2 (legacy, Xenova mirror)": {
+    "kind": "hf",
+    "id": "Xenova/claude-tokenizer",
+    "tokens": {
+      "sk": {
+        "wikinews": 20035,
+        "ALL": 61926,
+        "wikibooks": 22357,
+        "wikivoyage": 19534
+      },
+      "cs": {
+        "wikinews": 19913,
+        "ALL": 61304,
+        "wikibooks": 21879,
+        "wikivoyage": 19512
+      },
+      "pl": {
+        "wikinews": 21230,
+        "ALL": 63910,
+        "wikibooks": 22714,
+        "wikivoyage": 19966
+      },
+      "hu": {
+        "wikinews": 21875,
+        "ALL": 65486,
+        "wikibooks": 23515,
+        "wikivoyage": 20096
+      },
+      "de": {
+        "wikinews": 15960,
+        "ALL": 47373,
+        "wikibooks": 16801,
+        "wikivoyage": 14612
+      },
+      "en": {
+        "wikinews": 9220,
+        "ALL": 27509,
+        "wikibooks": 9689,
+        "wikivoyage": 8600
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.127,
+      "cs": 2.076,
+      "pl": 2.182,
+      "hu": 2.117,
+      "de": 3.247,
+      "en": 4.797
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 2.307,
+        "wikinews": 2.173,
+        "wikivoyage": 2.271,
+        "ALL": 2.251
+      },
+      "cs": {
+        "wikibooks": 2.258,
+        "wikinews": 2.16,
+        "wikivoyage": 2.269,
+        "ALL": 2.229
+      },
+      "pl": {
+        "wikibooks": 2.344,
+        "wikinews": 2.303,
+        "wikivoyage": 2.322,
+        "ALL": 2.323
+      },
+      "hu": {
+        "wikibooks": 2.427,
+        "wikinews": 2.373,
+        "wikivoyage": 2.337,
+        "ALL": 2.381
+      },
+      "de": {
+        "wikibooks": 1.734,
+        "wikinews": 1.731,
+        "wikivoyage": 1.699,
+        "ALL": 1.722
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        2.225,
+        2.278
+      ],
+      "cs": [
+        2.203,
+        2.255
+      ],
+      "pl": [
+        2.295,
+        2.352
+      ],
+      "hu": [
+        2.351,
+        2.409
+      ],
+      "de": [
+        1.705,
+        1.74
+      ]
+    },
+    "same_as": null
+  },
+  "EuroLLM": {
+    "kind": "hf",
+    "id": "utter-project/EuroLLM-1.7B",
+    "tokens": {
+      "sk": {
+        "wikinews": 13178,
+        "ALL": 39015,
+        "wikibooks": 13633,
+        "wikivoyage": 12204
+      },
+      "cs": {
+        "wikinews": 13094,
+        "ALL": 38671,
+        "wikibooks": 13496,
+        "wikivoyage": 12081
+      },
+      "pl": {
+        "wikinews": 12142,
+        "ALL": 35198,
+        "wikibooks": 12222,
+        "wikivoyage": 10834
+      },
+      "hu": {
+        "wikinews": 14255,
+        "ALL": 41519,
+        "wikibooks": 14641,
+        "wikivoyage": 12623
+      },
+      "de": {
+        "wikinews": 12127,
+        "ALL": 35326,
+        "wikibooks": 12374,
+        "wikivoyage": 10825
+      },
+      "en": {
+        "wikinews": 9828,
+        "ALL": 28875,
+        "wikibooks": 10082,
+        "wikivoyage": 8965
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.376,
+      "cs": 3.291,
+      "pl": 3.963,
+      "hu": 3.339,
+      "de": 4.354,
+      "en": 4.57
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.352,
+        "wikinews": 1.341,
+        "wikivoyage": 1.361,
+        "ALL": 1.351
+      },
+      "cs": {
+        "wikibooks": 1.339,
+        "wikinews": 1.332,
+        "wikivoyage": 1.348,
+        "ALL": 1.339
+      },
+      "pl": {
+        "wikibooks": 1.212,
+        "wikinews": 1.235,
+        "wikivoyage": 1.208,
+        "ALL": 1.219
+      },
+      "hu": {
+        "wikibooks": 1.452,
+        "wikinews": 1.45,
+        "wikivoyage": 1.408,
+        "ALL": 1.438
+      },
+      "de": {
+        "wikibooks": 1.227,
+        "wikinews": 1.234,
+        "wikivoyage": 1.207,
+        "ALL": 1.223
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.339,
+        1.364
+      ],
+      "cs": [
+        1.327,
+        1.352
+      ],
+      "pl": [
+        1.207,
+        1.232
+      ],
+      "hu": [
+        1.423,
+        1.453
+      ],
+      "de": [
+        1.213,
+        1.234
+      ]
+    },
+    "same_as": null
+  },
+  "Apertus (Swiss AI)": {
+    "kind": "hf",
+    "id": "swiss-ai/Apertus-8B-2509",
+    "tokens": {
+      "sk": {
+        "wikinews": 15391,
+        "ALL": 46466,
+        "wikibooks": 16493,
+        "wikivoyage": 14582
+      },
+      "cs": {
+        "wikinews": 14377,
+        "ALL": 43007,
+        "wikibooks": 15074,
+        "wikivoyage": 13556
+      },
+      "pl": {
+        "wikinews": 14836,
+        "ALL": 43840,
+        "wikibooks": 15340,
+        "wikivoyage": 13664
+      },
+      "hu": {
+        "wikinews": 15184,
+        "ALL": 44818,
+        "wikibooks": 15921,
+        "wikivoyage": 13713
+      },
+      "de": {
+        "wikinews": 12291,
+        "ALL": 36297,
+        "wikibooks": 12788,
+        "wikivoyage": 11218
+      },
+      "en": {
+        "wikinews": 9421,
+        "ALL": 27827,
+        "wikibooks": 9774,
+        "wikivoyage": 8632
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.835,
+      "cs": 2.959,
+      "pl": 3.182,
+      "hu": 3.093,
+      "de": 4.238,
+      "en": 4.742
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.687,
+        "wikinews": 1.634,
+        "wikivoyage": 1.689,
+        "ALL": 1.67
+      },
+      "cs": {
+        "wikibooks": 1.542,
+        "wikinews": 1.526,
+        "wikivoyage": 1.57,
+        "ALL": 1.546
+      },
+      "pl": {
+        "wikibooks": 1.569,
+        "wikinews": 1.575,
+        "wikivoyage": 1.583,
+        "ALL": 1.575
+      },
+      "hu": {
+        "wikibooks": 1.629,
+        "wikinews": 1.612,
+        "wikivoyage": 1.589,
+        "ALL": 1.611
+      },
+      "de": {
+        "wikibooks": 1.308,
+        "wikinews": 1.305,
+        "wikivoyage": 1.3,
+        "ALL": 1.304
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.653,
+        1.688
+      ],
+      "cs": [
+        1.53,
+        1.561
+      ],
+      "pl": [
+        1.559,
+        1.593
+      ],
+      "hu": [
+        1.593,
+        1.629
+      ],
+      "de": [
+        1.292,
+        1.316
+      ]
+    },
+    "same_as": "Mistral Nemo / Small 3 / Large 2 (tekken)"
+  },
+  "Teuken (OpenGPT-X)": {
+    "kind": "spm",
+    "id": "openGPT-X/Teuken-7B-instruct-research-v0.4",
+    "tokens": {
+      "sk": {
+        "wikinews": 13685,
+        "ALL": 41533,
+        "wikibooks": 14801,
+        "wikivoyage": 13047
+      },
+      "cs": {
+        "wikinews": 10719,
+        "ALL": 31321,
+        "wikibooks": 10914,
+        "wikivoyage": 9688
+      },
+      "pl": {
+        "wikinews": 11141,
+        "ALL": 32325,
+        "wikibooks": 11225,
+        "wikivoyage": 9959
+      },
+      "hu": {
+        "wikinews": 11118,
+        "ALL": 32721,
+        "wikibooks": 11528,
+        "wikivoyage": 10075
+      },
+      "de": {
+        "wikinews": 11444,
+        "ALL": 33464,
+        "wikibooks": 11814,
+        "wikivoyage": 10206
+      },
+      "en": {
+        "wikinews": 9958,
+        "ALL": 29453,
+        "wikibooks": 10406,
+        "wikivoyage": 9089
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.171,
+      "cs": 4.063,
+      "pl": 4.315,
+      "hu": 4.237,
+      "de": 4.596,
+      "en": 4.481
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.422,
+        "wikinews": 1.374,
+        "wikivoyage": 1.435,
+        "ALL": 1.41
+      },
+      "cs": {
+        "wikibooks": 1.049,
+        "wikinews": 1.076,
+        "wikivoyage": 1.066,
+        "ALL": 1.063
+      },
+      "pl": {
+        "wikibooks": 1.079,
+        "wikinews": 1.119,
+        "wikivoyage": 1.096,
+        "ALL": 1.098
+      },
+      "hu": {
+        "wikibooks": 1.108,
+        "wikinews": 1.116,
+        "wikivoyage": 1.108,
+        "ALL": 1.111
+      },
+      "de": {
+        "wikibooks": 1.135,
+        "wikinews": 1.149,
+        "wikivoyage": 1.123,
+        "ALL": 1.136
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.396,
+        1.425
+      ],
+      "cs": [
+        1.054,
+        1.072
+      ],
+      "pl": [
+        1.087,
+        1.109
+      ],
+      "hu": [
+        1.101,
+        1.122
+      ],
+      "de": [
+        1.127,
+        1.145
+      ]
+    },
+    "same_as": null
+  },
+  "SlovakBERT (Slovak, Gerulata)": {
+    "kind": "hf-bpe",
+    "id": "gerulata/slovakbert",
+    "tokens": {
+      "sk": {
+        "wikinews": 9901,
+        "ALL": 29174,
+        "wikibooks": 10187,
+        "wikivoyage": 9086
+      },
+      "cs": {
+        "wikinews": 12020,
+        "ALL": 35669,
+        "wikibooks": 12464,
+        "wikivoyage": 11185
+      },
+      "pl": {
+        "wikinews": 20010,
+        "ALL": 59809,
+        "wikibooks": 21125,
+        "wikivoyage": 18674
+      },
+      "hu": {
+        "wikinews": 20752,
+        "ALL": 61615,
+        "wikibooks": 22037,
+        "wikivoyage": 18826
+      },
+      "de": {
+        "wikinews": 16931,
+        "ALL": 49817,
+        "wikibooks": 17690,
+        "wikivoyage": 15196
+      },
+      "en": {
+        "wikinews": 12852,
+        "ALL": 37823,
+        "wikibooks": 13272,
+        "wikivoyage": 11699
+      }
+    },
+    "chars_per_token": {
+      "sk": 4.515,
+      "cs": 3.568,
+      "pl": 2.332,
+      "hu": 2.25,
+      "de": 3.087,
+      "en": 3.489
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 0.768,
+        "wikinews": 0.77,
+        "wikivoyage": 0.777,
+        "ALL": 0.771
+      },
+      "cs": {
+        "wikibooks": 0.939,
+        "wikinews": 0.935,
+        "wikivoyage": 0.956,
+        "ALL": 0.943
+      },
+      "pl": {
+        "wikibooks": 1.592,
+        "wikinews": 1.557,
+        "wikivoyage": 1.596,
+        "ALL": 1.581
+      },
+      "hu": {
+        "wikibooks": 1.66,
+        "wikinews": 1.615,
+        "wikivoyage": 1.609,
+        "ALL": 1.629
+      },
+      "de": {
+        "wikibooks": 1.333,
+        "wikinews": 1.317,
+        "wikivoyage": 1.299,
+        "ALL": 1.317
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        0.764,
+        0.779
+      ],
+      "cs": [
+        0.935,
+        0.952
+      ],
+      "pl": [
+        1.564,
+        1.599
+      ],
+      "hu": [
+        1.612,
+        1.647
+      ],
+      "de": [
+        1.306,
+        1.328
+      ]
+    },
+    "same_as": null
+  },
+  "CSTinyLlama (Czech, BUT-FIT)": {
+    "kind": "hf",
+    "id": "BUT-FIT/CSTinyLlama-1.2B",
+    "tokens": {
+      "sk": {
+        "wikinews": 13389,
+        "ALL": 40413,
+        "wikibooks": 14305,
+        "wikivoyage": 12719
+      },
+      "cs": {
+        "wikinews": 9199,
+        "ALL": 26979,
+        "wikibooks": 9349,
+        "wikivoyage": 8431
+      },
+      "pl": {
+        "wikinews": 20355,
+        "ALL": 61293,
+        "wikibooks": 21687,
+        "wikivoyage": 19251
+      },
+      "hu": {
+        "wikinews": 21931,
+        "ALL": 65049,
+        "wikibooks": 23296,
+        "wikivoyage": 19822
+      },
+      "de": {
+        "wikinews": 18246,
+        "ALL": 53982,
+        "wikibooks": 19285,
+        "wikivoyage": 16451
+      },
+      "en": {
+        "wikinews": 14525,
+        "ALL": 43739,
+        "wikibooks": 15728,
+        "wikivoyage": 13486
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.259,
+      "cs": 4.717,
+      "pl": 2.276,
+      "hu": 2.131,
+      "de": 2.849,
+      "en": 3.017
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 0.91,
+        "wikinews": 0.922,
+        "wikivoyage": 0.943,
+        "ALL": 0.924
+      },
+      "cs": {
+        "wikibooks": 0.594,
+        "wikinews": 0.633,
+        "wikivoyage": 0.625,
+        "ALL": 0.617
+      },
+      "pl": {
+        "wikibooks": 1.379,
+        "wikinews": 1.401,
+        "wikivoyage": 1.427,
+        "ALL": 1.401
+      },
+      "hu": {
+        "wikibooks": 1.481,
+        "wikinews": 1.51,
+        "wikivoyage": 1.47,
+        "ALL": 1.487
+      },
+      "de": {
+        "wikibooks": 1.226,
+        "wikinews": 1.256,
+        "wikivoyage": 1.22,
+        "ALL": 1.234
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        0.915,
+        0.933
+      ],
+      "cs": [
+        0.611,
+        0.623
+      ],
+      "pl": [
+        1.386,
+        1.417
+      ],
+      "hu": [
+        1.472,
+        1.502
+      ],
+      "de": [
+        1.225,
+        1.244
+      ]
+    },
+    "same_as": null
+  },
+  "CSMPT (Czech, BUT-FIT)": {
+    "kind": "hf",
+    "id": "BUT-FIT/csmpt7b",
+    "tokens": {
+      "sk": {
+        "wikinews": 13389,
+        "ALL": 40413,
+        "wikibooks": 14305,
+        "wikivoyage": 12719
+      },
+      "cs": {
+        "wikinews": 9199,
+        "ALL": 26979,
+        "wikibooks": 9349,
+        "wikivoyage": 8431
+      },
+      "pl": {
+        "wikinews": 20355,
+        "ALL": 61293,
+        "wikibooks": 21687,
+        "wikivoyage": 19251
+      },
+      "hu": {
+        "wikinews": 21931,
+        "ALL": 65049,
+        "wikibooks": 23296,
+        "wikivoyage": 19822
+      },
+      "de": {
+        "wikinews": 18246,
+        "ALL": 53982,
+        "wikibooks": 19285,
+        "wikivoyage": 16451
+      },
+      "en": {
+        "wikinews": 14525,
+        "ALL": 43739,
+        "wikibooks": 15728,
+        "wikivoyage": 13486
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.259,
+      "cs": 4.717,
+      "pl": 2.276,
+      "hu": 2.131,
+      "de": 2.849,
+      "en": 3.017
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 0.91,
+        "wikinews": 0.922,
+        "wikivoyage": 0.943,
+        "ALL": 0.924
+      },
+      "cs": {
+        "wikibooks": 0.594,
+        "wikinews": 0.633,
+        "wikivoyage": 0.625,
+        "ALL": 0.617
+      },
+      "pl": {
+        "wikibooks": 1.379,
+        "wikinews": 1.401,
+        "wikivoyage": 1.427,
+        "ALL": 1.401
+      },
+      "hu": {
+        "wikibooks": 1.481,
+        "wikinews": 1.51,
+        "wikivoyage": 1.47,
+        "ALL": 1.487
+      },
+      "de": {
+        "wikibooks": 1.226,
+        "wikinews": 1.256,
+        "wikivoyage": 1.22,
+        "ALL": 1.234
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        0.915,
+        0.933
+      ],
+      "cs": [
+        0.611,
+        0.623
+      ],
+      "pl": [
+        1.386,
+        1.417
+      ],
+      "hu": [
+        1.472,
+        1.502
+      ],
+      "de": [
+        1.225,
+        1.244
+      ]
+    },
+    "same_as": "CSTinyLlama (Czech, BUT-FIT)"
+  },
+  "Bielik (Polish, SpeakLeash)": {
+    "kind": "hf",
+    "id": "speakleash/Bielik-11B-v2.3-Instruct",
+    "tokens": {
+      "sk": {
+        "wikinews": 19259,
+        "ALL": 58427,
+        "wikibooks": 20899,
+        "wikivoyage": 18269
+      },
+      "cs": {
+        "wikinews": 18492,
+        "ALL": 55898,
+        "wikibooks": 19800,
+        "wikivoyage": 17606
+      },
+      "pl": {
+        "wikinews": 19167,
+        "ALL": 56991,
+        "wikibooks": 20040,
+        "wikivoyage": 17784
+      },
+      "hu": {
+        "wikinews": 20245,
+        "ALL": 60149,
+        "wikibooks": 21498,
+        "wikivoyage": 18406
+      },
+      "de": {
+        "wikinews": 16019,
+        "ALL": 47442,
+        "wikibooks": 16766,
+        "wikivoyage": 14657
+      },
+      "en": {
+        "wikinews": 10224,
+        "ALL": 29997,
+        "wikibooks": 10479,
+        "wikivoyage": 9294
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.254,
+      "cs": 2.277,
+      "pl": 2.447,
+      "hu": 2.305,
+      "de": 3.242,
+      "en": 4.399
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.994,
+        "wikinews": 1.884,
+        "wikivoyage": 1.966,
+        "ALL": 1.948
+      },
+      "cs": {
+        "wikibooks": 1.889,
+        "wikinews": 1.809,
+        "wikivoyage": 1.894,
+        "ALL": 1.863
+      },
+      "pl": {
+        "wikibooks": 1.912,
+        "wikinews": 1.875,
+        "wikivoyage": 1.913,
+        "ALL": 1.9
+      },
+      "hu": {
+        "wikibooks": 2.052,
+        "wikinews": 1.98,
+        "wikivoyage": 1.98,
+        "ALL": 2.005
+      },
+      "de": {
+        "wikibooks": 1.6,
+        "wikinews": 1.567,
+        "wikivoyage": 1.577,
+        "ALL": 1.582
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.926,
+        1.971
+      ],
+      "cs": [
+        1.843,
+        1.885
+      ],
+      "pl": [
+        1.878,
+        1.923
+      ],
+      "hu": [
+        1.98,
+        2.03
+      ],
+      "de": [
+        1.565,
+        1.599
+      ]
+    },
+    "same_as": "Mistral / Mixtral (v3)"
+  }
+}

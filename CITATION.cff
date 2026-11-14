@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use sk-tokenizer-bench in your work, please cite it using the metadata below."
 type: software
 title: "sk-tokenizer-bench"
-abstract: "Slovak versus English token cost across the tokenizers of major LLMs, measured on a parallel Slovak/English corpus: tokens per text, characters per token and the resulting price and context-window penalty for Slovak."
+abstract: "Slovak versus English token cost across 30+ LLM tokenizers, measured on FLORES-200 (Slovak, Czech, Polish, Hungarian, German, English) and a hand-written Slovak/English domain corpus: token ratios with bootstrap confidence intervals, characters per token, and the resulting price and context-window penalty."
 authors:
   - family-names: Tchurik
     given-names: Ľubomír
@@ -14,8 +14,8 @@ identifiers:
 repository-code: "https://github.com/ltchurik/sk-tokenizer-bench"
 url: "https://lubomirtchurik.sk"
 license: MIT
-version: 0.1.0
-date-released: 2026-11-09
+version: 0.2.0
+date-released: 2026-11-14
 keywords:
   - slovak
   - tokenizer
