@@ -2,19 +2,20 @@ cff-version: 1.2.0
 message: "If you use sk-tokenizer-bench in your work, please cite it using the metadata below."
 type: software
 title: "sk-tokenizer-bench"
-abstract: "Slovak versus English token cost across 30+ LLM tokenizers, measured on FLORES-200 (Slovak, Czech, Polish, Hungarian, Slovenian, Croatian, Romanian, Ukrainian, German, English), including Slovak without diacritics, and a hand-written Slovak/English domain corpus: token ratios with bootstrap confidence intervals, characters per token, and the resulting price and context-window penalty."
+abstract: "How much more does it cost to use an LLM in Slovak? Token counts, characters per token and API cost of Slovak versus English across 41 LLM tokenizers (OpenAI, Llama, Mistral, Gemma, Qwen, DeepSeek, GLM, Kimi, MiniMax, EuroLLM and others), measured on FLORES-200 devtest in ten languages (Slovak, Czech, Polish, Hungarian, Slovenian, Croatian, Romanian, Ukrainian, German, English), on real text by genre (social media, speech, literary prose and news from WMT24++, and EU legislation from EUR-Lex) and on a hand-written Slovak/English domain corpus. Includes Slovak without diacritics, bootstrap confidence intervals, effective prices from official price lists, pinned tokenizer revisions for exact reproducibility, and an in-browser token calculator that matches the benchmark counts exactly."
 authors:
   - family-names: Tchurik
     given-names: Ľubomír
     orcid: "https://orcid.org/0009-0005-8053-9405"
+    website: "https://lubomirtchurik.sk/"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24092040"
     description: "Concept DOI, resolves to the latest version"
 repository-code: "https://github.com/ltchurik/sk-tokenizer-bench"
-url: "https://lubomirtchurik.sk"
+url: "https://ltchurik.github.io/sk-tokenizer-bench/"
 license: MIT
-version: 0.3.5
+version: 0.3.6
 date-released: 2026-11-15
 keywords:
   - slovak
@@ -31,3 +32,11 @@ keywords:
   - polish
   - hungarian
   - low-resource languages
+  - slovenian
+  - croatian
+  - romanian
+  - ukrainian
+  - wmt24pp
+  - eu legislation
+  - token calculator
+  - reproducibility
