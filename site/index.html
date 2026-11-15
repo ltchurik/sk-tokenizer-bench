@@ -6,10 +6,15 @@
 <title>Koľko tokenov stojí slovenčina? Kalkulačka tokenov pre GPT, Llama, Gemma, Mistral</title>
 <meta name="description" content="Vložte slovenský text a zistite, koľko tokenov a peňazí stojí v GPT-4o / GPT-5, Llama, Gemma, Mistral, Qwen či DeepSeek v porovnaní s angličtinou. Počíta sa priamo v prehliadači, text nikam neodchádza.">
 <link rel="canonical" href="https://ltchurik.github.io/sk-tokenizer-bench/">
+<link rel="alternate" hreflang="sk" href="https://ltchurik.github.io/sk-tokenizer-bench/">
+<link rel="alternate" hreflang="en" href="https://ltchurik.github.io/sk-tokenizer-bench/en/">
+<link rel="alternate" hreflang="x-default" href="https://ltchurik.github.io/sk-tokenizer-bench/en/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Koľko tokenov stojí slovenčina?">
 <meta property="og:description" content="Tokenová kalkulačka pre slovenčinu: počet tokenov, cena a porovnanie s angličtinou pre 30+ jazykových modelov.">
 <meta property="og:url" content="https://ltchurik.github.io/sk-tokenizer-bench/">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://ltchurik.github.io/sk-tokenizer-bench/social-preview.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
@@ -53,10 +58,10 @@
 <div class="wrap">
   <header class="top">
     <a class="brand" href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a>
-    <div class="lang" role="group" aria-label="Jazyk / Language">
-      <button type="button" data-set-lang="sk" aria-pressed="true">SK</button>
-      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-    </div>
+    <nav class="lang" aria-label="Jazyk / Language">
+      <a href="./" hreflang="sk" lang="sk" data-lang-link aria-current="page">SK</a>
+      <a href="en/" hreflang="en" lang="en" data-lang-link>EN</a>
+    </nav>
   </header>
 
   <section class="hero">
@@ -131,7 +136,7 @@
       <p>Celé meranie, metodika a výsledky pre 10 jazykov: <a href="https://github.com/ltchurik/sk-tokenizer-bench">github.com/ltchurik/sk-tokenizer-bench</a>.</p>
     </div>
     <figure>
-      <img src="tokenizer-timeline.png" width="1200" height="600" loading="lazy" alt="Graf: pomer slovenských a anglických tokenov podľa dátumu vydania tokenizéra. OpenAI klesol z 2,13× (GPT-4) na 1,68× (GPT-4o), Meta z 1,84× (Llama 3) na 1,56× (Llama 4).">
+      <img src="tokenizer-timeline.png" width="1200" height="600" loading="lazy" data-i18n-alt="timelineAlt" alt="Graf: pomer slovenských a anglických tokenov podľa dátumu vydania tokenizéra. OpenAI klesol z 2,13× (GPT-4) na 1,68× (GPT-4o), Meta z 1,84× (Llama 3) na 1,56× (Llama 4).">
     </figure>
   </section>
 

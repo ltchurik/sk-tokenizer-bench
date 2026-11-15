@@ -12,22 +12,11 @@ const VIZ_LIMIT = 600;
 
 const T = {
   sk: {
-    h1: "Koľko tokenov stojí slovenčina?",
-    lead: "Jazykové modely účtujú za tokeny a tokenizéry sa učili hlavne na angličtine. Vložte slovenský text a uvidíte, koľko tokenov a peňazí stojí v jednotlivých modeloch a o koľko viac to je oproti rovnakému textu po anglicky.",
-    privacy: "Všetko sa počíta vo vašom prehliadači. Text nikam neodchádza.",
-    skLabel: "Váš text", langLabel: "Jazyk textu", sample: "Vložiť ukážku", clear: "Vymazať",
     langs: { sk: "slovenčina", cs: "čeština", pl: "poľština", hu: "maďarčina", sl: "slovinčina", hr: "chorvátčina", ro: "rumunčina", uk: "ukrajinčina", de: "nemčina" },
     inLang: { sk: "Po slovensky", cs: "Po česky", pl: "Po poľsky", hu: "Po maďarsky", sl: "Po slovinsky", hr: "Po chorvátsky", ro: "Po rumunsky", uk: "Po ukrajinsky", de: "Po nemecky" },
     share: "Kopírovať odkaz na tento text", shared: "Odkaz skopírovaný ✓", sharedBar: "Odkaz je v adresnom riadku ✓",
-    answerLabel: "Odpoveď modelu",
     answers: { 0: "bez odpovede (len vstup)", 0.5: "polovičná dĺžka textu", 1: "rovnako dlhá ako text", 2: "dvakrát dlhšia" },
     sublineSrc: (src) => `Porovnanie s angličtinou: ${src}.`,
-    enSummary: "Mám aj anglickú verziu (presné porovnanie)", enLabel: "Ten istý text po anglicky",
-    enHint: "Bez anglickej verzie sa porovnanie odhaduje podľa pomeru nameraného na 1012 vetách korpusu FLORES-200.",
-    costH: "Cena za 1 000 takýchto textov", resH: "Tokeny podľa tokenizéra", vizH: "Ako tokenizér delí text", vizPick: "Tokenizér",
-    resNote: "Čísla s <b>≈</b> sú odhad z nameraného počtu znakov na token. Kliknutím na <b>Spočítať presne</b> sa tokenizér stiahne z Hugging Face (raz, potom ho má prehliadač uložený) a text sa spočíta presne, rovnako ako v benchmarku.",
-    vizNote: "Každý farebný úsek je jeden token. Prerušovaný rámik znamená, že jeden znak (napr. ľ alebo ô) sa rozdelil do viacerých tokenov.",
-    whyH: "Prečo slovenčina stojí viac?",
     stats: (c, w) => `${fmtInt(c)} znakov · ${fmtInt(w)} slov`,
     empty: "Vložte text a uvidíte, koľko tokenov stojí.",
     headline: (m, n, e, p) => `Na <b>${m}</b> má tento text <b>${n}</b> tokenov. Rovnaký obsah po anglicky by mal ${e} tokenov, teda platíte o <b>${p}</b> viac.`,
@@ -45,22 +34,11 @@ const T = {
     also: "rovnaký ako", tokens: "tokenov",
   },
   en: {
-    h1: "How many tokens does Slovak cost?",
-    lead: "Language models bill per token, and tokenizers were trained mostly on English. Paste Slovak text to see how many tokens and how much money it costs in each model, and how much more that is than the same text in English.",
-    privacy: "Everything runs in your browser. Your text never leaves it.",
-    skLabel: "Your text", langLabel: "Text language", sample: "Insert sample", clear: "Clear",
     langs: { sk: "Slovak", cs: "Czech", pl: "Polish", hu: "Hungarian", sl: "Slovenian", hr: "Croatian", ro: "Romanian", uk: "Ukrainian", de: "German" },
     inLang: { sk: "In Slovak", cs: "In Czech", pl: "In Polish", hu: "In Hungarian", sl: "In Slovenian", hr: "In Croatian", ro: "In Romanian", uk: "In Ukrainian", de: "In German" },
     share: "Copy a link to this text", shared: "Link copied ✓", sharedBar: "The link is in the address bar ✓",
-    answerLabel: "Model's answer",
     answers: { 0: "none (input only)", 0.5: "half as long as the text", 1: "as long as the text", 2: "twice as long" },
     sublineSrc: (src) => `English comparison: ${src}.`,
-    enSummary: "I also have the English version (exact comparison)", enLabel: "The same text in English",
-    enHint: "Without an English version the comparison is estimated from the ratio measured on 1012 FLORES-200 sentences.",
-    costH: "Cost per 1,000 texts like this", resH: "Tokens by tokenizer", vizH: "How the tokenizer splits your text", vizPick: "Tokenizer",
-    resNote: "Numbers with <b>≈</b> are estimates from the measured characters per token. <b>Count exactly</b> downloads the tokenizer from Hugging Face (once; your browser caches it) and counts your text exactly, the same way as the benchmark.",
-    vizNote: "Each coloured span is one token. A dashed outline means a single character (such as ľ or ô) was split across several tokens.",
-    whyH: "Why does Slovak cost more?",
     stats: (c, w) => `${fmtInt(c)} characters · ${fmtInt(w)} words`,
     empty: "Paste some text to see what it costs.",
     headline: (m, n, e, p) => `On <b>${m}</b> this text is <b>${n}</b> tokens. The same content in English would be ${e} tokens, so you pay <b>${p}</b> more.`,
@@ -79,7 +57,8 @@ const T = {
   },
 };
 
-let lang = (navigator.language || "sk").toLowerCase().startsWith("sk") || (navigator.language || "").toLowerCase().startsWith("cs") ? "sk" : "en";
+// One page per language (/ and /en/), prerendered by site/build.py; the script only reads which one it is on.
+const lang = document.documentElement.lang === "en" ? "en" : "sk";
 const $ = (id) => document.getElementById(id);
 const t = (k) => T[lang][k];
 const fmtInt = (n) => Math.round(n).toLocaleString(lang === "sk" ? "sk-SK" : "en-US");
@@ -280,18 +259,9 @@ function render() {
 }
 
 // ---------------------------------------------------------------------------------------
-function applyLang() {
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach((n) => { const v = T[lang][n.dataset.i18n]; if (typeof v === "string") n.textContent = v; });
-  document.querySelectorAll("[data-i18n-html]").forEach((n) => {
-    const v = T[lang][n.dataset.i18nHtml];
-    if (typeof v === "string") n.innerHTML = v;
-    else if (!n.dataset.orig) n.dataset.orig = n.innerHTML; // keep the static Slovak prose for SEO
-  });
-  document.querySelectorAll("[data-set-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.setLang === lang)));
+function initSelects() {
   fillSelect($("text-lang"), Object.entries(t("langs")), textLang);
   fillSelect($("answer"), Object.entries(t("answers")).sort((a, b) => a[0] - b[0]), String(answerFactor));
-  render();
 }
 
 function fillSelect(sel, entries, value) {
@@ -333,17 +303,9 @@ function clearShareHash() {
 }
 
 async function main() {
-  DATA = await fetch("data.json").then((r) => r.json());
+  DATA = await fetch(new URL("data.json", import.meta.url)).then((r) => r.json());
   const GROUP_ORDER = ["mainstream", "multilingual", "regional", "api"];
   DATA.tokenizers.sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || a.ratio.sk - b.ratio.sk);
-  T.en.why = `<p>A tokenizer cuts text into pieces (tokens) using a vocabulary learned from its training data. That data is mostly English, so common English words are one token while Slovak words, with their diacritics and many forms (<i>mesto, mesta, mestu, mestom, mestách</i>), break into several pieces. Every token is billed and takes up room in the context window.</p>
-<ul><li><b>Mainstream models:</b> Slovak needs 1.6× to 2.3× the tokens of English (GPT-4o / GPT-5 1.68×, Llama 4 1.56×, GPT-4 2.13×).</li>
-<li><b>Diacritics are not the main problem:</b> dropping them saves only 1–5 % of tokens on modern models.</li>
-<li><b>It is about training data:</b> SlovakBERT, trained on Slovak, needs fewer tokens for Slovak than for English.</li></ul>
-<p>Full benchmark, methodology and results for 10 languages: <a href="https://github.com/ltchurik/sk-tokenizer-bench">github.com/ltchurik/sk-tokenizer-bench</a>.</p>`;
-  T.sk.why = document.querySelector("[data-i18n-html=why]").innerHTML;
-  T.en.foot = `Author: <a href="https://lubomirtchurik.sk/">Ľubomír Tchurik</a> · Data: <a href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a> · FLORES-200 corpus (CC BY-SA 4.0) · official list prices · tokenizers from Hugging Face via <a href="https://github.com/huggingface/tokenizers.js">tokenizers.js</a> · <a href="https://doi.org/10.5281/zenodo.24092040">DOI 10.5281/zenodo.24092040</a> · MIT`;
-  T.sk.foot = document.querySelector("[data-i18n-html=foot]").innerHTML;
 
   const pick = $("viz-pick");
   DATA.tokenizers.filter((r) => r.repo).forEach((r) => pick.add(new Option(shortName(r.name) + (r.size_mb ? ` (${fmtMb(r.size_mb)})` : ""), r.name)));
@@ -380,9 +342,11 @@ async function main() {
   $("load-all").onclick = async () => {
     for (const r of DATA.tokenizers.filter((r) => r.repo && !tokCache.has(r.name))) await loadTokenizer(r);
   };
-  document.querySelectorAll("[data-set-lang]").forEach((b) => (b.onclick = () => { lang = b.dataset.setLang; applyLang(); }));
+  // switching language keeps a shared text (#s=...) in the URL
+  document.querySelectorAll("[data-lang-link]").forEach((a) => a.addEventListener("click", () => { if (location.hash) a.hash = location.hash; }));
 
-  applyLang();
+  initSelects();
+  render();
   loadTokenizer(DATA.tokenizers.find((r) => r.name === DEFAULT_EXACT));
 }
 

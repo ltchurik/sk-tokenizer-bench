@@ -1,0 +1,32 @@
+{
+  "head": {
+    "title": "How many tokens does Slovak cost? Token calculator for GPT, Llama, Gemma, Mistral",
+    "description": "Paste Slovak text and see how many tokens and how much money it costs in GPT-4o / GPT-5, Llama, Gemma, Mistral, Qwen or DeepSeek compared with English. Runs in your browser; your text never leaves it.",
+    "ogTitle": "How many tokens does Slovak cost?",
+    "ogDescription": "Token calculator for Slovak: token count, price and comparison with English for 30+ language models."
+  },
+  "body": {
+    "h1": "How many tokens does Slovak cost?",
+    "lead": "Language models bill per token, and tokenizers were trained mostly on English. Paste Slovak text to see how many tokens and how much money it costs in each model, and how much more that is than the same text in English.",
+    "privacy": "Everything runs in your browser. Your text never leaves it.",
+    "skLabel": "Your text",
+    "langLabel": "Text language",
+    "sample": "Insert sample",
+    "clear": "Clear",
+    "share": "Copy a link to this text",
+    "enSummary": "I also have the English version (exact comparison)",
+    "enLabel": "The same text in English",
+    "enHint": "Without an English version the comparison is estimated from the ratio measured on 1012 FLORES-200 sentences.",
+    "costH": "Cost per 1,000 texts like this",
+    "answerLabel": "Model's answer",
+    "resH": "Tokens by tokenizer",
+    "resNote": "Numbers with <b>≈</b> are estimates from the measured characters per token. <b>Count exactly</b> downloads the tokenizer from Hugging Face (once; your browser caches it) and counts your text exactly, the same way as the benchmark.",
+    "vizH": "How the tokenizer splits your text",
+    "vizPick": "Tokenizer",
+    "vizNote": "Each coloured span is one token. A dashed outline means a single character (such as ľ or ô) was split across several tokens.",
+    "whyH": "Why does Slovak cost more?",
+    "why": "<p>A tokenizer cuts text into pieces (tokens) using a vocabulary learned from its training data. That data is mostly English, so common English words are one token while Slovak words, with their diacritics and many forms (<i>mesto, mesta, mestu, mestom, mestách</i>), break into several pieces. Every token is billed and takes up room in the context window.</p>\n<ul><li><b>Mainstream models:</b> Slovak needs 1.6× to 2.3× the tokens of English (GPT-4o / GPT-5 1.68×, Llama 4 1.56×, GPT-4 2.13×).</li>\n<li><b>Diacritics are not the main problem:</b> dropping them saves only 1–5 % of tokens on modern models.</li>\n<li><b>It is about training data:</b> SlovakBERT, trained on Slovak, needs fewer tokens for Slovak than for English.</li></ul>\n<p>Full benchmark, methodology and results for 10 languages: <a href=\"https://github.com/ltchurik/sk-tokenizer-bench\">github.com/ltchurik/sk-tokenizer-bench</a>.</p>",
+    "foot": "Author: <a href=\"https://lubomirtchurik.sk/\">Ľubomír Tchurik</a> · Data: <a href=\"https://github.com/ltchurik/sk-tokenizer-bench\">sk-tokenizer-bench</a> · FLORES-200 corpus (CC BY-SA 4.0) · official list prices · tokenizers from Hugging Face via <a href=\"https://github.com/huggingface/tokenizers.js\">tokenizers.js</a> · <a href=\"https://doi.org/10.5281/zenodo.24092040\">DOI 10.5281/zenodo.24092040</a> · MIT",
+    "timelineAlt": "Chart: Slovak/English token ratio by tokenizer release date. OpenAI fell from 2.13× (GPT-4) to 1.68× (GPT-4o), Meta from 1.84× (Llama 3) to 1.56× (Llama 4)."
+  }
+}

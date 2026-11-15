@@ -2,7 +2,7 @@ name: pages
 on:
   push:
     branches: [main]
-    paths: ["site/**", "results/flores/**", "prices.json", "docs/*.png", "skbench/registry.py", ".github/workflows/pages.yml"]
+    paths: ["site/**", "results/flores/**", "prices.json", "docs/*.png", "skbench/registry.py", "skbench/revisions.json", ".github/workflows/pages.yml"]
   workflow_dispatch:
 permissions:
   contents: read
