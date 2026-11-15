@@ -342,7 +342,7 @@ async function main() {
 <li><b>It is about training data:</b> SlovakBERT, trained on Slovak, needs fewer tokens for Slovak than for English.</li></ul>
 <p>Full benchmark, methodology and results for 10 languages: <a href="https://github.com/ltchurik/sk-tokenizer-bench">github.com/ltchurik/sk-tokenizer-bench</a>.</p>`;
   T.sk.why = document.querySelector("[data-i18n-html=why]").innerHTML;
-  T.en.foot = `Data: <a href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a> · FLORES-200 corpus (CC BY-SA 4.0) · official list prices · tokenizers from Hugging Face via <a href="https://github.com/huggingface/tokenizers.js">tokenizers.js</a> · <a href="https://doi.org/10.5281/zenodo.24092040">DOI 10.5281/zenodo.24092040</a> · MIT`;
+  T.en.foot = `Author: <a href="https://lubomirtchurik.sk/">Ľubomír Tchurik</a> · Data: <a href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a> · FLORES-200 corpus (CC BY-SA 4.0) · official list prices · tokenizers from Hugging Face via <a href="https://github.com/huggingface/tokenizers.js">tokenizers.js</a> · <a href="https://doi.org/10.5281/zenodo.24092040">DOI 10.5281/zenodo.24092040</a> · MIT`;
   T.sk.foot = document.querySelector("[data-i18n-html=foot]").innerHTML;
 
   const pick = $("viz-pick");
