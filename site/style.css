@@ -59,8 +59,9 @@ a { color: var(--accent-ink); }
 .top { display: flex; justify-content: space-between; align-items: center; padding: 8px 0 4px; }
 .brand { font-weight: 700; color: var(--accent-ink); text-decoration: none; }
 .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-.lang button { border: 0; background: transparent; color: var(--ink-2); padding: 4px 10px; font: inherit; font-size: 14px; cursor: pointer; }
-.lang button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.lang a { color: var(--ink-2); padding: 4px 10px; font-size: 14px; text-decoration: none; }
+.lang a:hover { background: var(--line); }
+.lang a[aria-current="page"] { background: var(--accent); color: #fff; }
 
 .hero h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; margin: 24px 0 8px; letter-spacing: -.01em; }
 .lead { font-size: 18px; color: var(--ink-2); max-width: 46em; margin: 0 0 6px; }
