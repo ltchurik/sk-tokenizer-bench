@@ -17,13 +17,37 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a78d6'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3Esk%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"sk-tokenizer-bench: kalkulačka tokenov pre slovenčinu",
- "url":"https://ltchurik.github.io/sk-tokenizer-bench/","applicationCategory":"DeveloperApplication","operatingSystem":"Any",
- "inLanguage":["sk","en"],"isAccessibleForFree":true,
- "author":{"@type":"Person","name":"Ľubomír Tchurik","url":"https://lubomirtchurik.sk"},
- "codeRepository":"https://github.com/ltchurik/sk-tokenizer-bench",
- "description":"Counts Slovak tokens in the browser for 30+ LLM tokenizers and compares them with English."}
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://ltchurik.github.io/sk-tokenizer-bench/#app",
+  "name": "sk-tokenizer-bench — kalkulačka tokenov pre slovenčinu",
+  "alternateName": "Koľko tokenov stojí slovenčina?",
+  "url": "https://ltchurik.github.io/sk-tokenizer-bench/",
+  "description": "Kalkulačka, ktorá ukáže, koľko tokenov a peňazí stojí slovenský text v GPT, Llama, Gemma, Mistral, Qwen a ďalších modeloch v porovnaní s angličtinou. Počíta sa v prehliadači.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": ["sk", "en"],
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Person",
+    "@id": "https://lubomirtchurik.sk/#person",
+    "name": "Ľubomír Tchurik",
+    "url": "https://lubomirtchurik.sk/"
+  },
+  "isBasedOn": {
+    "@type": "SoftwareSourceCode",
+    "name": "sk-tokenizer-bench",
+    "codeRepository": "https://github.com/ltchurik/sk-tokenizer-bench",
+    "sameAs": "https://doi.org/10.5281/zenodo.24092040",
+    "author": { "@id": "https://lubomirtchurik.sk/#person" }
+  }
+}
 </script>
+<meta name="author" content="Ľubomír Tchurik">
 </head>
 <body>
 <div class="wrap">
@@ -112,7 +136,7 @@
   </section>
 
   <footer class="foot">
-    <p data-i18n-html="foot">Dáta: <a href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a> · korpus FLORES-200 (CC BY-SA 4.0) · ceny podľa oficiálnych cenníkov · tokenizéry z Hugging Face cez <a href="https://github.com/huggingface/tokenizers.js">tokenizers.js</a> · <a href="https://doi.org/10.5281/zenodo.24092040">DOI 10.5281/zenodo.24092040</a> · MIT</p>
+    <p data-i18n-html="foot">Autor: <a href="https://lubomirtchurik.sk/">Ľubomír Tchurik</a> · Dáta: <a href="https://github.com/ltchurik/sk-tokenizer-bench">sk-tokenizer-bench</a> · korpus FLORES-200 (CC BY-SA 4.0) · ceny podľa oficiálnych cenníkov · tokenizéry z Hugging Face cez <a href="https://github.com/huggingface/tokenizers.js">tokenizers.js</a> · <a href="https://doi.org/10.5281/zenodo.24092040">DOI 10.5281/zenodo.24092040</a> · MIT</p>
   </footer>
 </div>
 <script type="module" src="app.js"></script>
