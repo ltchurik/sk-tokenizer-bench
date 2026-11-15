@@ -71,10 +71,11 @@ def candidates(days):
             yield {"repo": m["id"], "created": created.date().isoformat(), "gated": bool(m.get("gated"))}
 
 
-def tokenizer_blob(repo):
+def tokenizer_blob(repo, rev=None):
     """Git blob id of the repo's tokenizer.json: identical files need no download."""
     try:
-        sib = api(f"https://huggingface.co/api/models/{repo}?blobs=true")["siblings"]
+        path = f"{repo}/revision/{rev}" if rev else repo
+        sib = api(f"https://huggingface.co/api/models/{path}?blobs=true")["siblings"]
         return next((x.get("blobId") for x in sib if x["rfilename"] == "tokenizer.json"), None)
     except Exception:
         return None
@@ -99,13 +100,13 @@ def main():
     for name, c in known_counts.items():  # first (canonical) name wins for shared tokenizers
         known.setdefault(signature({lg: c[lg][:PROBE] for lg in ("sk", "en")}), name)
 
-    from skbench.registry import browser_repo
+    from skbench.registry import browser_repo, revision
 
     known_blobs = {}
     for name in known_counts:
         repo = browser_repo(name) if name in TOKENIZERS else None
         if repo:
-            known_blobs.setdefault(tokenizer_blob(repo), name)
+            known_blobs.setdefault(tokenizer_blob(repo, revision(repo)), name)
     known_blobs.pop(None, None)
 
     new, same, gated, failed, seen, seen_blobs = [], [], [], [], {}, {}
@@ -193,7 +194,7 @@ def open_issues(new):
 | sk/en on FLORES-200 devtest | **{x['ratio']:.2f}×** |
 | Same tokenizer also in | {', '.join(f'`{a}`' for a in x['also']) or '–'} |
 
-To add it, put this line into `TOKENIZERS` in `skbench/registry.py` (and a release month into `RELEASED`), then run `python bench.py --readme`:
+To add it, put this line into `TOKENIZERS` in `skbench/registry.py` (and a release month into `RELEASED`), then run `python tools/pin_revisions.py` and `python bench.py --readme`:
 
 ```python
     "{name}": ("hf", "{x['repo']}"),

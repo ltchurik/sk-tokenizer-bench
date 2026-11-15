@@ -11,7 +11,15 @@ Each entry is (kind, ident). Kinds:
 
 Gated originals (Meta, Google, Cohere) are substituted with ungated mirrors that ship
 byte-identical tokenizer files.
+
+Every Hugging Face repo is pinned to a commit in revisions.json, so an upstream change to a
+tokenizer file can never move the numbers silently. `python tools/pin_revisions.py` adds pins
+for new repos; `--update` moves all pins to the current head (then re-run the benchmark).
 """
+import json
+from pathlib import Path
+
+REVISIONS = json.loads((Path(__file__).with_name("revisions.json")).read_text(encoding="utf-8"))
 
 TOKENIZERS = {
     # --- OpenAI -------------------------------------------------------------------------
@@ -152,3 +160,22 @@ BROWSER_REPO = {
 def browser_repo(name):
     kind, ident = TOKENIZERS[name]
     return BROWSER_REPO.get(name) or (ident if kind == "hf" else None)
+
+
+def hf_repo(kind, ident):
+    """The Hugging Face repo a registry entry downloads from, or None (tiktoken, API)."""
+    if kind in ("hf", "hf-bpe", "spm"):
+        return ident
+    if kind == "tiktoken-hf":
+        return ident.split("::")[0]
+    return None
+
+
+def all_hf_repos():
+    repos = {hf_repo(*spec) for spec in TOKENIZERS.values()} | set(BROWSER_REPO.values())
+    return sorted(r for r in repos if r)
+
+
+def revision(repo):
+    """Pinned commit of `repo`; a KeyError means `python tools/pin_revisions.py` was not run."""
+    return REVISIONS[repo]

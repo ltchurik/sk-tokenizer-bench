@@ -101,7 +101,7 @@ const tokCache = new Map(); // name -> {state: "loading"|"ready"|"error", tok, p
 async function loadTokenizer(row) {
   const have = tokCache.get(row.name);
   if (have) return have.promise;
-  const base = `https://huggingface.co/${row.repo}/resolve/main/`;
+  const base = `https://huggingface.co/${row.repo}/resolve/${row.rev || "main"}/`;
   const entry = { state: "loading" };
   entry.promise = (async () => {
     try {

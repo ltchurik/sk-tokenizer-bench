@@ -20,3 +20,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}  # optional: lets the watch read gated repos
         run: python tools/watch_tokenizers.py --days "${{ inputs.days || 40 }}" --open-issues
+      - name: Report pinned tokenizers whose files changed upstream
+        continue-on-error: true  # a vendor update is news, not a failure: the pins keep the numbers stable
+        run: python tools/pin_revisions.py --check

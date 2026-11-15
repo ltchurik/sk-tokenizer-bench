@@ -15,7 +15,7 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from .registry import TIKTOKEN_PATTERNS
+from .registry import TIKTOKEN_PATTERNS, revision
 
 CACHE_PATH = Path(__file__).resolve().parent.parent / "cache" / "api_counts.json"
 _OVERHEAD_KEY = "__overhead__"
@@ -35,14 +35,16 @@ def load(kind, ident, *, api_cache=None, api_workers=8):
     if kind == "hf":
         from tokenizers import Tokenizer
 
-        tok = Tokenizer.from_pretrained(ident)
+        tok = Tokenizer.from_pretrained(ident, revision=revision(ident))
         return _local(lambda s: len(tok.encode(s, add_special_tokens=False).ids))
 
     if kind == "hf-bpe":
         from huggingface_hub import hf_hub_download
         from tokenizers import ByteLevelBPETokenizer
 
-        tok = ByteLevelBPETokenizer(hf_hub_download(ident, "vocab.json"), hf_hub_download(ident, "merges.txt"))
+        rev = revision(ident)
+        tok = ByteLevelBPETokenizer(hf_hub_download(ident, "vocab.json", revision=rev),
+                                    hf_hub_download(ident, "merges.txt", revision=rev))
         return _local(lambda s: len(tok.encode(s).ids))
 
     if kind == "tiktoken-hf":
@@ -51,7 +53,7 @@ def load(kind, ident, *, api_cache=None, api_workers=8):
         from tiktoken.load import load_tiktoken_bpe
 
         repo, pattern = ident.split("::")
-        ranks = load_tiktoken_bpe(hf_hub_download(repo, "tiktoken.model"))
+        ranks = load_tiktoken_bpe(hf_hub_download(repo, "tiktoken.model", revision=revision(repo)))
         enc = tiktoken.Encoding(name=repo, pat_str=TIKTOKEN_PATTERNS[pattern], mergeable_ranks=ranks, special_tokens={})
         return _local(lambda s: len(enc.encode_ordinary(s)))
 
@@ -62,7 +64,7 @@ def load(kind, ident, *, api_cache=None, api_workers=8):
             raise Skip("pip install sentencepiece") from e
         from huggingface_hub import hf_hub_download
 
-        sp = spm.SentencePieceProcessor(model_file=hf_hub_download(ident, "tokenizer.model"))
+        sp = spm.SentencePieceProcessor(model_file=hf_hub_download(ident, "tokenizer.model", revision=revision(ident)))
         return _local(lambda s: len(sp.encode(s)))
 
     if kind in ("anthropic", "gemini"):

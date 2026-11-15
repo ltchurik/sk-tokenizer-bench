@@ -12,7 +12,7 @@ import gzip
 import json
 import sys
 
-from skbench import backends, core, report
+from skbench import backends, core, env, report
 from skbench.registry import API_KINDS, TOKENIZERS
 
 CORPUS_TITLES = {"flores": "FLORES-200 devtest", "custom": "hand-written domain corpus",
@@ -54,13 +54,14 @@ def main():
     api_cache = backends.ApiCache.load()
     prices = json.loads((core.ROOT / "prices.json").read_text(encoding="utf-8"))
     out = core.Path(args.out) if args.out else (None if args.only else core.ROOT / "results")
-    all_results = {}
+    all_results, used = {}, {}
 
     for cname in args.corpus.split(","):
         rows, langs, results, counts = run_corpus(cname, core.CORPORA[cname], selected, args.bootstrap, api_cache)
         if not results:
             continue
         all_results[cname] = results
+        used.update({n: selected[n] for n in results})
         md = report.corpus_markdown(CORPUS_TITLES[cname], results, len(rows), langs)
         print(md)
         if out is None:
@@ -71,6 +72,10 @@ def main():
         payload = json.dumps({"ids": [r["id"] for r in rows], "counts": counts}).encode("utf-8")
         (d / "counts.json.gz").write_bytes(gzip.compress(payload, mtime=0))  # mtime=0: reproducible bytes
         (d / "RESULTS.md").write_text(md, encoding="utf-8")
+
+    if out is not None and all_results:
+        info = env.environment(sys.argv[1:], {c: core.CORPORA[c] for c in all_results}, dict(sorted(used.items())))
+        (out / "env.json").write_text(json.dumps(info, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     if "flores" in all_results:
         cost = report.cost_markdown(prices, all_results["flores"], "FLORES-200 devtest")
