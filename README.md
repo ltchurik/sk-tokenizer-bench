@@ -23,7 +23,7 @@ Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens tha
 ## Takeaways
 
 - **Newer, bigger vocabularies help.** OpenAI's move from `cl100k` (GPT-4) to `o200k` (GPT-4o and later) cut the Slovak penalty from 2.13× to 1.68×; Meta went from 1.84× (Llama 3) to 1.56× (Llama 4), the best mainstream tokenizer measured; Mistral's `tekken` (1.67×) replaced v3 (1.95×).
-- **Slovak is pricier than its neighbours.** It costs more than Czech in 30 of 33 distinct tokenizers, and more than Slovenian and Croatian in 28 of 33, even though these languages are close. Among the eight Latin-script languages it ranks in the three most expensive for 26 of 33 tokenizers; only Hungarian is regularly worse. Ukrainian, in Cyrillic, is the most expensive language for 16 of 33 tokenizers (2.96× on GPT-4, 4.58× on Falcon 3), and German is usually the cheapest.
+- **Slovak is pricier than its neighbours.** It costs more than Czech in 31 of 34 distinct tokenizers, and more than Slovenian and Croatian in 29 of 34, even though these languages are close. Among the eight Latin-script languages it ranks in the three most expensive for 27 of 34 tokenizers; only Hungarian is regularly worse. Ukrainian, in Cyrillic, is the most expensive language for 16 of 34 tokenizers (2.96× on GPT-4, 4.58× on Falcon 3), and German is usually the cheapest.
 - **Writing without diacritics barely helps on modern models.** Stripping *ľščťž…* removes only 3–13 % of the penalty on Llama 4, Gemma 3, `tekken` and `o200k` (GPT-4o: 1.68× → 1.59×, about 5 % fewer tokens), and the text gets harder to read for both people and models. On older or less multilingual tokenizers diacritics are 17–34 % of the penalty. The rest is morphology and vocabulary. EuroLLM even gets *worse* without diacritics (1.35× → 1.39×), because its vocabulary learned correctly spelled Slovak.
 - **Newer is not always better for Slovak.** Gemma 3's tokenizer is slightly *worse* for Slovak than the one in Gemma 1 / 2 (1.62× vs 1.59×), and Mistral Large 4 (1.74×) is worse than the `tekken` tokenizer it follows (1.67×). Qwen 3.8, on the other hand, jumped from 2.07× to 1.64×, now among the best mainstream tokenizers.
 - **The 2026 generation** (Qwen 3.8 1.64×, Cohere North 1.69×, Mistral Large 4 1.74×, ERNIE 5.5 1.75×, LFM3 1.84×, GLM-5.3 1.93×, Hunyuan 4 1.95×, Granite 4.2 2.12×) does not beat Llama 4 (1.56×), released in 2025.
@@ -32,8 +32,8 @@ Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens tha
 - **Many models reuse someone else's tokenizer.** Apertus and Nemotron Nano 2 use Mistral's `tekken` (same counts on every sentence but one Ukrainian one), Bielik uses Mistral v3, Phi-4-mini and gpt-oss use `o200k`, and Phi-4 and OLMo 2 use `cl100k`, so they inherit those tokenizers' penalties exactly.
 - **Results hold across corpora.** On 1260 segments of real text by genre the overall ratio stays within ±0.07× of FLORES for every tokenizer and the ranking barely moves (Spearman 0.98); the hand-written domain corpus lands within ±0.08×.
 - **The text type moves the bill more than most tokenizer choices.** News and EU law cost the most (+0.1 to +0.3× above a tokenizer's average), speech transcripts and fiction the least (−0.1 to −0.3×): on GPT-4o, an EU regulation costs 1.74× and a transcribed video 1.50×. Social-media posts sit at or slightly below the average. See [By genre](#by-genre).
-- **The Slovak surcharge differs by vendor, not just the list price.** Of the 19 priced models with a measured tokenizer, Qwen 3.8, Mistral and OpenAI add 64–74 % for Slovak, while DeepSeek V4, GLM-5.3, MiniMax M3 and Kimi K3 add 90–101 %. That can cancel a lower list price: `deepseek-v4-pro` is cheaper than `mistral-large-4-0` per English token ($0.66 vs $0.70 input), but the same Slovak text costs slightly more on it ($1.26 vs $1.22 effective). The cheapest options for Slovak input are `qwen3.8-flash`, `mistral-small-4-0-26-03` and `gpt-4o-mini` (about $0.25 per 1M English-token equivalent); see [In dollars](#in-dollars).
-- **Closed tokenizers** (current Claude, Gemini) are counted through the vendors' token-counting APIs when a key is available; see [API tokenizers](#api-tokenizers-claude-gemini).
+- **The Slovak surcharge differs by vendor, not just the list price.** Of the 22 priced models with a measured tokenizer, Claude 5.5, Qwen 3.8, Mistral and OpenAI add 58–74 % for Slovak, while DeepSeek V4, GLM-5.3, MiniMax M3 and Kimi K3 add 90–101 %. That can cancel a lower list price: `deepseek-v4-pro` is cheaper than `mistral-large-4-0` per English token ($0.66 vs $0.70 input), but the same Slovak text costs the same on both ($0.26 per 1M Slovak characters). The cheapest options for Slovak input are `claude-haiku-5-5`, `gpt-4o-mini` and `qwen3.8-flash` (about $0.05 per 1M Slovak characters); see [In dollars](#in-dollars).
+- **Claude 5.5 has one of the best ratios but not the cheapest tokens.** Opus, Sonnet and Haiku 5.5 share one tokenizer, and Slovak needs only 1.58× its English count, second only to Llama 4. But it needs 1.56× as many tokens as GPT-4o's `o200k` for the same *English* text, and 1.47× as many for the same Slovak text. So `claude-sonnet-5-5` and `gpt-4.1` have the same list price ($2 per 1M input tokens), yet the same Slovak text costs 47 % more on Sonnet ($1.00 vs $0.68 per 1M characters). Closed tokenizers are counted through the vendors' token-counting APIs or OpenRouter; Gemini and Claude Sonnet 4.6 are not measured yet. See [API tokenizers](#api-tokenizers-claude-gemini).
 
 ## Results
 
@@ -53,6 +53,7 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | EuroLLM | **1.35×** | 1.34–1.36 | 1.37× | 3.38 | 4.57 |
 | Teuken (OpenGPT-X) | **1.41×** | 1.40–1.43 | 1.37× | 3.17 | 4.48 |
 | Llama 4 | **1.56×** | 1.55–1.58 | 1.54× | 3.11 | 4.88 |
+| Claude Opus / Sonnet / Haiku 5.5 (API) | **1.58×** | 1.56–1.59 | 1.53× | 1.99 | 3.15 |
 | Gemma 1 / 2 | **1.59×** | 1.57–1.60 | 1.54× | 3.07 | 4.88 |
 | Gemma 3 | **1.62×** | 1.60–1.63 | 1.59× | 3.00 | 4.87 |
 | Qwen 3.8 | **1.64×** | 1.62–1.66 | 1.62× | 2.92 | 4.79 |
@@ -104,6 +105,7 @@ Real text by genre: social-media posts, speech transcripts, literary prose and n
 | EuroLLM | 1.35× | 1.33× | 1.21× | 1.28× | 1.45× | 1.39× | 1.34× |
 | Teuken (OpenGPT-X) | 1.41× | 1.37× | 1.25× | 1.28× | 1.51× | 1.50× | 1.40× |
 | Llama 4 | 1.56× | 1.55× | 1.43× | 1.45× | 1.70× | 1.57× | 1.54× |
+| Claude Opus / Sonnet / Haiku 5.5 (API) | 1.58× | 1.61× | 1.51× | 1.47× | 1.70× | 1.64× | 1.60× |
 | Gemma 1 / 2 | 1.59× | 1.50× | 1.36× | 1.45× | 1.72× | 1.64× | 1.55× |
 | Gemma 3 | 1.62× | 1.53× | 1.39× | 1.47× | 1.74× | 1.65× | 1.57× |
 | Qwen 3.8 | 1.64× | 1.58× | 1.44× | 1.51× | 1.78× | 1.69× | 1.61× |
@@ -152,6 +154,7 @@ Tokens per sentence relative to English on FLORES-200, same content in every col
 | EuroLLM | 1.35× | 1.34× | 1.22× | 1.44× | 1.31× | 1.28× | 1.44× | 1.44× | 1.22× |
 | Teuken (OpenGPT-X) | 1.41× | 1.06× | 1.10× | 1.11× | 1.07× | 1.06× | 1.19× | 2.20× | 1.14× |
 | Llama 4 | 1.56× | 1.47× | 1.40× | 1.56× | 1.57× | 1.53× | 1.47× | 1.54× | 1.30× |
+| Claude Opus / Sonnet / Haiku 5.5 (API) | 1.58× | 1.42× | 1.60× | 1.56× | 1.49× | 1.44× | 1.51× | 1.35× | 1.74× |
 | Gemma 1 / 2 | 1.59× | 1.50× | 1.46× | 1.67× | 1.58× | 1.59× | 1.55× | 1.65× | 1.26× |
 | Gemma 3 | 1.62× | 1.52× | 1.51× | 1.68× | 1.57× | 1.46× | 1.57× | 1.61× | 1.33× |
 | Qwen 3.8 | 1.64× | 1.54× | 1.51× | 1.66× | 1.61× | 1.54× | 1.58× | 1.74× | 1.31× |
@@ -200,6 +203,7 @@ The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Sh
 | EuroLLM | 1.35× | 1.39× | -12 % |
 | Teuken (OpenGPT-X) | 1.41× | 1.33× | 20 % |
 | Llama 4 | 1.56× | 1.55× | 3 % |
+| Claude Opus / Sonnet / Haiku 5.5 (API) | 1.58× | 1.56× | 2 % |
 | Gemma 1 / 2 | 1.59× | 1.55× | 7 % |
 | Gemma 3 | 1.62× | 1.56× | 10 % |
 | Qwen 3.8 | 1.64× | 1.58× | 8 % |
@@ -237,29 +241,32 @@ The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Sh
 
 ### In dollars
 
-List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effective" = what the same content costs when it is written in Slovak, per 1M tokens' worth of English. The ratio applies to output too: a Slovak answer is as many times longer in tokens as a Slovak prompt.
+List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effective" = what the same content costs when it is written in Slovak, per 1M tokens' worth of English on the same tokenizer. The ratio applies to output too: a Slovak answer is as many times longer in tokens as a Slovak prompt. Tokenizers also differ in how many tokens they need for English (Claude 5.5 needs about 1.5× as many as GPT-4o), so to compare vendors use the last column, the input price of the same Slovak text per 1M characters; the table is sorted by it.
 
-| Vendor | Model | $ in / 1M | $ out / 1M | sk/en | effective $ in | effective $ out | Slovak surcharge |
-|---|---|---|---|---|---|---|---|
-| Alibaba | `qwen3.8-flash` | 0.15 | 0.47 | 1.64× | 0.25 | 0.77 | +64 % |
-| Mistral | `mistral-small-4-0-26-03` | 0.15 | 0.60 | 1.67× | 0.25 | 1.00 | +67 % |
-| OpenAI | `gpt-4o-mini` | 0.15 | 0.60 | 1.68× | 0.25 | 1.01 | +68 % |
-| DeepSeek | `deepseek-flash` | 0.15 | 0.60 | 1.91× | 0.29 | 1.14 | +90 % |
-| Z.ai | `glm-5.3-flash` | 0.15 | 0.50 | 1.93× | 0.29 | 0.96 | +93 % |
-| MiniMax | `MiniMax-M3.1-Flash` | 0.15 | 0.60 | 2.01× | 0.30 | 1.20 | +101 % |
-| OpenAI | `gpt-5-mini` | 0.25 | 2.00 | 1.68× | 0.42 | 3.35 | +68 % |
-| MiniMax | `MiniMax-M3` | 0.30 | 1.20 | 2.01× | 0.60 | 2.41 | +101 % |
-| Alibaba | `qwen3.8-27b` | 0.50 | 3.00 | 1.64× | 0.82 | 4.92 | +64 % |
-| Z.ai | `glm-4.7` | 0.60 | 2.20 | 1.95× | 1.17 | 4.28 | +95 % |
-| Mistral | `mistral-large-4-0` | 0.70 | 2.10 | 1.74× | 1.22 | 3.65 | +74 % |
-| DeepSeek | `deepseek-v4-pro` | 0.66 | 1.98 | 1.91× | 1.26 | 3.77 | +90 % |
-| OpenAI | `gpt-5` | 1.25 | 10.00 | 1.68× | 2.10 | 16.77 | +68 % |
-| Z.ai | `glm-5.3` | 1.40 | 4.40 | 1.93× | 2.70 | 8.49 | +93 % |
-| Alibaba | `qwen3.8-max` | 2.00 | 6.00 | 1.64× | 3.28 | 9.83 | +64 % |
-| OpenAI | `gpt-4.1` | 2.00 | 8.00 | 1.68× | 3.35 | 13.42 | +68 % |
-| Moonshot AI | `kimi-k3.1-pro` | 2.00 | 10.00 | 2.01× | 4.02 | 20.10 | +101 % |
-| OpenAI | `gpt-4o` | 2.50 | 10.00 | 1.68× | 4.19 | 16.77 | +68 % |
-| Moonshot AI | `kimi-k3` | 3.00 | 15.00 | 2.01× | 6.03 | 30.15 | +101 % |
+| Vendor | Model | $ in / 1M | $ out / 1M | sk/en | effective $ in | effective $ out | Slovak surcharge | $ in / 1M sk chars |
+|---|---|---|---|---|---|---|---|---|
+| Anthropic | `claude-haiku-5-5` | 0.10 | 0.50 | 1.58× | 0.16 | 0.79 | +58 % | 0.050 |
+| OpenAI | `gpt-4o-mini` | 0.15 | 0.60 | 1.68× | 0.25 | 1.01 | +68 % | 0.051 |
+| Alibaba | `qwen3.8-flash` | 0.15 | 0.47 | 1.64× | 0.25 | 0.77 | +64 % | 0.051 |
+| Mistral | `mistral-small-4-0-26-03` | 0.15 | 0.60 | 1.67× | 0.25 | 1.00 | +67 % | 0.053 |
+| DeepSeek | `deepseek-flash` | 0.15 | 0.60 | 1.91× | 0.29 | 1.14 | +90 % | 0.059 |
+| Z.ai | `glm-5.3-flash` | 0.15 | 0.50 | 1.93× | 0.29 | 0.96 | +93 % | 0.060 |
+| MiniMax | `MiniMax-M3.1-Flash` | 0.15 | 0.60 | 2.01× | 0.30 | 1.20 | +101 % | 0.061 |
+| OpenAI | `gpt-5-mini` | 0.25 | 2.00 | 1.68× | 0.42 | 3.35 | +68 % | 0.086 |
+| MiniMax | `MiniMax-M3` | 0.30 | 1.20 | 2.01× | 0.60 | 2.41 | +101 % | 0.122 |
+| Alibaba | `qwen3.8-27b` | 0.50 | 3.00 | 1.64× | 0.82 | 4.92 | +64 % | 0.171 |
+| Z.ai | `glm-4.7` | 0.60 | 2.20 | 1.95× | 1.17 | 4.28 | +95 % | 0.241 |
+| Mistral | `mistral-large-4-0` | 0.70 | 2.10 | 1.74× | 1.22 | 3.65 | +74 % | 0.257 |
+| DeepSeek | `deepseek-v4-pro` | 0.66 | 1.98 | 1.91× | 1.26 | 3.77 | +90 % | 0.258 |
+| OpenAI | `gpt-5` | 1.25 | 10.00 | 1.68× | 2.10 | 16.77 | +68 % | 0.428 |
+| Z.ai | `glm-5.3` | 1.40 | 4.40 | 1.93× | 2.70 | 8.49 | +93 % | 0.558 |
+| OpenAI | `gpt-4.1` | 2.00 | 8.00 | 1.68× | 3.35 | 13.42 | +68 % | 0.684 |
+| Alibaba | `qwen3.8-max` | 2.00 | 6.00 | 1.64× | 3.28 | 9.83 | +64 % | 0.685 |
+| Moonshot AI | `kimi-k3.1-pro` | 2.00 | 10.00 | 2.01× | 4.02 | 20.10 | +101 % | 0.828 |
+| OpenAI | `gpt-4o` | 2.50 | 10.00 | 1.68× | 4.19 | 16.77 | +68 % | 0.855 |
+| Anthropic | `claude-sonnet-5-5` | 2.00 | 10.00 | 1.58× | 3.15 | 15.76 | +58 % | 1.003 |
+| Moonshot AI | `kimi-k3` | 3.00 | 15.00 | 2.01× | 6.03 | 30.15 | +101 % | 1.242 |
+| Anthropic | `claude-opus-5-5` | 4.00 | 20.00 | 1.58× | 6.30 | 31.52 | +58 % | 2.006 |
 
 Notes:
 
@@ -270,7 +277,7 @@ Notes:
 - `deepseek-v4-pro`: off-peak price; $1.32 / $3.96 during peak hours (01–04 and 06–10 UTC on weekdays)
 - `qwen3.8-max`: international (Singapore) rate; closed model, assumes the tokenizer shared by all open Qwen 3.8 models
 
-*Not measured in this run (API key not set and counts not cached): Claude Haiku 5.5 (API), Claude Opus 5.5 (API), Claude Sonnet 4.6 (API), Claude Sonnet 5.5 (API), Gemini 3.8 Flash (API), Gemini 4 Argon (API).*
+*Not measured in this run (API key not set and counts not cached): Claude Sonnet 4.6 (API), Gemini 3.8 Flash (API), Gemini 4 Argon (API).*
 
 <!-- results:end -->
 
@@ -306,11 +313,12 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian an
 
 **Koľko tokenov navyše stojí slovenčina v jazykových modeloch (LLM)?** Platené API (OpenAI, Google, Mistral a ďalšie) účtujú za tokeny, no tokenizéry sa učia hlavne na angličtine. Rovnaký text po slovensky sa preto rozdelí na **1,6× až 2,3× viac tokenov** než po anglicky, takže za vstup aj výstup zaplatíte o 60 – 130 % viac a do kontextového okna sa zmestí o 40 – 56 % menej textu.
 
-- **Najlepšie z bežných modelov:** Llama 4 (1,56×), Gemma (1,59 – 1,62×), Qwen 3.8 (1,64×), Mistral (1,67×), GPT-4o / GPT-5 (1,68×).
+- **Najlepšie z bežných modelov:** Llama 4 (1,56×), Claude 5.5 (1,58×), Gemma (1,59 – 1,62×), Qwen 3.8 (1,64×), Mistral (1,67×), GPT-4o / GPT-5 (1,68×).
 - **Najhoršie:** GPT-4 / GPT-3.5 (2,13×), Granite 4.2 (2,12×), Qwen 2.5 / 3 (2,07×), Falcon 3 (2,27×).
-- **Slovenčina je drahšia ako čeština** v 30 z 33 tokenizérov a drahšia ako slovinčina a chorvátčina v 28 z 33, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
+- **Slovenčina je drahšia ako čeština** v 31 z 34 tokenizérov a drahšia ako slovinčina a chorvátčina v 29 z 34, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
 - **Písanie bez diakritiky takmer nepomáha.** Na GPT-4o / GPT-5 ušetrí asi 5 % tokenov (1,68× → 1,59×), na Llama 4 asi 1 %. Väčšinu príplatku spôsobuje skloňovanie a slovná zásoba, nie mäkčene a dĺžne.
-- **Príplatok za slovenčinu závisí od výrobcu.** Pri Qwen 3.8, Mistrale a OpenAI zaplatíte za slovenský text o 64 – 74 % viac, pri DeepSeek V4, GLM-5.3, MiniMax M3 a Kimi K3 o 90 – 101 % viac. Lacnejší cenník to môže zmazať: `deepseek-v4-pro` je na papieri lacnejší ako `mistral-large-4-0`, no rovnaký slovenský text na ňom stojí o niečo viac.
+- **Príplatok za slovenčinu závisí od výrobcu.** Pri Claude 5.5, Qwen 3.8, Mistrale a OpenAI zaplatíte za slovenský text o 58 – 74 % viac, pri DeepSeek V4, GLM-5.3, MiniMax M3 a Kimi K3 o 90 – 101 % viac. Lacnejší cenník to môže zmazať: `deepseek-v4-pro` je na papieri lacnejší ako `mistral-large-4-0`, no rovnaký slovenský text stojí na oboch rovnako.
+- **Nízky pomer neznamená nízku cenu.** Claude 5.5 má pre slovenčinu výborný pomer (1,58×), ale aj na anglický text potrebuje o 56 % viac tokenov ako GPT-4o. `claude-sonnet-5-5` a `gpt-4.1` majú rovnaký cenník, no ten istý slovenský text je na Sonnete o 47 % drahší.
 - **Typ textu rozhoduje viac než výber tokenizéra:** správy a európske právo sú najdrahšie, prepisy reči a beletria najlacnejšie. Na GPT-4o stojí nariadenie EÚ 1,74× a prepis videa 1,50× viac tokenov ako po anglicky.
 - **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
 
@@ -351,6 +359,8 @@ export ANTHROPIC_API_KEY=...   # and/or GEMINI_API_KEY=...
 python bench.py --readme
 ```
 
+Without the vendors' keys, an `OPENROUTER_API_KEY` works too: each text is sent for a one-token answer and the input count OpenRouter reports (the provider's own) is used. It costs little (the Claude 5.5 row, about 15,000 texts on Haiku 5.5, cost under $1), but new OpenRouter accounts are limited to 20 requests per minute on most models, so a full row takes about 12 hours there; Haiku 5.5 is not limited. `SKBENCH_API_WORKERS` sets the parallelism, and counts are saved every 500 texts, so a run can be stopped and resumed.
+
 Every count is cached in `cache/api_counts.json` (model + SHA-1 of the sentence). Commit that file and the API rows reproduce without a key, and CI never re-queries. Each request wraps the sentence in one user message, so a fixed per-request overhead (measured as `count(".") − 1`) is subtracted. Without a key and without cached counts these rows are skipped.
 
 ## Adding a tokenizer
@@ -378,7 +388,7 @@ Full write-up, including how the numbers were checked, the environment and the l
 - 95 % CI = percentile bootstrap over sentences, 2000 resamples, fixed seed.
 - "Without diacritics" = the same Slovak sentences after Unicode NFD decomposition with combining marks removed (*ľ → l, ô → o, ä → a*); nothing else changes.
 - `chars/token` counts Unicode code points, so a letter with a diacritic counts as one character.
-- Cost = list price × ratio, i.e. what the same content costs in Slovak per 1M tokens' worth of English.
+- Cost = list price × ratio, i.e. what the same content costs in Slovak per 1M tokens' worth of English on that tokenizer. To compare vendors, the cost table also gives the input price of the same Slovak text per 1M characters (list price ÷ Slovak characters per token), because tokenizers need different numbers of tokens for English too.
 - Every Hugging Face tokenizer is pinned to a commit ([`skbench/revisions.json`](skbench/revisions.json)), and each run records library versions, machine and corpus hashes in [`results/env.json`](results/env.json). Counts are deterministic: CI re-runs everything on x86_64 and reproduces the committed aarch64 results exactly.
 
 ## Citing

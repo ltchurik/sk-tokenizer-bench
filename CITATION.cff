@@ -15,7 +15,7 @@ identifiers:
 repository-code: "https://github.com/ltchurik/sk-tokenizer-bench"
 url: "https://ltchurik.github.io/sk-tokenizer-bench/"
 license: MIT
-version: 0.3.6
+version: 0.3.7
 date-released: 2026-11-15
 keywords:
   - slovak

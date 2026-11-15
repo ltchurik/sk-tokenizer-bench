@@ -30,16 +30,33 @@ For every tokenizer *T*, corpus *C* and language *L*:
   decomposition with combining marks removed (*ľ → l, ô → o, ä → a*), and nothing else changed.
   This separates the cost of diacritics from the cost of morphology and vocabulary.
 - **Effective price** = list price per 1M tokens × ratio, i.e. what the same content costs in
-  Slovak per 1M English tokens' worth. It applies to output as well: a Slovak answer is as many
-  times longer in tokens as a Slovak prompt.
+  Slovak per 1M English tokens' worth on that tokenizer. It applies to output as well: a Slovak
+  answer is as many times longer in tokens as a Slovak prompt.
+- **Price per 1M Slovak characters** = list price ÷ Slovak characters per token: the input cost
+  of the same Slovak text on every tokenizer. The effective price alone can mislead across
+  vendors, because tokenizers also need different numbers of tokens for *English*: Claude 5.5
+  needs 1.56× as many as `o200k` for the same English text, so its low Slovak ratio (1.58×)
+  does not make it cheap per character. The cost table is sorted by this column.
 
 Counting rules:
 
 - Local tokenizers count with `add_special_tokens=False`: no BOS/EOS and no chat template, so
   only the text itself is counted. tiktoken uses `encode_ordinary`.
-- API tokenizers (Claude, Gemini) are counted with the vendors' token-counting endpoints. Each
-  request wraps the text in one user message, which adds a fixed overhead. It is measured once
-  per model as `count(".") − 1` and subtracted from every count.
+- API tokenizers (Claude, Gemini) are counted with the vendors' token-counting endpoints, or
+  through OpenRouter when only an OpenRouter key is available: each text is sent as a one-message
+  request for a one-token answer, and the `usage.prompt_tokens` OpenRouter reports is the
+  provider's own input count. Either way the request wraps the text in one user message, which
+  adds a fixed overhead. It is measured once per model as `count(".") − 1` and subtracted from
+  every count. `cache/api_counts.json` records which route each model was counted through
+  (`__via__`). The committed Claude 5.5 row was counted through OpenRouter on Haiku 5.5; the
+  counts were deterministic (repeated texts gave identical counts) and the overhead constant
+  (8 tokens).
+- **Claude Opus, Sonnet and Haiku 5.5 share one tokenizer.** On 330 FLORES texts (30 sentences in
+  each of the 11 columns) Opus 5.5 and Sonnet 5.5 returned exactly the same counts as Haiku 5.5,
+  with the same overhead, and so did every other text counted on more than one of them (258 on
+  Opus, 50 on Sonnet). They are one row, counted in full on Haiku 5.5, which OpenRouter does not
+  rate-limit; Opus and Sonnet 5.5 are limited to 20 requests per minute on a new account.
+  Claude Sonnet 4.6 (a different tokenizer) and the Gemini models are not measured yet.
 
 ## 3. Corpora
 
@@ -158,6 +175,8 @@ computed without re-running the tokenizers. API rows reproduce without a key fro
   are ignored, and prices change; `prices.json` is dated.
 - **Closed tokenizers are black boxes.** API counts depend on how the vendor counts a request
   today; the cache freezes them, but a vendor may count differently later.
+  Counts taken through OpenRouter are the input count of whichever provider served the request
+  (for Claude, Anthropic's own platform on AWS); they matched across repeated requests.
 - **Same tokenizer, different model.** A model can share a tokenizer with another and still
   answer more or less verbosely in Slovak. That is model behaviour, not tokenization, and is not
   measured here.
@@ -174,6 +193,7 @@ computed without re-running the tokenizers. API rows reproduce without a key fro
 | v0.3.3 | 2026-11-14 | Official prices for more vendors. |
 | v0.3.4 | 2026-11-14 | Genre corpus (WMT24++, EU law); third-party corpora downloaded at run time with pinned hashes instead of stored in the repo. |
 | v0.3.5 | 2026-11 | Tokenizer revisions pinned, `results/env.json`, this document. |
+| v0.3.7 | 2026-11 | Claude 5.5 measured (through OpenRouter); price per 1M Slovak characters in the cost table. |
 
 ## References
 
