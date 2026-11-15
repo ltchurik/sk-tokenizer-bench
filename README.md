@@ -316,7 +316,7 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian an
 
 **Vyskúšajte si to na vlastnom texte:** [kalkulačka tokenov online](https://ltchurik.github.io/sk-tokenizer-bench/) spočíta tokeny a cenu priamo v prehliadači.
 
-Meranie prebieha na 1012 vetách z korpusu FLORES-200, na 1260 úsekoch skutočných textov (sociálne siete, prepisy reči, beletria, správy, právo EÚ) a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
+Meranie prebieha na 1012 vetách z korpusu FLORES-200, na 1260 úsekoch skutočných textov (sociálne siete, prepisy reči, beletria, správy, právo EÚ) a na vlastnom korpuse slovenských viet (správy, právo, technika, chat, wiki, systémové prompty). Výsledky sa dajú reprodukovať jedným príkazom (`python bench.py`); metodika, overovanie a prostredie sú opísané v [docs/METHODOLOGY.md](docs/METHODOLOGY.md). Rozšírenia, ďalšie tokenizéry či jazyky sú vítané ako pull requesty.
 
 ## Run it yourself
 
@@ -359,7 +359,7 @@ New tokenizers are found automatically: the monthly [`tokenizer-watch`](.github/
 
 To add one by hand:
 
-Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a `tiktoken` encoding name, a Hugging Face repo with `tokenizer.json`, or one of the other kinds documented there (vocab+merges, SentencePiece, tiktoken file, API model id). Identical tokenizers are detected automatically and listed under the table.
+Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a `tiktoken` encoding name, a Hugging Face repo with `tokenizer.json`, or one of the other kinds documented there (vocab+merges, SentencePiece, tiktoken file, API model id), then run `python tools/pin_revisions.py` to pin the repo to its current commit. Identical tokenizers are detected automatically and listed under the table.
 
 ## Adding a language or a price
 
@@ -367,6 +367,8 @@ Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a 
 - **Prices:** edit [`prices.json`](prices.json). Each entry names the tokenizer row it maps to and the official pricing page it came from.
 
 ## Methodology
+
+Full write-up, including how the numbers were checked, the environment and the limitations: [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
 
 - **FLORES-200 devtest** (NLLB Team, 2022): 1012 sentences from Wikinews, Wikivoyage and Wikibooks, professionally translated from English into every language, so all columns carry the same content.
 - **Genre corpus:** 1260 segments. Social-media posts (494), speech transcripts (111), literary prose (206) and news (149) from WMT24++ (Deutsch et al., 2025; English originals with professional Slovak translations, post-edited), and 300 paragraphs of the GDPR, the AI Act and the Consumer Rights Directive in their official Slovak and English versions from EUR-Lex.
@@ -377,6 +379,7 @@ Add one line to `TOKENIZERS` in [`skbench/registry.py`](skbench/registry.py): a 
 - "Without diacritics" = the same Slovak sentences after Unicode NFD decomposition with combining marks removed (*ľ → l, ô → o, ä → a*); nothing else changes.
 - `chars/token` counts Unicode code points, so a letter with a diacritic counts as one character.
 - Cost = list price × ratio, i.e. what the same content costs in Slovak per 1M tokens' worth of English.
+- Every Hugging Face tokenizer is pinned to a commit ([`skbench/revisions.json`](skbench/revisions.json)), and each run records library versions, machine and corpus hashes in [`results/env.json`](results/env.json). Counts are deterministic: CI re-runs everything on x86_64 and reproduces the committed aarch64 results exactly.
 
 ## Citing
 

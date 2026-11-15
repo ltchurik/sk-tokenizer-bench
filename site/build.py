@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from skbench.registry import API_KINDS, RELEASED, TOKENIZERS, browser_repo  # noqa: E402
+from skbench.registry import API_KINDS, RELEASED, TOKENIZERS, browser_repo, revision  # noqa: E402
 
 SITE, OUT = ROOT / "site", ROOT / "_site"
 MULTILINGUAL = {"mT5", "EuroLLM", "Apertus (Swiss AI)", "Teuken (OpenGPT-X)"}
@@ -68,6 +68,7 @@ def build_data():
             "also": aliases.get(name, []),
             "group": group(name, kind),
             "repo": repo,
+            "rev": revision(repo) if repo else None,
             "size_mb": size_mb(repo) if repo else None,
             "released": RELEASED.get(name),
             "ratio": {lg: v["ALL"] for lg, v in R.items()},

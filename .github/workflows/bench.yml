@@ -28,6 +28,6 @@ jobs:
       - name: Fail if committed results are stale
         if: github.event_name == 'pull_request'
         continue-on-error: true  # upstream tokenizer updates should warn, not block
-        run: git diff --stat --exit-code -- README.md results/ ':!results/*/counts.json.gz'
+        run: git diff --stat --exit-code -- README.md results/ ':!results/*/counts.json.gz' ':!results/env.json'
       - uses: actions/upload-artifact@v4
         with: { name: results, path: "results/\nREADME.md\ncache/" }

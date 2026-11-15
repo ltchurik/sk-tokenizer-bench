@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 from huggingface_hub import hf_hub_download  # noqa: E402
 
 from skbench.core import CORPORA, load_corpus  # noqa: E402
-from skbench.registry import TOKENIZERS, browser_repo  # noqa: E402
+from skbench.registry import TOKENIZERS, browser_repo, revision  # noqa: E402
 
 LANGS = ("sk", "sk_nd", "en")
 
@@ -32,7 +32,7 @@ def main():
     for name in TOKENIZERS:
         repo = browser_repo(name)
         if repo and name in py:
-            tok[name] = [hf_hub_download(repo, "tokenizer.json"), hf_hub_download(repo, "tokenizer_config.json")]
+            tok[name] = [hf_hub_download(repo, f, revision=revision(repo)) for f in ("tokenizer.json", "tokenizer_config.json")]
     with tempfile.TemporaryDirectory() as d:
         inp, out = Path(d) / "in.json", Path(d) / "out.json"
         inp.write_text(json.dumps({"texts": {lg: [r[lg] for r in rows] for lg in LANGS}, "tok": tok}))
