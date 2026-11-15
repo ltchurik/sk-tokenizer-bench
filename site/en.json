@@ -3,7 +3,8 @@
     "title": "How many tokens does Slovak cost? Token calculator for GPT, Llama, Gemma, Mistral",
     "description": "Paste Slovak text and see how many tokens and how much money it costs in GPT-4o / GPT-5, Llama, Gemma, Mistral, Qwen or DeepSeek compared with English. Runs in your browser; your text never leaves it.",
     "ogTitle": "How many tokens does Slovak cost?",
-    "ogDescription": "Token calculator for Slovak: token count, price and comparison with English for 30+ language models."
+    "ogDescription": "Token calculator for Slovak: token count, price and comparison with English for 30+ language models.",
+    "ogImageAlt": "Chart: how many times more tokens Slovak text needs than the same text in English. GPT-4 2.13×, GPT-4o / GPT-5 1.68×, Llama 4 1.56×, EuroLLM 1.35×."
   },
   "body": {
     "h1": "How many tokens does Slovak cost?",

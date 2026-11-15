@@ -122,6 +122,9 @@ def render_en(page, en):
     page = _sub_once(page, rf'<meta property="og:url" content="{BASE_URL}">', f'<meta property="og:url" content="{BASE_URL}en/">')
     page = _sub_once(page, r'<meta property="og:locale" content="sk_SK">\n<meta property="og:locale:alternate" content="en_US">',
                      '<meta property="og:locale" content="en_US">\n<meta property="og:locale:alternate" content="sk_SK">')
+    page = _sub_once(page, rf'<meta property="og:image" content="{BASE_URL}social-preview-sk.png">',
+                     f'<meta property="og:image" content="{BASE_URL}social-preview.png">')
+    page = _sub_once(page, r'<meta property="og:image:alt" content="[^"]*">', f'<meta property="og:image:alt" content="{attr(head["ogImageAlt"])}">')
     for f in ("style.css", "app.js", "tokenizer-timeline.png"):
         page = _sub_once(page, rf'(?:href|src)="{re.escape(f)}"', ('href' if f.endswith('.css') else 'src') + f'="../{f}"')
     page = _sub_once(page, r'<a href="./" hreflang="sk" lang="sk" data-lang-link aria-current="page">SK</a>',
@@ -143,7 +146,7 @@ def main():
     OUT.mkdir()
     for f in ("index.html", "app.js", "style.css", "robots.txt", "sitemap.xml"):
         shutil.copy(SITE / f, OUT / f)
-    for img in ("social-preview.png", "tokenizer-timeline.png"):
+    for img in ("social-preview.png", "social-preview-sk.png", "tokenizer-timeline.png"):
         shutil.copy(ROOT / "docs" / img, OUT / img)
     en = json.loads((SITE / "en.json").read_text(encoding="utf-8"))
     (OUT / "en").mkdir()

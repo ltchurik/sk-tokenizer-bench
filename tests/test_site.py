@@ -20,6 +20,8 @@ def test_every_translatable_element_has_an_english_text():
 def test_english_page_is_english():
     assert '<html lang="en">' in EN and f'<link rel="canonical" href="{BASE_URL}en/">' in EN
     assert '<h1 data-i18n="h1">How many tokens does Slovak cost?</h1>' in EN
+    assert f'<meta property="og:image" content="{BASE_URL}social-preview.png">' in EN
+    assert f'<meta property="og:image" content="{BASE_URL}social-preview-sk.png">' in SK
     assert 'aria-current="page">EN</a>' in EN and 'src="../app.js"' in EN and 'href="../style.css"' in EN
     body = EN[EN.index("<body>"):]  # the JSON-LD in <head> describes the one app and stays shared
     for slovak in ("Koľko tokenov", "Prečo slovenčina", "Vložte slovenský", "Dáta:", "Graf:"):
