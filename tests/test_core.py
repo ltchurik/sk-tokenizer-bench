@@ -47,3 +47,25 @@ def test_readme_block_replacement(tmp_path):
     report.update_readme(p, "NEW")
     text = p.read_text()
     assert "old" not in text and "NEW" in text and text.startswith("intro") and text.endswith("outro\n")
+
+
+def test_openrouter_route_reads_prompt_tokens_and_retries_without_usage(monkeypatch, tmp_path):
+    import io
+
+    replies = iter([{"usage": None}, {"usage": {"prompt_tokens": 9}},   # "." -> overhead 8
+                    {"usage": {"prompt_tokens": 12}}])                   # "ahoj" -> 4
+    sent = []
+
+    def fake_urlopen(req, timeout):
+        sent.append(json.loads(req.data))
+        return io.BytesIO(json.dumps(next(replies)).encode())
+
+    monkeypatch.setattr(backends.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test")
+    cache = backends.ApiCache.load(tmp_path / "c.json")
+    counter = backends.load("anthropic", "claude-haiku-5-5", api_cache=cache)
+    assert counter(["ahoj"]) == [4]
+    assert sent[0]["model"] == "anthropic/claude-haiku-5.5" and [s["max_tokens"] for s in sent] == [1, 16, 1]
+    assert cache.data["claude-haiku-5-5"]["__via__"] == "openrouter"
+    assert "test" not in (tmp_path / "c.json").read_text()

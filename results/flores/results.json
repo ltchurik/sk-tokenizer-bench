@@ -7788,5 +7788,195 @@
       ]
     },
     "same_as": "Mistral / Mixtral (v3)"
+  },
+  "Claude Opus / Sonnet / Haiku 5.5 (API)": {
+    "kind": "anthropic",
+    "id": "claude-haiku-5-5",
+    "tokens": {
+      "sk": {
+        "wikinews": 22215,
+        "ALL": 66054,
+        "wikibooks": 23312,
+        "wikivoyage": 20527
+      },
+      "sk_nd": {
+        "wikinews": 22020,
+        "ALL": 65494,
+        "wikibooks": 23167,
+        "wikivoyage": 20307
+      },
+      "cs": {
+        "wikinews": 20356,
+        "ALL": 59550,
+        "wikibooks": 20731,
+        "wikivoyage": 18463
+      },
+      "pl": {
+        "wikinews": 23136,
+        "ALL": 67181,
+        "wikibooks": 23360,
+        "wikivoyage": 20685
+      },
+      "hu": {
+        "wikinews": 22378,
+        "ALL": 65603,
+        "wikibooks": 23222,
+        "wikivoyage": 20003
+      },
+      "sl": {
+        "wikinews": 21575,
+        "ALL": 62450,
+        "wikibooks": 21856,
+        "wikivoyage": 19019
+      },
+      "hr": {
+        "wikinews": 20991,
+        "ALL": 60499,
+        "wikibooks": 21111,
+        "wikivoyage": 18397
+      },
+      "ro": {
+        "wikinews": 21850,
+        "ALL": 63489,
+        "wikibooks": 22097,
+        "wikivoyage": 19542
+      },
+      "uk": {
+        "wikinews": 19827,
+        "ALL": 56743,
+        "wikibooks": 19592,
+        "wikivoyage": 17324
+      },
+      "de": {
+        "wikinews": 24496,
+        "ALL": 72753,
+        "wikibooks": 25940,
+        "wikivoyage": 22317
+      },
+      "en": {
+        "wikinews": 14553,
+        "ALL": 41916,
+        "wikibooks": 14455,
+        "wikivoyage": 12908
+      }
+    },
+    "chars_per_token": {
+      "sk": 1.994,
+      "sk_nd": 2.011,
+      "cs": 2.137,
+      "pl": 2.076,
+      "hu": 2.113,
+      "sl": 2.095,
+      "hr": 2.124,
+      "ro": 2.34,
+      "uk": 2.369,
+      "de": 2.114,
+      "en": 3.148
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "wikibooks": 1.613,
+        "wikinews": 1.526,
+        "wikivoyage": 1.59,
+        "ALL": 1.576
+      },
+      "sk_nd": {
+        "wikibooks": 1.603,
+        "wikinews": 1.513,
+        "wikivoyage": 1.573,
+        "ALL": 1.563
+      },
+      "cs": {
+        "wikibooks": 1.434,
+        "wikinews": 1.399,
+        "wikivoyage": 1.43,
+        "ALL": 1.421
+      },
+      "pl": {
+        "wikibooks": 1.616,
+        "wikinews": 1.59,
+        "wikivoyage": 1.602,
+        "ALL": 1.603
+      },
+      "hu": {
+        "wikibooks": 1.607,
+        "wikinews": 1.538,
+        "wikivoyage": 1.55,
+        "ALL": 1.565
+      },
+      "sl": {
+        "wikibooks": 1.512,
+        "wikinews": 1.483,
+        "wikivoyage": 1.473,
+        "ALL": 1.49
+      },
+      "hr": {
+        "wikibooks": 1.46,
+        "wikinews": 1.442,
+        "wikivoyage": 1.425,
+        "ALL": 1.443
+      },
+      "ro": {
+        "wikibooks": 1.529,
+        "wikinews": 1.501,
+        "wikivoyage": 1.514,
+        "ALL": 1.515
+      },
+      "uk": {
+        "wikibooks": 1.355,
+        "wikinews": 1.362,
+        "wikivoyage": 1.342,
+        "ALL": 1.354
+      },
+      "de": {
+        "wikibooks": 1.795,
+        "wikinews": 1.683,
+        "wikivoyage": 1.729,
+        "ALL": 1.736
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.56,
+        1.592
+      ],
+      "sk_nd": [
+        1.547,
+        1.579
+      ],
+      "cs": [
+        1.407,
+        1.435
+      ],
+      "pl": [
+        1.586,
+        1.62
+      ],
+      "hu": [
+        1.548,
+        1.582
+      ],
+      "sl": [
+        1.476,
+        1.503
+      ],
+      "hr": [
+        1.43,
+        1.457
+      ],
+      "ro": [
+        1.501,
+        1.529
+      ],
+      "uk": [
+        1.342,
+        1.367
+      ],
+      "de": [
+        1.718,
+        1.755
+      ]
+    },
+    "same_as": null
   }
 }

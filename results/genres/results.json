@@ -2622,5 +2622,69 @@
       ]
     },
     "same_as": "Mistral / Mixtral (v3)"
+  },
+  "Claude Opus / Sonnet / Haiku 5.5 (API)": {
+    "kind": "anthropic",
+    "id": "claude-haiku-5-5",
+    "tokens": {
+      "sk": {
+        "news": 26697,
+        "ALL": 147294,
+        "social": 24731,
+        "speech": 21876,
+        "literary": 22742,
+        "law": 51248
+      },
+      "sk_nd": {
+        "news": 26701,
+        "ALL": 146192,
+        "social": 24304,
+        "speech": 21666,
+        "literary": 22317,
+        "law": 51204
+      },
+      "en": {
+        "news": 15705,
+        "ALL": 92150,
+        "social": 15358,
+        "speech": 14472,
+        "literary": 15424,
+        "law": 31191
+      }
+    },
+    "chars_per_token": {
+      "sk": 1.993,
+      "sk_nd": 2.008,
+      "en": 3.188
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.643,
+        "literary": 1.474,
+        "news": 1.7,
+        "social": 1.61,
+        "speech": 1.512,
+        "ALL": 1.598
+      },
+      "sk_nd": {
+        "law": 1.642,
+        "literary": 1.447,
+        "news": 1.7,
+        "social": 1.582,
+        "speech": 1.497,
+        "ALL": 1.586
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.585,
+        1.613
+      ],
+      "sk_nd": [
+        1.572,
+        1.601
+      ]
+    },
+    "same_as": null
   }
 }

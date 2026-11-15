@@ -75,22 +75,30 @@ def cost_rows(prices, results):
         if not r:
             continue
         ratio = r[R]["sk"]["ALL"]
-        rows.append({**p, "ratio": ratio, "eff_in": p["input"] * ratio, "eff_out": p["output"] * ratio})
-    return sorted(rows, key=lambda x: x["eff_in"])
+        rows.append({**p, "ratio": ratio, "eff_in": p["input"] * ratio, "eff_out": p["output"] * ratio,
+                     # the same Slovak content on every tokenizer: comparable across vendors even when
+                     # tokenizers need different numbers of tokens for English (e.g. Claude 5.5)
+                     "per_mchar_in": p["input"] / r["chars_per_token"]["sk"]})
+    return sorted(rows, key=lambda x: x["per_mchar_in"])
 
 
 def cost_markdown(prices, results, corpus_label):
     rows = cost_rows(prices, results)
     md = ["# What Slovak costs, in dollars\n",
           f"List prices as of {prices['as_of']} (`prices.json`), token ratio from {corpus_label}. "
-          "\"Effective\" = what the same content costs when it is written in Slovak, per 1M tokens' worth of English. "
-          "The ratio applies to output too: a Slovak answer is as many times longer in tokens as a Slovak prompt.\n"]
+          "\"Effective\" = what the same content costs when it is written in Slovak, per 1M tokens' worth of English "
+          "on the same tokenizer. The ratio applies to output too: a Slovak answer is as many times longer in tokens as a "
+          "Slovak prompt. Tokenizers also differ in how many tokens they need for English (Claude 5.5 needs about 1.5× as "
+          "many as GPT-4o), so to compare vendors use the last column, the input price of the same Slovak text per 1M "
+          "characters; the table is sorted by it.\n"]
     if not rows:
         return "\n".join(md + ["*No priced tokenizer was measured in this run.*\n"])
     md.append(_table(
-        ["Vendor", "Model", "$ in / 1M", "$ out / 1M", "sk/en", "effective $ in", "effective $ out", "Slovak surcharge"],
+        ["Vendor", "Model", "$ in / 1M", "$ out / 1M", "sk/en", "effective $ in", "effective $ out", "Slovak surcharge",
+         "$ in / 1M sk chars"],
         [[x["vendor"], f'`{x["model"]}`', f'{x["input"]:.2f}', f'{x["output"]:.2f}', _x(x["ratio"]),
-          f'{x["eff_in"]:.2f}', f'{x["eff_out"]:.2f}', f'+{(x["ratio"] - 1) * 100:.0f} %'] for x in rows]))
+          f'{x["eff_in"]:.2f}', f'{x["eff_out"]:.2f}', f'+{(x["ratio"] - 1) * 100:.0f} %', f'{x["per_mchar_in"]:.3f}']
+         for x in rows]))
     notes = [f'- `{x["model"]}`: {x["note"]}' for x in rows if x.get("note")]
     missing = sorted({p["tokenizer"] for p in prices["models"]} - set(results))
     if notes:

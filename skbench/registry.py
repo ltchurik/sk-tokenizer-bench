@@ -72,15 +72,25 @@ TOKENIZERS = {
     "CSMPT (Czech, BUT-FIT)": ("hf", "BUT-FIT/csmpt7b"),
     "Bielik (Polish, SpeakLeash)": ("hf", "speakleash/Bielik-11B-v2.3-Instruct"),
     # --- Closed tokenizers, API only (skipped without a key unless cached) ---------------
-    "Claude Opus 5.5 (API)": ("anthropic", "claude-opus-5-5"),
-    "Claude Sonnet 5.5 (API)": ("anthropic", "claude-sonnet-5-5"),
-    "Claude Haiku 5.5 (API)": ("anthropic", "claude-haiku-5-5"),
+    # Opus, Sonnet and Haiku 5.5 share one tokenizer: identical counts on 330 FLORES texts in
+    # 11 languages (plus every text counted on more than one of them), so Haiku counts the row.
+    "Claude Opus / Sonnet / Haiku 5.5 (API)": ("anthropic", "claude-haiku-5-5"),
     "Claude Sonnet 4.6 (API)": ("anthropic", "claude-sonnet-4-6"),
     "Gemini 3.8 Flash (API)": ("gemini", "gemini-3.8-flash"),
     "Gemini 4 Argon (API)": ("gemini", "gemini-4-argon"),
 }
 
 API_KINDS = {"anthropic", "gemini"}
+
+# The same models on OpenRouter, used when the vendor's own key is missing (see backends.py).
+OPENROUTER_IDS = {
+    "claude-opus-5-5": "anthropic/claude-opus-5.5",
+    "claude-sonnet-5-5": "anthropic/claude-sonnet-5.5",
+    "claude-haiku-5-5": "anthropic/claude-haiku-5.5",
+    "claude-sonnet-4-6": "anthropic/claude-sonnet-4.6",
+    "gemini-3.8-flash": "google/gemini-3.8-flash",
+    "gemini-4-argon": "google/gemini-4-argon",
+}
 
 # Month the earliest model named in each row was released (used for the timeline chart).
 # Lineages draw a line through successive tokenizers of the same vendor.

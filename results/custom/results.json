@@ -3032,5 +3032,79 @@
       ]
     },
     "same_as": "Mistral / Mixtral (v3)"
+  },
+  "Claude Opus / Sonnet / Haiku 5.5 (API)": {
+    "kind": "anthropic",
+    "id": "claude-haiku-5-5",
+    "tokens": {
+      "sk": {
+        "news": 292,
+        "ALL": 1434,
+        "tech": 251,
+        "legal": 208,
+        "chat": 191,
+        "wiki": 222,
+        "diacritics": 135,
+        "prompt": 135
+      },
+      "sk_nd": {
+        "news": 286,
+        "ALL": 1409,
+        "tech": 261,
+        "legal": 207,
+        "chat": 181,
+        "wiki": 219,
+        "diacritics": 120,
+        "prompt": 135
+      },
+      "en": {
+        "news": 191,
+        "ALL": 937,
+        "tech": 158,
+        "legal": 128,
+        "chat": 133,
+        "wiki": 157,
+        "diacritics": 86,
+        "prompt": 84
+      }
+    },
+    "chars_per_token": {
+      "sk": 1.978,
+      "sk_nd": 2.013,
+      "en": 3.346
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.436,
+        "diacritics": 1.57,
+        "legal": 1.625,
+        "news": 1.529,
+        "prompt": 1.607,
+        "tech": 1.589,
+        "wiki": 1.414,
+        "ALL": 1.53
+      },
+      "sk_nd": {
+        "chat": 1.361,
+        "diacritics": 1.395,
+        "legal": 1.617,
+        "news": 1.497,
+        "prompt": 1.607,
+        "tech": 1.652,
+        "wiki": 1.395,
+        "ALL": 1.504
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.469,
+        1.595
+      ],
+      "sk_nd": [
+        1.437,
+        1.571
+      ]
+    },
+    "same_as": null
   }
 }
