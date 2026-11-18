@@ -69,3 +69,21 @@ def test_openrouter_route_reads_prompt_tokens_and_retries_without_usage(monkeypa
     assert sent[0]["model"] == "anthropic/claude-haiku-5.5" and [s["max_tokens"] for s in sent] == [1, 16, 1]
     assert cache.data["claude-haiku-5-5"]["__via__"] == "openrouter"
     assert "test" not in (tmp_path / "c.json").read_text()
+
+
+def test_openrouter_refusal_is_recounted_on_vertex(monkeypatch):
+    import io
+
+    refusal = {"usage": None, "choices": [{"finish_reason": "content_filter", "message": {"content": None}}]}
+    replies = iter([refusal, {"usage": {"prompt_tokens": 20}}])
+    sent = []
+
+    def fake_urlopen(req, timeout):
+        sent.append(json.loads(req.data))
+        return io.BytesIO(json.dumps(next(replies)).encode())
+
+    monkeypatch.setattr(backends.urllib.request, "urlopen", fake_urlopen)
+    raw = backends._openrouter("anthropic/claude-sonnet-4.6", "test", rpm=0)
+    assert raw("text") == 20
+    assert "provider" not in sent[0] and sent[1]["provider"] == {"order": ["google-vertex"], "allow_fallbacks": False}
+    assert sent[1]["max_tokens"] == 1

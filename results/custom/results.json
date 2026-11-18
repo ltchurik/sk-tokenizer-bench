@@ -3106,5 +3106,227 @@
       ]
     },
     "same_as": null
+  },
+  "Claude Sonnet 4.6 (API)": {
+    "kind": "anthropic",
+    "id": "claude-sonnet-4-6",
+    "tokens": {
+      "sk": {
+        "news": 224,
+        "ALL": 1152,
+        "tech": 198,
+        "legal": 171,
+        "chat": 158,
+        "wiki": 168,
+        "diacritics": 120,
+        "prompt": 113
+      },
+      "sk_nd": {
+        "news": 204,
+        "ALL": 1032,
+        "tech": 190,
+        "legal": 156,
+        "chat": 136,
+        "wiki": 151,
+        "diacritics": 91,
+        "prompt": 104
+      },
+      "en": {
+        "news": 129,
+        "ALL": 650,
+        "tech": 112,
+        "legal": 86,
+        "chat": 97,
+        "wiki": 100,
+        "diacritics": 64,
+        "prompt": 62
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.463,
+      "sk_nd": 2.749,
+      "en": 4.823
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.629,
+        "diacritics": 1.875,
+        "legal": 1.988,
+        "news": 1.736,
+        "prompt": 1.823,
+        "tech": 1.768,
+        "wiki": 1.68,
+        "ALL": 1.772
+      },
+      "sk_nd": {
+        "chat": 1.402,
+        "diacritics": 1.422,
+        "legal": 1.814,
+        "news": 1.581,
+        "prompt": 1.677,
+        "tech": 1.696,
+        "wiki": 1.51,
+        "ALL": 1.588
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.694,
+        1.853
+      ],
+      "sk_nd": [
+        1.509,
+        1.664
+      ]
+    },
+    "same_as": null
+  },
+  "Gemini 3.8 Flash (API)": {
+    "kind": "gemini",
+    "id": "gemini-3.8-flash",
+    "tokens": {
+      "sk": {
+        "news": 184,
+        "ALL": 972,
+        "tech": 173,
+        "legal": 142,
+        "chat": 129,
+        "wiki": 150,
+        "diacritics": 99,
+        "prompt": 95
+      },
+      "sk_nd": {
+        "news": 174,
+        "ALL": 918,
+        "tech": 170,
+        "legal": 137,
+        "chat": 115,
+        "wiki": 140,
+        "diacritics": 88,
+        "prompt": 94
+      },
+      "en": {
+        "news": 118,
+        "ALL": 610,
+        "tech": 110,
+        "legal": 82,
+        "chat": 98,
+        "wiki": 89,
+        "diacritics": 52,
+        "prompt": 61
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.919,
+      "sk_nd": 3.09,
+      "en": 5.139
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.316,
+        "diacritics": 1.904,
+        "legal": 1.732,
+        "news": 1.559,
+        "prompt": 1.557,
+        "tech": 1.573,
+        "wiki": 1.685,
+        "ALL": 1.593
+      },
+      "sk_nd": {
+        "chat": 1.173,
+        "diacritics": 1.692,
+        "legal": 1.671,
+        "news": 1.475,
+        "prompt": 1.541,
+        "tech": 1.545,
+        "wiki": 1.573,
+        "ALL": 1.505
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.506,
+        1.684
+      ],
+      "sk_nd": [
+        1.419,
+        1.586
+      ]
+    },
+    "same_as": "Gemma 3"
+  },
+  "Gemini 4 Argon (API)": {
+    "kind": "gemini",
+    "id": "gemini-4-argon",
+    "tokens": {
+      "sk": {
+        "news": 179,
+        "ALL": 946,
+        "tech": 167,
+        "legal": 145,
+        "chat": 124,
+        "wiki": 146,
+        "diacritics": 95,
+        "prompt": 90
+      },
+      "sk_nd": {
+        "news": 168,
+        "ALL": 893,
+        "tech": 165,
+        "legal": 136,
+        "chat": 113,
+        "wiki": 136,
+        "diacritics": 87,
+        "prompt": 88
+      },
+      "en": {
+        "news": 118,
+        "ALL": 609,
+        "tech": 110,
+        "legal": 82,
+        "chat": 98,
+        "wiki": 88,
+        "diacritics": 53,
+        "prompt": 60
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.999,
+      "sk_nd": 3.177,
+      "en": 5.148
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "chat": 1.265,
+        "diacritics": 1.792,
+        "legal": 1.768,
+        "news": 1.517,
+        "prompt": 1.5,
+        "tech": 1.518,
+        "wiki": 1.659,
+        "ALL": 1.553
+      },
+      "sk_nd": {
+        "chat": 1.153,
+        "diacritics": 1.642,
+        "legal": 1.659,
+        "news": 1.424,
+        "prompt": 1.467,
+        "tech": 1.5,
+        "wiki": 1.545,
+        "ALL": 1.466
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.463,
+        1.645
+      ],
+      "sk_nd": [
+        1.379,
+        1.552
+      ]
+    },
+    "same_as": null
   }
 }
