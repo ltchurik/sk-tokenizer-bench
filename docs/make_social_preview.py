@@ -18,21 +18,22 @@ from matplotlib.patches import FancyBboxPatch  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 
 r = json.load(open(ROOT / "results" / "flores" / "results.json", encoding="utf-8"))
-pick = [("GPT-4 / 3.5", "GPT-4 / 3.5 (cl100k_base)"), ("Qwen 2.5 / 3", "Qwen 2.5 / 3"),
-        ("DeepSeek V3", "DeepSeek V3 / R1 / V4"), ("Llama 3", "Llama 3.x"),
-        ("GPT-4o / GPT-5", "GPT-4o / 4.1 / 5 (o200k_base)"), ("Mistral", "Mistral Nemo / Small 3–4 / Large 2 (tekken)"),
-        ("Gemma 3", "Gemma 3"), ("Llama 4", "Llama 4"), ("EuroLLM", "EuroLLM")]
-data = [(lab, r[k]["ratio_vs_en"]["sk"]["ALL"]) for lab, k in pick]
+pick = [("GPT-4 / 3.5", "GPT-4 / 3.5 (cl100k_base)"), ("DeepSeek V3 / V4", "DeepSeek V3 / R1 / V4"),
+        ("Claude Sonnet 4.6", "Claude Sonnet 4.6 (API)"), ("GPT-4o / GPT-5", "GPT-4o / 4.1 / 5 (o200k_base)"),
+        ("Mistral", "Mistral Nemo / Small 3–4 / Large 2 (tekken)"), ("Gemini Flash / Gemma 3", "Gemini 3.8 Flash (API)"),
+        ("Claude 5.5", "Claude Opus / Sonnet / Haiku 5.5 (API)"), ("Gemini 4 Argon", "Gemini 4 Argon (API)"),
+        ("Llama 4", "Llama 4"), ("EuroLLM", "EuroLLM")]
+data = sorted(((lab, r[k]["ratio_vs_en"]["sk"]["ALL"]) for lab, k in pick), key=lambda x: -x[1])
 TEXT = {
     "en": {"file": "social-preview.png", "dec": ".",
            "title": "How much more\ndoes Slovak cost\nin LLM tokens?",
            "sub": "Same text, Slovak vs English:\n1.6× – 2.3× more tokens\non mainstream models.",
-           "foot": "41 tokenizers · FLORES-200 · 10 languages", "base": "English = 1×",
+           "foot": f"{len(r)} tokenizers · FLORES-200 · 10 languages", "base": "English = 1×",
            "axis": "Slovak tokens ÷ English tokens, same content"},
     "sk": {"file": "social-preview-sk.png", "dec": ",",
            "title": "O koľko viac\nstojí slovenčina\nv tokenoch?",
            "sub": "Rovnaký text po slovensky\na po anglicky: 1,6× – 2,3×\nviac tokenov v bežných modeloch.",
-           "foot": "41 tokenizérov · FLORES-200 · 10 jazykov", "base": "angličtina = 1×",
+           "foot": f"{len(r)} tokenizérov · FLORES-200 · 10 jazykov", "base": "angličtina = 1×",
            "axis": "slovenské tokeny ÷ anglické tokeny, rovnaký obsah"},
 }
 SURF, INK, INK2, MUTED, BLUE = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#2a78d6"

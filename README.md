@@ -9,7 +9,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](requirements.txt)
 
 <p align="center">
-  <img src="docs/social-preview.png" width="100%" alt="Bar chart: Slovak needs 2.13× the tokens of English on GPT-4, 2.07× on Qwen 2.5/3, 1.91× on DeepSeek V3, 1.84× on Llama 3, 1.68× on GPT-4o/GPT-5, 1.67× on Mistral, 1.62× on Gemma 3, 1.56× on Llama 4 and 1.35× on EuroLLM (FLORES-200).">
+  <img src="docs/social-preview.png" width="100%" alt="Bar chart: Slovak needs 2.13× the tokens of English on GPT-4, 1.91× on DeepSeek V3 / V4, 1.80× on Claude Sonnet 4.6, 1.68× on GPT-4o/GPT-5, 1.67× on Mistral, 1.62× on Gemini Flash / Gemma 3, 1.58× on Gemini 4 Argon and Claude 5.5, 1.56× on Llama 4 and 1.35× on EuroLLM (FLORES-200).">
 </p>
 
 **[▶ Online calculator: paste your Slovak text and see its token count and cost](https://ltchurik.github.io/sk-tokenizer-bench/)**
