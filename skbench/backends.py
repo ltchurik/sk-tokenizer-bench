@@ -25,7 +25,8 @@ from pathlib import Path
 
 from .registry import OPENROUTER_IDS, TIKTOKEN_PATTERNS, revision
 
-CACHE_PATH = Path(__file__).resolve().parent.parent / "cache" / "api_counts.json"
+CACHE_PATH = Path(os.environ.get("SKBENCH_API_CACHE")
+                  or Path(__file__).resolve().parent.parent / "cache" / "api_counts.json")
 _OVERHEAD_KEY = "__overhead__"
 _VIA_KEY = "__via__"
 SAVE_EVERY = 500
@@ -204,13 +205,15 @@ class _ApiCounter:
         return [self.cache.get(self.model, t) for t in texts]
 
 
-def _openrouter(model, key, attempts=12):
+def _openrouter(model, key, attempts=int(os.environ.get("SKBENCH_API_ATTEMPTS", 12)),
+                rpm=float(os.environ.get("SKBENCH_API_RPM", 0))):
     """Count a text's tokens from OpenRouter's usage report on a minimal completion.
 
     Reasoning models (Gemini) may report no usage when the answer is cut at one token, so the
     limit grows until usage comes back. Rate limits, timeouts and 5xx errors are retried with
     backoff (honouring Retry-After), so a shared, busy key slows the run down instead of
-    failing it.
+    failing it. `rpm` > 0 paces requests below a per-model rate limit (a long run then
+    waits instead of collecting 429s).
     """
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
@@ -222,11 +225,28 @@ def _openrouter(model, key, attempts=12):
             delay = min(60.0, 2.0 ** attempt)
         time.sleep(delay + random.uniform(0, 1))
 
+    pace, slot = threading.Lock(), [0.0]
+
+    def throttle():
+        if rpm <= 0:
+            return
+        with pace:
+            now = time.monotonic()
+            slot[0] = max(slot[0] + 60.0 / rpm, now)
+            delay = slot[0] - now
+        time.sleep(delay)
+
+    # Gemini never reports usage at max_tokens=1; start where it does, so no request is wasted
+    first = 16 if model.startswith("google/") else 1
+
     def raw(text):
-        max_tokens, last = 1, None
+        max_tokens, last, route = first, None, None
         for attempt in range(attempts):
-            body = json.dumps({"model": model, "max_tokens": max_tokens,
-                               "messages": [{"role": "user", "content": text}]}).encode("utf-8")
+            throttle()
+            req = {"model": model, "max_tokens": max_tokens, "messages": [{"role": "user", "content": text}]}
+            if route:
+                req["provider"] = {"order": [route], "allow_fallbacks": False}
+            body = json.dumps(req).encode("utf-8")
             try:
                 with urllib.request.urlopen(urllib.request.Request(url, body, headers), timeout=120) as r:
                     data = json.load(r)
@@ -247,8 +267,14 @@ def _openrouter(model, key, attempts=12):
             n = (data.get("usage") or {}).get("prompt_tokens")
             if n is not None:
                 return n
+            choice = (data.get("choices") or [{}])[0]
+            if choice.get("finish_reason") == "content_filter" and model.startswith("anthropic/"):
+                # A safety classifier can refuse a harmless corpus text (a refusal reports no usage).
+                # Google Vertex serves the same model and tokenizer (same overhead) and counts it.
+                last, route = "content filter", "google-vertex"
+                continue
             last = "no usage"
             max_tokens = min(max_tokens * 16, 256)
-        raise RuntimeError(f"OpenRouter gave no token count for {model} after {attempts} attempts (last: {last})")
+        raise RuntimeError(f"OpenRouter: {last}, no token count after {attempts} attempts ({model})")
 
     return raw

@@ -23,7 +23,7 @@ Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens tha
 ## Takeaways
 
 - **Newer, bigger vocabularies help.** OpenAI's move from `cl100k` (GPT-4) to `o200k` (GPT-4o and later) cut the Slovak penalty from 2.13× to 1.68×; Meta went from 1.84× (Llama 3) to 1.56× (Llama 4), the best mainstream tokenizer measured; Mistral's `tekken` (1.67×) replaced v3 (1.95×).
-- **Slovak is pricier than its neighbours.** It costs more than Czech in 31 of 34 distinct tokenizers, and more than Slovenian and Croatian in 29 of 34, even though these languages are close. Among the eight Latin-script languages it ranks in the three most expensive for 27 of 34 tokenizers; only Hungarian is regularly worse. Ukrainian, in Cyrillic, is the most expensive language for 16 of 34 tokenizers (2.96× on GPT-4, 4.58× on Falcon 3), and German is usually the cheapest.
+- **Slovak is pricier than its neighbours.** It costs more than Czech in 34 of 37 distinct tokenizers, and more than Slovenian and Croatian in 32 of 37, even though these languages are close. Among the eight Latin-script languages it ranks in the three most expensive for 30 of 37 tokenizers; only Hungarian is regularly worse. Ukrainian, in Cyrillic, is the most expensive language for 17 of 37 tokenizers (2.96× on GPT-4, 4.58× on Falcon 3), and German is usually the cheapest.
 - **Writing without diacritics barely helps on modern models.** Stripping *ľščťž…* removes only 3–13 % of the penalty on Llama 4, Gemma 3, `tekken` and `o200k` (GPT-4o: 1.68× → 1.59×, about 5 % fewer tokens), and the text gets harder to read for both people and models. On older or less multilingual tokenizers diacritics are 17–34 % of the penalty. The rest is morphology and vocabulary. EuroLLM even gets *worse* without diacritics (1.35× → 1.39×), because its vocabulary learned correctly spelled Slovak.
 - **Newer is not always better for Slovak.** Gemma 3's tokenizer is slightly *worse* for Slovak than the one in Gemma 1 / 2 (1.62× vs 1.59×), and Mistral Large 4 (1.74×) is worse than the `tekken` tokenizer it follows (1.67×). Qwen 3.8, on the other hand, jumped from 2.07× to 1.64×, now among the best mainstream tokenizers.
 - **The 2026 generation** (Qwen 3.8 1.64×, Cohere North 1.69×, Mistral Large 4 1.74×, ERNIE 5.5 1.75×, LFM3 1.84×, GLM-5.3 1.93×, Hunyuan 4 1.95×, Granite 4.2 2.12×) does not beat Llama 4 (1.56×), released in 2025.
@@ -32,8 +32,9 @@ Short answer: **on mainstream models Slovak costs 1.6× to 2.3× more tokens tha
 - **Many models reuse someone else's tokenizer.** Apertus and Nemotron Nano 2 use Mistral's `tekken` (same counts on every sentence but one Ukrainian one), Bielik uses Mistral v3, Phi-4-mini and gpt-oss use `o200k`, and Phi-4 and OLMo 2 use `cl100k`, so they inherit those tokenizers' penalties exactly.
 - **Results hold across corpora.** On 1260 segments of real text by genre the overall ratio stays within ±0.07× of FLORES for every tokenizer and the ranking barely moves (Spearman 0.98); the hand-written domain corpus lands within ±0.08×.
 - **The text type moves the bill more than most tokenizer choices.** News and EU law cost the most (+0.1 to +0.3× above a tokenizer's average), speech transcripts and fiction the least (−0.1 to −0.3×): on GPT-4o, an EU regulation costs 1.74× and a transcribed video 1.50×. Social-media posts sit at or slightly below the average. See [By genre](#by-genre).
-- **The Slovak surcharge differs by vendor, not just the list price.** Of the 22 priced models with a measured tokenizer, Claude 5.5, Qwen 3.8, Mistral and OpenAI add 58–74 % for Slovak, while DeepSeek V4, GLM-5.3, MiniMax M3 and Kimi K3 add 90–101 %. That can cancel a lower list price: `deepseek-v4-pro` is cheaper than `mistral-large-4-0` per English token ($0.66 vs $0.70 input), but the same Slovak text costs the same on both ($0.26 per 1M Slovak characters). The cheapest options for Slovak input are `claude-haiku-5-5`, `gpt-4o-mini` and `qwen3.8-flash` (about $0.05 per 1M Slovak characters); see [In dollars](#in-dollars).
-- **Claude 5.5 has one of the best ratios but not the cheapest tokens.** Opus, Sonnet and Haiku 5.5 share one tokenizer, and Slovak needs only 1.58× its English count, second only to Llama 4. But it needs 1.56× as many tokens as GPT-4o's `o200k` for the same *English* text, and 1.47× as many for the same Slovak text. So `claude-sonnet-5-5` and `gpt-4.1` have the same list price ($2 per 1M input tokens), yet the same Slovak text costs 47 % more on Sonnet ($1.00 vs $0.68 per 1M characters). Closed tokenizers are counted through the vendors' token-counting APIs or OpenRouter; Gemini and Claude Sonnet 4.6 are not measured yet. See [API tokenizers](#api-tokenizers-claude-gemini).
+- **The Slovak surcharge differs by vendor, not just the list price.** Of the 25 priced models with a measured tokenizer, Claude 5.5, Gemini, Qwen 3.8, Mistral and OpenAI add 58–74 % for Slovak, Claude Sonnet 4.6 80 %, while DeepSeek V4, GLM-5.3, MiniMax M3 and Kimi K3 add 90–101 %. That can cancel a lower list price: `deepseek-v4-pro` is cheaper than `mistral-large-4-0` per English token ($0.66 vs $0.70 input), but the same Slovak text costs the same on both ($0.26 per 1M Slovak characters). The cheapest options for Slovak input are `claude-haiku-5-5`, `gpt-4o-mini` and `qwen3.8-flash` (about $0.05 per 1M Slovak characters); see [In dollars](#in-dollars).
+- **Claude 5.5 has one of the best ratios but not the cheapest tokens.** Opus, Sonnet and Haiku 5.5 share one tokenizer, and Slovak needs only 1.58× its English count, level with Gemini 4 Argon and behind only Llama 4. But it needs 1.56× as many tokens as GPT-4o's `o200k` for the same *English* text, and 1.47× as many for the same Slovak text. So `claude-sonnet-5-5` and `gpt-4.1` have the same list price ($2 per 1M input tokens), yet the same Slovak text costs 47 % more on Sonnet ($1.00 vs $0.68 per 1M characters). Its predecessor in Sonnet 4.6 has a worse ratio (1.80×) but bigger Slovak tokens (2.53 vs 1.99 characters per token), so Claude 5.5 needs 27 % more tokens for the same Slovak text.
+- **Gemini: Flash reuses Gemma 3's tokenizer, Argon has a new one.** Gemini 3.8 Flash gives the same count as the open Gemma 3 tokenizer on 954 of 1012 Slovak FLORES sentences (one token more on the rest) and the same ratio, 1.62×. Gemini 4 Argon has a new tokenizer: 1.58×, the best closed tokenizer measured together with Claude 5.5, with almost the same English counts as Gemma 3 and fewer Slovak ones. Per Slovak character, `gemini-4-argon` costs a third less than `claude-opus-5-5` at the same list price ($1.31 vs $2.01 per 1M characters). Closed tokenizers are counted through OpenRouter; see [API tokenizers](#api-tokenizers-claude-gemini).
 
 ## Results
 
@@ -54,8 +55,10 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | Teuken (OpenGPT-X) | **1.41×** | 1.40–1.43 | 1.37× | 3.17 | 4.48 |
 | Llama 4 | **1.56×** | 1.55–1.58 | 1.54× | 3.11 | 4.88 |
 | Claude Opus / Sonnet / Haiku 5.5 (API) | **1.58×** | 1.56–1.59 | 1.53× | 1.99 | 3.15 |
+| Gemini 4 Argon (API) | **1.58×** | 1.56–1.61 | 1.55× | 3.05 | 4.84 |
 | Gemma 1 / 2 | **1.59×** | 1.57–1.60 | 1.54× | 3.07 | 4.88 |
 | Gemma 3 | **1.62×** | 1.60–1.63 | 1.59× | 3.00 | 4.87 |
+| Gemini 3.8 Flash (API) | **1.62×** | 1.60–1.64 | 1.59× | 3.00 | 4.87 |
 | Qwen 3.8 | **1.64×** | 1.62–1.66 | 1.62× | 2.92 | 4.79 |
 | Mistral Nemo / Small 3–4 / Large 2 (tekken) | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
 | Nemotron Nano 2 | **1.67×** | 1.65–1.69 | 1.68× | 2.83 | 4.74 |
@@ -67,6 +70,7 @@ FLORES-200 devtest (1012 professionally translated sentences) with a 95 % bootst
 | Cohere North | **1.69×** | 1.68–1.71 | 1.66× | 2.97 | 5.03 |
 | Mistral Large 4 | **1.74×** | 1.72–1.76 | 1.71× | 2.73 | 4.74 |
 | ERNIE 5.5 | **1.75×** | 1.74–1.77 | 1.72× | 2.79 | 4.91 |
+| Claude Sonnet 4.6 (API) | **1.80×** | 1.78–1.82 | 1.77× | 2.53 | 4.57 |
 | Llama 2 | **1.81×** | 1.79–1.83 | 1.80× | 2.33 | 4.24 |
 | Granite 3.3 | **1.84×** | 1.82–1.86 | 1.84× | 2.18 | 4.01 |
 | LFM3 (Liquid AI) | **1.84×** | 1.82–1.86 | 1.79× | 2.60 | 4.79 |
@@ -106,8 +110,10 @@ Real text by genre: social-media posts, speech transcripts, literary prose and n
 | Teuken (OpenGPT-X) | 1.41× | 1.37× | 1.25× | 1.28× | 1.51× | 1.50× | 1.40× |
 | Llama 4 | 1.56× | 1.55× | 1.43× | 1.45× | 1.70× | 1.57× | 1.54× |
 | Claude Opus / Sonnet / Haiku 5.5 (API) | 1.58× | 1.61× | 1.51× | 1.47× | 1.70× | 1.64× | 1.60× |
+| Gemini 4 Argon (API) | 1.58× | 1.50× | 1.33× | 1.41× | 1.73× | 1.62× | 1.53× |
 | Gemma 1 / 2 | 1.59× | 1.50× | 1.36× | 1.45× | 1.72× | 1.64× | 1.55× |
 | Gemma 3 | 1.62× | 1.53× | 1.39× | 1.47× | 1.74× | 1.65× | 1.57× |
+| Gemini 3.8 Flash (API) | 1.62× | 1.53× | 1.39× | 1.47× | 1.74× | 1.65× | 1.57× |
 | Qwen 3.8 | 1.64× | 1.58× | 1.44× | 1.51× | 1.78× | 1.69× | 1.61× |
 | Mistral Nemo / Small 3–4 / Large 2 (tekken) | 1.67× | 1.62× | 1.50× | 1.53× | 1.80× | 1.76× | 1.66× |
 | Nemotron Nano 2 | 1.67× | 1.62× | 1.50× | 1.53× | 1.80× | 1.76× | 1.66× |
@@ -119,6 +125,7 @@ Real text by genre: social-media posts, speech transcripts, literary prose and n
 | Cohere North | 1.69× | 1.64× | 1.50× | 1.53× | 1.82× | 1.73× | 1.66× |
 | Mistral Large 4 | 1.74× | 1.68× | 1.54× | 1.56× | 1.90× | 1.85× | 1.73× |
 | ERNIE 5.5 | 1.75× | 1.66× | 1.53× | 1.55× | 1.90× | 1.83× | 1.71× |
+| Claude Sonnet 4.6 (API) | 1.80× | 1.74× | 1.64× | 1.60× | 1.95× | 1.89× | 1.78× |
 | Llama 2 | 1.81× | 1.74× | 1.62× | 1.61× | 1.93× | 1.95× | 1.80× |
 | Granite 3.3 | 1.84× | 1.85× | 1.70× | 1.68× | 2.01× | 2.10× | 1.91× |
 | LFM3 (Liquid AI) | 1.84× | 1.74× | 1.61× | 1.61× | 2.01× | 1.99× | 1.82× |
@@ -155,8 +162,10 @@ Tokens per sentence relative to English on FLORES-200, same content in every col
 | Teuken (OpenGPT-X) | 1.41× | 1.06× | 1.10× | 1.11× | 1.07× | 1.06× | 1.19× | 2.20× | 1.14× |
 | Llama 4 | 1.56× | 1.47× | 1.40× | 1.56× | 1.57× | 1.53× | 1.47× | 1.54× | 1.30× |
 | Claude Opus / Sonnet / Haiku 5.5 (API) | 1.58× | 1.42× | 1.60× | 1.56× | 1.49× | 1.44× | 1.51× | 1.35× | 1.74× |
+| Gemini 4 Argon (API) | 1.58× | 1.49× | 1.43× | 1.67× | 1.54× | 1.43× | 1.56× | 1.62× | 1.32× |
 | Gemma 1 / 2 | 1.59× | 1.50× | 1.46× | 1.67× | 1.58× | 1.59× | 1.55× | 1.65× | 1.26× |
 | Gemma 3 | 1.62× | 1.52× | 1.51× | 1.68× | 1.57× | 1.46× | 1.57× | 1.61× | 1.33× |
+| Gemini 3.8 Flash (API) | 1.62× | 1.53× | 1.51× | 1.68× | 1.57× | 1.46× | 1.57× | 1.61× | 1.33× |
 | Qwen 3.8 | 1.64× | 1.54× | 1.51× | 1.66× | 1.61× | 1.54× | 1.58× | 1.74× | 1.31× |
 | Mistral Nemo / Small 3–4 / Large 2 (tekken) | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
 | Nemotron Nano 2 | 1.67× | 1.55× | 1.57× | 1.61× | 1.56× | 1.49× | 1.61× | 1.73× | 1.30× |
@@ -168,6 +177,7 @@ Tokens per sentence relative to English on FLORES-200, same content in every col
 | Cohere North | 1.69× | 1.27× | 1.62× | 2.11× | 1.74× | 1.72× | 1.67× | 1.90× | 1.31× |
 | Mistral Large 4 | 1.74× | 1.70× | 1.78× | 1.80× | 1.62× | 1.54× | 1.66× | 1.72× | 1.24× |
 | ERNIE 5.5 | 1.75× | 1.54× | 1.49× | 1.99× | 1.70× | 1.67× | 1.77× | 1.86× | 1.39× |
+| Claude Sonnet 4.6 (API) | 1.80× | 1.64× | 1.72× | 1.78× | 1.55× | 1.51× | 1.66× | 1.96× | 1.76× |
 | Llama 2 | 1.81× | 1.69× | 1.70× | 1.79× | 1.66× | 1.65× | 1.70× | 1.71× | 1.41× |
 | Granite 3.3 | 1.84× | 1.76× | 1.84× | 1.91× | 1.68× | 1.67× | 1.98× | 2.48× | 1.61× |
 | LFM3 (Liquid AI) | 1.84× | 1.73× | 1.64× | 1.86× | 1.70× | 1.66× | 1.58× | 1.78× | 1.36× |
@@ -204,8 +214,10 @@ The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Sh
 | Teuken (OpenGPT-X) | 1.41× | 1.33× | 20 % |
 | Llama 4 | 1.56× | 1.55× | 3 % |
 | Claude Opus / Sonnet / Haiku 5.5 (API) | 1.58× | 1.56× | 2 % |
+| Gemini 4 Argon (API) | 1.58× | 1.54× | 8 % |
 | Gemma 1 / 2 | 1.59× | 1.55× | 7 % |
 | Gemma 3 | 1.62× | 1.56× | 10 % |
+| Gemini 3.8 Flash (API) | 1.62× | 1.56× | 9 % |
 | Qwen 3.8 | 1.64× | 1.58× | 8 % |
 | Mistral Nemo / Small 3–4 / Large 2 (tekken) | 1.67× | 1.59× | 12 % |
 | Nemotron Nano 2 | 1.67× | 1.59× | 12 % |
@@ -217,6 +229,7 @@ The same FLORES sentences with diacritics stripped (*ľščťž → lsctz*). "Sh
 | Cohere North | 1.69× | 1.59× | 14 % |
 | Mistral Large 4 | 1.74× | 1.62× | 16 % |
 | ERNIE 5.5 | 1.75× | 1.64× | 16 % |
+| Claude Sonnet 4.6 (API) | 1.80× | 1.66× | 18 % |
 | Llama 2 | 1.81× | 1.64× | 22 % |
 | Granite 3.3 | 1.84× | 1.64× | 24 % |
 | LFM3 (Liquid AI) | 1.84× | 1.69× | 18 % |
@@ -256,6 +269,7 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effe
 | MiniMax | `MiniMax-M3` | 0.30 | 1.20 | 2.01× | 0.60 | 2.41 | +101 % | 0.122 |
 | Alibaba | `qwen3.8-27b` | 0.50 | 3.00 | 1.64× | 0.82 | 4.92 | +64 % | 0.171 |
 | Z.ai | `glm-4.7` | 0.60 | 2.20 | 1.95× | 1.17 | 4.28 | +95 % | 0.241 |
+| Google | `gemini-3.8-flash` | 0.75 | 3.75 | 1.62× | 1.21 | 6.07 | +62 % | 0.250 |
 | Mistral | `mistral-large-4-0` | 0.70 | 2.10 | 1.74× | 1.22 | 3.65 | +74 % | 0.257 |
 | DeepSeek | `deepseek-v4-pro` | 0.66 | 1.98 | 1.91× | 1.26 | 3.77 | +90 % | 0.258 |
 | OpenAI | `gpt-5` | 1.25 | 10.00 | 1.68× | 2.10 | 16.77 | +68 % | 0.428 |
@@ -265,7 +279,9 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200. "Effe
 | Moonshot AI | `kimi-k3.1-pro` | 2.00 | 10.00 | 2.01× | 4.02 | 20.10 | +101 % | 0.828 |
 | OpenAI | `gpt-4o` | 2.50 | 10.00 | 1.68× | 4.19 | 16.77 | +68 % | 0.855 |
 | Anthropic | `claude-sonnet-5-5` | 2.00 | 10.00 | 1.58× | 3.15 | 15.76 | +58 % | 1.003 |
+| Anthropic | `claude-sonnet-4-6` | 3.00 | 15.00 | 1.80× | 5.41 | 27.06 | +80 % | 1.187 |
 | Moonshot AI | `kimi-k3` | 3.00 | 15.00 | 2.01× | 6.03 | 30.15 | +101 % | 1.242 |
+| Google | `gemini-4-argon` | 4.00 | 20.00 | 1.58× | 6.33 | 31.64 | +58 % | 1.311 |
 | Anthropic | `claude-opus-5-5` | 4.00 | 20.00 | 1.58× | 6.30 | 31.52 | +58 % | 2.006 |
 
 Notes:
@@ -274,10 +290,10 @@ Notes:
 - `deepseek-flash`: DeepSeek-V4.1-Flash; off-peak price; $0.30 / $1.20 during peak hours (01–04 and 06–10 UTC on weekdays)
 - `MiniMax-M3`: standard tier, up to 512k input tokens (marked as a permanent 50 % discount)
 - `qwen3.8-27b`: international (Singapore) rate
+- `gemini-3.8-flash`: rises to $1.50 / $7.50 on 2027-01-01
 - `deepseek-v4-pro`: off-peak price; $1.32 / $3.96 during peak hours (01–04 and 06–10 UTC on weekdays)
 - `qwen3.8-max`: international (Singapore) rate; closed model, assumes the tokenizer shared by all open Qwen 3.8 models
-
-*Not measured in this run (API key not set and counts not cached): Claude Sonnet 4.6 (API), Gemini 3.8 Flash (API), Gemini 4 Argon (API).*
+- `gemini-4-argon`: list price from 2026-12-01; intro price $2 / $10 until then
 
 <!-- results:end -->
 
@@ -313,12 +329,12 @@ See [Slovak and its neighbours](#slovak-and-its-neighbours): Czech, Slovenian an
 
 **Koľko tokenov navyše stojí slovenčina v jazykových modeloch (LLM)?** Platené API (OpenAI, Google, Mistral a ďalšie) účtujú za tokeny, no tokenizéry sa učia hlavne na angličtine. Rovnaký text po slovensky sa preto rozdelí na **1,6× až 2,3× viac tokenov** než po anglicky, takže za vstup aj výstup zaplatíte o 60 – 130 % viac a do kontextového okna sa zmestí o 40 – 56 % menej textu.
 
-- **Najlepšie z bežných modelov:** Llama 4 (1,56×), Claude 5.5 (1,58×), Gemma (1,59 – 1,62×), Qwen 3.8 (1,64×), Mistral (1,67×), GPT-4o / GPT-5 (1,68×).
+- **Najlepšie z bežných modelov:** Llama 4 (1,56×), Claude 5.5 a Gemini 4 Argon (1,58×), Gemma a Gemini 3.8 Flash (1,59 – 1,62×), Qwen 3.8 (1,64×), Mistral (1,67×), GPT-4o / GPT-5 (1,68×).
 - **Najhoršie:** GPT-4 / GPT-3.5 (2,13×), Granite 4.2 (2,12×), Qwen 2.5 / 3 (2,07×), Falcon 3 (2,27×).
-- **Slovenčina je drahšia ako čeština** v 31 z 34 tokenizérov a drahšia ako slovinčina a chorvátčina v 29 z 34, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
+- **Slovenčina je drahšia ako čeština** v 34 z 37 tokenizérov a drahšia ako slovinčina a chorvátčina v 32 z 37, aj keď sú si tieto jazyky blízke. Drahšia býva len maďarčina a ukrajinčina (cyrilika).
 - **Písanie bez diakritiky takmer nepomáha.** Na GPT-4o / GPT-5 ušetrí asi 5 % tokenov (1,68× → 1,59×), na Llama 4 asi 1 %. Väčšinu príplatku spôsobuje skloňovanie a slovná zásoba, nie mäkčene a dĺžne.
-- **Príplatok za slovenčinu závisí od výrobcu.** Pri Claude 5.5, Qwen 3.8, Mistrale a OpenAI zaplatíte za slovenský text o 58 – 74 % viac, pri DeepSeek V4, GLM-5.3, MiniMax M3 a Kimi K3 o 90 – 101 % viac. Lacnejší cenník to môže zmazať: `deepseek-v4-pro` je na papieri lacnejší ako `mistral-large-4-0`, no rovnaký slovenský text stojí na oboch rovnako.
-- **Nízky pomer neznamená nízku cenu.** Claude 5.5 má pre slovenčinu výborný pomer (1,58×), ale aj na anglický text potrebuje o 56 % viac tokenov ako GPT-4o. `claude-sonnet-5-5` a `gpt-4.1` majú rovnaký cenník, no ten istý slovenský text je na Sonnete o 47 % drahší.
+- **Príplatok za slovenčinu závisí od výrobcu.** Pri Claude 5.5, Gemini, Qwen 3.8, Mistrale a OpenAI zaplatíte za slovenský text o 58 – 74 % viac, pri Claude Sonnet 4.6 o 80 %, pri DeepSeek V4, GLM-5.3, MiniMax M3 a Kimi K3 o 90 – 101 % viac. Lacnejší cenník to môže zmazať: `deepseek-v4-pro` je na papieri lacnejší ako `mistral-large-4-0`, no rovnaký slovenský text stojí na oboch rovnako.
+- **Nízky pomer neznamená nízku cenu.** Claude 5.5 má pre slovenčinu výborný pomer (1,58×), ale aj na anglický text potrebuje o 56 % viac tokenov ako GPT-4o. `claude-sonnet-5-5` a `gpt-4.1` majú rovnaký cenník, no ten istý slovenský text je na Sonnete o 47 % drahší. `gemini-4-argon` má rovnaký cenník ako `claude-opus-5-5`, ale slovenský text je na ňom o tretinu lacnejší.
 - **Typ textu rozhoduje viac než výber tokenizéra:** správy a európske právo sú najdrahšie, prepisy reči a beletria najlacnejšie. Na GPT-4o stojí nariadenie EÚ 1,74× a prepis videa 1,50× viac tokenov ako po anglicky.
 - **Nie je to vlastnosť jazyka, ale trénovacích dát:** SlovakBERT, trénovaný na slovenčine, potrebuje na slovenský text menej tokenov ako na anglický (0,77×).
 
@@ -359,7 +375,7 @@ export ANTHROPIC_API_KEY=...   # and/or GEMINI_API_KEY=...
 python bench.py --readme
 ```
 
-Without the vendors' keys, an `OPENROUTER_API_KEY` works too: each text is sent for a one-token answer and the input count OpenRouter reports (the provider's own) is used. It costs little (the Claude 5.5 row, about 15,000 texts on Haiku 5.5, cost under $1), but new OpenRouter accounts are limited to 20 requests per minute on most models, so a full row takes about 12 hours there; Haiku 5.5 is not limited. `SKBENCH_API_WORKERS` sets the parallelism, and counts are saved every 500 texts, so a run can be stopped and resumed.
+Without the vendors' keys, an `OPENROUTER_API_KEY` works too: each text is sent for a one-token answer and the input count OpenRouter reports (the provider's own) is used. It costs little (about 15,000 texts per row: under $1 for Claude 5.5 on Haiku 5.5, about $8 for Claude Sonnet 4.6 and both Gemini rows together), but new OpenRouter accounts are limited to 20 requests per minute on most models, so a full row takes about 14 hours there; Haiku 5.5 is not limited. `SKBENCH_API_WORKERS` sets the parallelism, `SKBENCH_API_RPM` paces requests below a rate limit, `SKBENCH_API_ATTEMPTS` sets the retries and `SKBENCH_API_CACHE` points to another cache file (to run several models side by side). Counts are saved every 500 texts, so a run can be stopped and resumed. If Anthropic's safety filter refuses a corpus text (one literary paragraph was refused as false positive), it is counted through Google Vertex, which serves the same Claude model.
 
 Every count is cached in `cache/api_counts.json` (model + SHA-1 of the sentence). Commit that file and the API rows reproduce without a key, and CI never re-queries. Each request wraps the sentence in one user message, so a fixed per-request overhead (measured as `count(".") − 1`) is subtracted. Without a key and without cached counts these rows are skipped.
 

@@ -15,6 +15,7 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200 devtes
 | MiniMax | `MiniMax-M3` | 0.30 | 1.20 | 2.01× | 0.60 | 2.41 | +101 % | 0.122 |
 | Alibaba | `qwen3.8-27b` | 0.50 | 3.00 | 1.64× | 0.82 | 4.92 | +64 % | 0.171 |
 | Z.ai | `glm-4.7` | 0.60 | 2.20 | 1.95× | 1.17 | 4.28 | +95 % | 0.241 |
+| Google | `gemini-3.8-flash` | 0.75 | 3.75 | 1.62× | 1.21 | 6.07 | +62 % | 0.250 |
 | Mistral | `mistral-large-4-0` | 0.70 | 2.10 | 1.74× | 1.22 | 3.65 | +74 % | 0.257 |
 | DeepSeek | `deepseek-v4-pro` | 0.66 | 1.98 | 1.91× | 1.26 | 3.77 | +90 % | 0.258 |
 | OpenAI | `gpt-5` | 1.25 | 10.00 | 1.68× | 2.10 | 16.77 | +68 % | 0.428 |
@@ -24,7 +25,9 @@ List prices as of 2026-11-14 (`prices.json`), token ratio from FLORES-200 devtes
 | Moonshot AI | `kimi-k3.1-pro` | 2.00 | 10.00 | 2.01× | 4.02 | 20.10 | +101 % | 0.828 |
 | OpenAI | `gpt-4o` | 2.50 | 10.00 | 1.68× | 4.19 | 16.77 | +68 % | 0.855 |
 | Anthropic | `claude-sonnet-5-5` | 2.00 | 10.00 | 1.58× | 3.15 | 15.76 | +58 % | 1.003 |
+| Anthropic | `claude-sonnet-4-6` | 3.00 | 15.00 | 1.80× | 5.41 | 27.06 | +80 % | 1.187 |
 | Moonshot AI | `kimi-k3` | 3.00 | 15.00 | 2.01× | 6.03 | 30.15 | +101 % | 1.242 |
+| Google | `gemini-4-argon` | 4.00 | 20.00 | 1.58× | 6.33 | 31.64 | +58 % | 1.311 |
 | Anthropic | `claude-opus-5-5` | 4.00 | 20.00 | 1.58× | 6.30 | 31.52 | +58 % | 2.006 |
 
 Notes:
@@ -33,7 +36,7 @@ Notes:
 - `deepseek-flash`: DeepSeek-V4.1-Flash; off-peak price; $0.30 / $1.20 during peak hours (01–04 and 06–10 UTC on weekdays)
 - `MiniMax-M3`: standard tier, up to 512k input tokens (marked as a permanent 50 % discount)
 - `qwen3.8-27b`: international (Singapore) rate
+- `gemini-3.8-flash`: rises to $1.50 / $7.50 on 2027-01-01
 - `deepseek-v4-pro`: off-peak price; $1.32 / $3.96 during peak hours (01–04 and 06–10 UTC on weekdays)
 - `qwen3.8-max`: international (Singapore) rate; closed model, assumes the tokenizer shared by all open Qwen 3.8 models
-
-*Not measured in this run (API key not set and counts not cached): Claude Sonnet 4.6 (API), Gemini 3.8 Flash (API), Gemini 4 Argon (API).*
+- `gemini-4-argon`: list price from 2026-12-01; intro price $2 / $10 until then

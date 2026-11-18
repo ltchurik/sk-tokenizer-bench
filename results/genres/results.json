@@ -2686,5 +2686,197 @@
       ]
     },
     "same_as": null
+  },
+  "Claude Sonnet 4.6 (API)": {
+    "kind": "anthropic",
+    "id": "claude-sonnet-4-6",
+    "tokens": {
+      "sk": {
+        "news": 20857,
+        "ALL": 116432,
+        "social": 19931,
+        "speech": 17637,
+        "literary": 18008,
+        "law": 39999
+      },
+      "sk_nd": {
+        "news": 19215,
+        "ALL": 107323,
+        "social": 18246,
+        "speech": 16186,
+        "literary": 16617,
+        "law": 37059
+      },
+      "en": {
+        "news": 10724,
+        "ALL": 65360,
+        "social": 11473,
+        "speech": 10777,
+        "literary": 11228,
+        "law": 21158
+      }
+    },
+    "chars_per_token": {
+      "sk": 2.521,
+      "sk_nd": 2.735,
+      "en": 4.495
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.89,
+        "literary": 1.604,
+        "news": 1.945,
+        "social": 1.737,
+        "speech": 1.637,
+        "ALL": 1.781
+      },
+      "sk_nd": {
+        "law": 1.752,
+        "literary": 1.48,
+        "news": 1.792,
+        "social": 1.59,
+        "speech": 1.502,
+        "ALL": 1.642
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.762,
+        1.8
+      ],
+      "sk_nd": [
+        1.625,
+        1.658
+      ]
+    },
+    "same_as": null
+  },
+  "Gemini 3.8 Flash (API)": {
+    "kind": "gemini",
+    "id": "gemini-3.8-flash",
+    "tokens": {
+      "sk": {
+        "news": 17576,
+        "ALL": 97456,
+        "social": 16704,
+        "speech": 14550,
+        "literary": 15241,
+        "law": 33385
+      },
+      "sk_nd": {
+        "news": 17028,
+        "ALL": 94167,
+        "social": 15939,
+        "speech": 13919,
+        "literary": 14572,
+        "law": 32709
+      },
+      "en": {
+        "news": 10090,
+        "ALL": 62087,
+        "social": 10903,
+        "speech": 10473,
+        "literary": 10360,
+        "law": 20261
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.012,
+      "sk_nd": 3.117,
+      "en": 4.732
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.648,
+        "literary": 1.471,
+        "news": 1.742,
+        "social": 1.532,
+        "speech": 1.389,
+        "ALL": 1.57
+      },
+      "sk_nd": {
+        "law": 1.614,
+        "literary": 1.407,
+        "news": 1.688,
+        "social": 1.462,
+        "speech": 1.329,
+        "ALL": 1.517
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.552,
+        1.586
+      ],
+      "sk_nd": [
+        1.499,
+        1.533
+      ]
+    },
+    "same_as": null
+  },
+  "Gemini 4 Argon (API)": {
+    "kind": "gemini",
+    "id": "gemini-4-argon",
+    "tokens": {
+      "sk": {
+        "news": 17439,
+        "ALL": 95758,
+        "social": 16309,
+        "speech": 14360,
+        "literary": 14897,
+        "law": 32753
+      },
+      "sk_nd": {
+        "news": 17016,
+        "ALL": 94143,
+        "social": 15703,
+        "speech": 13785,
+        "literary": 15021,
+        "law": 32618
+      },
+      "en": {
+        "news": 10097,
+        "ALL": 62513,
+        "social": 10851,
+        "speech": 10788,
+        "literary": 10544,
+        "law": 20233
+      }
+    },
+    "chars_per_token": {
+      "sk": 3.065,
+      "sk_nd": 3.118,
+      "en": 4.7
+    },
+    "ratio_vs_en": {
+      "sk": {
+        "law": 1.619,
+        "literary": 1.413,
+        "news": 1.727,
+        "social": 1.503,
+        "speech": 1.331,
+        "ALL": 1.532
+      },
+      "sk_nd": {
+        "law": 1.612,
+        "literary": 1.425,
+        "news": 1.685,
+        "social": 1.447,
+        "speech": 1.278,
+        "ALL": 1.506
+      }
+    },
+    "ci95_vs_en": {
+      "sk": [
+        1.508,
+        1.554
+      ],
+      "sk_nd": [
+        1.475,
+        1.54
+      ]
+    },
+    "same_as": null
   }
 }

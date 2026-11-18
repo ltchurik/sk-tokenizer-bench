@@ -56,7 +56,18 @@ Counting rules:
   with the same overhead, and so did every other text counted on more than one of them (258 on
   Opus, 50 on Sonnet). They are one row, counted in full on Haiku 5.5, which OpenRouter does not
   rate-limit; Opus and Sonnet 5.5 are limited to 20 requests per minute on a new account.
-  Claude Sonnet 4.6 (a different tokenizer) and the Gemini models are not measured yet.
+- **Claude Sonnet 4.6** has its own tokenizer (overhead 7) and was counted through OpenRouter
+  in full. One literary paragraph of the genre corpus (without diacritics) was refused by
+  Anthropic's safety classifier on both the Anthropic and the Amazon Bedrock route, and a
+  refusal reports no usage; it was counted on the Google Vertex route, which serves the same model
+  with the same overhead (`count(".")` = 8 tokens on all three routes). `bench.py` does this
+  automatically on a `content_filter` refusal.
+- **Gemini 3.8 Flash and Gemini 4 Argon** were counted through OpenRouter (Google as provider).
+  Gemini reports no usage for a one-token answer, so these requests ask for 16 tokens; the
+  output length does not affect the input count. The overhead is 0 for Flash and 31 for Argon
+  (a fixed prompt the route adds), constant across repeated requests. Flash matches the open
+  Gemma 3 tokenizer on 954 of 1012 Slovak FLORES sentences (one token more on the rest), which
+  supports the count; Argon is a different tokenizer.
 
 ## 3. Corpora
 
@@ -194,6 +205,7 @@ computed without re-running the tokenizers. API rows reproduce without a key fro
 | v0.3.4 | 2026-11-14 | Genre corpus (WMT24++, EU law); third-party corpora downloaded at run time with pinned hashes instead of stored in the repo. |
 | v0.3.5 | 2026-11 | Tokenizer revisions pinned, `results/env.json`, this document. |
 | v0.3.7 | 2026-11 | Claude 5.5 measured (through OpenRouter); price per 1M Slovak characters in the cost table. |
+| v0.3.8 | 2026-11 | Claude Sonnet 4.6, Gemini 3.8 Flash and Gemini 4 Argon measured (through OpenRouter); every priced model now has a measured tokenizer. |
 
 ## References
 
