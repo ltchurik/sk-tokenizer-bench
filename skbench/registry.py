@@ -132,13 +132,18 @@ RELEASED = {
     "Cohere North": "2026-08",
     "Granite 4.2": "2026-08",
     "LFM3 (Liquid AI)": "2026-10",
+    "Claude Sonnet 4.6 (API)": "2026-02",
+    "Claude Opus / Sonnet / Haiku 5.5 (API)": "2026-09",
+    "Gemini 3.8 Flash (API)": "2026-09",
+    "Gemini 4 Argon (API)": "2026-10",  # announced 2026-09-30, generally available in October
 }
 LINEAGES = {
     "OpenAI": ["GPT-4 / 3.5 (cl100k_base)", "GPT-4o / 4.1 / 5 (o200k_base)"],
     "Meta": ["Llama 2", "Llama 3.x", "Llama 4"],
     "Mistral": ["Mistral / Mixtral (v3)", "Mistral Nemo / Small 3–4 / Large 2 (tekken)", "Mistral Large 4"],
-    "Google": ["Gemma 1 / 2", "Gemma 3"],
+    "Google": ["Gemma 1 / 2", "Gemma 3", "Gemini 4 Argon (API)"],
     "Qwen": ["Qwen 2.5 / 3", "Qwen 3.8"],
+    "Anthropic": ["Claude 2 (legacy, Xenova mirror)", "Claude Sonnet 4.6 (API)", "Claude Opus / Sonnet / Haiku 5.5 (API)"],
 }
 
 # Pre-tokenization patterns for tiktoken-format vocabularies shipped on the HF Hub.

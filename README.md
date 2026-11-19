@@ -299,9 +299,9 @@ Notes:
 
 ### How tokenizers evolved
 
-![Line chart of the Slovak/English token ratio by tokenizer release date. OpenAI fell from 2.13× (GPT-4, 2023) to 1.68× (GPT-4o, 2024); Meta went from 1.81× (Llama 2) to 1.84× (Llama 3) to 1.56× (Llama 4); Mistral from 1.95× (v3) to 1.67× (tekken) and back up to 1.74× (Large 4, 2026); Google from 1.59× (Gemma 1/2) to 1.62× (Gemma 3); Qwen from 2.07× (Qwen 2.5/3) to 1.64× (Qwen 3.8, 2026).](docs/tokenizer-timeline.png)
+![Line chart of the Slovak/English token ratio by tokenizer release date. OpenAI fell from 2.13× (GPT-4, 2023) to 1.68× (GPT-4o, 2024); Meta went from 1.81× (Llama 2) to 1.84× (Llama 3) to 1.56× (Llama 4); Mistral from 1.95× (v3) to 1.67× (tekken) and back up to 1.74× (Large 4, 2026); Google from 1.59× (Gemma 1/2) to 1.62× (Gemma 3) to 1.58× (Gemini 4 Argon, 2026); Qwen from 2.07× (Qwen 2.5/3) to 1.64× (Qwen 3.8, 2026); Anthropic from 2.25× (Claude 2) to 1.80× (Claude Sonnet 4.6) to 1.58× (Claude 5.5, 2026).](docs/tokenizer-timeline.png)
 
-Successive tokenizers from the same vendor mostly get cheaper for Slovak, but not always (Llama 3, Gemma 3, Mistral Large 4). Regenerate with `python docs/make_timeline.py`.
+Successive tokenizers from the same vendor mostly get cheaper for Slovak, but not always (Llama 3, Gemma 3, Mistral Large 4). Gemini 3.8 Flash is not on its own in the chart: it uses the Gemma 3 tokenizer. Regenerate with `python docs/make_timeline.py`.
 
 Full tables, including tokens per language and per-domain ratios: [FLORES-200](results/flores/RESULTS.md) · [genres](results/genres/RESULTS.md) · [domain corpus](results/custom/RESULTS.md) · [cost](results/COST.md). Per-sentence counts: `results/*/counts.json.gz`.
 
